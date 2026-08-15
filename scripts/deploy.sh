@@ -5,7 +5,7 @@ set -euo pipefail
 # Запуск: ssh root@5.129.241.199 'bash /root/navilet-deploy.sh'
 
 REPO_DIR=/root/navilet_website
-REPO_URL=https://github.com/officeaimpact/navilet_website.git
+REPO_URL=https://github.com/youneedlks/navilet_ai_website.git
 PROXY_DIR=/root/navilet-proxy
 NETWORK=navilet-net
 
