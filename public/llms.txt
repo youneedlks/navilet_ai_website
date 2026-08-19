@@ -214,6 +214,7 @@
 - Версии ассистента «Лид» и «Про» — сравнение: https://navilet.ru/versii
 - Подборки туров по ссылке (страница клиента, статистика в кабинете): https://navilet.ru/podborki
 - Возврат клиентов (догоняющие сообщения и подписки): https://navilet.ru/vozvrat-klientov
+- Лиды для турагентства (CPL 219–540 ₽, как устроена лидогенерация): https://navilet.ru/lidy-dlya-turagentstva
 - Вопросы и ответы про ИИ для турагентств: https://navilet.ru/voprosy
 - Прогнозы и предиктивная аналитика для турагентств: https://navilet.ru/prognozy
 - Виджет подбора туров на сайт (инструкции для Tilda, WordPress, Битрикс и др.): https://navilet.ru/vidzhet
@@ -225,6 +226,7 @@
 - Карта сайта: https://navilet.ru/karta-sayta
 - Для турагентств: https://navilet.ru/dlya-turagentstv
 - Для туроператоров: https://navilet.ru/dlya-turoperatorov
+- Для сетей агентств и франшиз (тариф «Сеть», кейс МГП): https://navilet.ru/dlya-setey-agentstv
 - Часто задаваемые вопросы: https://navilet.ru/faq
 - Интеграция с Tourvisor: https://navilet.ru/integraciya-tourvisor
 - Кейс МГП (Сеть магазинов горящих путёвок): https://navilet.ru/keisy/mgp

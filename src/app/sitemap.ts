@@ -26,12 +26,14 @@ const staticEntries: Entry[] = [
   { path: "/tarify", changeFrequency: "weekly", priority: 0.9, lastModified: "2026-08-13" }, // prettier-ignore
   { path: "/skolko-stoit", changeFrequency: "monthly", priority: 0.9, lastModified: "2026-08-13" }, // prettier-ignore
   { path: "/versii", changeFrequency: "weekly", priority: 0.9, lastModified: "2026-08-13" }, // prettier-ignore
-  { path: "/podborki", changeFrequency: "monthly", priority: 0.8, lastModified: "2026-08-13" }, // prettier-ignore
+  { path: "/podborki", changeFrequency: "monthly", priority: 0.8, lastModified: "2026-08-19" }, // prettier-ignore
+  { path: "/lidy-dlya-turagentstva", changeFrequency: "monthly", priority: 0.9, lastModified: "2026-08-19" }, // prettier-ignore
   { path: "/vozvrat-klientov", changeFrequency: "monthly", priority: 0.8, lastModified: "2026-08-13" }, // prettier-ignore
   { path: "/demo", changeFrequency: "monthly", priority: 0.8, lastModified: "2026-08-13" }, // prettier-ignore
   { path: "/start", changeFrequency: "monthly", priority: 0.8, lastModified: "2026-08-13" }, // prettier-ignore
   { path: "/dlya-turagentstv", changeFrequency: "monthly", priority: 0.9, lastModified: "2026-08-13" }, // prettier-ignore
   { path: "/dlya-turoperatorov", changeFrequency: "monthly", priority: 0.9, lastModified: "2026-08-13" }, // prettier-ignore
+  { path: "/dlya-setey-agentstv", changeFrequency: "monthly", priority: 0.8, lastModified: "2026-08-19" }, // prettier-ignore
   { path: "/integraciya-tourvisor", changeFrequency: "monthly", priority: 0.8, lastModified: "2026-08-01" }, // prettier-ignore
   { path: "/keisy/mgp", changeFrequency: "monthly", priority: 0.8, lastModified: "2026-08-01" }, // prettier-ignore
   { path: "/blog", changeFrequency: "weekly", priority: 0.8, lastModified: "2026-08-19" }, // prettier-ignore
@@ -65,7 +67,7 @@ const clusterEntries: Entry[] = [
     path: `/spros/${p.slug}`,
     changeFrequency: "weekly" as const,
     priority: 0.7,
-    lastModified: "2026-08-13",
+    lastModified: "2026-08-19",
   })),
 ];
 

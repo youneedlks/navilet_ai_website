@@ -385,6 +385,16 @@ export default function MgpCasePage() {
                 Используется в крупнейшей сети России — теперь доступно и
                 одиночному офису. 30 дней бесплатно, подключение 0 ₽.
               </p>
+              <p className="mt-2 text-sm text-muted">
+                У вас сеть или франшиза? Смотрите{" "}
+                <Link
+                  href="/dlya-setey-agentstv"
+                  className="font-semibold text-accent underline decoration-accent/30 underline-offset-2 hover:decoration-accent"
+                >
+                  решение для сетей агентств
+                </Link>
+                .
+              </p>
               <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <Link
                   href="/tarify"

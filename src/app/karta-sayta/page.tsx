@@ -51,6 +51,10 @@ const groups: Group[] = [
         href: "/vozvrat-klientov",
         label: "Возврат клиентов: догоняющие сообщения и подписки",
       },
+      {
+        href: "/lidy-dlya-turagentstva",
+        label: "Лиды для турагентства: заявки от 219 ₽",
+      },
       { href: "/tarify", label: "Тарифы и что входит в подписку" },
       {
         href: "/skolko-stoit",
@@ -71,6 +75,7 @@ const groups: Group[] = [
     links: [
       { href: "/dlya-turagentstv", label: "Для турагентств" },
       { href: "/dlya-turoperatorov", label: "Для туроператоров" },
+      { href: "/dlya-setey-agentstv", label: "Для сетей агентств и франшиз" },
       { href: "/keisy/mgp", label: "Кейс: сеть «Магазины горящих путёвок»" },
     ],
   },

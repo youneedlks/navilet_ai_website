@@ -305,9 +305,26 @@ export default function VersiiPage() {
             ))}
           </div>
 
-          {/* Две функции заслуживают отдельного разбора — раньше со страницы
-              версий на них не было ни одной прямой ссылки. */}
-          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {/* Ключевые сценарии заслуживают отдельного разбора — прямые
+              ссылки с версии на тематические страницы. */}
+          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <Link
+              href="/lidy-dlya-turagentstva"
+              className="group flex items-start gap-3 rounded-2xl border border-blue-subtle/50 bg-white p-5 transition-colors hover:border-accent/40 hover:bg-blue-ice/30"
+            >
+              <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-accent/10">
+                <LidIcon className="h-4 w-4 text-accent" />
+              </span>
+              <span>
+                <span className="flex items-center gap-1.5 font-display text-base font-bold text-heading transition-colors group-hover:text-accent">
+                  Лиды для турагентства
+                </span>
+                <span className="mt-1 block text-sm leading-relaxed text-body">
+                  Как версия «Лид» превращает трафик сайта в заявки по
+                  219–540 ₽ вместо 1 500–5 000 ₽ из рекламы.
+                </span>
+              </span>
+            </Link>
             <Link
               href="/podborki"
               className="group flex items-start gap-3 rounded-2xl border border-blue-subtle/50 bg-white p-5 transition-colors hover:border-accent/40 hover:bg-blue-ice/30"
