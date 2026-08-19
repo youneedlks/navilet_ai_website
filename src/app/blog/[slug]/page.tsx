@@ -196,7 +196,9 @@ export default async function BlogPostPage({
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <Calendar className="h-4 w-4" />
-                {formatPostDate(post.date)}
+                {post.updated
+                  ? `Обновлено ${formatPostDate(post.updated)}`
+                  : formatPostDate(post.date)}
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <Clock className="h-4 w-4" />
