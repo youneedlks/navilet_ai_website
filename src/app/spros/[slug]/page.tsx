@@ -123,6 +123,15 @@ export default async function DemandPage({
           },
         ],
       },
+      {
+        "@type": "FAQPage",
+        "@id": `${url}#faq`,
+        mainEntity: page.faq.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: { "@type": "Answer", text: item.answer },
+        })),
+      },
     ],
   };
 
@@ -296,8 +305,35 @@ export default async function DemandPage({
           </div>
         </section>
 
-        {/* Other directions + related */}
+        {/* FAQ — видимый текст совпадает с FAQPage-разметкой выше */}
         <section className="bg-surface">
+          <div className="mx-auto max-w-3xl px-5 py-14 sm:px-6 lg:px-8">
+            <h2 className="font-display text-2xl font-bold text-heading sm:text-3xl">
+              Частые вопросы: {page.country}
+            </h2>
+            <div className="mt-6 space-y-4">
+              {page.faq.map((item) => (
+                <details
+                  key={item.question}
+                  className="group rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card sm:p-6"
+                >
+                  <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 font-display text-base font-bold text-heading [&::-webkit-details-marker]:hidden">
+                    {item.question}
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent transition-transform group-open:rotate-45">
+                      +
+                    </span>
+                  </summary>
+                  <p className="mt-3 text-sm leading-relaxed text-body">
+                    {item.answer}
+                  </p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Other directions + related */}
+        <section className="bg-surface-alt">
           <div className="mx-auto max-w-3xl px-5 py-14 sm:px-6 lg:px-8">
             <h2 className="font-display text-xl font-bold text-heading">
               Спрос по другим направлениям

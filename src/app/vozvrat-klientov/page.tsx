@@ -94,6 +94,28 @@ const vozvratJsonLd = {
       publisher: { "@id": `${siteUrl}/#organization` },
     },
     {
+      "@type": "Service",
+      "@id": `${siteUrl}/vozvrat-klientov#service`,
+      name: "Возврат клиентов турагентства — догоняющие сообщения и подписки",
+      serviceType: "Автоматический возврат клиентов в диалог (retention)",
+      description:
+        "Функция версии «Про» ИИ-ассистента «Навылет! AI»: догоняющие сообщения в MAX-мессенджере с откликом до 40%, напоминания через день (~28% отклика), подписка на снижение цены и умная подписка с памятью запроса. Защита от спама: пауза 3 дня, стоп перед вылетом, отписка одним словом.",
+      provider: { "@id": `${siteUrl}/#organization` },
+      areaServed: "RU",
+      audience: {
+        "@type": "BusinessAudience",
+        name: "Турагентства и туроператоры",
+      },
+      isRelatedTo: { "@id": `${siteUrl}/#product` },
+      offers: {
+        "@type": "Offer",
+        price: "1990",
+        priceCurrency: "RUB",
+        description:
+          "Входит в версию «Про» — от 1 990 ₽/мес, первый месяц бесплатно (до 200 диалогов).",
+      },
+    },
+    {
       "@type": "FAQPage",
       "@id": `${siteUrl}/vozvrat-klientov#faq`,
       mainEntity: vozvratFaqItems.map((item) => ({

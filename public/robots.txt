@@ -112,6 +112,13 @@ Allow: /
 User-agent: MistralAI-Index
 Allow: /
 
+# Сбер: GigaChat и GigaSearch берут документы из веб-поиска
+User-agent: GigaChat
+Allow: /
+
+User-agent: SberBot
+Allow: /
+
 # Common Crawl — открытый датасет, из которого учатся сторонние модели
 User-agent: CCBot
 Allow: /
