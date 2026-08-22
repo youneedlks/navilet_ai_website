@@ -186,11 +186,10 @@ export default function VozvratKlientovPage() {
           </p>
 
           {/* Ключевые цифры */}
-          <div className="mx-auto mt-9 grid max-w-2xl grid-cols-3 gap-3">
+          <div className="mx-auto mt-9 grid max-w-xl grid-cols-2 gap-3">
             {[
               { stat: "до 40%", label: "отклик на догоняющее сообщение" },
               { stat: "~28%", label: "отклик на напоминание через день" },
-              { stat: "0", label: "усилий менеджера — всё автоматически" },
             ].map((s) => (
               <div
                 key={s.label}

@@ -64,14 +64,14 @@ export const navigation: NavEntry[] = [
             description: "Реальные цены и наличие туров в диалоге",
             href: "/integraciya-tourvisor",
           },
-          {
-            label: "Подключить за 2 минуты",
-            description: "Регистрация и код виджета без разработчика",
-            href: "/start",
-          },
         ],
       },
     ],
+    highlight: {
+      label: "Подключить за 2 минуты",
+      description: "Регистрация и код виджета без разработчика",
+      href: "/start",
+    },
   },
   {
     kind: "menu",

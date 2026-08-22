@@ -205,8 +205,8 @@ export default function PodborkiPage() {
               Как подборка попадает к клиенту
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-center text-base text-body">
-              Менеджер не участвует: страницу создаёт сам ассистент в момент,
-              когда показал варианты.
+              Страницу собирает сам ассистент в момент, когда показал варианты —
+              менеджеру не нужно ничего верстать и пересылать вручную.
             </p>
             <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-3">
               {podborkiSteps.map((s) => (
@@ -242,19 +242,17 @@ export default function PodborkiPage() {
             </p>
           </div>
 
-          <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-start lg:gap-10">
-            {/* На широких экранах превью держится в поле зрения, пока читают
-                список возможностей справа. */}
-            <div className="lg:sticky lg:top-24">
-              <CollectionPreview />
-            </div>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-1">
+          {/* Превью и список прокручиваются вместе: «прилипшая» колонка
+              создавала ощущение, что правый список живёт своей прокруткой. */}
+          <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-center lg:gap-10">
+            <CollectionPreview />
+            <div className="grid auto-rows-fr grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-1">
               {podborkiClientFeatures.map((f) => {
                 const Icon = featureIcons[f.icon];
                 return (
                   <div
                     key={f.title}
-                    className="flex gap-3.5 rounded-2xl border border-blue-subtle/50 bg-white p-5 shadow-card"
+                    className="flex h-full gap-3.5 rounded-2xl border border-blue-subtle/50 bg-white p-5 shadow-card"
                   >
                     <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-accent/10">
                       <Icon className="h-5 w-5 text-accent" />

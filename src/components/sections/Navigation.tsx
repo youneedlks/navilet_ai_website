@@ -176,21 +176,27 @@ export default function Navigation() {
               ))}
             </div>
             {entry.highlight && (
-              <Link
-                href={entry.highlight.href}
-                onClick={() => setOpenMenu(null)}
-                className="group/hl flex items-center justify-between gap-4 border-t border-blue-subtle/40 bg-blue-ice/40 px-6 py-3.5 transition-colors hover:bg-blue-ice"
-              >
-                <span>
-                  <span className="block text-sm font-semibold text-heading transition-colors group-hover/hl:text-accent">
-                    {entry.highlight.label}
+              <div className="border-t border-blue-subtle/40 bg-blue-ice/30 p-3">
+                <Link
+                  href={entry.highlight.href}
+                  onClick={() => setOpenMenu(null)}
+                  className="group/hl flex items-center justify-between gap-4 rounded-xl px-4 py-3 text-white shadow-lg shadow-accent/25 transition-shadow hover:shadow-xl hover:shadow-accent/35"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, #0062EF 0%, #0097F5 60%, #00CCF5 100%)",
+                  }}
+                >
+                  <span>
+                    <span className="block text-sm font-semibold">
+                      {entry.highlight.label}
+                    </span>
+                    <span className="mt-0.5 block text-xs text-white/75">
+                      {entry.highlight.description}
+                    </span>
                   </span>
-                  <span className="mt-0.5 block text-xs text-muted">
-                    {entry.highlight.description}
-                  </span>
-                </span>
-                <ArrowRight className="h-4 w-4 shrink-0 text-accent transition-transform group-hover/hl:translate-x-1" />
-              </Link>
+                  <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover/hl:translate-x-1" />
+                </Link>
+              </div>
             )}
           </div>
         </div>
@@ -370,10 +376,14 @@ export default function Navigation() {
                                 <Link
                                   href={entry.highlight.href}
                                   onClick={closeMobileMenu}
-                                  className="mt-2 flex min-h-11 items-center gap-1.5 rounded-lg bg-blue-ice/60 px-3 text-[15px] font-semibold text-accent"
+                                  className="mt-3 flex min-h-12 items-center justify-between gap-2 rounded-xl px-4 text-[15px] font-semibold text-white shadow-md shadow-accent/25"
+                                  style={{
+                                    background:
+                                      "linear-gradient(135deg, #0062EF 0%, #0097F5 60%, #00CCF5 100%)",
+                                  }}
                                 >
                                   {entry.highlight.label}
-                                  <ArrowRight className="h-4 w-4" />
+                                  <ArrowRight className="h-4 w-4 shrink-0" />
                                 </Link>
                               )}
                             </div>
