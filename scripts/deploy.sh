@@ -46,6 +46,18 @@ echo "==> safe-swap: stop & remove old container, run new"
 docker stop navylet-site || true
 docker rm navylet-site || true
 
+# docker rm возвращает управление раньше, чем демон освободит имя, и следующий
+# docker run падает с «name is already in use». Ждём, пока имя действительно
+# исчезнет, иначе деплой обрывается на середине и сайт остаётся без контейнера.
+for _ in $(seq 1 30); do
+  docker container inspect navylet-site >/dev/null 2>&1 || break
+  sleep 1
+done
+if docker container inspect navylet-site >/dev/null 2>&1; then
+  echo "ERROR: старый контейнер не удалился за 30 секунд"
+  exit 1
+fi
+
 # --network navilet-net обязателен: nginx проксирует /api/lead на
 # navilet-proxy:8080 по внутреннему DNS docker. Без общей сети приём
 # заявок в Telegram отваливается с 502.
