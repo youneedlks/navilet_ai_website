@@ -89,18 +89,10 @@ export default function NetworkResults() {
           ))}
         </motion.div>
 
-        {/* CPL line */}
-        <motion.p
-          variants={fadeInUp}
-          className="mt-9 text-sm font-semibold text-[#66F0FF]"
-        >
-          {r.cplLine}
-        </motion.p>
-
         {/* Clients */}
         <motion.div
           variants={fadeInUp}
-          className="mt-10 border-t border-white/10 pt-8"
+          className="mt-12 border-t border-white/10 pt-8"
         >
           <p className="mb-4 text-xs font-semibold uppercase tracking-wide text-white/40">
             {r.clientsLabel}
