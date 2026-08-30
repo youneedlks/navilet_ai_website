@@ -73,13 +73,16 @@ export default function NetworkResults() {
           {r.stats.map((s) => (
             <div key={s.label} className="text-center">
               <div className="font-display text-3xl font-bold text-white sm:text-4xl">
-                <CountUp
-                  end={s.value}
-                  prefix={s.prefix}
-                  suffix={s.suffix}
-                  separator={s.separator}
-                  duration={2.4}
-                />
+                {s.display ?? (
+                  <CountUp
+                    end={s.value ?? 0}
+                    decimals={s.decimals}
+                    prefix={s.prefix}
+                    suffix={s.suffix}
+                    separator={s.separator}
+                    duration={2.4}
+                  />
+                )}
               </div>
               <p className="mt-2 text-sm font-medium text-white/55">{s.label}</p>
             </div>
@@ -113,14 +116,6 @@ export default function NetworkResults() {
             ))}
           </div>
         </motion.div>
-
-        {/* Footnote */}
-        <motion.p
-          variants={fadeInUp}
-          className="mx-auto mt-8 max-w-2xl text-[11px] leading-relaxed text-white/35"
-        >
-          {r.footnote}
-        </motion.p>
       </motion.div>
     </section>
   );

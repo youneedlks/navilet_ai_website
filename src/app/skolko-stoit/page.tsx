@@ -10,8 +10,8 @@ import {
   crossChannelAddons,
   costAlternatives,
   costPaybackPoints,
+  costPaybackFootnote,
   skolkoStoitFaqItems,
-  networkResults,
   trial,
 } from "@/lib/content";
 import {
@@ -556,7 +556,7 @@ export default function SkolkoStoitPage() {
           </div>
 
           <p className="mt-6 max-w-3xl text-xs leading-relaxed text-muted">
-            {networkResults.footnote}
+            {costPaybackFootnote}
           </p>
         </section>
 

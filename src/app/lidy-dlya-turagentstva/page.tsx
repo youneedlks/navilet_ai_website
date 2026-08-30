@@ -254,8 +254,8 @@ export default function LidyPage() {
             <div className="mx-auto mt-9 grid max-w-2xl grid-cols-1 gap-3 sm:grid-cols-3">
               {[
                 { stat: "219–540 ₽", label: "цена квалифицированного лида" },
-                { stat: "500+", label: "лидов в месяц по сети" },
-                { stat: "≈ 11%", label: "конверсия диалога в лид" },
+                { stat: "4,3 млрд ₽", label: "туров подобрано за сезон" },
+                { stat: "11–14%", label: "конверсия диалога в лид" },
               ].map((s) => (
                 <div
                   key={s.label}
@@ -271,8 +271,8 @@ export default function LidyPage() {
               ))}
             </div>
             <p className="mt-3 text-xs text-muted">
-              Данные сети «Навылет! AI»: 20+ ассистентов на боевых сайтах,
-              август 2026. CPL = подписка ÷ лиды за период.
+              Данные сети «Навылет! AI»: 30+ ассистентов на боевых сайтах,
+              летний сезон 2026. CPL = подписка ÷ лиды за период.
             </p>
           </div>
         </section>

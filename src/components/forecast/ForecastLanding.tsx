@@ -294,9 +294,17 @@ export default function ForecastLanding() {
                 {networkResults.stats.map((stat) => (
                   <div key={stat.label} className="text-center">
                     <div className="font-display text-2xl font-bold text-heading sm:text-3xl">
-                      {stat.prefix}
-                      <CountUp end={stat.value} separator={stat.separator} />
-                      {stat.suffix}
+                      {stat.display ?? (
+                        <>
+                          {stat.prefix}
+                          <CountUp
+                            end={stat.value ?? 0}
+                            decimals={stat.decimals}
+                            separator={stat.separator}
+                          />
+                          {stat.suffix}
+                        </>
+                      )}
                     </div>
                     <div className="mt-1 break-words text-xs leading-tight text-muted">
                       {stat.label}

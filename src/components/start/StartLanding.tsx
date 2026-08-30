@@ -212,9 +212,17 @@ export default function StartLanding() {
             {networkResults.stats.map((s) => (
               <div key={s.label} className="text-center">
                 <div className="font-display text-2xl font-bold text-heading sm:text-3xl">
-                  {s.prefix}
-                  <CountUp end={s.value} separator={s.separator} />
-                  {s.suffix}
+                  {s.display ?? (
+                    <>
+                      {s.prefix}
+                      <CountUp
+                        end={s.value ?? 0}
+                        decimals={s.decimals}
+                        separator={s.separator}
+                      />
+                      {s.suffix}
+                    </>
+                  )}
                 </div>
                 <div className="mt-1 text-xs text-muted">{s.label}</div>
               </div>
