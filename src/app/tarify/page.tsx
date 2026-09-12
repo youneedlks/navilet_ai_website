@@ -15,7 +15,7 @@ import { jsonLdScript } from "@/lib/schema";
 export const metadata: Metadata = {
   title: { absolute: "Тарифы ИИ-ассистента — от 990 ₽/мес | Навылет! AI" },
   description:
-    "Тарифы ИИ-ассистента для турагентств в двух версиях: «Лид» (лидогенерация) — от 990 ₽/мес, «Про» (консультации и возврат клиентов) — от 1 990 ₽/мес. Web-виджет или MAX-мессенджер. Подключение 0 ₽, первый месяц бесплатно.",
+    "Тарифы ИИ-ассистента для турагентств: «Лид» — от 990 ₽/мес, «Про» — от 1 990 ₽/мес. Сайт или MAX, подключение 0 ₽, первый месяц бесплатно.",
   keywords: [
     "тарифы ИИ-ассистент",
     "стоимость ИИ-ассистент для турагентства",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     url: "https://navilet.ru/tarify",
     type: "website",
     locale: "ru_RU",
-    images: [{ url: "/og-image.png", width: 1376, height: 768 }],
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",

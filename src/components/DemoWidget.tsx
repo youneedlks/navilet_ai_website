@@ -721,12 +721,19 @@ export default function DemoWidget({
               className="flex-1 rounded-xl border border-[#E0E0E0] bg-white px-3.5 py-2.5 text-sm text-[#2C3E50] outline-none placeholder:text-[#95A5A6]"
             />
             <button
+              type="button"
+              aria-label="Отправить сообщение"
               className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl text-white"
               style={{
                 background: "linear-gradient(135deg, #0062EF, #0097F5)",
               }}
             >
-              <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="h-5 w-5"
+                aria-hidden="true"
+              >
                 <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
               </svg>
             </button>

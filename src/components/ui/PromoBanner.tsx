@@ -6,11 +6,10 @@ import { useLeadForm } from "@/contexts/LeadFormContext";
 import { promo } from "@/lib/content";
 import { isPromoActive } from "@/lib/promo";
 import { metrikaGoals, reachMetrikaGoal } from "@/lib/metrika";
-
-const BANNER_H = 36;
-// Ключ привязан к тексту акции: сменили условия — баннер снова показывается
-// тем, кто закрывал прошлый.
-const DISMISS_KEY = "promo_dismissed_" + (promo.endDate ?? "evergreen");
+import {
+  PROMO_BANNER_H as BANNER_H,
+  PROMO_DISMISS_KEY as DISMISS_KEY,
+} from "@/lib/promoBanner";
 
 export default function PromoBanner() {
   const { openForm } = useLeadForm();
@@ -28,8 +27,11 @@ export default function PromoBanner() {
   }, []);
 
   useEffect(() => {
+    // До монтирования ничего не трогаем: отступ уже выставил скрипт в <head>,
+    // а сброс в 0 и обратно давал два сдвига макета при каждой загрузке.
+    if (!mounted) return;
     const root = document.documentElement;
-    if (!mounted || dismissed || !active) {
+    if (dismissed || !active) {
       root.style.setProperty("--promo-h", "0px");
       root.style.setProperty("--promo-pad", "0px");
       return;

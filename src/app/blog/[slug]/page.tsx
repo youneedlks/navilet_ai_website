@@ -52,7 +52,7 @@ export async function generateMetadata({
       modifiedTime: post.updated ?? post.date,
       authors: [post.author],
       tags: post.tags,
-      images: [{ url: "/og-image.png", width: 1376, height: 768 }],
+      images: [{ url: "/og-image.png", width: 1200, height: 630 }],
       locale: "ru_RU",
     },
     twitter: {
@@ -122,7 +122,14 @@ export default async function BlogPostPage({
         datePublished: post.date,
         dateModified: post.updated ?? post.date,
         inLanguage: "ru-RU",
-        author: { "@type": "Organization", name: post.author, url: siteUrl },
+        // Автор — редакция. Ссылка на узел организации из layout, чтобы
+        // поисковики видели одну сущность, а не дубликат по имени.
+        author: {
+          "@type": "Organization",
+          "@id": `${siteUrl}/#organization`,
+          name: post.author,
+          url: siteUrl,
+        },
         publisher: { "@id": `${siteUrl}/#organization` },
         mainEntityOfPage: url,
         image: `${siteUrl}/og-image.png`,

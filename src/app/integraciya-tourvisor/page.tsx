@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     absolute: "Tourvisor + ИИ: подбор туров для турагентства 24/7 | Навылет! AI",
   },
   description:
-    "Агентствам, которые работают с Tourvisor: ИИ-ассистент уже подключён к АПИ — вставьте одну строку кода на сайт, и он подбирает туры с живыми ценами в диалоге с клиентом круглосуточно. Демо без регистрации, 30 дней бесплатно, подключение 0 ₽.",
+    "ИИ-ассистент уже подключён к API Tourvisor: одна строка кода на сайт — и он подбирает туры с живыми ценами в диалоге 24/7. Демо без регистрации.",
   keywords: [
     "Tourvisor для турагентства",
     "интеграция Tourvisor",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     url: "https://navilet.ru/integraciya-tourvisor",
     type: "website",
     locale: "ru_RU",
-    images: [{ url: "/og-image.png", width: 1376, height: 768 }],
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",

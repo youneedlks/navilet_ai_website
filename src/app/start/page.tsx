@@ -10,10 +10,10 @@ const siteUrl = "https://navilet.ru";
 export const metadata: Metadata = {
   title: {
     absolute:
-      "Подключить ИИ-ассистента за 2 минуты — месяц бесплатно, дальше от 990 ₽/мес",
+      "Подключить ИИ-ассистента за 2 минуты — месяц бесплатно | Навылет! AI",
   },
   description:
-    "Зарегистрируйтесь, получите код виджета и вставьте на сайт — ИИ-ассистент на базе Tourvisor начнёт отвечать туристам 24/7. Без созвонов и разовых платежей. Тарифы от 990 ₽/мес.",
+    "Зарегистрируйтесь, вставьте код виджета на сайт — и ИИ-ассистент на базе Tourvisor начнёт отвечать туристам 24/7. Без созвонов, первый месяц бесплатно.",
   keywords: [
     "подключить ИИ турагентство",
     "виджет подбора туров на сайт",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     url: `${siteUrl}/start`,
     type: "website",
     locale: "ru_RU",
-    images: [{ url: "/og-image.png", width: 1376, height: 768 }],
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",

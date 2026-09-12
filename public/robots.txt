@@ -2,15 +2,20 @@
 # https://navilet.ru
 
 # === Поисковые системы общего назначения ===
+# /_next/static открыт намеренно: это CSS и JS, без которых Bing (индекс
+# для ChatGPT Search и Copilot) и остальные роботы не могут отрендерить
+# страницу. Закрываем только служебные payload-файлы Next.
 User-agent: *
 Allow: /
 Disallow: /api/
-Disallow: /_next/
+Disallow: /*__next.
+Disallow: /_not-found
 
 # === Google ===
+# Crawl-delay Google не поддерживает, Яндекс не учитывает с 2018 года —
+# скорость обхода задаётся в Вебмастере и Search Console.
 User-agent: Googlebot
 Allow: /
-Crawl-delay: 1
 
 User-agent: Googlebot-Image
 Allow: /
@@ -21,12 +26,10 @@ Allow: /
 # === Yandex ===
 User-agent: Yandex
 Allow: /
-Crawl-delay: 2
 Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&fbclid&gclid&yclid
 
 User-agent: YandexBot
 Allow: /
-Crawl-delay: 2
 
 User-agent: YandexImages
 Allow: /
@@ -44,7 +47,6 @@ Allow: /
 # === Bing (индекс Bing питает поиск ChatGPT и Copilot) ===
 User-agent: Bingbot
 Allow: /
-Crawl-delay: 2
 
 # === ИИ-краулеры и системы генеративного поиска (GEO) ===
 # У каждого вендора роботы разделены по назначению: обучение,

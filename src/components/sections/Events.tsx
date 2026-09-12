@@ -385,11 +385,26 @@ export default function Events() {
                   name: e.title,
                   description: e.description,
                   startDate: e.dateISO,
-                  location: { "@type": "Place", name: e.location },
+                  // Без endDate валидаторы считают событие бесконечным;
+                  // для однодневных и уже прошедших ставим ту же дату.
+                  endDate: e.dateISO,
+                  eventStatus: "https://schema.org/EventScheduled",
+                  eventAttendanceMode:
+                    "https://schema.org/OfflineEventAttendanceMode",
+                  location: {
+                    "@type": "Place",
+                    name: e.location,
+                    address: {
+                      "@type": "PostalAddress",
+                      addressLocality: e.location,
+                    },
+                  },
                   ...(e.image && {
                     image: `https://navilet.ru${e.image}`,
                   }),
-                  organizer: {
+                  // Мы выступали на этих площадках, а не организовывали их —
+                  // поэтому performer, а не organizer.
+                  performer: {
                     "@type": "Organization",
                     name: "Навылет! AI",
                     url: "https://navilet.ru",

@@ -45,7 +45,7 @@ export async function generateMetadata({
       url: `${siteUrl}/spros/${page.slug}`,
       type: "article",
       locale: "ru_RU",
-      images: [{ url: "/og-image.png", width: 1376, height: 768 }],
+      images: [{ url: "/og-image.png", width: 1200, height: 630 }],
     },
     twitter: {
       card: "summary_large_image",

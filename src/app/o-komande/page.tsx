@@ -18,7 +18,7 @@ import { jsonLdScript } from "@/lib/schema";
 export const metadata: Metadata = {
   title: { absolute: "О компании «Навылет! AI» — разработчик ИИ для туризма" },
   description:
-    "ООО «ИИМПАКТ ПЛЮС» — российский разработчик ИИ-ассистента «Навылет! AI». Эксперты по применению искусственного интеллекта в туризме при Комитете ТПП РФ, официальная поддержка Российского союза туриндустрии.",
+    "ООО «ИИМПАКТ ПЛЮС» — разработчик ИИ-ассистента «Навылет! AI». Эксперты по ИИ в туризме при Комитете ТПП РФ, поддержка РСТ, резидент ИТ-кластера «Сколково».",
   keywords: [
     "о компании Навылет",
     "ИИМПАКТ ПЛЮС",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     url: "https://navilet.ru/o-komande",
     type: "website",
     locale: "ru_RU",
-    images: [{ url: "/og-image.png", width: 1376, height: 768 }],
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",

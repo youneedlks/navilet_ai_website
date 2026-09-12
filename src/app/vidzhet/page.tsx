@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     absolute: "Виджет подбора туров на сайт — установка на любую платформу",
   },
   description:
-    "ИИ-виджет подбора туров для сайта турагентства: инструкции установки для Tilda, WordPress, 1С-Битрикс, Wix, Craftum и других платформ. Одна строка кода, 30 дней бесплатно.",
+    "ИИ-виджет подбора туров для сайта турагентства: установка на Tilda, WordPress, 1С-Битрикс, Wix, Craftum и другие. Одна строка кода, месяц бесплатно.",
   keywords: [
     "виджет подбора туров на сайт",
     "виджет поиска туров",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     url: `${siteUrl}/vidzhet`,
     type: "website",
     locale: "ru_RU",
-    images: [{ url: "/og-image.png", width: 1376, height: 768 }],
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",

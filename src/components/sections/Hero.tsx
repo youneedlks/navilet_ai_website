@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   staggerContainer,
   heroWordVariant,
-  fadeInUp,
-  scaleIn,
+  heroRise,
+  heroScaleIn,
   fadeIn,
 } from "@/lib/animations";
 import { heroContent, promo } from "@/lib/content";
@@ -37,7 +37,7 @@ function PartnerLogos() {
         aria-hidden
         className="hidden h-5 w-px bg-blue-subtle/60 sm:block"
       />
-      <SkolkovoBadge imgClassName="h-6 w-auto sm:h-7" />
+      <SkolkovoBadge imgClassName="h-6 w-[82px] sm:h-7 sm:w-[95px]" priority />
     </motion.div>
   );
 }
@@ -56,8 +56,8 @@ export default function Hero() {
     <section className="relative overflow-hidden bg-white">
       {/* Subtle decorative gradient blobs */}
       <div className="pointer-events-none absolute -right-40 -top-40 h-[700px] w-[700px] rounded-full bg-[#00E7FD]/[0.07] blur-[120px]" />
-      <div className="pointer-events-none absolute -left-20 top-1/3 h-[500px] w-[500px] rounded-full bg-[#0097F5]/[0.05] blur-[100px]" />
-      <div className="pointer-events-none absolute bottom-0 right-1/4 h-[400px] w-[400px] rounded-full bg-[#0062EF]/[0.04] blur-[120px]" />
+      <div className="pointer-events-none absolute -left-20 top-[260px] h-[500px] w-[500px] rounded-full bg-[#0097F5]/[0.05] blur-[100px]" />
+      <div className="pointer-events-none absolute right-1/4 top-[520px] h-[400px] w-[400px] rounded-full bg-[#0062EF]/[0.04] blur-[120px]" />
 
       <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-12 px-5 pt-24 pb-16 sm:px-6 sm:pt-32 sm:pb-20 lg:flex-row lg:items-start lg:gap-12 lg:px-8 lg:pt-36 lg:pb-24">
         {/* Left: content */}
@@ -74,20 +74,23 @@ export default function Hero() {
             className="mb-6 font-display text-4xl font-bold leading-[1.1] text-heading sm:text-5xl lg:text-6xl xl:text-[4rem]"
             style={{ letterSpacing: "-0.02em" }}
           >
+            {/*
+              Слова разделены настоящими пробельными узлами, а не margin:
+              иначе textContent заголовка склеивался в одно слово для
+              краулеров без JS и скринридеров.
+            */}
             {words.map((word, i) => (
-              <motion.span
-                key={i}
-                variants={heroWordVariant}
-                className="mr-[0.3em] inline-block"
-                style={{ perspective: "600px" }}
-              >
-                {word}
-              </motion.span>
+              <Fragment key={i}>
+                <motion.span variants={heroWordVariant} className="inline-block">
+                  {word}
+                </motion.span>
+                {i < words.length - 1 ? " " : null}
+              </Fragment>
             ))}
           </motion.h1>
 
           <motion.p
-            variants={fadeInUp}
+            variants={heroRise}
             className="mb-8 max-w-xl text-base leading-relaxed text-body sm:text-lg"
           >
             {heroContent.subtitle}
@@ -95,7 +98,7 @@ export default function Hero() {
 
           {promoOn && (
             <motion.div
-              variants={fadeInUp}
+              variants={heroRise}
               className="mb-6 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5 text-sm font-semibold text-accent"
             >
               <Sparkles className="h-4 w-4" />
@@ -104,7 +107,7 @@ export default function Hero() {
           )}
 
           <motion.div
-            variants={fadeInUp}
+            variants={heroRise}
             className="mb-3 flex flex-wrap justify-center gap-4 lg:justify-start"
           >
             <Button
@@ -120,7 +123,7 @@ export default function Hero() {
           </motion.div>
 
           <motion.p
-            variants={fadeInUp}
+            variants={heroRise}
             className="mb-10 text-sm text-muted"
           >
             Месяц бесплатно · подключение 0 ₽ · дальше от 990 ₽/мес
@@ -131,7 +134,7 @@ export default function Hero() {
 
         {/* Right: chat widget — same DemoWidget as LiveDemo section */}
         <motion.div
-          variants={scaleIn}
+          variants={heroScaleIn}
           initial="hidden"
           animate="visible"
           className="w-full flex-shrink-0 lg:w-[440px]"

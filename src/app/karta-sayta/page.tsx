@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     url: "https://navilet.ru/karta-sayta",
     type: "website",
     locale: "ru_RU",
-    images: [{ url: "/og-image.png", width: 1376, height: 768 }],
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
   },
 };
 

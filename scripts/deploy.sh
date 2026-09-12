@@ -36,6 +36,10 @@ mkdir -p "$PROXY_DIR"
 cp "$REPO_DIR/proxy/server.js" "$PROXY_DIR/server.js"
 docker restart navilet-proxy >/dev/null || echo "WARN: navilet-proxy not running"
 
+echo "==> lastmod из git для sitemap и llms.txt"
+# В контейнере сборки git нет, поэтому даты считаем здесь, на хосте.
+python3 "$REPO_DIR/scripts/gen-lastmod.py" || echo "WARN: gen-lastmod не отработал, sitemap соберётся с датами из репозитория"
+
 echo "==> docker build"
 docker build \
   --build-arg "NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY=$CURRENT_KEY" \

@@ -21,7 +21,7 @@ import { jsonLdScript } from "@/lib/schema";
 export const metadata: Metadata = {
   title: { absolute: "ИИ для туроператора — B2B и B2C | Навылет! AI" },
   description:
-    "ИИ-ассистент для туроператоров: вооружите агентов мгновенным подбором по вашей базе или встройте виджет на B2C-сайт — клиенты получают предложения 24/7 без ожидания. Интеграция с Tourvisor, white-label, MAX-мессенджер.",
+    "ИИ-ассистент для туроператоров: мгновенный подбор по вашей базе для агентов и виджет на B2C-сайт. Клиенты получают предложения 24/7. White-label, MAX.",
   keywords: [
     "ИИ для туроператора",
     "ИИ-ассистент туроператор",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     url: "https://navilet.ru/dlya-turoperatorov",
     type: "website",
     locale: "ru_RU",
-    images: [{ url: "/og-image.png", width: 1376, height: 768 }],
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",

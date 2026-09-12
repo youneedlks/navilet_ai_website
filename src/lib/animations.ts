@@ -104,12 +104,33 @@ export const timelineStepVariant: Variants = {
   },
 };
 
+/*
+ * Варианты для первого экрана намеренно без opacity: 0. Текст hero — это
+ * LCP-элемент, а Chrome не засчитывает отрисовку элемента с нулевой
+ * непрозрачностью: с fade-in LCP сдвигался к моменту окончания анимации
+ * (4,4 с на мобильном). Двигаем только положение — контент виден с первого
+ * кадра, анимация остаётся.
+ */
 export const heroWordVariant: Variants = {
-  hidden: { opacity: 0, y: 20, rotateX: -40 },
+  hidden: { y: 14 },
   visible: {
-    opacity: 1,
     y: 0,
-    rotateX: 0,
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+export const heroRise: Variants = {
+  hidden: { y: 16 },
+  visible: {
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+export const heroScaleIn: Variants = {
+  hidden: { scale: 0.97 },
+  visible: {
+    scale: 1,
     transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
   },
 };

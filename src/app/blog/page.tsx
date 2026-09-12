@@ -11,7 +11,7 @@ const siteUrl = "https://navilet.ru";
 export const metadata: Metadata = {
   title: { absolute: "Блог про ИИ в туризме | Навылет! AI" },
   description:
-    "Гайды, кейсы и разборы про искусственный интеллект в туризме: автоматизация турагентств, подбор туров, интеграция Tourvisor, экономика ИИ-ассистента для турбизнеса.",
+    "Гайды, кейсы и разборы про ИИ в туризме: автоматизация турагентств, подбор туров, интеграция Tourvisor, экономика ИИ-ассистента для турбизнеса.",
   keywords: [
     "ИИ в туризме блог",
     "автоматизация турагентства статьи",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     description:
       "Гайды, кейсы и разборы про искусственный интеллект в туризме для турагентств и туроператоров.",
     url: `${siteUrl}/blog`,
-    images: [{ url: "/og-image.png", width: 1376, height: 768 }],
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
     type: "website",
     locale: "ru_RU",
   },

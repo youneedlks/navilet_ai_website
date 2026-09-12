@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Inter, Manrope } from "next/font/google";
+import { promoHeadScript } from "@/lib/promoBanner";
 import "./globals.css";
 import { LeadFormProvider } from "@/contexts/LeadFormContext";
 import LeadFormModal from "@/components/ui/LeadFormModal";
@@ -29,7 +30,7 @@ const YANDEX_METRIKA_ID = 108200337;
 
 export const siteName = "Навылет! AI";
 const siteDescription =
-  "ИИ-ассистент для турагентств и туроператоров: подбирает туры по реальной базе, консультирует по отелям и перелётам и передаёт менеджеру готовую заявку. Две версии — от 990 ₽/мес. Первый месяц бесплатно, подключение за пару минут. Российская разработка.";
+  "ИИ-ассистент для турагентств: подбирает туры по реальной базе, консультирует и передаёт менеджеру готовую заявку. От 990 ₽/мес, первый месяц бесплатно.";
 
 const keywords = [
   "Навылет! AI",
@@ -81,7 +82,7 @@ const keywords = [
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${siteName} — ИИ-ассистент для турагентств от 990 ₽/мес | подбор туров 24/7`,
+    default: `${siteName} — ИИ-ассистент для турагентств от 990 ₽/мес`,
     template: `%s | ${siteName}`,
   },
   description: siteDescription,
@@ -89,6 +90,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
     languages: { "ru-RU": "/" },
+    types: {
+      "application/rss+xml": [
+        { url: "/blog/rss.xml", title: "Блог «Навылет! AI» — RSS" },
+      ],
+    },
   },
   openGraph: {
     title: `${siteName} — ИИ-ассистент для турагентств`,
@@ -98,8 +104,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/og-image.png",
-        width: 1376,
-        height: 768,
+        width: 1200,
+        height: 630,
         alt: "Навылет! AI — ИИ-ассистент для турагентств: подбор туров 24/7",
         type: "image/png",
       },
@@ -268,10 +274,14 @@ const siteWideJsonLd = {
           },
         ],
       },
+      // Внешние страницы той же сущности — по ним поисковики и LLM связывают
+      // бренд с юрлицом и людьми. Только реально существующие профили.
       sameAs: [
         "https://t.me/navylet_ai",
         "https://lk.navilet.ru",
+        "https://www.rusprofile.ru/id/1257700255196",
       ],
+      founder: { "@id": `${siteUrl}/#founder` },
       contactPoint: [
         {
           "@type": "ContactPoint",
@@ -287,6 +297,29 @@ const siteWideJsonLd = {
           areaServed: "RU",
           availableLanguage: ["Russian", "ru-RU"],
         },
+      ],
+    },
+    // Основатель как отдельная сущность: связывает бренд с публичными
+    // выступлениями и ролью в ТПП РФ — сигнал экспертности для поиска и LLM.
+    {
+      "@type": "Person",
+      "@id": `${siteUrl}/#founder`,
+      name: "Лукиан Ираклиевич Силагадзе",
+      givenName: "Лукиан",
+      familyName: "Силагадзе",
+      jobTitle:
+        "Генеральный директор ООО «ИИМПАКТ ПЛЮС», сооснователь «Навылет! AI»",
+      description:
+        "Руководитель рабочей группы по ответственному применению искусственного интеллекта при Комитете ТПП РФ по предпринимательству в сфере туризма. Спикер международных конгрессов туроператоров и форума «ОТДЫХ Leisure».",
+      worksFor: { "@id": `${siteUrl}/#organization` },
+      url: `${siteUrl}/o-komande`,
+      knowsAbout: [
+        "искусственный интеллект в туризме",
+        "автоматизация турагентств",
+        "ИИ-ассистенты для бизнеса",
+      ],
+      sameAs: [
+        "https://tourismexpo.ru/program/speakers/lukian-silagadze/",
       ],
     },
   ],
@@ -309,11 +342,9 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var k='promo_dismissed_2026-07-20T23:59:59+03:00';if(localStorage.getItem(k)!=='1'){var r=document.documentElement;r.style.setProperty('--promo-pad','40px');r.style.setProperty('--promo-h','40px');}}catch(e){}})();`,
-          }}
-        />
+        {promoHeadScript() && (
+          <script dangerouslySetInnerHTML={{ __html: promoHeadScript() }} />
+        )}
         <meta name="theme-color" content="#0062EF" />
         <meta name="color-scheme" content="light" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />

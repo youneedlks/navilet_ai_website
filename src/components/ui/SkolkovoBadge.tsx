@@ -3,6 +3,8 @@ interface SkolkovoBadgeProps {
   imgClassName?: string;
   /** Дополнительные классы контейнера */
   className?: string;
+  /** true — логотип на первом экране: грузим сразу, без lazy */
+  priority?: boolean;
 }
 
 /**
@@ -15,6 +17,7 @@ interface SkolkovoBadgeProps {
 export default function SkolkovoBadge({
   imgClassName = "h-8 w-auto",
   className = "",
+  priority = false,
 }: SkolkovoBadgeProps) {
   return (
     <span
@@ -25,7 +28,12 @@ export default function SkolkovoBadge({
       <img
         src="/partners/skolkovo-uchastnik.png"
         alt="Резидент ИТ-кластера Фонда «Сколково»"
-        loading="lazy"
+        // Интринсик-размеры нужны, чтобы браузер зарезервировал место до
+        // загрузки картинки: без них строка партнёров «прыгала» (CLS).
+        width={701}
+        height={206}
+        loading={priority ? "eager" : "lazy"}
+        fetchPriority={priority ? "high" : "auto"}
         className={imgClassName}
         draggable={false}
       />

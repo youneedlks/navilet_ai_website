@@ -3,8 +3,19 @@ import { getAllPostsMeta } from "@/lib/blog";
 import { platformPages } from "@/lib/seo/platform-pages";
 import { scenarioPages } from "@/lib/seo/scenario-pages";
 import { demandPages } from "@/lib/seo/demand-pages";
+import gitLastmod from "@/lib/seo/lastmod.json";
 
 export const dynamic = "force-static";
+
+/**
+ * Даты из git: scripts/gen-lastmod.py пишет lastmod.json перед сборкой
+ * (локально через prebuild, на сервере — из deploy.sh). Значения в
+ * staticEntries ниже — запасной вариант на случай, если генератор
+ * не отработал (например, сборка без git).
+ */
+const fromGit = gitLastmod as Record<string, string>;
+const gitDate = (route: string, fallback: string): string =>
+  fromGit[route] ?? fallback;
 
 const siteUrl = "https://navilet.ru";
 
@@ -13,10 +24,8 @@ type Entry = {
   changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"];
   priority: number;
   /**
-   * Дата последнего смыслового изменения страницы (YYYY-MM-DD).
-   * Обновляйте руками, когда меняется содержание, а не вёрстка:
-   * Яндекс и Google сверяют lastmod с реальными правками, и «сегодня»
-   * у всех 50 адресов при каждом деплое обесценивает сигнал свежести.
+   * Запасная дата (YYYY-MM-DD), если для маршрута нет записи в lastmod.json.
+   * Основной источник — git, см. scripts/gen-lastmod.py.
    */
   lastModified: string;
 };
@@ -55,19 +64,19 @@ const clusterEntries: Entry[] = [
     path: `/vidzhet/${p.slug}`,
     changeFrequency: "monthly" as const,
     priority: 0.7,
-    lastModified: "2026-08-13",
+    lastModified: gitDate("/vidzhet/*", "2026-08-13"),
   })),
   ...scenarioPages.map((p) => ({
     path: `/resheniya/${p.slug}`,
     changeFrequency: "monthly" as const,
     priority: 0.7,
-    lastModified: "2026-08-13",
+    lastModified: gitDate("/resheniya/*", "2026-08-13"),
   })),
   ...demandPages.map((p) => ({
     path: `/spros/${p.slug}`,
     changeFrequency: "weekly" as const,
     priority: 0.7,
-    lastModified: "2026-08-19",
+    lastModified: gitDate("/spros/*", "2026-08-19"),
   })),
 ];
 
@@ -77,7 +86,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...clusterEntries,
   ].map((e) => ({
     url: `${siteUrl}${e.path === "/" ? "/" : e.path}`,
-    lastModified: new Date(`${e.lastModified}T12:00:00+03:00`),
+    lastModified: new Date(
+      `${gitDate(e.path, e.lastModified)}T12:00:00+03:00`
+    ),
     changeFrequency: e.changeFrequency,
     priority: e.priority,
   }));

@@ -10,7 +10,7 @@ import { jsonLdScript } from "@/lib/schema";
 export const metadata: Metadata = {
   title: { absolute: "Частые вопросы про ИИ-ассистент | Навылет! AI" },
   description:
-    "Ответы на частые вопросы про ИИ-ассистент для турагентств: цены от 990 ₽/мес, технологии, подключение, безопасность, лимиты диалогов, интеграция с Tourvisor и MAX. Полный гид для турбизнеса.",
+    "Частые вопросы про ИИ-ассистент для турагентств: цены от 990 ₽/мес, подключение, безопасность, лимиты диалогов, интеграция с Tourvisor и MAX.",
   keywords: [
     "ИИ-ассистент турагентство FAQ",
     "ИИ-ассистент вопросы",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     url: "https://navilet.ru/faq",
     type: "website",
     locale: "ru_RU",
-    images: [{ url: "/og-image.png", width: 1376, height: 768 }],
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
