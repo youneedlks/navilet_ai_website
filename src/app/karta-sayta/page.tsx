@@ -55,6 +55,18 @@ const groups: Group[] = [
         href: "/lidy-dlya-turagentstva",
         label: "Лиды для турагентства: заявки от 219 ₽",
       },
+      {
+        href: "/chat-bot-dlya-turagentstva",
+        label: "Чат-бот для турагентства с подбором туров",
+      },
+      {
+        href: "/max",
+        label: "ИИ-ассистент турагентства в мессенджере MAX",
+      },
+      {
+        href: "/sravnenie",
+        label: "Сравнение: ИИ-ассистент, модуль поиска, чат-бот, разработка",
+      },
       { href: "/tarify", label: "Тарифы и что входит в подписку" },
       {
         href: "/skolko-stoit",

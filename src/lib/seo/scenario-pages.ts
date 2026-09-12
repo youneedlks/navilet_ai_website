@@ -413,6 +413,7 @@ export const scenarioPages: ScenarioPage[] = [
       "замена чат-бота турагентство",
     ],
     related: [
+      { href: "/chat-bot-dlya-turagentstva", label: "Чат-бот для турагентства с подбором туров" },
       { href: "/blog/chat-bot-vs-ii-assistent", label: "Статья: чат-бот vs ИИ-ассистент" },
       { href: "/demo", label: "Проверить ИИ-ассистента живьём" },
       { href: "/resheniya/zayavki-s-sayta", label: "Как поднять конверсию сайта" },

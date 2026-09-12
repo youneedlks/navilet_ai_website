@@ -487,8 +487,16 @@ export default function SkolkoStoitPage() {
 
           <p className="mt-6 text-sm leading-relaxed text-muted">
             Цены альтернатив — рыночные оценки по открытым прайсам и публичным
-            расценкам студий на август 2026 года. Мы называем категории решений,
-            а не бренды: прайсы конкурентов меняются чаще, чем эта страница.
+            расценкам студий на август 2026 года. Здесь мы называем категории
+            решений, а не бренды. Подробная таблица с конкретными сервисами,
+            модулем поиска Tourvisor и ссылками на их прайсы —{" "}
+            <Link
+              href="/sravnenie"
+              className="font-medium text-accent underline decoration-accent/30 underline-offset-2 hover:decoration-accent"
+            >
+              на странице сравнения
+            </Link>
+            .
           </p>
         </section>
 

@@ -37,6 +37,9 @@ const staticEntries: Entry[] = [
   { path: "/versii", changeFrequency: "weekly", priority: 0.9, lastModified: "2026-08-13" }, // prettier-ignore
   { path: "/podborki", changeFrequency: "monthly", priority: 0.8, lastModified: "2026-08-19" }, // prettier-ignore
   { path: "/lidy-dlya-turagentstva", changeFrequency: "monthly", priority: 0.9, lastModified: "2026-08-19" }, // prettier-ignore
+  { path: "/chat-bot-dlya-turagentstva", changeFrequency: "monthly", priority: 0.9, lastModified: "2026-09-12" }, // prettier-ignore
+  { path: "/max", changeFrequency: "monthly", priority: 0.9, lastModified: "2026-09-12" }, // prettier-ignore
+  { path: "/sravnenie", changeFrequency: "monthly", priority: 0.8, lastModified: "2026-09-12" }, // prettier-ignore
   { path: "/vozvrat-klientov", changeFrequency: "monthly", priority: 0.8, lastModified: "2026-08-13" }, // prettier-ignore
   { path: "/demo", changeFrequency: "monthly", priority: 0.8, lastModified: "2026-08-13" }, // prettier-ignore
   { path: "/start", changeFrequency: "monthly", priority: 0.8, lastModified: "2026-08-13" }, // prettier-ignore

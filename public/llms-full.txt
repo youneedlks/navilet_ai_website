@@ -416,6 +416,9 @@ A: На российском рынке нет аналогов с полной 
 - Вопросы и ответы про ИИ для турагентств: https://navilet.ru/voprosy
 - Решения типовых задач агентств: https://navilet.ru/resheniya
 - Виджет на сайт (Tilda, WordPress, Битрикс и другие платформы): https://navilet.ru/vidzhet
+- Чат-бот для турагентства (типы ботов, требования, цены): https://navilet.ru/chat-bot-dlya-turagentstva
+- ИИ-ассистент в мессенджере MAX: https://navilet.ru/max
+- Сравнение с альтернативами (модуль поиска, конструктор ботов, разработка на заказ): https://navilet.ru/sravnenie
 - Спрос на туры по направлениям: https://navilet.ru/spros
 - Блог: https://navilet.ru/blog
 - Карта сайта: https://navilet.ru/karta-sayta

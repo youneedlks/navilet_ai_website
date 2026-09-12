@@ -64,6 +64,11 @@ export const navigation: NavEntry[] = [
             description: "Реальные цены и наличие туров в диалоге",
             href: "/integraciya-tourvisor",
           },
+          {
+            label: "Ассистент в MAX",
+            description: "Бот в мессенджере: подбор и возврат клиентов",
+            href: "/max",
+          },
         ],
       },
     ],
@@ -1814,6 +1819,7 @@ export const footerLinks = {
       { label: "ИИ-аналитика и прогнозы", href: "/prognozy" },
       { label: "Демо", href: "/demo" },
       { label: "Виджет на сайт", href: "/vidzhet" },
+      { label: "Ассистент в MAX", href: "/max" },
       { label: "Виджет для Tilda", href: "/vidzhet/tilda" },
       { label: "Виджет для WordPress", href: "/vidzhet/wordpress" },
       { label: "Виджет для 1С-Битрикс", href: "/vidzhet/bitrix" },
@@ -1825,6 +1831,8 @@ export const footerLinks = {
     links: [
       { label: "Для турагентств", href: "/dlya-turagentstv" },
       { label: "Для туроператоров", href: "/dlya-turoperatorov" },
+      { label: "Чат-бот для турагентства", href: "/chat-bot-dlya-turagentstva" },
+      { label: "Сравнение с альтернативами", href: "/sravnenie" },
       { label: "Задачи агентств", href: "/resheniya" },
       { label: "Ночные заявки", href: "/resheniya/nochnye-zayavki" },
       { label: "Заявки с сайта", href: "/resheniya/zayavki-s-sayta" },
