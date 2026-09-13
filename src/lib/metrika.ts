@@ -15,7 +15,6 @@ export const metrikaGoals = {
   versionSelect: "version_select",
   versionSwitchPricing: "version_switch_pricing",
   demoVersionSwitch: "demo_version_switch",
-  heroChatVersionSwitch: "hero_chat_version_switch",
   phoneClick: "phone_click",
   emailClick: "email_click",
   telegramClick: "telegram_click",

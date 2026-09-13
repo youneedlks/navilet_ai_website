@@ -15,11 +15,11 @@ import Link from "next/link";
 import SkolkovoBadge from "@/components/ui/SkolkovoBadge";
 import CountUp from "@/components/ui/CountUp";
 import {
-  lkUrls,
   startFaqItems,
   networkResults,
   pricingPlans,
 } from "@/lib/content";
+import { lkRegisterUrl } from "@/lib/lk";
 import { metrikaGoals, reachMetrikaGoal } from "@/lib/metrika";
 import { useLeadForm } from "@/contexts/LeadFormContext";
 
@@ -83,7 +83,7 @@ export default function StartLanding() {
 
           <div className="mt-8 flex flex-col items-center gap-3">
             <a
-              href={lkUrls.register}
+              href={lkRegisterUrl({ from: "start_landing_hero" })}
               onClick={() => register("start_landing_hero")}
               className="inline-flex items-center justify-center gap-2 rounded-xl px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-accent/25 transition-all duration-200 hover:shadow-xl hover:shadow-accent/35"
               style={{
@@ -275,7 +275,7 @@ export default function StartLanding() {
           </p>
           <div className="mt-8 flex flex-col items-center gap-3">
             <a
-              href={lkUrls.register}
+              href={lkRegisterUrl({ from: "start_landing_bottom" })}
               onClick={() => register("start_landing_bottom")}
               className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-lg font-semibold text-primary shadow-lg shadow-black/10 transition-all hover:bg-blue-ice hover:shadow-xl"
             >

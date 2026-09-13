@@ -2,7 +2,8 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { navigation, companyInfo, lkUrls } from "@/lib/content";
+import { navigation, companyInfo } from "@/lib/content";
+import { lkLoginUrl } from "@/lib/lk";
 import type { NavEntry, NavMenuItem } from "@/lib/content";
 import { Menu, X, Phone, ChevronDown, ArrowRight } from "lucide-react";
 import Image from "next/image";
@@ -259,7 +260,7 @@ export default function Navigation() {
             </a>
             {/* Действующему клиенту нужен вход, а не рассказ о продукте */}
             <a
-              href={lkUrls.base}
+              href={lkLoginUrl("nav")}
               className="hidden h-9 items-center whitespace-nowrap rounded-lg px-3 text-[13px] font-medium text-body transition-colors hover:bg-blue-ice hover:text-accent lg:inline-flex xl:text-sm"
             >
               Войти
@@ -395,7 +396,7 @@ export default function Navigation() {
                 })}
 
                 <a
-                  href={lkUrls.base}
+                  href={lkLoginUrl("nav_mobile")}
                   className="flex min-h-12 items-center border-b border-blue-subtle/30 text-base font-semibold text-heading"
                 >
                   Войти в кабинет

@@ -7,12 +7,12 @@ import { submitLeadForm } from "@/lib/submitForm";
 import {
   pricingPlans,
   assistantVersions,
-  lkUrls,
   promo,
   trial,
   type PricingPlan,
   type AssistantVersionId,
 } from "@/lib/content";
+import { lkRegisterUrl } from "@/lib/lk";
 import { isPromoActive } from "@/lib/promo";
 import { metrikaGoals, reachMetrikaGoal } from "@/lib/metrika";
 import Link from "next/link";
@@ -126,11 +126,11 @@ export default function LeadFormModal() {
       plan_id: presetPlanId ?? undefined,
       version_id: presetVersionId ?? undefined,
     });
-    const params = new URLSearchParams();
-    if (presetPlanId) params.set("plan", presetPlanId);
-    if (presetVersionId) params.set("version", presetVersionId);
-    const query = params.toString();
-    window.location.href = query ? `${lkUrls.register}?${query}` : lkUrls.register;
+    window.location.href = lkRegisterUrl({
+      from: "lead_form_modal",
+      planId: presetPlanId,
+      versionId: presetVersionId,
+    });
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {

@@ -22,13 +22,13 @@ import DemoWidgetLoader from "@/components/demo/DemoWidgetLoader";
 import { useLeadForm } from "@/contexts/LeadFormContext";
 import {
   companyInfo,
-  lkUrls,
   demoFaqItems,
   demoExampleQueries,
   demoAssistants,
   demoFallbackVersion,
   type AssistantVersionId,
 } from "@/lib/content";
+import { lkRegisterUrl } from "@/lib/lk";
 import { metrikaGoals, reachMetrikaGoal } from "@/lib/metrika";
 import { versionIcons } from "@/lib/version-icons";
 
@@ -133,8 +133,12 @@ export default function DemoExperience() {
     }
   };
 
-  const handleTrialClick = () => {
-    reachMetrikaGoal(metrikaGoals.trialClick, { destination: "lk_register" });
+  const handleTrialClick = (source: string) => () => {
+    reachMetrikaGoal(metrikaGoals.trialClick, {
+      source,
+      destination: "lk_register",
+      version_id: version,
+    });
   };
 
   /** Заявка на подключение с демо — с версией, которую человек тестировал. */
@@ -231,8 +235,11 @@ export default function DemoExperience() {
                 </span>
               </Button>
               <a
-                href={lkUrls.register}
-                onClick={handleTrialClick}
+                href={lkRegisterUrl({
+                  from: "demo_hero",
+                  versionId: version,
+                })}
+                onClick={handleTrialClick("demo_hero")}
                 className="group inline-flex items-center justify-center gap-2 rounded-lg border-2 border-accent/30 px-6 py-3.5 text-base font-semibold text-accent transition-colors duration-200 hover:border-accent hover:bg-blue-ice sm:px-8 sm:py-4 sm:text-lg"
               >
                 <Rocket className="h-5 w-5" />
@@ -388,8 +395,11 @@ export default function DemoExperience() {
 
           <div className="mt-9 flex flex-col items-center gap-3">
             <a
-              href={lkUrls.register}
-              onClick={handleTrialClick}
+              href={lkRegisterUrl({
+                from: "demo_bottom",
+                versionId: version,
+              })}
+              onClick={handleTrialClick("demo_bottom")}
               className="inline-flex cursor-pointer items-center justify-center rounded-xl bg-white px-8 py-4 text-lg font-semibold text-primary shadow-lg shadow-black/10 transition-all hover:bg-blue-ice hover:shadow-xl"
             >
               Зарегистрироваться за 2 минуты
