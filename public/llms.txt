@@ -207,6 +207,7 @@
 - Лиды для турагентства: где брать клиентов и сколько это стоит — https://navilet.ru/blog/gde-brat-lidy-turagentstvu
 - Как отправить клиенту подборку туров: скриншоты vs страница по ссылке — https://navilet.ru/blog/kak-otpravit-podborku-turov-klientu
 - Как турагентству возвращать клиентов: 7 механик — https://navilet.ru/blog/kak-vozvraschat-klientov-turagentstvu
+- Как турагентству увеличить продажи: 7 рычагов — https://navilet.ru/blog/kak-uvelichit-prodazhi-turagentstva
 
 ## Полезные ссылки
 
@@ -219,6 +220,7 @@
 - Чат-бот для турагентства: чем ИИ-чат-бот отличается от кнопочного, типы ботов и цены: https://navilet.ru/chat-bot-dlya-turagentstva
 - ИИ-ассистент турагентства в мессенджере MAX: подключение, сценарии, возврат клиентов: https://navilet.ru/max
 - Сравнение: ИИ-ассистент, модуль поиска туров, конструктор чат-ботов, разработка на заказ: https://navilet.ru/sravnenie
+- Цифровизация турагентства: шесть процессов, порядок внедрения, чеклист, цены, глоссарий терминов: https://navilet.ru/cifrovizaciya-turagentstva
 - Вопросы и ответы про ИИ для турагентств: https://navilet.ru/voprosy
 - Прогнозы и предиктивная аналитика для турагентств: https://navilet.ru/prognozy
 - Виджет подбора туров на сайт (инструкции для Tilda, WordPress, Битрикс и др.): https://navilet.ru/vidzhet

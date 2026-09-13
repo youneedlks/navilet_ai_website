@@ -36,6 +36,7 @@ ROUTES: dict[str, list[str]] = {
     "/chat-bot-dlya-turagentstva": ["src/app/chat-bot-dlya-turagentstva", "src/lib/content.ts"],
     "/max": ["src/app/max", "src/lib/content.ts"],
     "/sravnenie": ["src/app/sravnenie", "src/lib/content.ts"],
+    "/cifrovizaciya-turagentstva": ["src/app/cifrovizaciya-turagentstva", "src/lib/seo/digital-pillar.ts"],
     "/vozvrat-klientov": ["src/app/vozvrat-klientov", "src/lib/content.ts"],
     "/demo": ["src/app/demo", "src/components/demo"],
     "/start": ["src/app/start", "src/components/start"],

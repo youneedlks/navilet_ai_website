@@ -85,6 +85,10 @@ const groups: Group[] = [
     title: "Кому подходит",
     note: "Разбор сценариев для разных типов туристического бизнеса.",
     links: [
+      {
+        href: "/cifrovizaciya-turagentstva",
+        label: "Цифровизация турагентства: гид и чеклист",
+      },
       { href: "/dlya-turagentstv", label: "Для турагентств" },
       { href: "/dlya-turoperatorov", label: "Для туроператоров" },
       { href: "/dlya-setey-agentstv", label: "Для сетей агентств и франшиз" },

@@ -1833,6 +1833,7 @@ export const footerLinks = {
       { label: "Для туроператоров", href: "/dlya-turoperatorov" },
       { label: "Чат-бот для турагентства", href: "/chat-bot-dlya-turagentstva" },
       { label: "Сравнение с альтернативами", href: "/sravnenie" },
+      { label: "Цифровизация турагентства", href: "/cifrovizaciya-turagentstva" },
       { label: "Задачи агентств", href: "/resheniya" },
       { label: "Ночные заявки", href: "/resheniya/nochnye-zayavki" },
       { label: "Заявки с сайта", href: "/resheniya/zayavki-s-sayta" },

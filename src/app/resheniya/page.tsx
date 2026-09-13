@@ -368,10 +368,11 @@ export default function ResheniyaHubPage() {
             </div>
             <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
               <Link
-                href="/blog/ii-v-turizme-2026"
+                href="/cifrovizaciya-turagentstva"
                 className="inline-flex items-center gap-1 font-semibold text-accent hover:underline"
               >
-                Гайд: ИИ в туризме в 2026 <ArrowRight className="h-3.5 w-3.5" />
+                Гид: цифровизация турагентства{" "}
+                <ArrowRight className="h-3.5 w-3.5" />
               </Link>
               <Link
                 href="/chat-bot-dlya-turagentstva"
