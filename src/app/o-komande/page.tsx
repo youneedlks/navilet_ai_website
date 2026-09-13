@@ -47,12 +47,16 @@ export const metadata: Metadata = {
 
 const siteUrl = "https://navilet.ru";
 
-// Берём только реальные мероприятия из content.ts — без дублирования текстов
-const speakingEvents = events.slice(0, 6).map((e) => ({
-  date: e.date,
-  location: e.location,
-  title: e.title,
-}));
+// Берём только реальные мероприятия из content.ts — без дублирования текстов.
+// Порядок тот же, что в блоке на главной: от свежего к старому по dateISO.
+const speakingEvents = [...events]
+  .sort((a, b) => b.dateISO.localeCompare(a.dateISO))
+  .slice(0, 6)
+  .map((e) => ({
+    date: e.date,
+    location: e.location,
+    title: e.title,
+  }));
 
 const teamJsonLd = {
   "@context": "https://schema.org",

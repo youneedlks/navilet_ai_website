@@ -174,9 +174,13 @@ export default function Events() {
 
   if (events.length === 0) return null;
 
-  const sorted = [...events].sort((a, b) =>
-    a.upcoming === b.upcoming ? 0 : a.upcoming ? -1 : 1
-  );
+  // Анонсы впереди, остальное — от свежего к старому. Сравниваем строки
+  // YYYY-MM-DD, а не Date.now(): порядок не зависит от момента рендера и
+  // одинаков на сервере и в браузере.
+  const sorted = [...events].sort((a, b) => {
+    if (a.upcoming !== b.upcoming) return a.upcoming ? -1 : 1;
+    return b.dateISO.localeCompare(a.dateISO);
+  });
 
   const updateScrollState = useCallback(() => {
     const el = scrollRef.current;
