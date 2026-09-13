@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   MessageSquare,
@@ -366,6 +367,35 @@ export default function DemoExperience() {
               </p>
             </details>
           ))}
+        </div>
+
+        {/* Куда идти после демо: страница не должна быть тупиком ни для
+            посетителя, ни для обхода поисковиками. */}
+        <div className="mt-10 rounded-2xl border border-blue-subtle/40 bg-white p-6 shadow-card">
+          <h3 className="font-display text-base font-bold text-heading">
+            Что посмотреть после демо
+          </h3>
+          <div className="mt-4 grid grid-cols-1 gap-x-6 gap-y-2.5 sm:grid-cols-2">
+            {[
+              { href: "/versii", label: "Чем «Лид» отличается от «Про»" },
+              { href: "/tarify", label: "Тарифы и что входит в подписку" },
+              { href: "/vidzhet", label: "Установка виджета на вашу платформу" },
+              { href: "/max", label: "Тот же ассистент в мессенджере MAX" },
+              { href: "/integraciya-tourvisor", label: "Откуда берутся туры и цены" },
+              { href: "/podborki", label: "Подборки туров по ссылке" },
+              { href: "/sravnenie", label: "Сравнение с другими решениями" },
+              { href: "/keisy/mgp", label: "Кейс сети МГП" },
+            ].map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-accent transition-colors hover:text-accent-hover"
+              >
+                <ArrowRight className="h-3.5 w-3.5 shrink-0" />
+                {l.label}
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
