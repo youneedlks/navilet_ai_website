@@ -23,12 +23,16 @@ export default function Footer() {
   return (
     <footer className="border-t border-blue-subtle/40 bg-surface">
       <div className="mx-auto max-w-7xl px-5 py-11 sm:px-6 sm:py-16 lg:px-8">
+        {/* Скрытый заголовок уровня h2: колонки футера — это h3 под ним.
+            Без него на страницах без h3 получался скачок уровней (h2 → h4),
+            а скринридер не понимал, к чему относятся названия колонок. */}
+        <h2 className="sr-only">Разделы сайта</h2>
         <div className="grid grid-cols-2 gap-x-8 gap-y-6 md:grid-cols-5 lg:gap-12">
           {sections.map((section) => (
             <div key={section.title}>
-              <h4 className="mb-4 font-display text-sm font-semibold text-heading">
+              <h3 className="mb-4 font-display text-sm font-semibold text-heading">
                 {section.title}
-              </h4>
+              </h3>
               {/* Пункты держат высоту 40px — на телефоне по ним попадают
                   пальцем без промахов. */}
               <ul className="[overflow-wrap:anywhere]">
@@ -58,9 +62,9 @@ export default function Footer() {
           ))}
 
           <div className="col-span-2 sm:col-span-1">
-            <h4 className="mb-4 font-display text-sm font-semibold text-heading">
+            <h3 className="mb-4 font-display text-sm font-semibold text-heading">
               Контакты
-            </h4>
+            </h3>
             <ul className="[overflow-wrap:anywhere]">
               <li>
                 <a

@@ -207,7 +207,7 @@ const rows: Row[] = [
     navilet: "navilet.ru — цены на этой странице",
     module: "Tourvisor: «Поиск туров», «Бот для турагентства»",
     builder:
-      "СуперИнтеллект 2 690–9 990 ₽/мес; NextBot 1 900–19 000 ₽/мес; Нейробот 5 000–10 000 ₽/мес; TourBot 1 990–5 990 ₽/мес + 1 500 ₽ подключение",
+      "СуперИнтеллект 2 690–9 990 ₽/мес; NextBot 1 900–19 000 ₽/мес; Нейробот 5 000–10 000 ₽/мес",
     custom:
       "Noltis — от 240 000 ₽ (базовый) и от 480 000 ₽ (полный) плюс инфраструктура от 12 000 ₽/мес; PapAI Soft — от 49 000 ₽ (бот) и от 130 000 ₽ (ИИ) плюс поддержка от 15 000 ₽/мес; студии — 80 000–250 000 ₽",
   },
@@ -298,7 +298,6 @@ const sources = [
     label: "Нейробот — решение для туризма",
     href: "https://neurobot.ru/solution/turizm",
   },
-  { label: "TourBot — тарифы", href: "https://tourbot.store/" },
   {
     label: "Noltis — ИИ для турагентств",
     href: "https://noltis.ru/product/ai-dlya-turagentstv/",

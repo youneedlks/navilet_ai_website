@@ -86,9 +86,58 @@ const teamJsonLd = {
       breadcrumb: { "@id": `${siteUrl}/o-komande#breadcrumb` },
       publisher: { "@id": `${siteUrl}/#organization` },
       about: { "@id": `${siteUrl}/#organization` },
+      // Страница описывает и компанию, и основателя: узел Person объявлен
+      // в layout.tsx, здесь на него только ссылаемся, чтобы не плодить
+      // дубликаты одной сущности.
+      mainEntity: { "@id": `${siteUrl}/#organization` },
+      mentions: [{ "@id": `${siteUrl}/#founder` }],
     },
   ],
 };
+
+/** Что делает продукт — коротко, со ссылками на подробные страницы. */
+const whatWeDo = [
+  {
+    title: "Подбор туров в диалоге",
+    text: "Ассистент понимает запрос свободным текстом и ищет по базе агрегатора Tourvisor: реальные цены, наличие мест, отели и перелёты.",
+    href: "/integraciya-tourvisor",
+    label: "Как устроена интеграция",
+  },
+  {
+    title: "Два канала для клиента",
+    text: "Виджет на сайте агентства подключается одной строкой кода, бот в мессенджере MAX — без разработки на стороне агентства.",
+    href: "/vidzhet",
+    label: "Установка виджета",
+  },
+  {
+    title: "Две версии ассистента",
+    text: "«Лид» собирает заявки и передаёт менеджеру, «Про» консультирует без ограничений и возвращает ушедших клиентов.",
+    href: "/versii",
+    label: "Сравнение версий",
+  },
+  {
+    title: "Аналитика для владельца",
+    text: "Диалоги, воронка от подборки до заявки, спрос по направлениям и прогноз заявок до конца месяца — в личном кабинете.",
+    href: "/prognozy",
+    label: "Прогнозы и аналитика",
+  },
+];
+
+/** Направления рабочей группы при Комитете ТПП РФ. */
+const workingGroupTracks = [
+  {
+    title: "Внедрение и экономический эффект",
+    text: "Как считать отдачу от ИИ в турбизнесе и какие показатели сопоставимы между компаниями.",
+  },
+  {
+    title: "Безопасность и права туриста",
+    text: "Достоверность данных в ответах, обработка персональных данных, ответственность за рекомендацию.",
+  },
+  {
+    title: "Этика и стандартизация",
+    text: "Общие правила применения ИИ в отрасли в диалоге с государством и профильными объединениями.",
+  },
+];
 
 export default function AboutTeamPage() {
   return (
@@ -136,6 +185,126 @@ export default function AboutTeamPage() {
             по применению искусственного интеллекта в туризме при Комитете
             ТПП РФ.
           </p>
+        </section>
+
+        {/* Что делаем */}
+        <section className="mx-auto max-w-5xl px-5 pb-16 sm:px-6 lg:px-8 lg:pb-20">
+          <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl">
+            Чем мы занимаемся
+          </h2>
+          <p className="mt-4 max-w-3xl text-base leading-relaxed text-body">
+            Мы делаем один продукт: ИИ-ассистента, который разговаривает с
+            туристом вместо формы «оставьте заявку». Он подбирает туры по живой
+            базе, отвечает на вопросы об отелях и перелётах и передаёт
+            менеджеру готовую заявку с контактом. Работает круглосуточно, в том
+            числе тогда, когда офис закрыт, — по нашей статистике на это время
+            приходится 41,4% обращений.
+          </p>
+          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {whatWeDo.map((w) => (
+              <div
+                key={w.title}
+                className="rounded-2xl border border-blue-subtle/50 bg-white p-5"
+              >
+                <h3 className="font-display text-base font-bold text-heading">
+                  {w.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-body">
+                  {w.text}
+                </p>
+                <Link
+                  href={w.href}
+                  className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-accent hover:underline"
+                >
+                  {w.label}
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              </div>
+            ))}
+          </div>
+          <p className="mt-6 text-sm leading-relaxed text-muted">
+            За летний сезон 2026 ассистенты сети подобрали гостям туры на
+            4,3 млрд ₽ и обработали более 175 000 сообщений; 73,4% обращений
+            доходят до подбора тура, 11–14% диалогов становятся заявкой.
+            Методика расчёта — на странице{" "}
+            <Link
+              href="/skolko-stoit"
+              className="font-medium text-accent underline decoration-accent/30 underline-offset-2 hover:decoration-accent"
+            >
+              «Сколько стоит ИИ-ассистент»
+            </Link>
+            ; практика внедрения в сети из 10+ офисов — в{" "}
+            <Link
+              href="/keisy/mgp"
+              className="font-medium text-accent underline decoration-accent/30 underline-offset-2 hover:decoration-accent"
+            >
+              кейсе МГП
+            </Link>
+            . Для кого продукт:{" "}
+            <Link
+              href="/dlya-turagentstv"
+              className="font-medium text-accent underline decoration-accent/30 underline-offset-2 hover:decoration-accent"
+            >
+              турагентства
+            </Link>
+            ,{" "}
+            <Link
+              href="/dlya-turoperatorov"
+              className="font-medium text-accent underline decoration-accent/30 underline-offset-2 hover:decoration-accent"
+            >
+              туроператоры
+            </Link>{" "}
+            и{" "}
+            <Link
+              href="/dlya-setey-agentstv"
+              className="font-medium text-accent underline decoration-accent/30 underline-offset-2 hover:decoration-accent"
+            >
+              сети агентств
+            </Link>
+            .
+          </p>
+        </section>
+
+        {/* Основатель */}
+        <section className="bg-surface-alt">
+          <div className="mx-auto max-w-3xl px-5 py-16 sm:px-6 lg:px-8 lg:py-20">
+            <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl">
+              Основатель
+            </h2>
+            <div className="mt-8 rounded-2xl border border-blue-subtle/50 bg-white p-6">
+              <h3 className="font-display text-xl font-bold text-heading">
+                Лукиан Ираклиевич Силагадзе
+              </h3>
+              <p className="mt-1 text-sm font-semibold text-accent">
+                Основатель проекта «Навылет! AI», генеральный директор
+                ООО «ИИМПАКТ ПЛЮС»
+              </p>
+              <p className="mt-4 text-sm leading-relaxed text-body">
+                Эксперт по искусственному интеллекту и цифровизации при
+                Комитете ТПП РФ по предпринимательству в сфере туризма,
+                руководитель рабочей группы по ответственному применению ИИ при
+                Комитете. Выступает на отраслевых площадках с докладами о
+                применении ИИ в туризме: международные конгрессы туроператоров,
+                заседания Совета ТПП РФ по применению ИИ в бизнесе, форумы и
+                научно-практические конференции.
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-body">
+                Последнее выступление — доклад «Новые НПА и цифровизация:
+                почему требования 2026 года ускоряют технологии» на 32-м
+                Международном форуме-выставке по туризму «ОТДЫХ Leisure 2026»
+                2 сентября 2026 года.
+              </p>
+              <a
+                href="https://tourismexpo.ru/program/speakers/lukian-silagadze/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-accent hover:underline"
+              >
+                Карточка спикера на сайте форума «ОТДЫХ»
+                <ArrowRight className="h-3.5 w-3.5" />
+              </a>
+            </div>
+          </div>
         </section>
 
         {/* Recognition */}
@@ -217,8 +386,66 @@ export default function AboutTeamPage() {
           </ol>
         </section>
 
-        {/* Company info */}
+        {/* Рабочая группа */}
         <section className="bg-surface-alt">
+          <div className="mx-auto max-w-3xl px-5 py-16 sm:px-6 lg:px-8 lg:py-20">
+            <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl">
+              Рабочая группа по ответственному применению ИИ
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-body">
+              Группа формируется при Комитете ТПП РФ по предпринимательству в
+              сфере туризма. Основание — федеральный закон от 26 июля 2026 года
+              № 243-ФЗ «О поддержке развития технологий искусственного
+              интеллекта в Российской Федерации», основные положения которого
+              действуют с 1 сентября 2026 года. Задача простая: выработать для
+              отрасли общие правила применения ИИ до того, как их напишут без
+              её участия.
+            </p>
+            <div className="mt-8 space-y-3">
+              {workingGroupTracks.map((t) => (
+                <div
+                  key={t.title}
+                  className="rounded-2xl border border-blue-subtle/50 bg-white p-5"
+                >
+                  <h3 className="font-display text-base font-bold text-heading">
+                    {t.title}
+                  </h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-body">
+                    {t.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <p className="mt-6 text-sm leading-relaxed text-body">
+              Присоединиться можно как участник ядра группы, отраслевой эксперт
+              или площадка для пилотного проекта — напишите на{" "}
+              <a
+                href={`mailto:${companyInfo.email}`}
+                className="font-medium text-accent underline decoration-accent/30 underline-offset-2 hover:decoration-accent"
+              >
+                {companyInfo.email}
+              </a>
+              . Наша позиция по границам применения ИИ в туризме собрана в{" "}
+              <Link
+                href="/voprosy"
+                className="font-medium text-accent underline decoration-accent/30 underline-offset-2 hover:decoration-accent"
+              >
+                ответах на частые вопросы
+              </Link>
+              , а практический порядок внедрения — в гиде{" "}
+              <Link
+                href="/cifrovizaciya-turagentstva"
+                className="font-medium text-accent underline decoration-accent/30 underline-offset-2 hover:decoration-accent"
+              >
+                «Цифровизация турагентства»
+              </Link>
+              .
+            </p>
+          </div>
+        </section>
+
+        {/* Company info */}
+        <section>
           <div className="mx-auto max-w-3xl px-5 py-16 sm:px-6 lg:px-8 lg:py-20">
             <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl">
               Юридическое лицо
