@@ -141,6 +141,12 @@ function buildMessage(d) {
   lines.push("");
   if (d.name) lines.push(`👤 <b>Имя:</b> ${esc(clip(d.name, 120))}`);
   if (d.phone) lines.push(`📞 <b>Телефон:</b> ${esc(clip(d.phone, 60))}`);
+  // Куда писать — сразу под контактом: заявку обрабатываем сообщением,
+  // а не звонком, и менеджер не должен это искать в конце сообщения.
+  const contact = [];
+  if (d.contact_channel) contact.push(esc(clip(d.contact_channel, 40)));
+  if (d.messenger_nick) contact.push(esc(clip(d.messenger_nick, 80)));
+  if (contact.length) lines.push(`📨 <b>Написать в:</b> ${contact.join(" · ")}`);
   if (d.company) lines.push(`🏢 <b>Компания:</b> ${esc(clip(d.company, 160))}`);
   if (d.email) lines.push(`✉️ <b>Email:</b> ${esc(clip(d.email, 160))}`);
 

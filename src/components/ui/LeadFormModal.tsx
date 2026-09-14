@@ -25,6 +25,9 @@ import {
   Loader2,
   Globe,
   MessageSquare,
+  MessageCircle,
+  Send,
+  AtSign,
   ArrowRight,
   ArrowLeft,
   ChevronRight,
@@ -46,6 +49,40 @@ const channelShortLabel: Record<TrialChannelId, string> = {
   max: "MAX",
 };
 
+/**
+ * Куда написать человеку по заявке. Это НЕ канал ассистента: тот отвечает
+ * клиентам агентства, а этот — способ связаться с самим агентством.
+ * Звонка в списке нет намеренно: мы пишем, а не обзваниваем.
+ */
+type ContactChannelId = "max" | "telegram" | "whatsapp";
+
+const contactChannels: {
+  id: ContactChannelId;
+  label: string;
+  Icon: typeof Globe;
+  /** Подпись поля ника. null — у канала ника нет, адрес это номер. */
+  nickPlaceholder: string | null;
+}[] = [
+  {
+    id: "max",
+    label: "MAX",
+    Icon: MessageSquare,
+    nickPlaceholder: "@ник в MAX, если есть",
+  },
+  {
+    id: "telegram",
+    label: "Telegram",
+    Icon: Send,
+    nickPlaceholder: "@ник в Telegram, если отличается от номера",
+  },
+  {
+    id: "whatsapp",
+    label: "WhatsApp",
+    Icon: MessageCircle,
+    nickPlaceholder: null,
+  },
+];
+
 type Step = "choice" | "request";
 
 export default function LeadFormModal() {
@@ -65,6 +102,8 @@ export default function LeadFormModal() {
   const [selectedChannel, setSelectedChannel] = useState<TrialChannelId>("web");
   /** Крупный поток: больше лимита бесплатного месяца, условия индивидуально. */
   const [bigVolume, setBigVolume] = useState(false);
+  /** Мессенджер, в который человек просит написать по заявке. */
+  const [contactChannel, setContactChannel] = useState<ContactChannelId>("max");
 
   const handleFormStart = () => {
     if (started) return;
@@ -81,6 +120,7 @@ export default function LeadFormModal() {
     setConsent(false);
     setStarted(false);
     setBigVolume(false);
+    setContactChannel("max");
     setPromoOn(isPromoActive());
     setStep(preset?.path === "request" ? "request" : "choice");
 
@@ -119,6 +159,9 @@ export default function LeadFormModal() {
   const presetVersion = presetVersionId
     ? assistantVersions.find((v) => v.id === presetVersionId) ?? null
     : null;
+  const activeContactChannel = contactChannels.find(
+    (c) => c.id === contactChannel
+  )!;
 
   const handleSelfRegister = () => {
     reachMetrikaGoal(metrikaGoals.trialClick, {
@@ -145,6 +188,7 @@ export default function LeadFormModal() {
           ? "больше 200 диалогов/мес — обсудить индивидуально"
           : null,
         channelLabel: channelShortLabel[selectedChannel],
+        contactChannelLabel: activeContactChannel.label,
         source: "modal",
       });
       reachMetrikaGoal(metrikaGoals.leadFormSubmitSuccess, {
@@ -152,6 +196,7 @@ export default function LeadFormModal() {
         plan_id: presetPlanId ?? undefined,
         version_id: presetVersionId ?? undefined,
         channel_id: selectedChannel,
+        contact_channel: contactChannel,
         big_volume: bigVolume,
       });
       setSubmitted(true);
@@ -243,9 +288,11 @@ export default function LeadFormModal() {
                     <h3 className="font-display text-2xl font-bold text-heading">
                       Заявка отправлена!
                     </h3>
+                    {/* Повторяем обещание из формы: человек выбрал мессенджер
+                        и должен увидеть, что мы напишем именно туда. */}
                     <p className="max-w-xs text-center text-sm text-muted">
-                      Мы свяжемся с вами в ближайшее время и подключим
-                      бесплатный период — {trial.days} дней.
+                      Напишем вам в {activeContactChannel.label} в ближайшее
+                      время и подключим бесплатный период — {trial.days} дней.
                     </p>
                     <button
                       onClick={closeForm}
@@ -398,7 +445,7 @@ export default function LeadFormModal() {
                       {/* ── Канал (один на тест) ───────────────── */}
                       <div>
                         <label className="mb-2 block text-xs font-semibold uppercase tracking-wide text-muted">
-                          Какой канал подключаем
+                          Где будет работать ассистент
                         </label>
                         <div className="grid grid-cols-2 gap-2">
                           {trialChannels.map((ch) => {
@@ -440,8 +487,8 @@ export default function LeadFormModal() {
                           })}
                         </div>
                         <p className="mt-2 text-xs text-muted">
-                          Один канал на тест. Второй можно добавить после
-                          подключения.
+                          Один канал на тест — это канал для ваших клиентов.
+                          Второй можно добавить после подключения.
                         </p>
                       </div>
 
@@ -499,6 +546,55 @@ export default function LeadFormModal() {
                         </span>
                       </button>
 
+                      {/* ── Как связаться ──────────────────────── */}
+                      <div className="border-t border-gray-100 pt-5">
+                        <p className="text-xs font-semibold uppercase tracking-wide text-muted">
+                          Как с вами связаться
+                        </p>
+                        <p className="mt-1.5 text-xs text-body">
+                          Мы напишем в мессенджер, а не позвоним: так вам не
+                          придётся отвечать на звонок в неудобный момент.
+                        </p>
+
+                        <div className="mt-3 grid grid-cols-3 gap-2">
+                          {contactChannels.map((ch) => {
+                            const active = contactChannel === ch.id;
+                            return (
+                              <button
+                                key={ch.id}
+                                type="button"
+                                onClick={() => setContactChannel(ch.id)}
+                                aria-pressed={active}
+                                className={`flex min-h-11 flex-col items-center justify-center gap-1 rounded-xl border px-2 py-2.5 transition-all duration-200 ${
+                                  active
+                                    ? "border-accent bg-accent/5 shadow-[0_2px_8px_rgba(0,151,245,0.15)]"
+                                    : "border-gray-200 bg-white hover:border-accent/40 hover:bg-blue-ice/40"
+                                }`}
+                              >
+                                <ch.Icon
+                                  className={`h-4 w-4 ${
+                                    active ? "text-accent" : "text-muted"
+                                  }`}
+                                />
+                                <span
+                                  className={`text-xs font-semibold ${
+                                    active ? "text-accent" : "text-heading"
+                                  }`}
+                                >
+                                  {ch.label}
+                                </span>
+                              </button>
+                            );
+                          })}
+                        </div>
+                        {/* Значение уходит и в письмо, и в Telegram-заявку */}
+                        <input
+                          type="hidden"
+                          name="contact_channel"
+                          value={activeContactChannel.label}
+                        />
+                      </div>
+
                       {/* ── Контакты: имя + телефон ────────────── */}
                       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                         <div className="relative">
@@ -530,6 +626,26 @@ export default function LeadFormModal() {
                           />
                         </div>
                       </div>
+
+                      {/* Ник нужен только там, где адрес — не номер.
+                          Поле размонтируется вместе с каналом, поэтому пустой
+                          ник от WhatsApp в заявку не попадёт. */}
+                      {activeContactChannel.nickPlaceholder && (
+                        <div className="relative">
+                          <label htmlFor="modal-nick" className="sr-only">
+                            Ник в мессенджере
+                          </label>
+                          <AtSign className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                          <input
+                            id="modal-nick"
+                            type="text"
+                            name="messenger_nick"
+                            autoComplete="off"
+                            placeholder={activeContactChannel.nickPlaceholder}
+                            className={inputClass}
+                          />
+                        </div>
+                      )}
 
                       <label className="flex cursor-pointer items-start gap-2.5">
                         <input

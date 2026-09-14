@@ -2,7 +2,10 @@ const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
 
 export interface LeadFormMeta {
   planName?: string | null;
+  /** Канал, в котором будет работать ассистент у клиента: «Web» / «MAX» */
   channelLabel?: string | null;
+  /** Мессенджер, в который человек просит написать по заявке */
+  contactChannelLabel?: string | null;
   /** Версия ассистента, выбранная посетителем: «Лид» / «Про» */
   versionLabel?: string | null;
   monthlyPrice?: number | null;
@@ -44,6 +47,9 @@ async function notifyTelegram(
       company: (data.get("company") as string) || "",
       email: (data.get("email") as string) || "",
       company_website: (data.get("company_website") as string) || "",
+      contact_channel:
+        meta.contactChannelLabel ?? (data.get("contact_channel") as string) ?? "",
+      messenger_nick: (data.get("messenger_nick") as string) || "",
       plan: meta.planName ?? "",
       channel: meta.channelLabel ?? "",
       version: meta.versionLabel ?? "",
@@ -85,6 +91,7 @@ export async function submitLeadForm(
   const {
     planName,
     channelLabel,
+    contactChannelLabel,
     versionLabel,
     monthlyPrice,
     dialogs,
@@ -102,6 +109,9 @@ export async function submitLeadForm(
   if (planName) subjectParts.push(`тариф «${planName}»`);
   if (dialogsRange) subjectParts.push(dialogsRange);
   if (channelLabel) subjectParts.push(`канал ${channelLabel}`);
+  // Менеджеру важно увидеть в теме, куда писать: заявка обрабатывается
+  // сообщением, а не звонком.
+  if (contactChannelLabel) subjectParts.push(`связь: ${contactChannelLabel}`);
   data.append("subject", subjectParts.join(" · "));
   data.append("from_name", "Навылет! AI — Заявка с сайта");
 
