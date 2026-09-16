@@ -100,7 +100,7 @@ export default function RealDashboardFrame({
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/globe-logo.svg"
+              src="/logo-icon.svg"
               alt="Навылет! AI"
               style={{
                 width: compact ? 26 : 32,

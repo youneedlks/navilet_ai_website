@@ -742,7 +742,7 @@ export default function DemoWidget({
         <div className="mt-2 text-center text-[10px] text-[#BDC3C7]">
           Powered by{" "}
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo-short.svg" alt="Навылет! AI" className="inline-block h-3 align-middle ml-0.5" draggable={false} />
+          <img src="/logo-icon.svg" alt="Навылет! AI" className="inline-block h-3 align-middle ml-0.5" draggable={false} />
         </div>
       </div>
     </div>
