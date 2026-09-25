@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ArrowRight, MessageSquare } from "lucide-react";
-import { useLeadForm } from "@/contexts/LeadFormContext";
+import { useLeadForm, type LeadFormPreset } from "@/contexts/LeadFormContext";
 import { metrikaGoals, reachMetrikaGoal } from "@/lib/metrika";
 
 interface RegisterCtaProps {
@@ -12,6 +12,10 @@ interface RegisterCtaProps {
   compact?: boolean;
   /** Тёмный фон секции: белая кнопка вместо градиентной */
   dark?: boolean;
+  /** Подпись основной кнопки, если страница про конкретный сценарий */
+  primaryLabel?: string;
+  /** Предустановка формы: канал, версия, сразу шаг заявки */
+  formPreset?: Omit<LeadFormPreset, "source">;
   className?: string;
 }
 
@@ -20,13 +24,15 @@ export default function RegisterCta({
   source,
   compact = false,
   dark = false,
+  primaryLabel = "Подключить бесплатно",
+  formPreset,
   className = "",
 }: RegisterCtaProps) {
   const { openForm } = useLeadForm();
   return (
     <div className={`flex flex-col items-center gap-3 sm:flex-row ${className}`}>
       <button
-        onClick={() => openForm({ source })}
+        onClick={() => openForm({ ...formPreset, source })}
         className={
           dark
             ? "inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 text-base font-semibold text-primary shadow-lg shadow-black/10 transition-all hover:bg-blue-ice hover:shadow-xl"
@@ -41,7 +47,7 @@ export default function RegisterCta({
               }
         }
       >
-        Подключить бесплатно
+        {primaryLabel}
         <ArrowRight className="h-4 w-4" />
       </button>
       <Link

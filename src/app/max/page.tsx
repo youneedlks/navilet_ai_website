@@ -32,6 +32,13 @@ const path = "/max";
 
 const rub = (value: number) => `${value.toLocaleString("ru-RU")}\u00A0₽`;
 
+/**
+ * Бот в MAX подключаем мы: агентству нужен бизнес-аккаунт и передача токена.
+ * Поэтому кнопка ведёт сразу в заявку менеджеру, минуя саморегистрацию,
+ * и канал MAX в ней уже выбран.
+ */
+const maxFormPreset = { channelId: "max", path: "request" } as const;
+
 const lid = assistantVersions.find((v) => v.id === "lid")!;
 const pro = assistantVersions.find((v) => v.id === "pro")!;
 const liteAddon = crossChannelAddons.find((a) => a.planId === "lite")!;
@@ -413,7 +420,11 @@ export default function MaxPage() {
               ночных обращений — данные сети «Навылет! AI», летний сезон 2026.
             </p>
             <div className="mt-8 flex justify-center">
-              <RegisterCta source="max_hero" />
+              <RegisterCta
+                source="max_hero"
+                primaryLabel="Подключить бота в MAX"
+                formPreset={maxFormPreset}
+              />
             </div>
           </div>
         </section>
@@ -699,7 +710,11 @@ export default function MaxPage() {
               </div>
             </div>
             <div className="mt-10 flex justify-center">
-              <RegisterCta source="max_mid" />
+              <RegisterCta
+                source="max_mid"
+                primaryLabel="Подключить бота в MAX"
+                formPreset={maxFormPreset}
+              />
             </div>
           </div>
         </section>
@@ -799,7 +814,13 @@ export default function MaxPage() {
               Возврат клиентов — в версии «Про».
             </p>
             <div className="mt-6 flex justify-center">
-              <RegisterCta source="max_bottom" compact dark />
+              <RegisterCta
+                source="max_bottom"
+                primaryLabel="Подключить бота в MAX"
+                formPreset={maxFormPreset}
+                compact
+                dark
+              />
             </div>
           </div>
         </section>
