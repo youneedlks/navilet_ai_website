@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { Fragment } from "react";
 import Link from "next/link";
+import LostLeadsCalculator from "@/components/seo/LostLeadsCalculator";
 import Navigation from "@/components/sections/Navigation";
 import Footer from "@/components/sections/Footer";
 import FloatingCTA from "@/components/ui/FloatingCTA";
@@ -238,8 +240,8 @@ export default function DigitalPillarPage() {
             </p>
             <div className="mt-9 space-y-4">
               {digitalBlocks.map((b, i) => (
+                <Fragment key={b.id}>
                 <div
-                  key={b.id}
                   id={b.id}
                   className="rounded-2xl border border-blue-subtle/40 bg-white p-6 shadow-card"
                 >
@@ -292,6 +294,12 @@ export default function DigitalPillarPage() {
                     </div>
                   )}
                 </div>
+                {/* Калькулятор сразу после боли, которую он измеряет: здесь
+                    читатель уже согласен, что ночные обращения — проблема. */}
+                {b.id === "obrashcheniya" && (
+                  <LostLeadsCalculator source="calculator_digital" />
+                )}
+                </Fragment>
               ))}
             </div>
           </div>
