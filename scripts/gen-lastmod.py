@@ -55,8 +55,9 @@ ROUTES: dict[str, list[str]] = {
     "/vidzhet/*": ["src/app/vidzhet/[slug]", "src/lib/seo/platform-pages.ts"],
     "/resheniya": ["src/app/resheniya/page.tsx", "src/lib/seo/scenario-pages.ts"],
     "/resheniya/*": ["src/app/resheniya/[slug]", "src/lib/seo/scenario-pages.ts"],
-    "/spros": ["src/app/spros/page.tsx", "src/lib/seo/demand-pages.ts"],
-    "/spros/*": ["src/app/spros/[slug]", "src/lib/seo/demand-pages.ts"],
+    "/spros": ["src/app/spros/page.tsx", "src/lib/seo/demand-pages.ts", "src/lib/seo/demand-index.ts"],
+    "/spros/*": ["src/app/spros/[slug]", "src/lib/seo/demand-pages.ts", "src/lib/seo/demand-index.ts"],
+    "/indeks-sprosa": ["src/app/indeks-sprosa", "src/lib/seo/demand-index.ts"],
     "/karta-sayta": ["src/app/karta-sayta"],
     "/privacy": ["src/app/privacy"],
 }

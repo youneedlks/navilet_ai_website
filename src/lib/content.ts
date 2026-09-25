@@ -1865,6 +1865,7 @@ export const footerLinks = {
       { label: "Заявки с сайта", href: "/resheniya/zayavki-s-sayta" },
       { label: "Менеджеры не успевают", href: "/resheniya/menedzhery-zanyaty" },
       { label: "Спрос по направлениям", href: "/spros" },
+      { label: "Индекс спроса на туры", href: "/indeks-sprosa" },
       { label: "Кейс МГП", href: "/keisy/mgp" },
     ],
   },

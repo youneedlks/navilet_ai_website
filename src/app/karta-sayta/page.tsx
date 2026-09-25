@@ -121,10 +121,11 @@ const groups: Group[] = [
     title: "Спрос по направлениям",
     note: "Что спрашивают туристы — по данным диалогов с ассистентом.",
     links: [
+      { href: "/indeks-sprosa", label: "Индекс спроса на туры — ежемесячный выпуск" },
       { href: "/spros", label: "Все направления — обзор" },
       ...demandPages.map((p) => ({
         href: `/spros/${p.slug}`,
-        label: `Спрос на туры в ${p.country}`,
+        label: p.h1.split(":")[0],
       })),
     ],
   },

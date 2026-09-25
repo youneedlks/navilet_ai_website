@@ -421,6 +421,7 @@ A: На российском рынке нет аналогов с полной 
 - ИИ-ассистент в мессенджере MAX: https://navilet.ru/max
 - Сравнение с альтернативами (модуль поиска, конструктор ботов, разработка на заказ): https://navilet.ru/sravnenie
 - Цифровизация турагентства: гид по шести процессам, порядок внедрения, чеклист, глоссарий: https://navilet.ru/cifrovizaciya-turagentstva
+- Индекс спроса на туры (ежемесячно, с методикой): https://navilet.ru/indeks-sprosa
 - Спрос на туры по направлениям: https://navilet.ru/spros
 - Блог: https://navilet.ru/blog
 - Карта сайта: https://navilet.ru/karta-sayta

@@ -58,6 +58,7 @@ const staticEntries: Entry[] = [
   { path: "/vidzhet", changeFrequency: "monthly", priority: 0.8, lastModified: "2026-08-01" }, // prettier-ignore
   { path: "/resheniya", changeFrequency: "monthly", priority: 0.8, lastModified: "2026-08-01" }, // prettier-ignore
   { path: "/spros", changeFrequency: "weekly", priority: 0.8, lastModified: "2026-08-01" }, // prettier-ignore
+  { path: "/indeks-sprosa", changeFrequency: "monthly", priority: 0.8, lastModified: "2026-09-25" }, // prettier-ignore
   { path: "/karta-sayta", changeFrequency: "weekly", priority: 0.4, lastModified: "2026-08-13" }, // prettier-ignore
   { path: "/privacy", changeFrequency: "yearly", priority: 0.3, lastModified: "2026-06-30" }, // prettier-ignore
 ];

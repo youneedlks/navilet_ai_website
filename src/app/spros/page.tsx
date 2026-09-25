@@ -11,19 +11,19 @@ import Navigation from "@/components/sections/Navigation";
 import Footer from "@/components/sections/Footer";
 import RegisterCta from "@/components/seo/RegisterCta";
 import { demandPages } from "@/lib/seo/demand-pages";
+import { demandIndex, fmtPct, fmtPp, fmtRub } from "@/lib/seo/demand-index";
 import { jsonLdScript } from "@/lib/schema";
 
 const siteUrl = "https://navilet.ru";
 
-const fmtRub = (v: number) =>
-  `${v.toLocaleString("ru-RU").replace(/\s/g, "\u202F")} ₽`;
+const inSeason = new Map(demandPages.map((p) => [p.slug, p.inSeason]));
 
 export const metadata: Metadata = {
   title: {
     absolute: "Спрос на туры по направлениям — статистика запросов туристов",
   },
   description:
-    "Куда хотят туристы прямо сейчас: статистика диалогов сети «Навылет! AI» по Турции, Египту, ОАЭ, Таиланду, Мальдивам и России. Доли спроса, тренды, чеки.",
+    "Куда хотят туристы: доли направлений в поисках туров, тренды и медианные бюджеты по Турции, Египту, Вьетнаму, России, Таиланду, Мальдивам и Шри-Ланке. Индекс спроса «Навылет! AI».",
   keywords: [
     "спрос на туры статистика",
     "популярные направления туры",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Спрос на туры по направлениям — данные ИИ-диалогов",
     description:
-      "Обезличенная статистика диалогов туристов: доли направлений, тренды, медианные чеки.",
+      "Обезличенная статистика диалогов туристов: доли направлений, тренды, медианные бюджеты.",
     url: `${siteUrl}/spros`,
     type: "website",
     locale: "ru_RU",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Спрос на туры по направлениям — данные ИИ-диалогов",
     description:
-      "Обезличенная статистика диалогов туристов: доли направлений, тренды, чеки.",
+      "Обезличенная статистика диалогов туристов: доли направлений, тренды, бюджеты.",
     images: ["/og-image.png"],
   },
   robots: { index: true, follow: true },
@@ -89,7 +89,8 @@ const jsonLd = {
 };
 
 export default function SprosHubPage() {
-  const maxShare = Math.max(...demandPages.map((p) => p.sharePct));
+  const rows = demandIndex.countries;
+  const maxShare = Math.max(...rows.map((c) => c.sharePct));
 
   return (
     <>
@@ -107,9 +108,13 @@ export default function SprosHubPage() {
               <span className="text-accent">спрос по направлениям</span>
             </h1>
             <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-body sm:text-lg">
-              Уникальные данные: тысячи диалогов туристов с ИИ-ассистентами
-              сети «Навылет! AI» в среднем за месяц — обезличенно. Какие
-              направления растут, что спрашивают и какие бюджеты называют.
+              Обезличенные данные диалогов туристов с ИИ-ассистентами
+              турагентств: какие направления растут, что туристы указывают при
+              подборе и какие бюджеты называют. Полная версия с методикой —{" "}
+              <Link href="/indeks-sprosa" className="font-semibold text-accent hover:underline">
+                индекс спроса
+              </Link>
+              .
             </p>
           </div>
         </section>
@@ -119,35 +124,34 @@ export default function SprosHubPage() {
           <div className="mx-auto max-w-3xl px-5 py-14 sm:px-6 lg:px-8">
             <div className="rounded-2xl border border-blue-subtle/40 bg-white p-6 shadow-card sm:p-8">
               <h2 className="font-display text-xl font-bold text-heading">
-                Барометр спроса по сети
+                Барометр спроса
               </h2>
               <p className="mt-1 text-sm text-muted">
-                Доля направления в поисках туров · тренд к предыдущему периоду
+                Доля направления в поисках туров · тренд: {demandIndex.trendLabel}
               </p>
               <div className="mt-6 space-y-3">
-                {demandPages.map((p) => {
+                {rows.map((c) => {
+                  const slug = "slug" in c ? c.slug : undefined;
                   const TrendIcon =
-                    p.trendPp > 0
+                    c.trendPp > 0
                       ? TrendingUp
-                      : p.trendPp < 0
+                      : c.trendPp < 0
                         ? TrendingDown
                         : Minus;
                   const trendColor =
-                    p.trendPp > 0
+                    c.trendPp > 0
                       ? "text-emerald-600"
-                      : p.trendPp < 0
+                      : c.trendPp < 0
                         ? "text-amber-600"
                         : "text-muted";
-                  return (
-                    <Link
-                      key={p.slug}
-                      href={`/spros/${p.slug}`}
-                      className="group block"
-                    >
+                  const body = (
+                    <>
                       <div className="flex items-center justify-between gap-3">
-                        <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-heading transition-colors group-hover:text-accent">
-                          {p.country}
-                          {p.inSeason && (
+                        <span
+                          className={`inline-flex items-center gap-1.5 text-sm font-semibold text-heading ${slug ? "transition-colors group-hover:text-accent" : ""}`}
+                        >
+                          {c.name}
+                          {slug && inSeason.get(slug) && (
                             <Leaf className="h-3.5 w-3.5 text-emerald-500" />
                           )}
                         </span>
@@ -156,28 +160,38 @@ export default function SprosHubPage() {
                             className={`inline-flex items-center gap-0.5 font-semibold ${trendColor}`}
                           >
                             <TrendIcon className="h-3.5 w-3.5" />
-                            {p.trendPp > 0 ? "+" : ""}
-                            {p.trendPp !== 0 ? `${p.trendPp}` : "0"} п.п.
+                            {fmtPp(c.trendPp)}
                           </span>
                           <span className="w-12 text-right font-bold text-heading">
-                            {p.sharePct}%
+                            {fmtPct(c.sharePct)}
                           </span>
                         </span>
                       </div>
                       <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-blue-ice">
                         <div
                           className="h-full rounded-full bg-gradient-to-r from-[#0062EF] to-[#00CCF5] transition-all"
-                          style={{ width: `${(p.sharePct / maxShare) * 100}%` }}
+                          style={{ width: `${(c.sharePct / maxShare) * 100}%` }}
                         />
                       </div>
+                    </>
+                  );
+                  return slug ? (
+                    <Link key={c.name} href={`/spros/${slug}`} className="group block">
+                      {body}
                     </Link>
+                  ) : (
+                    <div key={c.name}>{body}</div>
                   );
                 })}
               </div>
               <p className="mt-5 border-t border-blue-subtle/40 pt-4 text-xs text-muted">
                 <Leaf className="mr-1 inline h-3 w-3 text-emerald-500" />—
-                направление в сезоне. Данные — обезличенные агрегаты сети, без
-                названий компаний и абсолютных объёмов.
+                направление в сезоне. Выпуск «{demandIndex.edition}»,{" "}
+                {demandIndex.periodLabel}. Обезличенные доли, без названий
+                компаний и абсолютных объёмов.{" "}
+                <Link href="/indeks-sprosa#metodika" className="underline hover:text-accent">
+                  Методика
+                </Link>
               </p>
             </div>
           </div>
@@ -200,7 +214,8 @@ export default function SprosHubPage() {
                     {p.country}
                   </h3>
                   <p className="mt-1 text-xs text-muted">
-                    доля ≈{p.sharePct}% · чек {fmtRub(p.medianCheck)}
+                    доля {fmtPct(p.m.sharePct)}
+                    {p.m.budgetMedian ? ` · бюджет ${fmtRub(p.m.budgetMedian)}` : ""}
                   </p>
                   <p className="mt-2.5 flex-1 text-sm leading-relaxed text-body">
                     {p.topQuestions[0].question}

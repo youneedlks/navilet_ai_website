@@ -15,12 +15,10 @@ import Navigation from "@/components/sections/Navigation";
 import Footer from "@/components/sections/Footer";
 import RegisterCta from "@/components/seo/RegisterCta";
 import { demandPages, getDemandPage } from "@/lib/seo/demand-pages";
+import { demandIndex, fmtPct, fmtPp, fmtRub } from "@/lib/seo/demand-index";
 import { jsonLdScript } from "@/lib/schema";
 
 const siteUrl = "https://navilet.ru";
-
-const fmtRub = (v: number) =>
-  `${v.toLocaleString("ru-RU").replace(/\s/g, "\u202F")} ₽`;
 
 export function generateStaticParams() {
   return demandPages.map((p) => ({ slug: p.slug }));
@@ -97,29 +95,45 @@ export default async function DemandPage({
       {
         "@type": "Dataset",
         "@id": `${url}#dataset`,
-        name: `Спрос на туры: ${page.country} — статистика диалогов сети «Навылет! AI»`,
-        description: `Обезличенная статистика запросов туристов по направлению «${page.country}» из диалогов с ИИ-ассистентами сети «Навылет! AI»: доля спроса, тренд, медианный чек интереса.`,
+        name: `Спрос на туры: ${page.country} — индекс спроса «Навылет! AI», ${demandIndex.edition.toLowerCase()}`,
+        description: `Обезличенная статистика запросов туристов по направлению «${page.country}» из диалогов с ИИ-ассистентами турагентств: доля в поисках туров, тренд, медианный бюджет, состав группы, глубина бронирования.`,
         creator: {
           "@type": "Organization",
           name: "Навылет! AI",
           url: siteUrl,
         },
-        temporalCoverage: "P30D",
+        isPartOf: { "@id": `${siteUrl}/indeks-sprosa#dataset` },
+        temporalCoverage: `${demandIndex.periodFrom}/${demandIndex.periodTo}`,
+        dateModified: demandIndex.published,
         variableMeasured: [
           {
             "@type": "PropertyValue",
-            name: "Доля спроса по сети",
-            value: `${page.sharePct}%`,
+            name: "Доля в поисках туров",
+            value: fmtPct(page.m.sharePct),
           },
           {
             "@type": "PropertyValue",
-            name: "Тренд к предыдущему периоду",
-            value: `${page.trendPp > 0 ? "+" : ""}${page.trendPp} п.п.`,
+            name: `Тренд: ${demandIndex.trendLabel}`,
+            value: fmtPp(page.m.trendPp),
+          },
+          ...(page.m.budgetMedian
+            ? [
+                {
+                  "@type": "PropertyValue",
+                  name: "Медианный бюджет туриста за тур",
+                  value: fmtRub(page.m.budgetMedian),
+                },
+              ]
+            : []),
+          {
+            "@type": "PropertyValue",
+            name: "Доля запросов с детьми",
+            value: `${page.m.kidsPct}%`,
           },
           {
             "@type": "PropertyValue",
-            name: "Медианный чек интереса",
-            value: fmtRub(page.medianCheck),
+            name: "Медиана дней от запроса до вылета",
+            value: Math.round(page.m.horizonDays),
           },
         ],
       },
@@ -135,12 +149,13 @@ export default async function DemandPage({
     ],
   };
 
+  const { m } = page;
   const TrendIcon =
-    page.trendPp > 0 ? TrendingUp : page.trendPp < 0 ? TrendingDown : Minus;
+    m.trendPp > 0 ? TrendingUp : m.trendPp < 0 ? TrendingDown : Minus;
   const trendColor =
-    page.trendPp > 0
+    m.trendPp > 0
       ? "text-emerald-600"
-      : page.trendPp < 0
+      : m.trendPp < 0
         ? "text-amber-600"
         : "text-muted";
 
@@ -177,29 +192,29 @@ export default async function DemandPage({
             <div className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-3">
               <div className="rounded-2xl border border-blue-subtle/40 bg-blue-ice/40 p-5">
                 <div className="text-xs font-semibold uppercase tracking-wide text-muted">
-                  Доля спроса по сети
+                  Доля в поисках туров
                 </div>
                 <div className="mt-1 flex items-baseline gap-2">
                   <span className="font-display text-3xl font-bold text-heading">
-                    ≈{page.sharePct}%
+                    {fmtPct(m.sharePct)}
                   </span>
                   <span
                     className={`inline-flex items-center gap-0.5 text-sm font-semibold ${trendColor}`}
+                    title={`Тренд: ${demandIndex.trendLabel}`}
                   >
                     <TrendIcon className="h-4 w-4" />
-                    {page.trendPp > 0 ? "+" : ""}
-                    {page.trendPp !== 0 ? `${page.trendPp} п.п.` : "стабильно"}
+                    {m.trendPp !== 0 ? fmtPp(m.trendPp) : "стабильно"}
                   </span>
                 </div>
               </div>
               <div className="rounded-2xl border border-blue-subtle/40 bg-blue-ice/40 p-5">
                 <div className="text-xs font-semibold uppercase tracking-wide text-muted">
-                  Медианный чек интереса
+                  Медианный бюджет туриста
                 </div>
                 <div className="mt-1 flex items-baseline gap-1.5">
                   <Wallet className="h-5 w-5 self-center text-accent" />
                   <span className="font-display text-2xl font-bold text-heading sm:text-3xl">
-                    {fmtRub(page.medianCheck)}
+                    {m.budgetMedian ? fmtRub(m.budgetMedian) : "мало данных"}
                   </span>
                 </div>
               </div>
@@ -218,8 +233,12 @@ export default async function DemandPage({
               </div>
             </div>
             <p className="mt-3 text-xs text-muted">
-              Обезличенные агрегаты диалогов сети «Навылет! AI» в среднем за
-              месяц. Без данных отдельных компаний.
+              <Link href="/indeks-sprosa" className="underline hover:text-accent">
+                Индекс спроса «Навылет! AI»
+              </Link>
+              , выпуск «{demandIndex.edition}»: {demandIndex.periodLabel}.
+              Тренд — {demandIndex.trendLabel}. Бюджет — за тур, как его
+              называет сам турист. Без данных отдельных компаний.
             </p>
 
             <div className="mt-6 space-y-4 text-base leading-relaxed text-body sm:text-lg">
@@ -234,7 +253,7 @@ export default async function DemandPage({
         <section className="bg-surface-alt">
           <div className="mx-auto max-w-3xl px-5 py-14 sm:px-6 lg:px-8">
             <h2 className="font-display text-2xl font-bold text-heading sm:text-3xl">
-              Что спрашивают туристы: топ-вопросы из диалогов
+              Как туристы формулируют запрос
             </h2>
             <div className="mt-7 space-y-4">
               {page.topQuestions.map((q) => (
@@ -350,6 +369,13 @@ export default async function DemandPage({
               ))}
             </div>
             <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+              <Link
+                href="/indeks-sprosa"
+                className="inline-flex items-center gap-1 font-semibold text-accent hover:underline"
+              >
+                Индекс спроса на туры: все направления и методика{" "}
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
               <Link
                 href="/prognozy"
                 className="inline-flex items-center gap-1 font-semibold text-accent hover:underline"
