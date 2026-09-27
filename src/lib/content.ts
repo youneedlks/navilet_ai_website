@@ -1873,6 +1873,7 @@ export const footerLinks = {
     title: "Компания",
     links: [
       { label: "О компании", href: "/o-komande" },
+      { label: "Эксперт: Силагадзе Л. И.", href: "/ekspert/lukian-silagadze" },
       { label: "Блог", href: "/blog" },
       { label: "Вопросы и ответы", href: "/voprosy" },
       { label: "Партнёры и мероприятия", href: "/#partners" },

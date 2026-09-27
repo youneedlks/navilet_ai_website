@@ -134,6 +134,7 @@ const groups: Group[] = [
     note: "О проекте, ответы на вопросы и правовая информация.",
     links: [
       { href: "/o-komande", label: "О компании и команде" },
+      { href: "/ekspert/lukian-silagadze", label: "Эксперт: Силагадзе Лукиан Ираклиевич" },
       { href: "/faq", label: "Частые вопросы (FAQ)" },
       { href: "/voprosy", label: "Вопросы и ответы о внедрении ИИ" },
       { href: "/privacy", label: "Политика конфиденциальности" },

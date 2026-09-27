@@ -48,6 +48,7 @@ ROUTES: dict[str, list[str]] = {
     "/blog": ["content/blog", "src/app/blog/page.tsx"],
     "/voprosy": ["src/app/voprosy"],
     "/o-komande": ["src/app/o-komande"],
+    "/ekspert/lukian-silagadze": ["src/app/ekspert/lukian-silagadze", "public/team"],
     "/faq": ["src/app/faq", "src/lib/content.ts"],
     "/dashboard": ["src/app/dashboard", "src/components/dashboard"],
     "/prognozy": ["src/app/prognozy", "src/components/forecast"],

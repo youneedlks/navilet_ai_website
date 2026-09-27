@@ -52,6 +52,7 @@ const staticEntries: Entry[] = [
   { path: "/blog", changeFrequency: "weekly", priority: 0.8, lastModified: "2026-08-19" }, // prettier-ignore
   { path: "/voprosy", changeFrequency: "monthly", priority: 0.7, lastModified: "2026-08-13" }, // prettier-ignore
   { path: "/o-komande", changeFrequency: "monthly", priority: 0.7, lastModified: "2026-08-01" }, // prettier-ignore
+  { path: "/ekspert/lukian-silagadze", changeFrequency: "monthly", priority: 0.7, lastModified: "2026-09-27" }, // prettier-ignore
   { path: "/faq", changeFrequency: "monthly", priority: 0.7, lastModified: "2026-08-13" }, // prettier-ignore
   { path: "/dashboard", changeFrequency: "monthly", priority: 0.7, lastModified: "2026-08-13" }, // prettier-ignore
   { path: "/prognozy", changeFrequency: "monthly", priority: 0.8, lastModified: "2026-07-12" }, // prettier-ignore
