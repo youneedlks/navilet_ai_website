@@ -476,9 +476,12 @@ export default function AboutTeamPage() {
               <div className="rounded-2xl border border-blue-subtle/50 bg-white p-5">
                 <MapPin className="mb-2 h-5 w-5 text-accent" />
                 <p className="text-xs font-semibold uppercase tracking-wide text-muted">
-                  Адрес
+                  Офис
                 </p>
                 <p className="mt-2 text-sm text-heading">{companyInfo.address}</p>
+                <p className="mt-2 text-xs text-muted">
+                  Юридический адрес: {companyInfo.legalAddress}
+                </p>
               </div>
               <a
                 href={`tel:${companyInfo.phoneRaw}`}

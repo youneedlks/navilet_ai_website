@@ -198,10 +198,9 @@ const siteWideJsonLd = {
       telephone: "+7-963-799-79-77",
       address: {
         "@type": "PostalAddress",
-        streetAddress: "5-й Монетчиковский переулок, д. 16, помещение 2П",
+        streetAddress: "ул. Пресненский Вал, 21",
         addressLocality: "Москва",
         addressRegion: "Москва",
-        postalCode: "115054",
         addressCountry: "RU",
       },
       taxID: "9705243471",
@@ -322,6 +321,7 @@ const siteWideJsonLd = {
       ],
       sameAs: [
         "https://tourismexpo.ru/program/speakers/lukian-silagadze/",
+        "https://xn----ntbbabzzpj.xn--p1ai/about",
       ],
     },
   ],

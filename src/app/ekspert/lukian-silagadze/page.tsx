@@ -209,7 +209,10 @@ const jsonLd = {
         "ответственное применение ИИ",
         "ИИ-ассистенты для турагентств",
       ],
-      sameAs: ["https://tourismexpo.ru/program/speakers/lukian-silagadze/"],
+      sameAs: [
+        "https://tourismexpo.ru/program/speakers/lukian-silagadze/",
+        "https://xn----ntbbabzzpj.xn--p1ai/about",
+      ],
     },
   ],
 };

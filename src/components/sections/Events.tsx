@@ -6,6 +6,7 @@ import {
   AnimatePresence,
 } from "framer-motion";
 import { useRef, useState, useCallback, useEffect } from "react";
+import Link from "next/link";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { events, type EventItem } from "@/lib/content";
 import {
@@ -235,6 +236,13 @@ export default function Events() {
                 Представляем технологии ИИ-автоматизации для туризма на ведущих
                 конференциях и конгрессах индустрии
               </p>
+              <Link
+                href="/ekspert/lukian-silagadze"
+                className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-accent hover:underline"
+              >
+                Наша позиция и отзывы профессионалов
+                <ChevronRight className="h-4 w-4" />
+              </Link>
             </div>
 
             <div className="hidden gap-2 sm:flex">
