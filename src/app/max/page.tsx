@@ -648,6 +648,17 @@ export default function MaxPage() {
                     появится выгодный тур.
                   </span>
                 </p>
+                <p className="mt-3 text-sm text-body">
+                  Как завести бота на платформе MAX для партнёров, пройти
+                  верификацию и модерацию — по шагам в{" "}
+                  <Link
+                    href="/blog/bot-turagentstva-v-max"
+                    className="font-medium text-accent underline decoration-accent/30 underline-offset-2 hover:decoration-accent"
+                  >
+                    инструкции
+                  </Link>
+                  .
+                </p>
               </div>
 
               <div className="rounded-2xl border border-blue-subtle/40 bg-white p-6 shadow-card">
