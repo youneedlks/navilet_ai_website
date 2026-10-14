@@ -363,7 +363,15 @@ export default function VidzhetHubPage() {
               ))}
             </div>
             <p className="mt-4 text-center text-sm text-muted">
-              Оба инструмента могут работать на одном сайте. Как устроен подбор
+              Оба инструмента могут работать на одном сайте — как поставить
+              модуль поиска Tourvisor, разобрали в{" "}
+              <Link
+                href="/blog/modul-tourvisor-na-sayt"
+                className="font-medium text-accent underline decoration-accent/30 underline-offset-2 hover:decoration-accent"
+              >
+                инструкции
+              </Link>
+              . Как устроен подбор
               по базе Tourvisor и почему цены живые —{" "}
               <Link
                 href="/integraciya-tourvisor"

@@ -366,12 +366,17 @@ export default function TourvisorIntegrationPage() {
           <h2 className="font-display text-2xl font-bold text-heading sm:text-3xl">
             По теме
           </h2>
-          <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
                 href: "/blog/integraciya-tourvisor-ii-podbor",
                 title: "Как ИИ подбирает туры через Tourvisor",
                 text: "Откуда берутся цены, почему ассистент не выдумывает предложения и как это выглядит в диалоге.",
+              },
+              {
+                href: "/blog/modul-tourvisor-na-sayt",
+                title: "Модуль Tourvisor на сайт",
+                text: "Как поставить поиск туров Tourvisor, сколько стоит и что добавить рядом.",
               },
               {
                 href: "/vidzhet",
