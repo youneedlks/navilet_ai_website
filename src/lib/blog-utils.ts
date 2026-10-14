@@ -1,3 +1,10 @@
+/** Карточка «По теме на сайте» под статьёй — ссылка на коммерческую страницу. */
+export interface PostLink {
+  href: string;
+  title: string;
+  text: string;
+}
+
 export interface PostMeta {
   slug: string;
   title: string;
@@ -10,6 +17,7 @@ export interface PostMeta {
   keywords: string[];
   cover: string;
   readingMinutes: number;
+  links: PostLink[];
 }
 
 export interface Post extends PostMeta {

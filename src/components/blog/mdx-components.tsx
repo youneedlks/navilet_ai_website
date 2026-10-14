@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { ComponentPropsWithoutRef } from "react";
 import BlogCta from "@/components/blog/BlogCta";
+import Note from "@/components/blog/Note";
+import { Step, Steps } from "@/components/blog/Steps";
 
 function MdxLink({ href = "", ...props }: ComponentPropsWithoutRef<"a">) {
   const isInternal = href.startsWith("/") || href.startsWith("#");
@@ -13,4 +15,7 @@ function MdxLink({ href = "", ...props }: ComponentPropsWithoutRef<"a">) {
 export const mdxComponents = {
   a: MdxLink,
   Cta: BlogCta,
+  Note,
+  Steps,
+  Step,
 };

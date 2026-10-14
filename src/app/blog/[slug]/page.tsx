@@ -11,6 +11,7 @@ import Footer from "@/components/sections/Footer";
 import FloatingCTA from "@/components/ui/FloatingCTA";
 import BlogCta from "@/components/blog/BlogCta";
 import BlogCard from "@/components/blog/BlogCard";
+import RelatedPages from "@/components/blog/RelatedPages";
 import { mdxComponents } from "@/components/blog/mdx-components";
 import {
   getAllSlugs,
@@ -256,6 +257,8 @@ export default async function BlogPostPage({
               }}
             />
           </article>
+
+          <RelatedPages links={post.links} />
 
           <div className="mt-10">
             <BlogCta />

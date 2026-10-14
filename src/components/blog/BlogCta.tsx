@@ -8,14 +8,22 @@ interface BlogCtaProps {
   title?: string;
   text?: string;
   buttonText?: string;
+  /** "demo" — для середины статьи: первой кнопкой демо, второй — форма. */
+  variant?: "form" | "demo";
 }
 
 export default function BlogCta({
   title = "Попробуйте ИИ-ассистент в деле",
   text = "Подключение за пару минут, первый месяц бесплатно. Покажем, как ассистент обрабатывает заявки вашего агентства.",
   buttonText = "Подключить ИИ бесплатно",
+  variant = "form",
 }: BlogCtaProps) {
   const { openForm } = useLeadForm();
+  const demoFirst = variant === "demo";
+  const primary =
+    "rounded-xl bg-white px-6 py-3 text-center text-sm font-semibold text-primary no-underline shadow-lg shadow-black/10 transition-all hover:bg-blue-ice hover:shadow-xl";
+  const secondary =
+    "rounded-xl border border-white/25 px-6 py-3 text-center text-sm font-semibold text-white no-underline transition-colors hover:bg-white/10";
 
   return (
     <div
@@ -36,18 +44,31 @@ export default function BlogCta({
           <p className="mt-1.5 max-w-md text-sm text-white/70">{text}</p>
         </div>
         <div className="flex shrink-0 flex-col gap-2.5 sm:items-stretch">
-          <button
-            onClick={() => openForm()}
-            className="cursor-pointer rounded-xl bg-white px-6 py-3 text-sm font-semibold text-primary shadow-lg shadow-black/10 transition-all hover:bg-blue-ice hover:shadow-xl"
-          >
-            {buttonText}
-          </button>
-          <Link
-            href="/demo"
-            className="rounded-xl border border-white/25 px-6 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-white/10"
-          >
-            Попробовать демо
-          </Link>
+          {demoFirst ? (
+            <>
+              <Link href="/demo" className={primary}>
+                Посмотреть демо за минуту
+              </Link>
+              <button
+                onClick={() => openForm()}
+                className={`cursor-pointer ${secondary}`}
+              >
+                {buttonText}
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                onClick={() => openForm()}
+                className={`cursor-pointer ${primary}`}
+              >
+                {buttonText}
+              </button>
+              <Link href="/demo" className={secondary}>
+                Попробовать демо
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </div>

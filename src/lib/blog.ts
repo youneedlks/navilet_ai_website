@@ -2,12 +2,24 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import readingTime from "reading-time";
-import type { Post, PostMeta } from "@/lib/blog-utils";
+import type { Post, PostLink, PostMeta } from "@/lib/blog-utils";
 
-export type { Post, PostMeta } from "@/lib/blog-utils";
+export type { Post, PostLink, PostMeta } from "@/lib/blog-utils";
 export { formatPostDate, coverGradient, BLOG_CATEGORIES } from "@/lib/blog-utils";
 
 const BLOG_DIR = path.join(process.cwd(), "content", "blog");
+
+function readLinks(value: unknown): PostLink[] {
+  if (!Array.isArray(value)) return [];
+  return value
+    .filter((l) => l && typeof l === "object")
+    .map((l) => ({
+      href: String(l.href ?? ""),
+      title: String(l.title ?? ""),
+      text: String(l.text ?? ""),
+    }))
+    .filter((l) => l.href.startsWith("/") && l.title);
+}
 
 function readPostFile(slug: string): Post {
   const fullPath = path.join(BLOG_DIR, `${slug}.mdx`);
@@ -27,6 +39,7 @@ function readPostFile(slug: string): Post {
     keywords: Array.isArray(data.keywords) ? data.keywords.map(String) : [],
     cover: String(data.cover ?? "blue"),
     readingMinutes: minutes,
+    links: readLinks(data.links),
     content,
   };
 }
