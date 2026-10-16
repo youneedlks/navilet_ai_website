@@ -432,7 +432,7 @@ export default function ForOperatorsPage() {
             </h2>
             <p className="mt-4 text-base text-body sm:text-lg">
               Расскажите о ваших задачах — подберём тариф и обсудим условия
-              пилота. 30 дней бесплатно, подключение 0 ₽.
+              пилота. 30 дней бесплатно с первого диалога, подключение 0 ₽.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link

@@ -370,7 +370,7 @@ export default function SkolkoStoitPage() {
               {
                 value: `${trial.days} дней`,
                 label: "бесплатно на старте",
-                note: trial.capLabel,
+                note: `${trial.fromLabel}, ${trial.capLabel}`,
               },
             ].map((item) => (
               <div

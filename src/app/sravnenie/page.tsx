@@ -190,7 +190,7 @@ const rows: Row[] = [
   },
   {
     feature: "Бесплатный период",
-    navilet: `${trial.days} дней, ${trial.capLabel}, без карты`,
+    navilet: `${trial.days} дней ${trial.fromLabel}, ${trial.capLabel}, без карты`,
     module: "10 дней",
     builder: "7–14 дней или бесплатный тариф с жёстким лимитом",
     custom: "Нет — только консультация перед договором",
@@ -577,7 +577,7 @@ export default function SravneniePage() {
             </h2>
             <p className="mx-auto mt-3 max-w-lg text-white/70">
               Месяц работы ассистента без карты и без разовых платежей. Через
-              30 дней у вас будут свои цифры вместо таблицы.
+              30 дней с первого диалога у вас будут свои цифры вместо таблицы.
             </p>
             <div className="mt-6 flex justify-center">
               <RegisterCta source="sravnenie_bottom" compact dark />

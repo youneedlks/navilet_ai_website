@@ -581,7 +581,7 @@ export default function TarifyPage() {
             </h2>
             <p className="mt-4 text-base text-body sm:text-lg">
               Расскажите о вашем агентстве — поможем подобрать оптимальный
-              вариант. Можно начать с бесплатных 30 дней.
+              вариант. Можно начать с бесплатных 30 дней — отсчёт с первого диалога.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <a

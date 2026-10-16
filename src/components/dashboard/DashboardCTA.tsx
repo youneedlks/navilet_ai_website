@@ -56,7 +56,7 @@ export default function DashboardCTA() {
           className="mx-auto mb-10 max-w-lg text-base text-white/70 sm:text-lg"
         >
           Подключите личный кабинет и получите доступ ко всей аналитике,
-          управлению диалогами и настройке виджета. 30 дней бесплатно.
+          управлению диалогами и настройке виджета. 30 дней бесплатно с первого диалога.
         </motion.p>
 
         <motion.div

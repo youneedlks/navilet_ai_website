@@ -609,7 +609,7 @@ export default function ChatBotPage() {
               </Link>
             </div>
             <p className="mt-4 text-center text-xs text-muted">
-              {trial.label}, {trial.capLabel}, карта не нужна. Подключение 0 ₽
+              {trial.label} {trial.fromLabel}, {trial.capLabel}, карта не нужна. Подключение 0 ₽
               на всех тарифах.
             </p>
             <div className="mt-8 flex justify-center">

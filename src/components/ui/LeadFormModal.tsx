@@ -292,7 +292,7 @@ export default function LeadFormModal() {
                         и должен увидеть, что мы напишем именно туда. */}
                     <p className="max-w-xs text-center text-sm text-muted">
                       Напишем вам в {activeContactChannel.label} в ближайшее
-                      время и подключим бесплатный период — {trial.days} дней.
+                      время и подключим бесплатный период — {trial.days} дней {trial.fromLabel}.
                     </p>
                     <button
                       onClick={closeForm}
@@ -319,7 +319,7 @@ export default function LeadFormModal() {
                         Первый месяц — бесплатно
                       </h3>
                       <p className="mt-1.5 text-sm text-muted">
-                        {trial.days} дней и {trial.capLabel}. Как вам удобнее
+                        {trial.days} дней {trial.fromLabel} и {trial.capLabel}. Как вам удобнее
                         подключиться?
                       </p>
                     </div>
@@ -340,9 +340,9 @@ export default function LeadFormModal() {
                           <Zap className="h-5 w-5" />
                         </span>
                         <span className="min-w-0 flex-1">
-                          <span className="flex items-center gap-2 font-display text-base font-bold text-heading">
-                            Подключусь сам
-                            <span className="rounded-full bg-accent/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-accent">
+                          <span className="flex flex-wrap items-center gap-x-2 gap-y-1 font-display text-base font-bold text-heading">
+                            <span className="whitespace-nowrap">Подключусь сам</span>
+                            <span className="shrink-0 whitespace-nowrap rounded-full bg-accent/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-accent">
                               3 шага
                             </span>
                           </span>
