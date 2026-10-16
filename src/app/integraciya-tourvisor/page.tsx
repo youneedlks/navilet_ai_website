@@ -74,7 +74,7 @@ const howToSteps = [
   },
   {
     name: "Вставьте одну строку кода на сайт",
-    text: "Перед закрывающим тегом </body> добавьте: <script src=\"https://lk.navilet.ru/widget-loader.js\" data-assistant-id=\"YOUR_ASSISTANT_ID\"></script>. Никакой интеграции с CRM или АПИ туроператоров не требуется — Tourvisor уже подключён на стороне «Навылет! AI».",
+    text: "Перед закрывающим тегом </body> добавьте: <script src=\"https://lk.navilet.ru/widget-loader.js\" data-assistant-id=\"YOUR_ASSISTANT_ID\"></script>. Интеграция с API туроператоров не нужна — Tourvisor уже подключён на стороне «Навылет! AI». Заявки сразу приходят на почту; U‑ON подключаете сами в кабинете, Битрикс24 и amoCRM — по заявке.",
   },
   {
     name: "Запустите и анализируйте",
