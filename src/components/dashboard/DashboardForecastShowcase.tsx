@@ -90,7 +90,7 @@ export default function DashboardForecastShowcase() {
             href="/prognozy"
             className="inline-flex items-center gap-1.5 pt-1 text-sm font-semibold text-accent transition-colors hover:text-accent-hover"
           >
-            Подробнее о разделе «Прогнозы»
+            Подробнее об «Отчётах и прогнозах»
             <ArrowRight className="h-4 w-4" />
           </Link>
         </motion.div>

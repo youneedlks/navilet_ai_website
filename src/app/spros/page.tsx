@@ -230,7 +230,7 @@ export default function SprosHubPage() {
             <p className="mt-8 text-center text-sm text-body">
               Такой же барометр — по вашим собственным диалогам — есть в{" "}
               <Link href="/prognozy" className="font-semibold text-accent hover:underline">
-                разделе «Прогнозы» личного кабинета
+                «Отчётах и прогнозах» в «Аналитике» личного кабинета
               </Link>
               .
             </p>

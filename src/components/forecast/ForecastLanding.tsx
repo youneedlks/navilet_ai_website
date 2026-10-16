@@ -81,7 +81,7 @@ export default function ForecastLanding() {
           >
             <span className="mb-6 inline-flex items-center gap-1.5 rounded-full bg-blue-ice px-4 py-1.5 text-sm font-medium text-accent">
               <TrendingUp className="h-4 w-4" />
-              Личный кабинет · Прогнозы
+              Личный кабинет · Отчёты и прогнозы
             </span>
 
             <h1
@@ -93,7 +93,7 @@ export default function ForecastLanding() {
             </h1>
 
             <p className="mb-8 max-w-xl text-base leading-relaxed text-body sm:text-lg">
-              Раздел «Отчёты и прогнозы» превращает диалоги ИИ-ассистента в
+              Вкладка «Отчёты и прогнозы» в «Аналитике» кабинета превращает диалоги ИИ-ассистента в
               понятную картину будущего: сколько заявок и денег принесёт месяц,
               куда движется спрос по сети и что делать в ближайшие 4–6 недель.
             </p>
@@ -168,7 +168,7 @@ export default function ForecastLanding() {
               <span className="text-accent">что будет</span>
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-body">
-              Четыре инструмента одного раздела: от факта за прошедший месяц до
+              Четыре инструмента одной вкладки: от факта за прошедший месяц до
               прогноза дохода и спроса по всей сети.
             </p>
           </div>
@@ -361,9 +361,9 @@ export default function ForecastLanding() {
             Подключите ассистента — и увидите прогноз
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-lg text-white/70">
-            Раздел «Прогнозы» открывается в личном кабинете автоматически, как
-            только ассистент начнёт вести диалоги. Регистрация за 2 минуты,
-            30 дней бесплатно.
+            Вкладка «Отчёты и прогнозы» в «Аналитике» открывается автоматически,
+            как только ассистент начнёт вести диалоги. Регистрация — 3 коротких
+            шага, 30 дней бесплатно с первого диалога.
           </p>
           <div className="mt-8 flex flex-col items-center gap-3">
             <button

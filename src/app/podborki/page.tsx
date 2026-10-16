@@ -279,7 +279,7 @@ export default function PodborkiPage() {
               <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-white px-4 py-1.5">
                 <BarChart3 className="h-4 w-4 text-accent" />
                 <span className="text-xs font-semibold text-accent sm:text-sm">
-                  Раздел «Подборки» в личном кабинете
+                  Вкладка «Подборки» в «Диалогах» кабинета
                 </span>
               </div>
               <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl">

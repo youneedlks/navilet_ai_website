@@ -70,7 +70,7 @@ export default function PrognozyPage() {
           {
             "@type": "ListItem",
             position: 3,
-            name: "Прогнозы",
+            name: "Отчёты и прогнозы",
             item: `${siteUrl}/prognozy`,
           },
         ],
