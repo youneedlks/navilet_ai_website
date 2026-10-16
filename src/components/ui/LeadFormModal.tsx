@@ -343,11 +343,11 @@ export default function LeadFormModal() {
                           <span className="flex items-center gap-2 font-display text-base font-bold text-heading">
                             Подключусь сам
                             <span className="rounded-full bg-accent/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-accent">
-                              2 минуты
+                              3 шага
                             </span>
                           </span>
                           <span className="mt-0.5 block text-sm text-body">
-                            Регистрация в личном кабинете — код виджета сразу.
+                            Регистрация в личном кабинете — доступ и код виджета в течение рабочего дня.
                           </span>
                         </span>
                         <ChevronRight className="h-5 w-5 shrink-0 text-accent transition-transform group-hover:translate-x-0.5" />

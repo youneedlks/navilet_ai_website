@@ -79,7 +79,7 @@ const homepageJsonLd = {
         "Личный кабинет с аналитикой диалогов",
         "White-label кастомизация виджета под бренд",
         "Работает в Web‑виджете и MAX‑мессенджере",
-        "Подключение за пару минут",
+        "Подключение без программиста",
       ],
       offers: {
         "@type": "AggregateOffer",
@@ -95,7 +95,7 @@ const homepageJsonLd = {
             price: "990",
             priceCurrency: "RUB",
             description:
-              "Лидогенерация: 40 диалогов в месяц • Web или MAX • подключение 0 ₽ • регистрация за 2 минуты",
+              "Лидогенерация: 40 диалогов в месяц • Web или MAX • подключение 0 ₽ • регистрация в 3 шага",
             url: `${siteUrl}/tarify#lite`,
             availability: "https://schema.org/InStock",
           },

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import {
   UserPlus,
-  Code2,
+  MailCheck,
   Rocket,
   ArrowRight,
   Sparkles,
@@ -17,6 +17,7 @@ import CountUp from "@/components/ui/CountUp";
 import {
   startFaqItems,
   networkResults,
+  reqVersionPublished,
   pricingPlans,
 } from "@/lib/content";
 import { lkRegisterUrl } from "@/lib/lk";
@@ -29,24 +30,24 @@ const steps = [
   {
     icon: UserPlus,
     title: "Зарегистрируйтесь",
-    text: "Название компании, email и телефон — это всё. Занимает 2 минуты, карта не нужна.",
+    text: "Форма из трёх экранов: версия ассистента и вход, где он будет работать — сайт или MAX, куда присылать заявки. Карта не нужна, форма сохраняется сама.",
   },
   {
-    icon: Code2,
-    title: "Получите код виджета",
-    text: "Код и пошаговая инструкция появятся в личном кабинете и придут на почту сразу после регистрации.",
+    icon: MailCheck,
+    title: "Получите доступ",
+    text: "Проверяем заявку и в течение рабочего дня присылаем на почту доступ в кабинет, код виджета и инструкцию.",
   },
   {
     icon: Rocket,
-    title: "Вставьте на сайт",
-    text: "Одна строка кода перед </body> — и ассистент отвечает туристам. Tilda, WordPress, Bitrix — подходит всё.",
+    title: "Вставьте код или подключите MAX",
+    text: "Одна строка кода перед </body> — Tilda, WordPress, Битрикс подходят все. Для MAX — токен бота в кабинете, подключим за 1 рабочий день.",
   },
 ];
 
 const included = [
-  "Подбор туров по базе Tourvisor — 50+ стран, live-цены",
+  "Подбор туров по базе Tourvisor — 50+ стран, цены на момент запроса",
   "Ответы туристам 24/7 — ночью и в выходные",
-  "Готовые заявки с контактами — менеджеру на почту",
+  "Готовые заявки с контактами — на почту, в U‑ON, Telegram и MAX",
   "Виджет в вашем бренде: логотип и цвета",
 ];
 
@@ -68,17 +69,18 @@ export default function StartLanding() {
         <div className="relative mx-auto max-w-3xl px-5 pt-28 pb-12 text-center sm:px-6 sm:pt-32 lg:px-8">
           <span className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-accent">
             <Sparkles className="h-3.5 w-3.5" />
-            30 дней бесплатно · подключение 0 ₽
+            30 дней бесплатно · подключение 0 ₽
           </span>
 
           <h1 className="mt-6 font-display text-4xl font-bold leading-[1.08] text-heading sm:text-5xl">
             <span className="whitespace-nowrap">ИИ-ассистент</span> на вашем сайте —{" "}
-            <span className="text-accent">подключение за 2 минуты</span>
+            <span className="text-accent">три коротких шага до запуска</span>
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-lg text-body">
-            Зарегистрируйтесь, получите код виджета и вставьте его на сайт.
-            Ассистент на базе Tourvisor подбирает туры и отвечает туристам
-            круглосуточно — заявки приходят менеджеру готовыми.
+            Зарегистрируйтесь — в течение рабочего дня придут доступ в кабинет
+            и код виджета. Вставьте его на сайт или подключите бота в MAX:
+            ассистент отвечает туристам круглосуточно, заявки приходят
+            менеджеру готовыми.
           </p>
 
           <div className="mt-8 flex flex-col items-center gap-3">
@@ -91,7 +93,7 @@ export default function StartLanding() {
                   "linear-gradient(135deg, #0062EF 0%, #0097F5 60%, #00CCF5 100%)",
               }}
             >
-              Подключить ассистента за 2 минуты
+              Зарегистрироваться бесплатно
               {/* На узком экране подпись переносится в две строки — стрелка
                   рядом с ней смотрится случайной, поэтому убираем её. */}
               <ArrowRight className="hidden h-5 w-5 sm:block" />
@@ -106,7 +108,7 @@ export default function StartLanding() {
               Оставить заявку на подключение
             </button>
             <span className="text-sm text-muted">
-              Сами за 2 минуты или менеджер настроит под ключ — цена одна
+              Сами в кабинете или с нашей помощью — цена одна
             </span>
           </div>
 
@@ -175,20 +177,31 @@ export default function StartLanding() {
                 Сколько стоит после теста
               </h2>
               <p className="mt-3 text-sm leading-relaxed text-body">
-                30 дней — бесплатно, подключение 0 ₽. Дальше — от{" "}
-                <span className="font-semibold text-heading">
+                30 дней с первого диалога и до 200 диалогов — бесплатно,
+                подключение 0 ₽. Дальше —{" "}
+                {reqVersionPublished && litePlan?.req && (
+                  <>
+                    от{" "}
+                    <span className="whitespace-nowrap font-semibold text-heading">
+                      {fmt(litePlan.req.price)} ₽/мес
+                    </span>{" "}
+                    (версия «Заявка»),{" "}
+                  </>
+                )}
+                от{" "}
+                <span className="whitespace-nowrap font-semibold text-heading">
                   {litePlan ? fmt(litePlan.lid.price) : "990"} ₽/мес
                 </span>{" "}
                 (версия «Лид», {litePlan?.lid.dialogs ?? 40} диалогов) или от{" "}
-                <span className="font-semibold text-heading">
+                <span className="whitespace-nowrap font-semibold text-heading">
                   {litePlan ? fmt(litePlan.price) : "1 990"} ₽/мес
                 </span>{" "}
-                (версия «Про»). Нужен объём больше — тарифы до 500
-                диалогов/мес.
+                (версия «Про»). Для сетей — тариф «Сеть», условия
+                индивидуальные.
               </p>
               <p className="mt-3 text-xs text-muted">
-                Никаких автосписаний: карту вы не привязываете, оплата — только
-                по вашему решению.
+                Никаких автосписаний: карту вы не привязываете, оплата — по
+                счёту и только по вашему решению.
               </p>
             </div>
             <Link
@@ -267,11 +280,11 @@ export default function StartLanding() {
         <div className="noise-overlay pointer-events-none absolute inset-0 opacity-20" />
         <div className="relative mx-auto max-w-3xl px-5 py-16 text-center sm:px-6 lg:px-8 lg:py-20">
           <h2 className="font-display text-3xl font-bold text-white sm:text-4xl">
-            Ассистент может работать у вас уже сегодня
+            Ассистент может работать у вас уже завтра
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-lg text-white/70">
-            Регистрация за 2 минуты или заявка менеджеру — первый месяц
-            бесплатно в обоих случаях.
+            Регистрация в три коротких шага или заявка менеджеру — первый
+            месяц бесплатно в обоих случаях.
           </p>
           <div className="mt-8 flex flex-col items-center gap-3">
             <a
@@ -279,7 +292,7 @@ export default function StartLanding() {
               onClick={() => register("start_landing_bottom")}
               className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-lg font-semibold text-primary shadow-lg shadow-black/10 transition-all hover:bg-blue-ice hover:shadow-xl"
             >
-              Подключить ассистента за 2 минуты
+              Зарегистрироваться бесплатно
               <ArrowRight className="h-5 w-5" />
             </a>
             <button

@@ -627,7 +627,7 @@ export default function DemandIndexPage() {
             </h2>
             <p className="mx-auto mt-3 max-w-lg text-white/70">
               ИИ-ассистент отвечает туристам на сайте и в мессенджерах 24/7 и
-              передаёт менеджеру готовые заявки. Регистрация за 2 минуты.
+              передаёт менеджеру готовые заявки. Регистрация в 3 коротких шага.
             </p>
             <div className="mt-6 flex justify-center">
               <RegisterCta source="indeks_sprosa_bottom" compact dark />

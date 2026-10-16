@@ -53,7 +53,7 @@ const steps = [
   {
     icon: Rocket,
     title: "Подключите себе",
-    text: "Такой же ассистент работает на вашем сайте и в мессенджерах. Запуск за пару минут.",
+    text: "Такой же ассистент работает на вашем сайте и в MAX. Запуск без программиста.",
   },
 ];
 
@@ -246,7 +246,7 @@ export default function DemoExperience() {
                 <Rocket className="h-5 w-5" />
                 <span className="sm:hidden">Зарегистрироваться</span>
                 <span className="hidden sm:inline">
-                  Зарегистрироваться за 2 минуты
+                  Зарегистрироваться бесплатно
                 </span>
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </a>
@@ -262,7 +262,7 @@ export default function DemoExperience() {
             </button>
             <p className="inline-flex items-center gap-2 rounded-full bg-accent/5 px-4 py-1.5 text-sm font-medium text-accent">
               <Sparkles className="h-4 w-4" />
-              Свой ассистент за 2 минуты — доступ на 30 дней бесплатно
+              Свой ассистент — 30 дней бесплатно с первого диалога
             </p>
             <span className="text-sm text-muted">
               или откройте чат кнопкой в правом нижнем углу →
@@ -420,7 +420,7 @@ export default function DemoExperience() {
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-lg text-white/70">
             Подключим ИИ-ассистента на ваш сайт и в мессенджеры (Web‑виджет и
-            MAX). Запуск за пару минут — с вашим брендом и данными.
+            MAX). Запуск без программиста — с вашим брендом и данными.
           </p>
 
           <div className="mt-9 flex flex-col items-center gap-3">
@@ -432,7 +432,7 @@ export default function DemoExperience() {
               onClick={handleTrialClick("demo_bottom")}
               className="inline-flex cursor-pointer items-center justify-center rounded-xl bg-white px-8 py-4 text-lg font-semibold text-primary shadow-lg shadow-black/10 transition-all hover:bg-blue-ice hover:shadow-xl"
             >
-              Зарегистрироваться за 2 минуты
+              Зарегистрироваться бесплатно
             </a>
             <button
               type="button"
@@ -443,7 +443,7 @@ export default function DemoExperience() {
               Оставить заявку на подключение
             </button>
             <span className="text-xs text-white/45">
-              Сами за 2 минуты или через менеджера — первый месяц бесплатно
+              Сами или через менеджера — первый месяц бесплатно
               в обоих случаях
             </span>
           </div>

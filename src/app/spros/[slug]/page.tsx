@@ -432,7 +432,7 @@ export default async function DemandPage({
             </h2>
             <p className="mx-auto mt-3 max-w-lg text-white/70">
               ИИ-ассистент отвечает на эти вопросы на вашем сайте — 24/7.
-              Регистрация за 2 минуты, 30 дней бесплатно.
+              Регистрация в 3 коротких шага, 30 дней бесплатно с первого диалога.
             </p>
             <div className="mt-6 flex justify-center">
               <RegisterCta source={`spros_${page.slug}_bottom`} compact dark />

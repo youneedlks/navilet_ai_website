@@ -682,8 +682,8 @@ export default function ChatBotPage() {
               Поставьте чат-бота, который продаёт туры
             </h2>
             <p className="mx-auto mt-3 max-w-lg text-white/70">
-              Регистрация за 2 минуты, одна строка кода на сайт. 30 дней и до
-              200 диалогов — бесплатно, без карты.
+              Регистрация в 3 коротких шага, одна строка кода на сайт. 30 дней
+              с первого диалога и до 200 диалогов — бесплатно, без карты.
             </p>
             <div className="mt-6 flex justify-center">
               <RegisterCta source="chatbot_bottom" compact dark />

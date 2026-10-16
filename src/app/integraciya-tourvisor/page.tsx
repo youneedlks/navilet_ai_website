@@ -298,7 +298,7 @@ export default function TourvisorIntegrationPage() {
         <section className="mx-auto max-w-4xl px-5 py-16 sm:px-6 lg:px-8 lg:py-20">
           <div className="text-center">
             <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl">
-              Как подключить за <span className="text-accent">пару минут</span>
+              Как подключить — <span className="text-accent">без программиста</span>
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-base text-body">
               Никаких сложных интеграций с Tourvisor — он уже подключён на

@@ -234,7 +234,7 @@ export default function CallToAction() {
           variants={fadeInUp}
           className="mt-6 text-center text-sm text-white/40"
         >
-          30 дней бесплатно • Подключение 0 ₽ • Запуск за пару минут
+          30 дней бесплатно • Подключение 0 ₽ • Без программиста
         </motion.p>
       </motion.div>
     </section>

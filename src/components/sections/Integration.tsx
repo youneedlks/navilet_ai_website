@@ -116,8 +116,8 @@ export default function Integration() {
     <SectionWrapper id="integration" alt>
       <motion.div variants={fadeInUp} className="mb-16 text-center">
         <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl lg:text-[2.75rem]">
-          Подключение за{" "}
-          <span className="text-accent">пару минут</span>
+          Подключение{" "}
+          <span className="text-accent">без программиста</span>
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-base text-body">
           Сами через личный кабинет — или оставьте заявку, и менеджер настроит

@@ -251,7 +251,7 @@ export default function SprosHubPage() {
             </h2>
             <p className="mx-auto mt-3 max-w-lg text-white/70">
               Подключите ассистента — и вопросы туристов начнут превращаться в
-              заявки. 2 минуты на регистрацию, 30 дней бесплатно.
+              заявки. Регистрация в 3 коротких шага, 30 дней бесплатно с первого диалога.
             </p>
             <div className="mt-6 flex justify-center">
               <RegisterCta source="spros_hub_bottom" compact dark />

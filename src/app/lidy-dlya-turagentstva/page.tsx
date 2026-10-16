@@ -504,7 +504,7 @@ export default function LidyPage() {
               Первый месяц лидов — бесплатно
             </h2>
             <p className="mx-auto mt-3 max-w-lg text-white/70">
-              Подключите версию «Лид» за пару минут и посчитайте цену заявки на
+              Подключите версию «Лид» и посчитайте цену заявки на
               своём трафике: 30 дней и до 200 диалогов — бесплатно.
             </p>
             <div className="mt-6 flex justify-center">
