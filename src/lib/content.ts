@@ -483,6 +483,10 @@ export interface PricingPlan {
   effectivePerDialog: number;
   /** Значения того же тарифа в версии «Лид» (лидогенерация) */
   lid: VersionPlanValues;
+  /** Версия «Заявка». У индивидуальной «Сети» нет. */
+  req?: VersionPlanValues;
+  /** Цена не публикуется: тариф индивидуальный, подключается по заявке («Сеть»). */
+  custom?: boolean;
   /** Короткое описание целевого клиента */
   tagline: string;
   popular: boolean;
@@ -491,12 +495,13 @@ export interface PricingPlan {
 export const pricingPlans: PricingPlan[] = [
   {
     id: "lite",
-    name: "Lite",
+    name: "Лайт",
     price: 1990,
     dialogs: 30,
     extraDialog: 90,
     effectivePerDialog: 66,
     lid: { price: 990, dialogs: 40, extraDialog: 40, effectivePerDialog: 25 },
+    req: { price: 790, dialogs: 40, extraDialog: 30, effectivePerDialog: 20 },
     tagline: "Одиночный агент или небольшой сайт",
     popular: false,
   },
@@ -508,6 +513,7 @@ export const pricingPlans: PricingPlan[] = [
     extraDialog: 80,
     effectivePerDialog: 66,
     lid: { price: 1690, dialogs: 80, extraDialog: 30, effectivePerDialog: 21 },
+    req: { price: 1390, dialogs: 80, extraDialog: 24, effectivePerDialog: 17 },
     tagline: "Малая точка, филиал или 1 офис без активного потока",
     popular: true,
   },
@@ -519,6 +525,7 @@ export const pricingPlans: PricingPlan[] = [
     extraDialog: 60,
     effectivePerDialog: 44,
     lid: { price: 2690, dialogs: 150, extraDialog: 22, effectivePerDialog: 18 },
+    req: { price: 2190, dialogs: 150, extraDialog: 18, effectivePerDialog: 15 },
     tagline: "Главный офис небольшой сети, 2–4 диалога в день",
     popular: false,
   },
@@ -530,11 +537,13 @@ export const pricingPlans: PricingPlan[] = [
     extraDialog: 40,
     effectivePerDialog: 40,
     lid: { price: 3990, dialogs: 250, extraDialog: 18, effectivePerDialog: 16 },
+    req: { price: 3190, dialogs: 250, extraDialog: 14, effectivePerDialog: 13 },
     tagline: "Зрелое агентство, 2–3 офиса или активный сайт",
     popular: false,
   },
   {
     id: "set",
+    custom: true,
     name: "Сеть",
     price: 14990,
     dialogs: 400,
@@ -565,6 +574,8 @@ export interface CrossChannelAddon extends CrossChannelValues {
   planId: PricingPlan["id"];
   /** Значения надстройки для версии «Лид» */
   lid: CrossChannelValues;
+  /** «Второй канал» в версии «Заявка». */
+  req?: CrossChannelValues;
 }
 
 export const crossChannelAddons: CrossChannelAddon[] = [
@@ -575,6 +586,13 @@ export const crossChannelAddons: CrossChannelAddon[] = [
     totalPrice: 2980,
     totalDialogs: 45,
     extraDialogPrice: 66,
+    req: {
+      addonPrice: 390,
+      extraDialogs: 20,
+      totalPrice: 1180,
+      totalDialogs: 60,
+      extraDialogPrice: 20,
+    },
     lid: {
       addonPrice: 490,
       extraDialogs: 20,
@@ -590,6 +608,13 @@ export const crossChannelAddons: CrossChannelAddon[] = [
     totalPrice: 4580,
     totalDialogs: 80,
     extraDialogPrice: 43,
+    req: {
+      addonPrice: 690,
+      extraDialogs: 40,
+      totalPrice: 2080,
+      totalDialogs: 120,
+      extraDialogPrice: 17,
+    },
     lid: {
       addonPrice: 890,
       extraDialogs: 40,
@@ -605,6 +630,13 @@ export const crossChannelAddons: CrossChannelAddon[] = [
     totalPrice: 7280,
     totalDialogs: 180,
     extraDialogPrice: 33,
+    req: {
+      addonPrice: 1090,
+      extraDialogs: 75,
+      totalPrice: 3280,
+      totalDialogs: 225,
+      extraDialogPrice: 15,
+    },
     lid: {
       addonPrice: 1390,
       extraDialogs: 75,
@@ -620,6 +652,13 @@ export const crossChannelAddons: CrossChannelAddon[] = [
     totalPrice: 10980,
     totalDialogs: 300,
     extraDialogPrice: 30,
+    req: {
+      addonPrice: 1590,
+      extraDialogs: 125,
+      totalPrice: 4780,
+      totalDialogs: 375,
+      extraDialogPrice: 13,
+    },
     lid: {
       addonPrice: 1990,
       extraDialogs: 125,
@@ -760,7 +799,15 @@ export const channelOptions: ChannelOption[] = [
 
 /* ── Версии ассистента: «Лид» и «Про» ─────────────────────── */
 
-export type AssistantVersionId = "lid" | "pro";
+export type AssistantVersionId = "req" | "lid" | "pro";
+
+/**
+ * Выключатель версии «Заявка» (в кабинете — «Лид без подборки», код `req`).
+ * Публикуется, когда Кабинет сообщит «готово»: выбор при регистрации и цены
+ * в кабинете (задание Кабинета 15.10.2026, раздел 8). false — «Заявка»
+ * пропадает из переключателей и тарифов, остальное работает как раньше.
+ */
+export const reqVersionPublished = true;
 
 export interface AssistantVersion {
   id: AssistantVersionId;
@@ -878,6 +925,8 @@ export const assistantVersions: AssistantVersion[] = [
 export const demoAssistants: Record<AssistantVersionId, string | null> = {
   pro: "e919868a-abae-4d5e-87bb-67935c5cca30",
   lid: "f745cbae-cf5c-431c-bcc8-81302ada48c9",
+  // Демо «Заявки» попросим у рантайма (решение владельца 16.10).
+  req: null,
 };
 
 /** Версия, чей чат открывается, если у выбранной демо ещё нет */
