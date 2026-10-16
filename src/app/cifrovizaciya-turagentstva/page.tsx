@@ -206,7 +206,7 @@ export default function DigitalPillarPage() {
                   stat: `${networkResults.stats[2].value}%`,
                   label: "обращений приходят вне рабочего времени",
                 },
-                { stat: "15–40 мин", label: "уходит у менеджера на один подбор" },
+                { stat: "10 мин", label: "ждёт ответа турист — дальше уходит" },
               ].map((s) => (
                 <div
                   key={s.label}
