@@ -17,6 +17,11 @@ import {
   Layers,
 } from "lucide-react";
 import { jsonLdScript } from "@/lib/schema";
+import {
+  pricingPlans,
+  crossChannelAddons,
+  priceFromLabel,
+} from "@/lib/content";
 
 export const metadata: Metadata = {
   title: { absolute: "ИИ для туроператора — B2B и B2C | Навылет! AI" },
@@ -92,34 +97,47 @@ const outcomes = [
   "Гибкая настройка скриптов под специфику туроператора и его направлений",
 ];
 
-const tariffsForOperators = [
+const rub = (value: number) => `${value.toLocaleString("ru-RU")}\u00A0₽`;
+const plan = (id: string) => pricingPlans.find((p) => p.id === id)!;
+const addon = (id: string) => crossChannelAddons.find((a) => a.planId === id)!;
+
+const tariffsForOperators: {
+  icon: typeof Users;
+  title: string;
+  rec: string;
+  detail: string;
+  price: string;
+  when: string;
+  href: string;
+  isPopular?: boolean;
+}[] = [
   {
     icon: Users,
     title: "Региональный туроператор",
-    rec: "Тариф «Стандарт» + Второй канал",
-    detail: "180 диалогов в месяц, Web + MAX, подключение 0 ₽",
-    price: "7 280 ₽/мес",
+    rec: "«Про» · «Стандарт» + Второй канал",
+    detail: `${addon("standart").totalDialogs} диалогов в месяц, Web + MAX, подключение 0 ₽`,
+    price: `${rub(addon("standart").totalPrice)}/мес`,
     when: "До 5 агентств-партнёров, базовая B2C-витрина",
     href: "/tarify#standart",
   },
   {
     icon: Briefcase,
     title: "Туроператор федерального уровня",
-    rec: "Тариф «Бизнес» + Второй канал",
-    detail: "300 диалогов в месяц, Web + MAX, подключение 0 ₽",
-    price: "10 980 ₽/мес",
-    when: "Активная B2C-витрина + 5–15 агентских партнёров",
+    rec: "«Про» · «Бизнес» + Второй канал",
+    detail: `${addon("biznes").totalDialogs} диалогов в месяц, Web + MAX, подключение 0 ₽`,
+    price: `${rub(addon("biznes").totalPrice)}/мес`,
+    when: "Активная B2C-витрина и от 5 до 15 агентских партнёров",
     isPopular: true,
     href: "/tarify#biznes",
   },
   {
     icon: Network,
     title: "Сетевой холдинг / ассоциация",
-    rec: "Тариф «Сеть» + Второй канал",
-    detail: "600 диалогов в месяц, Web + MAX, подключение 0 ₽",
-    price: "19 980 ₽/мес",
+    rec: `Тариф «${plan("set").name}» — любая версия`,
+    detail: "Объём диалогов и цена — под ваш поток, Web + MAX",
+    price: "Индивидуально",
     when: "Региональные сети, ассоциации, B2B-маркетплейсы туров",
-    href: "/tarify#set",
+    href: "/dlya-setey-agentstv",
   },
 ];
 
@@ -166,7 +184,7 @@ const operatorJsonLd = {
           "Туроператоры (региональные, федеральные), сетевые холдинги, ассоциации турбизнеса",
       },
       description:
-        "ИИ-инструмент для туроператоров: вооружите агентов мгновенным подбором по вашей базе или встройте виджет на B2C-сайт. Интеграция Tourvisor, MAX‑мессенджер, white-label.",
+        `ИИ-инструмент для туроператоров: вооружите агентов мгновенным подбором по вашей базе или встройте виджет на B2C-сайт. Интеграция Tourvisor, MAX‑мессенджер, white-label.`,
       offers: { "@id": `${siteUrl}/#product` },
     },
   ],
@@ -370,22 +388,22 @@ export default function ForOperatorsPage() {
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-base text-body">
               Для туроператоров обычно нужен «Второй канал» (Web + MAX
-              одновременно): B2C-витрина + чат-канал с клиентом. Цены ниже — для
-              версии «Про» с двумя каналами; вся линейка начинается от{" "}
+              одновременно): B2C-витрина + чат-канал с клиентом. Цены ниже — с
+              двумя каналами; вся линейка начинается от{" "}
               <Link
                 href="/skolko-stoit"
-                className="font-medium text-accent underline decoration-accent/30 underline-offset-2 hover:decoration-accent"
+                className="whitespace-nowrap font-medium text-accent underline decoration-accent/30 underline-offset-2 hover:decoration-accent"
               >
-                990 ₽/мес
+                {priceFromLabel}/мес
               </Link>
-              , если хватает одного канала и версии «Лид».
+              , если хватает одного канала.
             </p>
           </div>
           <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
             {tariffsForOperators.map((t) => (
               <div
                 key={t.title}
-                className={`relative rounded-2xl border bg-white p-6 ${
+                className={`relative flex flex-col rounded-2xl border bg-white p-6 ${
                   t.isPopular
                     ? "border-accent/40 shadow-[0_8px_40px_rgba(0,82,204,0.1)]"
                     : "border-blue-subtle/50"
@@ -402,8 +420,8 @@ export default function ForOperatorsPage() {
                 <p className="font-display text-base font-semibold text-heading">
                   {t.title}
                 </p>
-                <p className="mt-3 text-sm text-muted">{t.when}</p>
-                <div className="mt-6 border-t border-blue-subtle/30 pt-4">
+                <p className="mt-3 mb-6 text-sm text-muted">{t.when}</p>
+                <div className="mt-auto border-t border-blue-subtle/30 pt-4">
                   <p className="font-display text-xs font-semibold uppercase tracking-wide text-accent">
                     {t.rec}
                   </p>

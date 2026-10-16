@@ -9,12 +9,11 @@ import {
   crossChannelAddons,
   tarifyFaqItems,
   reqVersionPublished,
-  type PricingPlan,
-  type VersionPlanValues,
   priceFromLabel,
 } from "@/lib/content";
 import { ChevronRight, Check, Sparkles, Phone, Mail } from "lucide-react";
 import { jsonLdScript } from "@/lib/schema";
+import { publicVersions, aggregateOfferJsonLd } from "@/lib/public-offers";
 
 /** Минимальная цена для заголовков: «Заявка» от 790 ₽, без неё — «Лид» от 990 ₽. */
 const minPriceLabel = priceFromLabel;
@@ -92,55 +91,8 @@ const includedGroups = [
   },
 ];
 
-/** Версии в таблицах и разметке. «Заявка» — пока её публикует выключатель. */
-const tableVersions: {
-  id: "req" | "lid" | "pro";
-  label: string;
-  title: string;
-  about: string;
-  pick: (p: PricingPlan) => VersionPlanValues | undefined;
-}[] = [
-  ...(reqVersionPublished
-    ? [
-        {
-          id: "req" as const,
-          label: "«Заявка»",
-          title: "Версия «Заявка» — запрос без подборки",
-          about: "собирает запрос и контакт, тур подбирает менеджер",
-          pick: (p: PricingPlan) => p.req,
-        },
-      ]
-    : []),
-  {
-    id: "lid",
-    label: "«Лид»",
-    title: "Версия «Лид» — лидогенерация",
-    about: "лидогенерация: подбор туров и заявка менеджеру",
-    pick: (p) => p.lid,
-  },
-  {
-    id: "pro",
-    label: "«Про»",
-    title: "Версия «Про» — полный инструмент",
-    about: "консультации, подбор туров и возврат клиентов",
-    pick: (p) => ({
-      price: p.price,
-      dialogs: p.dialogs,
-      extraDialog: p.extraDialog,
-      effectivePerDialog: p.effectivePerDialog,
-    }),
-  },
-];
-
-/** Предложения с ценой для разметки: «Сеть» индивидуальна и в них не входит. */
-const publicOffers = tableVersions.flatMap((version) =>
-  pricingPlans
-    .filter((p) => !p.custom)
-    .flatMap((plan) => {
-      const values = version.pick(plan);
-      return values ? [{ version, plan, values }] : [];
-    })
-);
+/** Версии в таблицах и разметке — общие с главной и /skolko-stoit. */
+const tableVersions = publicVersions;
 
 const tarifyJsonLd = {
   "@context": "https://schema.org",
@@ -185,41 +137,7 @@ const tarifyJsonLd = {
       brand: { "@id": `${siteUrl}/#organization` },
       category: "B2B SaaS / TravelTech",
       image: `${siteUrl}/og-image.png`,
-      // AggregateOffer с lowPrice — то, из чего Яндекс собирает сниппет
-      // «от 990 ₽», а ИИ-поиск берёт ответ на «сколько стоит».
-      offers: {
-        "@type": "AggregateOffer",
-        "@id": `${siteUrl}/tarify#offers`,
-        priceCurrency: "RUB",
-        lowPrice: String(Math.min(...publicOffers.map((o) => o.values.price))),
-        highPrice: String(Math.max(...publicOffers.map((o) => o.values.price))),
-        offerCount: publicOffers.length,
-        availability: "https://schema.org/InStock",
-        url: `${siteUrl}/tarify`,
-        eligibleRegion: { "@type": "Country", name: "Россия" },
-        offers: publicOffers.map(({ version, plan, values }) => ({
-          "@type": "Offer",
-          "@id": `${siteUrl}/tarify#offer-${version.id}-${plan.id}`,
-          name: `${plan.name} — версия ${version.label}`,
-          price: String(values.price),
-          priceCurrency: "RUB",
-          url: `${siteUrl}/tarify#${plan.id}`,
-          availability: "https://schema.org/InStock",
-          description: `Версия ${version.label} (${version.about}): ${values.dialogs} диалогов в месяц. Подключение бесплатно. ${plan.tagline}.`,
-          eligibleRegion: { "@type": "Country", name: "Россия" },
-          priceSpecification: {
-            "@type": "UnitPriceSpecification",
-            price: String(values.price),
-            priceCurrency: "RUB",
-            unitText: "MONTHLY",
-            referenceQuantity: {
-              "@type": "QuantitativeValue",
-              value: values.dialogs,
-              unitText: "диалогов в месяц",
-            },
-          },
-        })),
-      },
+      offers: aggregateOfferJsonLd(`${siteUrl}/tarify#offers`),
     },
     {
       "@type": "FAQPage",

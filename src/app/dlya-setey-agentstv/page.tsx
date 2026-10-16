@@ -4,7 +4,7 @@ import Navigation from "@/components/sections/Navigation";
 import Footer from "@/components/sections/Footer";
 import FloatingCTA from "@/components/ui/FloatingCTA";
 import RegisterCta from "@/components/seo/RegisterCta";
-import { pricingPlans } from "@/lib/content";
+import { priceFromLabel, priceSelectionNote, reqVersionPublished } from "@/lib/content";
 import {
   ChevronRight,
   Check,
@@ -13,24 +13,28 @@ import {
   Palette,
   BarChart3,
   ArrowRight,
+  Network as NetworkIcon,
 } from "lucide-react";
 import { jsonLdScript } from "@/lib/schema";
-import { versionIcons } from "@/lib/version-icons";
 
 const siteUrl = "https://navilet.ru";
-const LidIcon = versionIcons.lid;
-const ProIcon = versionIcons.pro;
 
-const rub = (value: number) => `${value.toLocaleString("ru-RU")}\u00A0₽`;
-
-const networkPlan = pricingPlans[pricingPlans.length - 1];
+/** Что входит в «Сеть» — тариф индивидуальный, цены на сайте нет (задание Кабинета 15.10, п. 3.7). */
+const networkTerms = [
+  "Отдельный ассистент на каждый офис — свой стиль, приветствие и база знаний",
+  "Лимит диалогов — под поток всей сети, а не по пакетам",
+  `Сайт и MAX, любая версия: ${reqVersionPublished ? "«Заявка», «Лид»" : "«Лид»"} или «Про»`,
+  "Заявки — менеджерам нужной точки: почта, U‑ON, Telegram и MAX",
+  "Аналитика по каждому офису и барометр спроса по сети",
+  "Пилот на нескольких офисах — первый месяц бесплатно",
+];
 
 export const metadata: Metadata = {
   title: {
     absolute: "ИИ-ассистент для сети турагентств — тариф «Сеть» | Навылет! AI",
   },
   description:
-    "ИИ-ассистент для сети турагентств: отдельный ассистент на каждый офис, общая аналитика и барометр спроса. Тариф «Сеть» от 6 990 ₽/мес. Кейс: 10+ офисов МГП.",
+    "ИИ-ассистент для сети турагентств: отдельный ассистент на каждый офис, общая аналитика и барометр спроса. Тариф «Сеть» — индивидуально. Кейс: 10+ офисов МГП.",
   keywords: [
     "ИИ для сети турагентств",
     "автоматизация сети турагентств",
@@ -52,7 +56,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "ИИ-ассистент для сети турагентств",
     description:
-      "Тариф «Сеть»: 500 диалогов от 6 990 ₽/мес. Кейс МГП — 10+ офисов. Первый месяц бесплатно.",
+      "Тариф «Сеть» — условия под вашу сеть. Кейс МГП — 10+ офисов. Первый месяц бесплатно.",
     images: ["/og-image.png"],
   },
 };
@@ -61,7 +65,7 @@ const faqItems = [
   {
     question: "Сколько стоит ИИ-ассистент для сети турагентств?",
     answer:
-      "Тариф «Сеть» в версии «Лид» — 6 990 ₽/мес за 500 диалогов (≈14 ₽ за диалог), в версии «Про» — 14 990 ₽/мес за 400 диалогов (≈37 ₽). Каждый офис может работать и на собственном тарифе от 990 ₽/мес — линейка гибкая. Подключение бесплатное, первый месяц — тоже.",
+      `Тариф «Сеть» — индивидуальный: объём диалогов, версия и цена считаются под число офисов и поток сети, самостоятельно в кабинете он не подключается — оставьте заявку. Каждый офис может работать и на собственном тарифе от ${priceFromLabel}/мес${priceSelectionNote}. Подключение бесплатное, первый месяц — тоже.`,
   },
   {
     question: "Можно ли подключить несколько офисов или сайтов?",
@@ -76,7 +80,7 @@ const faqItems = [
   {
     question: "Что видит управляющая компания?",
     answer:
-      "Личный кабинет каждой точки: диалоги, заявки, конверсию, воронку подборок «просмотры → открытия туров → заявки», а также барометр спроса по направлениям и прогноз заявок до конца месяца в разделе «Отчёты и прогнозы».",
+      "Личный кабинет каждой точки: диалоги, заявки, конверсию, воронку подборок «просмотры → открытия туров → заявки», а также барометр спроса по направлениям и прогноз заявок до конца месяца на вкладке «Отчёты и прогнозы» в «Аналитике».",
   },
 ];
 
@@ -102,7 +106,7 @@ const jsonLd = {
       url: `${siteUrl}/dlya-setey-agentstv`,
       name: "ИИ-ассистент для сети турагентств",
       description:
-        "ИИ-ассистент для сетей турагентств и франшиз: ассистент на каждый офис, аналитика по точкам, тариф «Сеть» от 6 990 ₽/мес. Кейс: 10+ офисов сети МГП.",
+        "ИИ-ассистент для сетей турагентств и франшиз: ассистент на каждый офис, аналитика по точкам, тариф «Сеть» с индивидуальными условиями. Кейс: 10+ офисов сети МГП.",
       inLanguage: "ru-RU",
       isPartOf: { "@id": `${siteUrl}/#website` },
       breadcrumb: { "@id": `${siteUrl}/dlya-setey-agentstv#breadcrumb` },
@@ -115,7 +119,7 @@ const jsonLd = {
       name: "ИИ-ассистент для сетей турагентств",
       serviceType: "Автоматизация обработки заявок в сети турагентств",
       description:
-        "Отдельный ИИ-ассистент на каждый офис сети в своём фирменном стиле, заявки на почту, в U‑ON, Telegram и MAX, аналитика по каждой точке, барометр спроса по сети. Тариф «Сеть»: 500 диалогов в версии «Лид» за 6 990 ₽/мес или 400 диалогов в версии «Про» за 14 990 ₽/мес.",
+        "Отдельный ИИ-ассистент на каждый офис сети в своём фирменном стиле, заявки на почту, в U‑ON, Telegram и MAX, аналитика по каждой точке, барометр спроса по сети. Тариф «Сеть» — индивидуальный: объём диалогов и цена под поток сети.",
       provider: { "@id": `${siteUrl}/#organization` },
       areaServed: "RU",
       audience: {
@@ -123,13 +127,6 @@ const jsonLd = {
         name: "Сети турагентств и франшизы",
       },
       isRelatedTo: { "@id": `${siteUrl}/#product` },
-      offers: {
-        "@type": "Offer",
-        price: String(networkPlan.lid.price),
-        priceCurrency: "RUB",
-        description:
-          "Тариф «Сеть», версия «Лид»: 500 диалогов в месяц, подключение 0 ₽, первый месяц бесплатно.",
-      },
     },
     {
       "@type": "FAQPage",
@@ -162,7 +159,7 @@ const networkNeeds = [
   {
     icon: BarChart3,
     title: "Барометр спроса по сети",
-    text: "Раздел «Отчёты и прогнозы»: спрос по направлениям, прогноз заявок и выручки до конца месяца, средний чек интереса — для планирования рекламы и загрузки.",
+    text: "Вкладка «Отчёты и прогнозы» в «Аналитике»: спрос по направлениям, прогноз заявок и выручки до конца месяца, средний чек интереса — для планирования рекламы и загрузки.",
   },
 ];
 
@@ -196,9 +193,9 @@ export default function NetworksPage() {
             <p className="mx-auto mt-5 max-w-3xl text-base text-body sm:text-lg">
               Отдельный ассистент на каждый офис в фирменном стиле сети,
               заявки менеджерам конкретной точки, аналитика по всем офисам и
-              барометр спроса. Тариф «Сеть» — от {rub(networkPlan.lid.price)}
-              /мес за 500 диалогов; так уже работают 10+ офисов «Сети магазинов
-              горящих путёвок».
+              барометр спроса. Тариф «Сеть» — с индивидуальными условиями под
+              поток сети; так уже работают 10+ офисов «Сети магазинов горящих
+              путёвок».
             </p>
             <div className="mt-8 flex justify-center">
               <RegisterCta source="seti_hero" compact />
@@ -264,60 +261,40 @@ export default function NetworksPage() {
         <section className="bg-surface-alt">
           <div className="mx-auto max-w-4xl px-5 py-14 sm:px-6 lg:px-8">
             <h2 className="text-center font-display text-2xl font-bold text-heading sm:text-3xl">
-              Тариф «Сеть» — самая низкая цена диалога
+              Тариф «Сеть» — условия под вашу сеть
             </h2>
             <p className="mx-auto mt-3 max-w-2xl text-center text-base text-body">
-              Для центрального сайта с большим трафиком. Отдельные офисы могут
-              работать на своих тарифах от {rub(990)}/мес — линейка гибкая.
+              Для центрального сайта с большим трафиком и многих офисов. Объём
+              диалогов и цену считаем индивидуально — под число точек и поток.
+              Отдельные офисы могут работать на своих тарифах{" "}
+              <span className="whitespace-nowrap">от {priceFromLabel}/мес</span>{" "}
+              — линейка гибкая.
             </p>
-            <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <div className="rounded-2xl border border-blue-subtle/50 bg-white p-6 shadow-card">
-                <div className="flex items-center gap-2">
-                  <LidIcon className="h-5 w-5 text-accent" />
-                  <span className="font-display text-lg font-bold text-heading">
-                    «Лид» · Сеть
-                  </span>
-                </div>
-                <p className="mt-3 font-display text-3xl font-bold text-heading">
-                  {rub(networkPlan.lid.price)}
-                  <span className="text-base font-medium text-muted">/мес</span>
-                </p>
-                <ul className="mt-4 space-y-2 text-sm text-body">
-                  {[
-                    `${networkPlan.lid.dialogs} диалогов в месяц`,
-                    `≈ ${rub(networkPlan.lid.effectivePerDialog)} за диалог`,
-                    "Лидогенерация: заявка менеджеру с контактом",
-                  ].map((f) => (
-                    <li key={f} className="flex items-start gap-2">
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
+            <div className="mt-8 rounded-2xl border border-blue-subtle/50 bg-white p-6 shadow-card sm:p-8">
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                <NetworkIcon className="h-5 w-5 text-accent" />
+                <span className="font-display text-lg font-bold text-heading">
+                  «Сеть»
+                </span>
+                <span className="font-display text-lg font-bold text-accent">
+                  Индивидуально
+                </span>
               </div>
-              <div className="rounded-2xl border border-blue-subtle/50 bg-white p-6 shadow-card">
-                <div className="flex items-center gap-2">
-                  <ProIcon className="h-5 w-5 text-accent" />
-                  <span className="font-display text-lg font-bold text-heading">
-                    «Про» · Сеть
-                  </span>
-                </div>
-                <p className="mt-3 font-display text-3xl font-bold text-heading">
-                  {rub(networkPlan.price)}
-                  <span className="text-base font-medium text-muted">/мес</span>
-                </p>
-                <ul className="mt-4 space-y-2 text-sm text-body">
-                  {[
-                    `${networkPlan.dialogs} диалогов в месяц`,
-                    `≈ ${rub(networkPlan.effectivePerDialog)} за диалог`,
-                    "Консультации без ограничений и возврат клиентов",
-                  ].map((f) => (
-                    <li key={f} className="flex items-start gap-2">
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
+              <ul className="mt-5 grid grid-cols-1 gap-x-6 gap-y-2.5 text-sm text-body sm:grid-cols-2">
+                {networkTerms.map((f) => (
+                  <li key={f} className="flex items-start gap-2">
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-6 flex justify-center sm:justify-start">
+                <RegisterCta
+                  source="seti_tariff"
+                  compact
+                  primaryLabel="Обсудить условия сети"
+                  formPreset={{ planId: "set", path: "request" }}
+                />
               </div>
             </div>
             <p className="mt-5 text-center text-sm text-muted">
@@ -328,7 +305,7 @@ export default function NetworksPage() {
               >
                 на странице тарифов
               </Link>
-              . Сравнение версий «Лид» и «Про» —{" "}
+              . Сравнение версий —{" "}
               <Link
                 href="/versii"
                 className="font-medium text-accent underline decoration-accent/30 underline-offset-2 hover:decoration-accent"

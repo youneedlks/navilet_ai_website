@@ -27,21 +27,38 @@ import {
   Calculator,
 } from "lucide-react";
 import { jsonLdScript } from "@/lib/schema";
+import { aggregateOfferJsonLd, publicPlans } from "@/lib/public-offers";
 import { versionIcons } from "@/lib/version-icons";
 
 const siteUrl = "https://navilet.ru";
 
+const ReqIcon = versionIcons.req;
 const LidIcon = versionIcons.lid;
 const ProIcon = versionIcons.pro;
 
 /** Дата последней проверки цен — показываем на странице и в разметке. */
-const priceCheckedAt = "2026-08-13";
-const priceCheckedLabel = "13 августа 2026";
+const priceCheckedAt = "2026-10-15";
+const priceCheckedLabel = "15 октября 2026";
 
 /** Цена с неразрывными пробелами: «1 990 ₽» не рвётся по строкам. */
 const rub = (value: number) => `${value.toLocaleString("ru-RU")}\u00A0₽`;
 
-const lidPlans = pricingPlans.map((p) => ({
+// «Сеть» — индивидуально, в таблицах и «до … ₽» её нет.
+const reqPlans = publicPlans.flatMap((p) =>
+  p.req
+    ? [
+        {
+          name: p.name,
+          price: p.req.price,
+          dialogs: p.req.dialogs,
+          extraDialog: p.req.extraDialog,
+          perDialog: p.req.effectivePerDialog,
+        },
+      ]
+    : []
+);
+
+const lidPlans = publicPlans.map((p) => ({
   name: p.name,
   price: p.lid.price,
   dialogs: p.lid.dialogs,
@@ -49,7 +66,7 @@ const lidPlans = pricingPlans.map((p) => ({
   perDialog: p.lid.effectivePerDialog,
 }));
 
-const proPlans = pricingPlans.map((p) => ({
+const proPlans = publicPlans.map((p) => ({
   name: p.name,
   price: p.price,
   dialogs: p.dialogs,
@@ -61,6 +78,12 @@ const minLid = Math.min(...lidPlans.map((p) => p.price));
 const maxLid = Math.max(...lidPlans.map((p) => p.price));
 const minPro = Math.min(...proPlans.map((p) => p.price));
 const maxPro = Math.max(...proPlans.map((p) => p.price));
+const minReq = Math.min(...reqPlans.map((p) => p.price));
+const maxReq = Math.max(...reqPlans.map((p) => p.price));
+const maxDialogs = Math.max(...lidPlans.map((p) => p.dialogs));
+const planCountWord =
+  ({ 3: "три", 4: "четыре" } as Record<number, string>)[publicPlans.length] ??
+  String(publicPlans.length);
 
 export const metadata: Metadata = {
   title: {
@@ -141,60 +164,7 @@ const jsonLd = {
       brand: { "@id": `${siteUrl}/#organization` },
       category: "Программное обеспечение для турагентств",
       url: `${siteUrl}/skolko-stoit`,
-      offers: {
-        "@type": "AggregateOffer",
-        priceCurrency: "RUB",
-        lowPrice: String(minLid),
-        highPrice: String(maxPro),
-        offerCount: pricingPlans.length * 2,
-        availability: "https://schema.org/InStock",
-        url: `${siteUrl}/tarify`,
-        eligibleRegion: { "@type": "Country", name: "Россия" },
-        offers: [
-          ...lidPlans.map((p) => ({
-            "@type": "Offer",
-            name: `${p.name} — версия «Лид»`,
-            description: `${p.dialogs} диалогов в месяц, сверхлимитный диалог ${p.extraDialog} ₽`,
-            price: String(p.price),
-            priceCurrency: "RUB",
-            availability: "https://schema.org/InStock",
-            url: `${siteUrl}/tarify`,
-            priceSpecification: {
-              "@type": "UnitPriceSpecification",
-              price: String(p.price),
-              priceCurrency: "RUB",
-              unitText: "MONTHLY",
-              billingDuration: 1,
-              referenceQuantity: {
-                "@type": "QuantitativeValue",
-                value: p.dialogs,
-                unitText: "диалогов в месяц",
-              },
-            },
-          })),
-          ...proPlans.map((p) => ({
-            "@type": "Offer",
-            name: `${p.name} — версия «Про»`,
-            description: `${p.dialogs} диалогов в месяц, сверхлимитный диалог ${p.extraDialog} ₽`,
-            price: String(p.price),
-            priceCurrency: "RUB",
-            availability: "https://schema.org/InStock",
-            url: `${siteUrl}/tarify`,
-            priceSpecification: {
-              "@type": "UnitPriceSpecification",
-              price: String(p.price),
-              priceCurrency: "RUB",
-              unitText: "MONTHLY",
-              billingDuration: 1,
-              referenceQuantity: {
-                "@type": "QuantitativeValue",
-                value: p.dialogs,
-                unitText: "диалогов в месяц",
-              },
-            },
-          })),
-        ],
-      },
+      offers: aggregateOfferJsonLd(),
     },
     {
       "@type": "FAQPage",
@@ -303,6 +273,7 @@ function PlanTable({
 export default function SkolkoStoitPage() {
   const liteLid = pricingPlans[0].lid;
   const liteAddonLid = crossChannelAddons[0].lid;
+  const liteAddonReq = crossChannelAddons[0].req;
 
   return (
     <>
@@ -366,8 +337,9 @@ export default function SkolkoStoitPage() {
                   готовую заявку с контактом клиента.
                 </>
               )} Подключение — 0 ₽, первый месяц бесплатно.
-              Дальше цена зависит только от числа диалогов: {rub(maxLid)} в
-              месяц — это уже 500 диалогов.
+              Дальше цена зависит только от числа диалогов: на старших
+              тарифах — {maxDialogs} диалогов в месяц. Для сетей — тариф «Сеть»,
+              условия индивидуальные.
             </p>
           </div>
 
@@ -411,24 +383,43 @@ export default function SkolkoStoitPage() {
         <section className="bg-surface-alt">
           <div className="mx-auto max-w-5xl px-5 py-14 sm:px-6 lg:px-8 lg:py-16">
             <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl">
-              Сколько стоят тарифы: две версии, по пять шагов в каждой
+              {reqVersionPublished
+                ? `Сколько стоят тарифы: три версии, по ${planCountWord} тарифа в каждой`
+                : `Сколько стоят тарифы: две версии, по ${planCountWord} тарифа в каждой`}
             </h2>
             <p className="mt-4 max-w-3xl text-base leading-relaxed text-body">
-              Ассистент выпускается в двух версиях.{" "}
+              Ассистент выпускается в {reqVersionPublished ? "трёх" : "двух"}{" "}
+              версиях.{" "}
+              {reqVersionPublished && (
+                <>
+                  «Заявка» собирает запрос и контакт клиента, а тур подбирает
+                  ваш менеджер, — от {rub(minReq)} до {rub(maxReq)} в месяц.{" "}
+                </>
+              )}
               <Link
                 href="/versii"
                 className="font-semibold text-accent hover:text-accent-hover"
               >
                 «Лид»
               </Link>{" "}
-              собирает заявки для живых менеджеров и стоит от {rub(minLid)} до{" "}
+              сам подбирает туры и передаёт готовую заявку менеджеру — от{" "}
+              {rub(minLid)} до{" "}
               {rub(maxLid)} в месяц. «Про» сам консультирует клиента, проверяет
               цены в диалоге и возвращает ушедших — от {rub(minPro)} до{" "}
               {rub(maxPro)} в месяц. Внутри версии цена растёт только вместе с
-              числом диалогов: чем больше пакет, тем дешевле один диалог.
+              числом диалогов: чем больше пакет, тем дешевле один диалог. Для
+              сетей с центральным сайтом и многими офисами — тариф «Сеть»:
+              объём и цена считаются индивидуально.
             </p>
 
             <div className="mt-9 space-y-6">
+              {reqVersionPublished && (
+                <PlanTable
+                  plans={reqPlans}
+                  versionName="Заявка"
+                  accentIcon={<ReqIcon className="h-4 w-4 text-accent" />}
+                />
+              )}
               <PlanTable
                 plans={lidPlans}
                 versionName="Лид"
@@ -448,6 +439,12 @@ export default function SkolkoStoitPage() {
               <p className="mt-2.5 text-sm leading-relaxed text-body sm:text-base">
                 Базовый тариф работает в одном канале на выбор. Второй канал —
                 надстройка с льготным лимитом диалогов: доплата от{" "}
+                {reqVersionPublished && liteAddonReq && (
+                  <>
+                    {rub(liteAddonReq.addonPrice)} в месяц в версии «Заявка»,
+                    от{" "}
+                  </>
+                )}
                 {rub(liteAddonLid.addonPrice)} в месяц в версии «Лид» и от{" "}
                 {rub(crossChannelAddons[0].addonPrice)} в версии «Про».
                 Например, Lite «Лид» с двумя каналами — это{" "}
@@ -600,7 +597,7 @@ export default function SkolkoStoitPage() {
                 },
                 {
                   title: "Версия ассистента",
-                  text: "«Лид» дешевле, потому что решает более узкую задачу: довести человека до заявки и передать её менеджеру. «Про» стоит дороже, потому что консультирует без ограничений, проверяет цены в диалоге и возвращает клиентов в MAX.",
+                  text: `${reqVersionPublished ? "«Заявка» — самая доступная: ассистент собирает запрос и контакт, а тур подбирает ваш менеджер, поэтому подбора туров и подборок в ней нет. " : ""}«Лид» дешевле «Про», потому что решает более узкую задачу: подобрать туры, довести человека до заявки и передать её менеджеру. «Про» стоит дороже, потому что консультирует без ограничений, проверяет цены в диалоге и возвращает клиентов в MAX.`,
                 },
                 {
                   title: "Количество каналов",
@@ -608,7 +605,7 @@ export default function SkolkoStoitPage() {
                 },
                 {
                   title: "Диалоги сверх лимита",
-                  text: `Если поток вырос, ассистент не отключается: сверхлимитные диалоги считаются по фиксированной цене — от\u00A0${rub(pricingPlans[0].lid.extraDialog)} на тарифе Lite до ${rub(pricingPlans[4].lid.extraDialog)} на тарифе «Сеть» в версии «Лид».`,
+                  text: `Если поток вырос, ассистент не отключается: сверхлимитные диалоги считаются по фиксированной цене — от\u00A0${rub(pricingPlans[0].lid.extraDialog)} на тарифе Lite до ${rub(publicPlans[publicPlans.length - 1].lid.extraDialog)} на тарифе «${publicPlans[publicPlans.length - 1].name}» в версии «Лид».`,
                 },
               ].map((item) => (
                 <div

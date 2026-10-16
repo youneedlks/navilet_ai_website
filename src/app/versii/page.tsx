@@ -108,7 +108,7 @@ const versiiJsonLd = {
         "@type": "AggregateOffer",
         priceCurrency: "RUB",
         lowPrice: "990",
-        highPrice: "14990",
+        highPrice: "7990",
         offerCount: 2,
         availability: "https://schema.org/InStock",
         url: `${siteUrl}/tarify`,

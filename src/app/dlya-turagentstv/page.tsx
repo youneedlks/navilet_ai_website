@@ -17,7 +17,7 @@ import {
   Users,
 } from "lucide-react";
 import { jsonLdScript } from "@/lib/schema";
-import { priceFromLabel } from "@/lib/content";
+import { priceFromLabel, reqVersionPublished } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: {
@@ -101,9 +101,10 @@ const recommendedTariffs = [
     icon: Store,
     title: "Первый шаг — минимальный бюджет",
     rec: "Тариф «Lite»",
-    price: "от 990 ₽/мес",
-    detail:
-      "Версия «Лид»: 990 ₽ за 40 диалогов, версия «Про»: 1 990 ₽ за 30. Подключение бесплатно.",
+    price: `от ${priceFromLabel}/мес`,
+    detail: reqVersionPublished
+      ? "«Заявка»: 790 ₽ за 40 диалогов, «Лид» с подбором туров: 990 ₽ за 40, «Про»: 1 990 ₽ за 30. Подключение бесплатно."
+      : "Версия «Лид»: 990 ₽ за 40 диалогов, версия «Про»: 1 990 ₽ за 30. Подключение бесплатно.",
     when: "Одиночный агент или небольшой сайт, до 1 диалога в день",
     href: "/tarify#lite",
   },
@@ -369,12 +370,12 @@ export default function ForAgenciesPage() {
             <div className="mt-10 text-center text-sm text-muted">
               Большая сеть с центральным сайтом и 4+ офисами? Смотрите тариф{" "}
               <Link
-                href="/tarify#set"
+                href="/dlya-setey-agentstv"
                 className="font-semibold text-accent underline decoration-accent/30 underline-offset-2 hover:decoration-accent"
               >
                 «Сеть»
               </Link>{" "}
-              с лимитом 400 диалогов/мес.
+              — объём и цена под вашу сеть, индивидуально.
             </div>
           </div>
         </section>

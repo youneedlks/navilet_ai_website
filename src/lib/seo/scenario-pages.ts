@@ -1,3 +1,4 @@
+import { priceFromLabel } from "@/lib/content";
 /**
  * Кластер «Сценарии»: /resheniya/[slug]
  * Страницы под конкретные боли турагентств — горячие информационно-коммерческие
@@ -57,7 +58,7 @@ export const scenarioPages: ScenarioPage[] = [
     outcomes: [
       "Ночные и выходные посетители перестают уходить к конкурентам молча",
       "Менеджер утром работает с тёплыми заявками, а не с холодным трафиком",
-      "Стоимость ночного «дежурства» — от 990 ₽/мес вместо зарплаты сменного сотрудника",
+      `Стоимость ночного «дежурства» — от ${priceFromLabel}/мес вместо зарплаты сменного сотрудника`,
     ],
     faq: [
       {
@@ -151,7 +152,7 @@ export const scenarioPages: ScenarioPage[] = [
     related: [
       { href: "/resheniya/nochnye-zayavki", label: "Ночные заявки без дежурного менеджера" },
       { href: "/keisy/mgp", label: "Кейс сети МГП" },
-      { href: "/tarify", label: "Тарифы: от 990 ₽/мес" },
+      { href: "/tarify", label: `Тарифы: от ${priceFromLabel}/мес` },
     ],
   },
   {
@@ -347,7 +348,7 @@ export const scenarioPages: ScenarioPage[] = [
       "как турагенту всё успевать",
     ],
     related: [
-      { href: "/tarify#lite", label: "Тариф Lite — от 990 ₽/мес" },
+      { href: "/tarify#lite", label: `Тариф Lite — от ${priceFromLabel}/мес` },
       { href: "/vidzhet/tilda", label: "Виджет на сайт Tilda за 10 минут" },
       { href: "/start", label: "Зарегистрироваться бесплатно" },
     ],
