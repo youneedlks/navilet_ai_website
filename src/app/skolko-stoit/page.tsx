@@ -447,7 +447,7 @@ export default function SkolkoStoitPage() {
                 )}
                 {rub(liteAddonLid.addonPrice)} в месяц в версии «Лид» и от{" "}
                 {rub(crossChannelAddons[0].addonPrice)} в версии «Про».
-                Например, Lite «Лид» с двумя каналами — это{" "}
+                Например, Лайт «Лид» с двумя каналами — это{" "}
                 {rub(liteAddonLid.totalPrice)} в месяц и{" "}
                 {liteAddonLid.totalDialogs} диалогов вместо {liteLid.dialogs}.
               </p>
@@ -605,7 +605,7 @@ export default function SkolkoStoitPage() {
                 },
                 {
                   title: "Диалоги сверх лимита",
-                  text: `Если поток вырос, ассистент не отключается: сверхлимитные диалоги считаются по фиксированной цене — от\u00A0${rub(pricingPlans[0].lid.extraDialog)} на тарифе Lite до ${rub(publicPlans[publicPlans.length - 1].lid.extraDialog)} на тарифе «${publicPlans[publicPlans.length - 1].name}» в версии «Лид».`,
+                  text: `Если поток вырос, ассистент не отключается: сверхлимитные диалоги считаются по фиксированной цене — от\u00A0${rub(pricingPlans[0].lid.extraDialog)} на тарифе Лайт до ${rub(publicPlans[publicPlans.length - 1].lid.extraDialog)} на тарифе «${publicPlans[publicPlans.length - 1].name}» в версии «Лид».`,
                 },
               ].map((item) => (
                 <div

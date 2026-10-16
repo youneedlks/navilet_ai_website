@@ -17,7 +17,7 @@ import {
   Users,
 } from "lucide-react";
 import { jsonLdScript } from "@/lib/schema";
-import { priceFromLabel, reqVersionPublished } from "@/lib/content";
+import { pricingPlans, priceFromLabel, reqVersionPublished } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: {
@@ -96,50 +96,55 @@ const outcomes = [
   "Соответствие 152-ФЗ, серверы в РФ, ДПУ с каждым клиентом",
 ];
 
-const recommendedTariffs = [
+const rub = (value: number) => `${value.toLocaleString("ru-RU")}\u00A0₽`;
+
+/** Рекомендации по тарифам: цены — из content.ts, «Популярный» — как в кабинете («Старт»). */
+const tariffAdvice = [
   {
+    id: "lite",
     icon: Store,
     title: "Первый шаг — минимальный бюджет",
-    rec: "Тариф «Lite»",
-    price: `от ${priceFromLabel}/мес`,
-    detail: reqVersionPublished
-      ? "«Заявка»: 790 ₽ за 40 диалогов, «Лид» с подбором туров: 990 ₽ за 40, «Про»: 1 990 ₽ за 30. Подключение бесплатно."
-      : "Версия «Лид»: 990 ₽ за 40 диалогов, версия «Про»: 1 990 ₽ за 30. Подключение бесплатно.",
     when: "Одиночный агент или небольшой сайт, до 1 диалога в день",
-    href: "/tarify#lite",
   },
   {
+    id: "start",
     icon: Store,
     title: "Одиночный офис или филиал",
-    rec: "Тариф «Старт»",
-    price: "от 1 690 ₽/мес",
-    detail:
-      "Версия «Лид»: 1 690 ₽ за 80 диалогов, версия «Про»: 3 290 ₽ за 50. Подключение бесплатно.",
     when: "1–2 диалога в день, базовый поток, тестируете подход",
-    href: "/tarify#start",
   },
   {
+    id: "standart",
     icon: Building2,
     title: "Главный офис небольшой сети",
-    rec: "Тариф «Стандарт»",
-    price: "от 2 690 ₽/мес",
-    detail:
-      "Версия «Лид»: 2 690 ₽ за 150 диалогов, версия «Про»: 5 290 ₽ за 120. Подключение бесплатно.",
     when: "2–4 диалога в день, активный сайт, есть менеджеры на бронировании",
-    isPopular: true,
-    href: "/tarify#standart",
   },
   {
+    id: "biznes",
     icon: Users,
     title: "Зрелое агентство или 2–3 офиса",
-    rec: "Тариф «Бизнес»",
-    price: "от 3 990 ₽/мес",
-    detail:
-      "Версия «Лид»: 3 990 ₽ за 250 диалогов, версия «Про»: 7 990 ₽ за 200. Подключение бесплатно.",
     when: "5–7 диалогов в день, поток ночных и выходных заявок",
-    href: "/tarify#biznes",
   },
 ];
+
+const recommendedTariffs = tariffAdvice.map((t) => {
+  const plan = pricingPlans.find((p) => p.id === t.id)!;
+  const req = reqVersionPublished ? plan.req : undefined;
+  const parts = [
+    ...(req ? [`«Заявка»: ${rub(req.price)} за ${req.dialogs} диалогов`] : []),
+    `«Лид»${req ? " с подбором туров" : ""}: ${rub(plan.lid.price)} за ${plan.lid.dialogs}`,
+    `«Про»: ${rub(plan.price)} за ${plan.dialogs}`,
+  ];
+  return {
+    icon: t.icon,
+    title: t.title,
+    rec: `Тариф «${plan.name}»`,
+    price: `от ${rub(req ? req.price : plan.lid.price)}/мес`,
+    detail: `${parts.join(", ")}. Подключение бесплатно.`,
+    when: t.when,
+    isPopular: plan.popular,
+    href: `/tarify#${plan.id}`,
+  };
+});
 
 const audienceJsonLd = {
   "@context": "https://schema.org",

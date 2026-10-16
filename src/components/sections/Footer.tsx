@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLeadForm } from "@/contexts/LeadFormContext";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, LifeBuoy } from "lucide-react";
 import SkolkovoBadge from "@/components/ui/SkolkovoBadge";
 
 const CTA_HREFS = new Set(["/#cta"]);
@@ -46,6 +46,18 @@ export default function Footer() {
                         {link.label}
                       </button>
                     </li>
+                  ) : link.href.startsWith("http") ? (
+                    // Документы кабинета (оферта, прайс-лист) — в новой вкладке
+                    <li key={link.label}>
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener"
+                        className="flex min-h-10 items-center py-2 text-sm text-body transition-colors hover:text-accent"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
                   ) : (
                     <li key={link.label}>
                       <Link
@@ -82,6 +94,18 @@ export default function Footer() {
                 >
                   <Mail className="h-3.5 w-3.5 shrink-0" />
                   <span className="min-w-0 break-all">{companyInfo.email}</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`mailto:${companyInfo.supportEmail}`}
+                  className="flex min-h-10 items-start gap-2 py-2 text-sm text-body transition-colors hover:text-accent"
+                >
+                  <LifeBuoy className="mt-0.5 h-3.5 w-3.5 shrink-0" />
+                  <span className="min-w-0">
+                    <span className="block break-all">{companyInfo.supportEmail}</span>
+                    <span className="block text-xs text-muted">поддержка клиентов</span>
+                  </span>
                 </a>
               </li>
               <li className="h-2.5" aria-hidden />
