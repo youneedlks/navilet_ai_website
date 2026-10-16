@@ -7,9 +7,11 @@ import {
   LayoutDashboard,
   MessageSquare,
   BarChart3,
-  TrendingUp,
   Code2,
-  Activity,
+  BookOpen,
+  Plug,
+  Receipt,
+  LifeBuoy,
   UserCircle,
   Search,
   Clock,
@@ -21,27 +23,48 @@ type Screen =
   | "reports"
   | "conversations"
   | "widget"
-  | "system"
+  | "knowledge"
+  | "integrations"
+  | "billing"
+  | "support"
   | "account";
 
-const NAV_ITEMS: { id: Screen; icon: typeof LayoutDashboard; label: string }[] =
+/** Меню как в кабинете (15.10.2026): 9 пунктов в группах «Работа», «Ассистент»,
+ *  «Аккаунт». «Подборки» и «Отчёты и прогнозы» — вкладки внутри «Диалогов» и
+ *  «Аналитики», поэтому экран «reports» подсвечивает «Аналитику». */
+const NAV_GROUPS: {
+  id: Screen;
+  icon: typeof LayoutDashboard;
+  label: string;
+  match?: Screen[];
+}[][] = [
   [
     { id: "overview", icon: LayoutDashboard, label: "Обзор" },
     { id: "conversations", icon: MessageSquare, label: "Диалоги" },
-    { id: "analytics", icon: BarChart3, label: "Аналитика" },
-    { id: "reports", icon: TrendingUp, label: "Прогнозы" },
+    { id: "analytics", icon: BarChart3, label: "Аналитика", match: ["reports"] },
+  ],
+  [
+    { id: "knowledge", icon: BookOpen, label: "База знаний" },
     { id: "widget", icon: Code2, label: "Виджет" },
-    { id: "system", icon: Activity, label: "Система" },
+    { id: "integrations", icon: Plug, label: "Интеграции" },
+  ],
+  [
+    { id: "billing", icon: Receipt, label: "Тариф и оплата" },
+    { id: "support", icon: LifeBuoy, label: "Поддержка" },
     { id: "account", icon: UserCircle, label: "Аккаунт" },
-  ];
+  ],
+];
 
 const SCREEN_TITLES: Record<Screen, string> = {
   overview: "Обзор",
   analytics: "Аналитика",
-  reports: "Отчёты и прогнозы",
+  reports: "Аналитика › Отчёты и прогнозы",
   conversations: "Диалоги",
-  widget: "Настройки виджета",
-  system: "Статус системы",
+  widget: "Виджет",
+  knowledge: "База знаний",
+  integrations: "Интеграции",
+  billing: "Тариф и оплата",
+  support: "Поддержка",
   account: "Аккаунт",
 };
 
@@ -82,7 +105,7 @@ export default function RealDashboardFrame({
           <span className="h-2.5 w-2.5 rounded-full bg-[#28C840]" />
         </div>
         <div className="ml-2 flex-1 rounded-md bg-white px-3 py-1 text-[10px] text-[#64748B]">
-          dashboard.navilet.ru
+          lk.navilet.ru
         </div>
       </div>
 
@@ -115,8 +138,19 @@ export default function RealDashboardFrame({
             className="flex flex-1 flex-col items-center gap-0.5 py-2"
             style={{ paddingInline: compact ? 5 : 6 }}
           >
-            {NAV_ITEMS.map((item) => {
-              const isActive = item.id === activeScreen;
+            {NAV_GROUPS.flatMap((group, gi) => [
+              ...(gi > 0
+                ? [
+                    <div
+                      key={`sep-${gi}`}
+                      aria-hidden="true"
+                      className="my-1 h-px w-3/5 bg-[#E2E8F0]"
+                    />,
+                  ]
+                : []),
+              ...group.map((item) => {
+              const isActive =
+                item.id === activeScreen || !!item.match?.includes(activeScreen);
               const Icon = item.icon;
               return (
                 <div key={item.id} className="relative w-full">
@@ -145,7 +179,8 @@ export default function RealDashboardFrame({
                   </div>
                 </div>
               );
-            })}
+              }),
+            ])}
           </div>
 
           {/* User avatar */}
