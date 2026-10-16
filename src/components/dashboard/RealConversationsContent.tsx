@@ -322,7 +322,7 @@ export default function RealConversationsContent({
                   Chrome · macOS
                 </div>
                 <div className="text-[#64748B]" style={{ fontSize: 6.5 * s }}>
-                  185.23.xx.xx
+                  Канал: сайт
                 </div>
               </div>
             </div>

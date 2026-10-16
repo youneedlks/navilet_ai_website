@@ -4,9 +4,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { slideInLeft, slideInRight } from "@/lib/animations";
 import SectionWrapper from "@/components/ui/SectionWrapper";
-import RealDashboardFrame from "./RealDashboardFrame";
-import RealWidgetContent from "./RealWidgetContent";
-import { Palette, Eye, Code2, Sparkles, Layout, Image } from "lucide-react";
+import { Palette, Eye, Code2, Sparkles, MessageCircle, Image, Send } from "lucide-react";
 
 function FeaturePoint({
   icon: Icon,
@@ -41,9 +39,25 @@ export default function DashboardWidgetShowcase() {
           animate={isInView ? "visible" : "hidden"}
           className="order-2 lg:order-1"
         >
-          <RealDashboardFrame activeScreen="widget" animate={false}>
-            <RealWidgetContent />
-          </RealDashboardFrame>
+          {/* Настоящий экран «Виджет» на демо-агентстве (кадр Кабинета 15.10;
+              ниже на экране — код со стендовым адресом, поэтому только верх). */}
+          <div className="overflow-hidden rounded-2xl border border-blue-subtle/50 bg-white shadow-card">
+            <div className="flex items-center gap-1.5 border-b border-blue-subtle/40 bg-surface-alt px-4 py-2.5">
+              <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]" />
+              <span className="h-2.5 w-2.5 rounded-full bg-[#FEBC2E]" />
+              <span className="h-2.5 w-2.5 rounded-full bg-[#28C840]" />
+              <span className="ml-3 text-xs text-muted">lk.navilet.ru</span>
+            </div>
+            <img
+              src="/kabinet/vidzhet-pk.webp"
+              width={1600}
+              height={1011}
+              loading="lazy"
+              decoding="async"
+              alt="Кабинет «Навылет! AI», раздел «Виджет»: статус, три шага подключения и предпросмотр чата"
+              className="block w-full"
+            />
+          </div>
         </motion.div>
 
         <motion.div
@@ -62,29 +76,33 @@ export default function DashboardWidgetShowcase() {
             Ваш бренд — ваш ассистент
           </h2>
           <p className="text-body leading-relaxed">
-            Полностью настройте внешний вид чат-виджета под стиль вашей
-            компании. Все изменения видны мгновенно в живом предпросмотре.
+            В разделе «Виджет» — всё, что видит и слышит клиент: чат на сайте
+            и бот в MAX. Изменения сразу видны в предпросмотре.
           </p>
           <div className="space-y-3">
             <FeaturePoint
-              icon={Palette}
-              text="Основной цвет с градиентом — виджет адаптируется к вашему бренду автоматически"
+              icon={Image}
+              text="Свой логотип или готовые аватары: менеджер, ИИ-робот, глобус"
             />
             <FeaturePoint
-              icon={Image}
-              text="Загрузка логотипа или выбор из готовых аватаров: менеджер, робот, глобус"
+              icon={Palette}
+              text="Цвет, заголовок, подзаголовок и позиция справа или слева — под ваш бренд"
+            />
+            <FeaturePoint
+              icon={MessageCircle}
+              text="Приветствие, всплывающее приглашение над кнопкой чата и кнопки-подсказки"
             />
             <FeaturePoint
               icon={Eye}
-              text="Живой предпросмотр: редактируйте заголовок, подзаголовок, приветственное сообщение"
-            />
-            <FeaturePoint
-              icon={Layout}
-              text="Позиция на странице: справа внизу или слева внизу — один клик"
+              text="Предпросмотр: так виджет будет выглядеть на вашем сайте"
             />
             <FeaturePoint
               icon={Code2}
-              text="Одна строка кода — скопируйте и вставьте на свой сайт за 30 секунд"
+              text="Одна строка кода — кабинет сам проверяет, что код появился на сайте"
+            />
+            <FeaturePoint
+              icon={Send}
+              text="Бот в MAX: токен бота — в том же разделе"
             />
             <FeaturePoint
               icon={Sparkles}

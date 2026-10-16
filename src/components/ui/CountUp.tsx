@@ -26,7 +26,14 @@ export default function CountUp({
 }: CountUpProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
-  const [count, setCount] = useState(0);
+  // В HTML сразу настоящее число — его видят поисковики и ИИ-роботы, которые не
+  // прокручивают страницу. В браузере после загрузки сбрасываем в 0 и анимируем
+  // при появлении в зоне видимости, как раньше.
+  const [count, setCount] = useState(end);
+
+  useEffect(() => {
+    setCount(0);
+  }, []);
 
   useEffect(() => {
     if (!isInView) return;

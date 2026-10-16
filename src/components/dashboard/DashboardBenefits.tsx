@@ -10,16 +10,7 @@ import {
   Share2,
   Shield,
   Scaling,
-  Database,
-  HardDrive,
-  Server,
 } from "lucide-react";
-
-const statusCards = [
-  { title: "PostgreSQL", status: "ok", icon: Database },
-  { title: "Redis", status: "ok", icon: HardDrive },
-  { title: "Backend", status: "ok", icon: Server },
-];
 
 const benefits = [
   {
@@ -43,19 +34,19 @@ const benefits = [
   {
     title: "Мультиканальность",
     description:
-      "Веб-виджет на сайте — полный контроль и управление ИИ-ассистентом из единого личного кабинета.",
+      "Сайт и MAX — один ассистент и один кабинет на оба канала: диалоги, заявки и аналитика в одном месте.",
     icon: Share2,
   },
   {
     title: "Безопасность",
     description:
-      "Защищённый доступ, смена пароля, возможность полного сброса данных. Ваши данные под контролем.",
+      "Вход по паролю, договор поручения на обработку персональных данных. Контакты агентства не потеряются: удалить все телефоны можно только с подтверждением, а прежние значения поддержка вернёт одной кнопкой.",
     icon: Shield,
   },
   {
     title: "Масштабируемость",
     description:
-      "От 1 до 10,000+ диалогов в день. Архитектура на PostgreSQL + Redis обеспечивает стабильную работу.",
+      "От небольшого офиса до сети: лимит диалогов растёт вместе с тарифом, а для сетей тариф «Сеть» считается под ваш поток.",
     icon: Scaling,
   },
 ];
@@ -65,45 +56,12 @@ export default function DashboardBenefits() {
     <SectionWrapper>
       <motion.div variants={fadeInUp} className="mb-12 text-center">
         <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl lg:text-[2.75rem]">
-          Надёжность и{" "}
-          <span className="text-accent">возможности</span>
+          Возможности{" "}
+          <span className="text-accent">кабинета</span>
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-lg text-body">
-          Инфраструктура, которой можно доверять, и инструменты для роста вашего
-          бизнеса
+          Инструменты, которые помогают превращать диалоги в продажи
         </p>
-      </motion.div>
-
-      {/* System status mockup */}
-      <motion.div
-        variants={staggerContainer}
-        className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12"
-      >
-        {statusCards.map((card, i) => {
-          const Icon = card.icon;
-          return (
-            <motion.div
-              key={i}
-              variants={fadeInUp}
-              className="rounded-2xl border border-blue-subtle/60 bg-white p-5"
-            >
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-ice">
-                  <Icon className="h-5 w-5 text-accent" strokeWidth={1.8} />
-                </div>
-                <div>
-                  <h4 className="text-sm font-semibold text-heading">
-                    {card.title}
-                  </h4>
-                  <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-xs font-medium text-emerald-600">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    Работает
-                  </span>
-                </div>
-              </div>
-            </motion.div>
-          );
-        })}
       </motion.div>
 
       {/* Benefits grid */}
