@@ -86,7 +86,7 @@ const vozvratJsonLd = {
       url: `${siteUrl}/vozvrat-klientov`,
       name: "Возврат клиентов: ИИ-ассистент сам возвращает туристов в диалог",
       description:
-        "Догоняющие сообщения, напоминания, умные подписки и персональные предложения в MAX-мессенджере. Отклик до 40%.",
+        "Догоняющие сообщения, напоминания, умные подписки и персональные предложения в MAX‑мессенджере. Отклик до 40%.",
       inLanguage: "ru-RU",
       isPartOf: { "@id": `${siteUrl}/#website` },
       breadcrumb: { "@id": `${siteUrl}/vozvrat-klientov#breadcrumb` },
@@ -99,7 +99,7 @@ const vozvratJsonLd = {
       name: "Возврат клиентов турагентства — догоняющие сообщения и подписки",
       serviceType: "Автоматический возврат клиентов в диалог (retention)",
       description:
-        "Функция версии «Про» ИИ-ассистента «Навылет! AI»: догоняющие сообщения в MAX-мессенджере с откликом до 40%, напоминания через день (~28% отклика), подписка на снижение цены и умная подписка с памятью запроса. Защита от спама: пауза 3 дня, стоп перед вылетом, отписка одним словом.",
+        "Функция версии «Про» ИИ-ассистента «Навылет! AI»: догоняющие сообщения в MAX‑мессенджере с откликом до 40%, напоминания через день (~28% отклика), подписка на снижение цены и умная подписка с памятью запроса. Защита от спама: пауза 3 дня, стоп перед вылетом, отписка одним словом.",
       provider: { "@id": `${siteUrl}/#organization` },
       areaServed: "RU",
       audience: {
@@ -170,7 +170,7 @@ export default function VozvratKlientovPage() {
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5">
             <MessageSquare className="h-4 w-4 text-accent" />
             <span className="text-xs font-semibold text-accent sm:text-sm">
-              Версия «Про» · MAX-мессенджер
+              Версия «Про» · MAX‑мессенджер
             </span>
           </div>
           <h1 className="font-display text-4xl font-bold leading-tight text-heading sm:text-5xl">
@@ -342,7 +342,7 @@ export default function VozvratKlientovPage() {
             <p className="mx-auto mt-6 flex max-w-2xl items-start justify-center gap-1.5 text-center text-xs text-muted">
               <Info className="mt-0.5 h-3.5 w-3.5 flex-shrink-0" />
               <span>
-                Возврат клиентов работает в MAX-мессенджере: там у ассистента
+                Возврат клиентов работает в MAX‑мессенджере: там у ассистента
                 остаётся диалог, куда можно написать. В веб-виджете после ухода
                 со страницы написать клиенту некуда — это особенность канала.{" "}
                 <Link

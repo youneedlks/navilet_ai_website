@@ -221,7 +221,7 @@ export default function VersiiPage() {
               полноценный инструмент менеджера: консультации, проверка цен и
               возврат клиентов,{" "}
               <span className="whitespace-nowrap">от 1 990 ₽/мес</span>. Обе
-              работают в Web-виджете и MAX.
+              работают в Web‑виджете и MAX.
             </p>
           </div>
 

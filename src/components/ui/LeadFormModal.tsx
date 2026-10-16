@@ -40,8 +40,8 @@ import {
 type TrialChannelId = "web" | "max";
 
 const trialChannels: { id: TrialChannelId; label: string; Icon: typeof Globe }[] = [
-  { id: "web", label: "Web-виджет", Icon: Globe },
-  { id: "max", label: "MAX-мессенджер", Icon: MessageSquare },
+  { id: "web", label: "Web‑виджет", Icon: Globe },
+  { id: "max", label: "MAX‑мессенджер", Icon: MessageSquare },
 ];
 
 const channelShortLabel: Record<TrialChannelId, string> = {

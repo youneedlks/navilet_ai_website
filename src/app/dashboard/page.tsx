@@ -30,7 +30,7 @@ export const metadata = {
   openGraph: {
     title: "Личный кабинет ИИ-ассистента — Навылет! AI",
     description:
-      "Диалоги и ответ менеджера, аналитика и прогнозы, база знаний, интеграции с почтой, U-ON, Telegram и MAX — в одном кабинете.",
+      "Диалоги и ответ менеджера, аналитика и прогнозы, база знаний, интеграции с почтой, U‑ON, Telegram и MAX — в одном кабинете.",
     url: "https://navilet.ru/dashboard",
     images: [{ url: "/og-image.png", width: 1200, height: 630 }],
     type: "website",

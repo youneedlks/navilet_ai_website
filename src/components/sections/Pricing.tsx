@@ -406,8 +406,8 @@ export default function Pricing({ showHeader = true }: { showHeader?: boolean })
           Тарифы <span className="whitespace-nowrap text-accent">ИИ-ассистента</span>
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-base text-body">
-          Каждый тариф работает в одном канале на выбор — Web-виджет или
-          MAX-мессенджер. Нужны оба сразу? Подключите{" "}
+          Каждый тариф работает в одном канале на выбор — Web‑виджет или
+          MAX‑мессенджер. Нужны оба сразу? Подключите{" "}
           <a
             href="#cross-channel"
             className="font-medium text-accent underline decoration-accent/30 underline-offset-2 hover:decoration-accent"
@@ -528,14 +528,14 @@ export default function Pricing({ showHeader = true }: { showHeader?: boolean })
           <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-white shadow-sm ring-1 ring-blue-subtle/60">
             <Globe className="h-4 w-4 text-accent" />
           </span>
-          <span className="font-semibold text-heading">Web-виджет</span>
+          <span className="font-semibold text-heading">Web‑виджет</span>
         </div>
         <span className="hidden text-muted sm:inline">или</span>
         <div className="flex items-center gap-2">
           <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-white shadow-sm ring-1 ring-blue-subtle/60">
             <MessageSquare className="h-4 w-4 text-accent" />
           </span>
-          <span className="font-semibold text-heading">MAX-мессенджер</span>
+          <span className="font-semibold text-heading">MAX‑мессенджер</span>
         </div>
         <span className="hidden text-muted sm:inline">·</span>
         <span className="text-center text-xs text-muted sm:text-left sm:text-sm">
@@ -577,7 +577,7 @@ export default function Pricing({ showHeader = true }: { showHeader?: boolean })
           </h3>
           <p className="mx-auto mt-3 max-w-2xl text-sm text-body sm:text-base">
             Базовый тариф работает в одном канале. Если хотите использовать
-            ИИ-ассистента сразу <strong className="font-semibold text-heading">и в Web-виджете на сайте, и в MAX-мессенджере</strong> — добавьте «Второй канал»
+            ИИ-ассистента сразу <strong className="font-semibold text-heading">и в Web‑виджете на сайте, и в MAX‑мессенджере</strong> — добавьте «Второй канал»
             к выбранному тарифу. Получите дополнительный лимит диалогов во
             втором канале по льготной цене. Цены — для версии «{activeMeta.name}».
           </p>
@@ -637,13 +637,13 @@ export default function Pricing({ showHeader = true }: { showHeader?: boolean })
             },
             {
               icon: MessageSquare,
-              title: "MAX-канал — тоже 0 ₽",
+              title: "MAX‑канал — тоже 0 ₽",
               text: "Создайте бота на платформе «MAX для партнёров» и передайте токен в кабинете — подключим за 1 рабочий день.",
             },
             {
               icon: Inbox,
-              title: "Заявки — на почту, в U-ON, Telegram и MAX",
-              text: "U-ON подключаете сами в кабинете, Битрикс24 и amoCRM — по заявке. В Telegram и MAX — до 5 чатов менеджеров.",
+              title: "Заявки — на почту, в U‑ON, Telegram и MAX",
+              text: "U‑ON подключаете сами в кабинете, Битрикс24 и amoCRM — по заявке. В Telegram и MAX — до 5 чатов менеджеров.",
             },
           ].map((item) => (
             <motion.div

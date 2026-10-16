@@ -39,7 +39,7 @@ export default function DashboardHero() {
             className="mb-8 max-w-xl text-base leading-relaxed text-body sm:text-lg"
           >
             Диалоги и ответ менеджера клиенту, аналитика и прогнозы, база знаний
-            агентства, заявки на почту, в U-ON, Telegram и MAX — всё в одном
+            агентства, заявки на почту, в U‑ON, Telegram и MAX — всё в одном
             личном кабинете на lk.navilet.ru.
           </motion.p>
 

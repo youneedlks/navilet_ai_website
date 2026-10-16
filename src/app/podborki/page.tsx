@@ -161,7 +161,7 @@ export default function PodborkiPage() {
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5">
             <Share2 className="h-4 w-4 text-accent" />
             <span className="text-xs font-semibold text-accent sm:text-sm">
-              Версии «Лид» и «Про» · Web-виджет и MAX
+              Версии «Лид» и «Про» · Web‑виджет и MAX
             </span>
           </div>
           <h1 className="font-display text-4xl font-bold leading-tight text-heading sm:text-5xl">
@@ -438,7 +438,7 @@ export default function PodborkiPage() {
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-sm text-body sm:text-base">
                 Подборки работают и в версии «Лид» от 990 ₽/⁠мес, и в «Про»
-                от 1 990 ₽/⁠мес, в веб-виджете и в MAX-мессенджере. Отдельной платы
+                от 1 990 ₽/⁠мес, в веб-виджете и в MAX‑мессенджере. Отдельной платы
                 за них нет — первый месяц бесплатно в любом случае.
               </p>
               <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">

@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     "подключить ИИ-ассистент",
     "виджет подбора туров цена",
     "автоматизация турагентства стоимость",
-    "MAX-мессенджер для турагентства",
+    "MAX‑мессенджер для турагентства",
     "ИИ лидогенерация цена",
   ],
   alternates: { canonical: "/tarify" },
@@ -70,7 +70,7 @@ const includedGroups = [
       "ИИ-ассистент 24/7 на сайте или в MAX",
       "Виджет под ваш бренд, без чужих логотипов",
       "База знаний агентства — ведёте сами в кабинете",
-      "Заявки на почту, в U-ON, Telegram и MAX",
+      "Заявки на почту, в U‑ON, Telegram и MAX",
       "Ответ менеджера клиенту прямо из кабинета",
       "Кабинет с аналитикой и воронкой",
       "Поддержка в кабинете и по почте",
@@ -168,7 +168,7 @@ const tarifyJsonLd = {
       url: `${siteUrl}/tarify`,
       name: "Тарифы ИИ-ассистента «Навылет! AI»",
       description:
-        `Тарифы ИИ-ассистента: ${versionsLine}. Web-виджет или MAX-мессенджер. Надстройка «Второй канал».`,
+        `Тарифы ИИ-ассистента: ${versionsLine}. Web‑виджет или MAX‑мессенджер. Надстройка «Второй канал».`,
       inLanguage: "ru-RU",
       isPartOf: { "@id": `${siteUrl}/#website` },
       breadcrumb: { "@id": `${siteUrl}/tarify#breadcrumb` },
@@ -180,7 +180,7 @@ const tarifyJsonLd = {
       "@id": `${siteUrl}/tarify#product`,
       name: "Навылет! AI — ИИ-ассистент (подписка)",
       description:
-        `ИИ-ассистент для турагентств и туроператоров. ${reqVersionPublished ? "«Заявка» — собирает запрос и контакт, тур подбирает менеджер; " : ""}«Лид» — лидогенерация и заявки менеджерам; «Про» — консультации, сопровождение и возврат клиентов. Работает в Web-виджете или MAX-мессенджере.`,
+        `ИИ-ассистент для турагентств и туроператоров. ${reqVersionPublished ? "«Заявка» — собирает запрос и контакт, тур подбирает менеджер; " : ""}«Лид» — лидогенерация и заявки менеджерам; «Про» — консультации, сопровождение и возврат клиентов. Работает в Web‑виджете или MAX‑мессенджере.`,
       brand: { "@id": `${siteUrl}/#organization` },
       category: "B2B SaaS / TravelTech",
       image: `${siteUrl}/og-image.png`,
@@ -287,8 +287,8 @@ export default function TarifyPage() {
             <strong className="font-semibold text-heading">«Про»</strong> —
             полный инструмент с консультациями и возвратом клиентов, <span className="whitespace-nowrap">
             от 1 990 ₽/мес
-            </span>. Каждый тариф работает в Web-виджете или
-            {" "}<span className="whitespace-nowrap">MAX-мессенджере</span>,{" "}
+            </span>. Каждый тариф работает в Web‑виджете или
+            {" "}<span className="whitespace-nowrap">MAX‑мессенджере</span>,{" "}
             <Link
               href="/versii"
               className="font-medium text-accent underline decoration-accent/30 underline-offset-2 hover:decoration-accent"
@@ -530,7 +530,7 @@ export default function TarifyPage() {
               ))}
 
               <p className="mt-5 text-center text-sm text-muted">
-                Подключение MAX-канала бесплатное — разовых платежей нет. Цены
+                Подключение MAX‑канала бесплатное — разовых платежей нет. Цены
                 окончательные: НДС не облагается (участник проекта «Сколково»).
               </p>
             </div>
