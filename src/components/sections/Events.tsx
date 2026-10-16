@@ -418,7 +418,7 @@ export default function Events() {
                   // поэтому performer, а не organizer.
                   performer: {
                     "@type": "Organization",
-                    name: "Навылет! AI",
+                    name: "Навылет! AI",
                     url: "https://navilet.ru",
                   },
                 }))

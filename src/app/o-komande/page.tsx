@@ -16,9 +16,9 @@ import { companyInfo, events } from "@/lib/content";
 import { jsonLdScript } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: { absolute: "О компании «Навылет! AI» — разработчик ИИ для туризма" },
+  title: { absolute: "О компании «Навылет! AI» — разработчик ИИ для туризма" },
   description:
-    "ООО «ИИМПАКТ ПЛЮС» — разработчик ИИ-ассистента «Навылет! AI». Эксперты по ИИ в туризме при Комитете ТПП РФ, поддержка РСТ, резидент ИТ-кластера «Сколково».",
+    "ООО «ИИМПАКТ ПЛЮС» — разработчик ИИ-ассистента «Навылет! AI». Эксперты по ИИ в туризме при Комитете ТПП РФ, поддержка РСТ, резидент ИТ-кластера «Сколково».",
   keywords: [
     "о компании Навылет",
     "ИИМПАКТ ПЛЮС",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/o-komande" },
   openGraph: {
-    title: "О компании «Навылет! AI» — разработчик ИИ для туризма",
+    title: "О компании «Навылет! AI» — разработчик ИИ для туризма",
     description:
       "Российский разработчик ИИ-ассистента. Эксперты по ИИ в туризме при Комитете ТПП РФ.",
     url: "https://navilet.ru/o-komande",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "О компании «Навылет! AI»",
+    title: "О компании «Навылет! AI»",
     description: "Российский разработчик ИИ-ассистента для туризма.",
     images: ["/og-image.png"],
   },
@@ -78,9 +78,9 @@ const teamJsonLd = {
       "@type": "AboutPage",
       "@id": `${siteUrl}/o-komande#webpage`,
       url: `${siteUrl}/o-komande`,
-      name: "О компании «Навылет! AI»",
+      name: "О компании «Навылет! AI»",
       description:
-        "ООО «ИИМПАКТ ПЛЮС» — российский разработчик ИИ-ассистента «Навылет! AI», эксперты по ИИ в туризме при ТПП РФ.",
+        "ООО «ИИМПАКТ ПЛЮС» — российский разработчик ИИ-ассистента «Навылет! AI», эксперты по ИИ в туризме при ТПП РФ.",
       inLanguage: "ru-RU",
       isPartOf: { "@id": `${siteUrl}/#website` },
       breadcrumb: { "@id": `${siteUrl}/o-komande#breadcrumb` },
@@ -177,11 +177,11 @@ export default function AboutTeamPage() {
             </span>
           </div>
           <h1 className="font-display text-4xl font-bold leading-tight text-heading sm:text-5xl">
-            О компании <span className="text-accent">«Навылет! AI»</span>
+            О компании <span className="text-accent">«Навылет! AI»</span>
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-base text-body sm:text-lg">
             ООО «ИИМПАКТ ПЛЮС» — российский разработчик ИИ-ассистента
-            «Навылет! AI». Развиваем продукт с 2023 года и признаны экспертами
+            «Навылет! AI». Развиваем продукт с 2023 года и признаны экспертами
             по применению искусственного интеллекта в туризме при Комитете
             ТПП РФ.
           </p>
@@ -276,7 +276,7 @@ export default function AboutTeamPage() {
                 Лукиан Ираклиевич Силагадзе
               </h3>
               <p className="mt-1 text-sm font-semibold text-accent">
-                Основатель проекта «Навылет! AI», генеральный директор
+                Основатель проекта «Навылет! AI», генеральный директор
                 ООО «ИИМПАКТ ПЛЮС»
               </p>
               <p className="mt-4 text-sm leading-relaxed text-body">

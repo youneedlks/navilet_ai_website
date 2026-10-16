@@ -28,12 +28,12 @@ export const siteUrl = "https://navilet.ru";
 /** Яндекс.Метрика */
 const YANDEX_METRIKA_ID = 108200337;
 
-export const siteName = "Навылет! AI";
+export const siteName = "Навылет! AI";
 const siteDescription =
   "ИИ-ассистент для турагентств: подбирает туры по реальной базе, консультирует и передаёт менеджеру готовую заявку. От 990 ₽/мес, первый месяц бесплатно.";
 
 const keywords = [
-  "Навылет! AI",
+  "Навылет! AI",
   "Навылет AI",
   "навылет ИИ",
   "navylet ai",
@@ -92,7 +92,7 @@ export const metadata: Metadata = {
     languages: { "ru-RU": "/" },
     types: {
       "application/rss+xml": [
-        { url: "/blog/rss.xml", title: "Блог «Навылет! AI» — RSS" },
+        { url: "/blog/rss.xml", title: "Блог «Навылет! AI» — RSS" },
       ],
     },
   },
@@ -106,7 +106,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Навылет! AI — ИИ-ассистент для турагентств: подбор туров 24/7",
+        alt: "Навылет! AI — ИИ-ассистент для турагентств: подбор туров 24/7",
         type: "image/png",
       },
     ],
@@ -120,7 +120,7 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/og-image.png",
-        alt: "Навылет! AI — ИИ-ассистент для турагентств",
+        alt: "Навылет! AI — ИИ-ассистент для турагентств",
       },
     ],
     creator: "@navylet_ai",
@@ -157,7 +157,7 @@ export const metadata: Metadata = {
       : {},
   },
   category: "technology",
-  creator: "Навылет! AI",
+  creator: "Навылет! AI",
   publisher: "ООО «ИИМПАКТ ПЛЮС»",
 };
 
@@ -179,7 +179,7 @@ const siteWideJsonLd = {
     {
       "@type": "Organization",
       "@id": `${siteUrl}/#organization`,
-      name: "Навылет! AI",
+      name: "Навылет! AI",
       legalName: "ООО «ИИМПАКТ ПЛЮС»",
       alternateName: ["навылет AI", "Navilet", "ИИМПАКТ ПЛЮС"],
       url: siteUrl,
@@ -190,7 +190,7 @@ const siteWideJsonLd = {
         contentUrl: `${siteUrl}/logo.svg`,
         width: 200,
         height: 60,
-        caption: "Навылет! AI",
+        caption: "Навылет! AI",
       },
       image: { "@id": `${siteUrl}/#logo` },
       description: siteDescription,
@@ -232,7 +232,7 @@ const siteWideJsonLd = {
       // на вопрос «сколько стоит».
       hasOfferCatalog: {
         "@type": "OfferCatalog",
-        name: "Версии ИИ-ассистента «Навылет! AI»",
+        name: "Версии ИИ-ассистента «Навылет! AI»",
         url: `${siteUrl}/versii`,
         itemListElement: [
           {
@@ -308,7 +308,7 @@ const siteWideJsonLd = {
       additionalName: "Ираклиевич",
       familyName: "Силагадзе",
       jobTitle:
-        "Основатель «Навылет! AI», генеральный директор ООО «ИИМПАКТ ПЛЮС»",
+        "Основатель «Навылет! AI», генеральный директор ООО «ИИМПАКТ ПЛЮС»",
       description:
         "Эксперт по искусственному интеллекту и цифровизации в туриндустрии и руководитель рабочей группы по ответственному применению ИИ в туриндустрии при Комитете ТПП РФ по предпринимательству в сфере туризма.",
       worksFor: { "@id": `${siteUrl}/#organization` },

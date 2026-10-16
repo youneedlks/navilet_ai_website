@@ -9,7 +9,7 @@ import { jsonLdScript } from "@/lib/schema";
 const siteUrl = "https://navilet.ru";
 
 export const metadata: Metadata = {
-  title: { absolute: "Блог про ИИ в туризме | Навылет! AI" },
+  title: { absolute: "Блог про ИИ в туризме | Навылет! AI" },
   description:
     "Гайды, кейсы и разборы про ИИ в туризме: автоматизация турагентств, подбор туров, интеграция Tourvisor, экономика ИИ-ассистента для турбизнеса.",
   keywords: [
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/blog" },
   openGraph: {
-    title: "Блог про ИИ в туризме — Навылет! AI",
+    title: "Блог про ИИ в туризме — Навылет! AI",
     description:
       "Гайды, кейсы и разборы про искусственный интеллект в туризме для турагентств и туроператоров.",
     url: `${siteUrl}/blog`,
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Блог про ИИ в туризме — Навылет! AI",
+    title: "Блог про ИИ в туризме — Навылет! AI",
     description:
       "Гайды, кейсы и разборы про искусственный интеллект в туризме для турбизнеса.",
     images: ["/og-image.png"],
@@ -49,7 +49,7 @@ export default function BlogPage() {
         "@type": "CollectionPage",
         "@id": `${siteUrl}/blog#webpage`,
         url: `${siteUrl}/blog`,
-        name: "Блог про ИИ в туризме — Навылет! AI",
+        name: "Блог про ИИ в туризме — Навылет! AI",
         isPartOf: { "@id": `${siteUrl}/#website` },
         inLanguage: "ru-RU",
         breadcrumb: { "@id": `${siteUrl}/blog#breadcrumb` },

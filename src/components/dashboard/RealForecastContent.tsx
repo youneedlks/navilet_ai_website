@@ -245,7 +245,7 @@ export default function RealForecastContent({
       >
         <PanelHead
           icon={Globe2}
-          title="Барометр спроса по сети «Навылет! AI»"
+          title="Барометр спроса по сети «Навылет! AI»"
           subtitle="Куда смотрят туристы всех агентств сети — обезличенно"
           s={s}
         />

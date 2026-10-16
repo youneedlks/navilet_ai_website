@@ -91,6 +91,19 @@ body {
   background-size: 256px 256px;
 }
 
+/* Тень у края горизонтально прокручиваемого блока (таблицы на телефоне):
+   белые «крышки» едут с содержимым (local) и прячут тень у краёв, до которых
+   уже долистали; если всё помещается — тени нет. Строки таблицы внутри не
+   должны иметь своего фона, иначе закроют тень. */
+.scroll-shadow-x {
+  overflow-x: auto;
+  background:
+    linear-gradient(to right, #fff 30%, rgb(255 255 255 / 0)) left center / 40px 100% no-repeat local,
+    linear-gradient(to left, #fff 30%, rgb(255 255 255 / 0)) right center / 40px 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, rgb(0 18 41 / 0.2), transparent) left center / 14px 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, rgb(0 18 41 / 0.2), transparent) right center / 14px 100% no-repeat scroll;
+}
+
 /* ── Blog article typography ──────────────────────────────── */
 /* В слое components: классы Tailwind на блоках внутри статьи (CTA, плашки,
    шаги) перебивают типографику статьи. Вне слоя .prose-navilet h3 и a

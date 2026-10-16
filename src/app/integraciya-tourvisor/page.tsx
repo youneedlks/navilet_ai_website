@@ -21,7 +21,7 @@ import { jsonLdScript } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Tourvisor + ИИ: подбор туров для турагентства 24/7 | Навылет! AI",
+    absolute: "Tourvisor + ИИ: подбор туров для турагентства 24/7 | Навылет! AI",
   },
   description:
     "ИИ-ассистент уже подключён к API Tourvisor: одна строка кода на сайт — и он подбирает туры с живыми ценами в диалоге 24/7. Демо без регистрации.",
@@ -74,7 +74,7 @@ const howToSteps = [
   },
   {
     name: "Вставьте одну строку кода на сайт",
-    text: "Перед закрывающим тегом </body> добавьте: <script src=\"https://lk.navilet.ru/widget-loader.js\" data-assistant-id=\"YOUR_ASSISTANT_ID\"></script>. Никакой интеграции с CRM или АПИ туроператоров не требуется — Tourvisor уже подключён на стороне «Навылет! AI».",
+    text: "Перед закрывающим тегом </body> добавьте: <script src=\"https://lk.navilet.ru/widget-loader.js\" data-assistant-id=\"YOUR_ASSISTANT_ID\"></script>. Никакой интеграции с CRM или АПИ туроператоров не требуется — Tourvisor уже подключён на стороне «Навылет! AI».",
   },
   {
     name: "Запустите и анализируйте",
@@ -107,9 +107,9 @@ const tourvisorJsonLd = {
       "@type": "WebPage",
       "@id": `${siteUrl}/integraciya-tourvisor#webpage`,
       url: `${siteUrl}/integraciya-tourvisor`,
-      name: "Интеграция «Навылет! AI» с Tourvisor",
+      name: "Интеграция «Навылет! AI» с Tourvisor",
       description:
-        "Готовая интеграция ИИ-ассистента «Навылет! AI» с агрегатором Tourvisor: 50+ стран, live-цены, мгновенный подбор туров.",
+        "Готовая интеграция ИИ-ассистента «Навылет! AI» с агрегатором Tourvisor: 50+ стран, live-цены, мгновенный подбор туров.",
       inLanguage: "ru-RU",
       isPartOf: { "@id": `${siteUrl}/#website` },
       breadcrumb: { "@id": `${siteUrl}/integraciya-tourvisor#breadcrumb` },
@@ -121,7 +121,7 @@ const tourvisorJsonLd = {
       "@id": `${siteUrl}/integraciya-tourvisor#howto`,
       name: "Как подключить ИИ-ассистент с Tourvisor на сайт турагентства",
       description:
-        "Пошаговая инструкция подключения ИИ-ассистента «Навылет! AI» с готовой интеграцией Tourvisor.",
+        "Пошаговая инструкция подключения ИИ-ассистента «Навылет! AI» с готовой интеграцией Tourvisor.",
       totalTime: "PT1H",
       estimatedCost: {
         "@type": "MonetaryAmount",
@@ -185,7 +185,7 @@ export default function TourvisorIntegrationPage() {
             <span className="text-accent">Tourvisor</span>
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-base text-body sm:text-lg">
-            «Навылет! AI» уже подключён к АПИ Tourvisor — крупнейшего
+            «Навылет! AI» уже подключён к АПИ Tourvisor — крупнейшего
             агрегатора туроператоров России. Турагентству не нужно настраивать
             интеграцию: вы вставляете одну строку кода на сайт, и ИИ-ассистент
             начинает подбирать туры в реальном времени.
@@ -216,7 +216,7 @@ export default function TourvisorIntegrationPage() {
                 подбора туров, но обычно это делают вручную.
               </p>
               <p className="mt-4 text-base text-body sm:text-lg">
-                «Навылет! AI» автоматизирует этот процесс: ИИ-ассистент
+                «Навылет! AI» автоматизирует этот процесс: ИИ-ассистент
                 обращается к Tourvisor в реальном времени, понимает запрос
                 клиента на естественном языке и выдаёт результат за секунды.
               </p>

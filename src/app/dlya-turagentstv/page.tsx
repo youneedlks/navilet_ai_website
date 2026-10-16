@@ -21,7 +21,7 @@ import { jsonLdScript } from "@/lib/schema";
 export const metadata: Metadata = {
   title: {
     absolute:
-      "ИИ для турагентства от 990 ₽/мес: подбор туров 24/7 | Навылет! AI",
+      "ИИ для турагентства от 990 ₽/мес: подбор туров 24/7 | Навылет! AI",
   },
   description:
     "ИИ-ассистент для турагентств: не пропускает ночные заявки, подбирает туры за секунды и сам отвечает на 80% вопросов. Месяц бесплатно, дальше от 990 ₽/мес.",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/dlya-turagentstv" },
   openGraph: {
-    title: "ИИ для турагентства — «Навылет! AI» подбирает туры 24/7",
+    title: "ИИ для турагентства — «Навылет! AI» подбирает туры 24/7",
     description:
       "Не теряйте ночные заявки. ИИ-ассистент берёт на себя первичную консультацию, подбор и сравнение туров. Менеджер закрывает сделку.",
     url: "https://navilet.ru/dlya-turagentstv",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ИИ для турагентства — «Навылет! AI»",
+    title: "ИИ для турагентства — «Навылет! AI»",
     description: "ИИ-ассистент для турагентства. 24/7 подбор туров.",
     images: ["/og-image.png"],
   },
@@ -159,7 +159,7 @@ const audienceJsonLd = {
       "@type": "WebPage",
       "@id": `${siteUrl}/dlya-turagentstv#webpage`,
       url: `${siteUrl}/dlya-turagentstv`,
-      name: "ИИ для турагентства — «Навылет! AI»",
+      name: "ИИ для турагентства — «Навылет! AI»",
       description:
         "ИИ-ассистент для турагентств: подбор туров 24/7, обработка ночных заявок, разгрузка менеджеров.",
       inLanguage: "ru-RU",
@@ -172,7 +172,7 @@ const audienceJsonLd = {
     {
       "@type": "Service",
       "@id": `${siteUrl}/dlya-turagentstv#service`,
-      name: "ИИ-ассистент «Навылет! AI» для турагентств",
+      name: "ИИ-ассистент «Навылет! AI» для турагентств",
       serviceType: "ИИ-автоматизация турагентств",
       provider: { "@id": `${siteUrl}/#organization` },
       areaServed: { "@type": "Country", name: "Россия" },
@@ -229,7 +229,7 @@ export default function ForAgenciesPage() {
             который не пропустит ночную заявку
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-base text-body sm:text-lg">
-            «Навылет! AI» берёт на себя первичную консультацию, подбор и
+            «Навылет! AI» берёт на себя первичную консультацию, подбор и
             сравнение туров — 24 часа в сутки. Менеджер подключается только
             тогда, когда клиент готов бронировать. Один офис или сеть из 100+
             точек — продукт масштабируется под любой поток.

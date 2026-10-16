@@ -27,7 +27,7 @@ export default function Audience() {
         <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl lg:text-[2.75rem]">
           Кому подходит{" "}
           <span className="text-accent">
-            <span className="whitespace-nowrap">ИИ-ассистент</span> «Навылет! AI»
+            <span className="whitespace-nowrap">ИИ-ассистент</span> «Навылет! AI»
           </span>
         </h2>
       </motion.div>

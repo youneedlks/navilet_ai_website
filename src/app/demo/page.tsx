@@ -10,7 +10,7 @@ const siteUrl = "https://navilet.ru";
 export const metadata: Metadata = {
   title: {
     absolute:
-      "Демо ИИ-ассистента — попробовать вживую без регистрации | Навылет! AI",
+      "Демо ИИ-ассистента — попробовать вживую без регистрации | Навылет! AI",
   },
   description:
     "Попробуйте ИИ-ассистента для турагентства вживую: спросите про любой тур и получите подбор с ценами в чате. Версии «Лид» и «Про», без регистрации.",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/demo" },
   openGraph: {
-    title: "Демо ИИ-ассистента «Навылет! AI» — попробовать вживую",
+    title: "Демо ИИ-ассистента «Навылет! AI» — попробовать вживую",
     description:
       "Спросите ассистента про любой тур и получите подбор с ценами прямо в чате. Бренд и данные настраиваются под вас.",
     url: `${siteUrl}/demo`,
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Демо ИИ-ассистента «Навылет! AI»",
+    title: "Демо ИИ-ассистента «Навылет! AI»",
     description:
       "Живая демонстрация: спросите про тур — получите подбор с ценами в чате.",
     images: ["/og-image.png"],
@@ -63,7 +63,7 @@ export default function DemoPage() {
         "@type": "WebPage",
         "@id": `${siteUrl}/demo#webpage`,
         url: `${siteUrl}/demo`,
-        name: "Демо ИИ-ассистента «Навылет! AI»",
+        name: "Демо ИИ-ассистента «Навылет! AI»",
         isPartOf: { "@id": `${siteUrl}/#website` },
         inLanguage: "ru-RU",
         breadcrumb: { "@id": `${siteUrl}/demo#breadcrumb` },

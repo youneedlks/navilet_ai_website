@@ -95,11 +95,11 @@ export default async function DemandPage({
       {
         "@type": "Dataset",
         "@id": `${url}#dataset`,
-        name: `Спрос на туры: ${page.country} — индекс спроса «Навылет! AI», ${demandIndex.edition.toLowerCase()}`,
+        name: `Спрос на туры: ${page.country} — индекс спроса «Навылет! AI», ${demandIndex.edition.toLowerCase()}`,
         description: `Обезличенная статистика запросов туристов по направлению «${page.country}» из диалогов с ИИ-ассистентами турагентств: доля в поисках туров, тренд, медианный бюджет, состав группы, глубина бронирования.`,
         creator: {
           "@type": "Organization",
-          name: "Навылет! AI",
+          name: "Навылет! AI",
           url: siteUrl,
         },
         isPartOf: { "@id": `${siteUrl}/indeks-sprosa#dataset` },
@@ -234,7 +234,7 @@ export default async function DemandPage({
             </div>
             <p className="mt-3 text-xs text-muted">
               <Link href="/indeks-sprosa" className="underline hover:text-accent">
-                Индекс спроса «Навылет! AI»
+                Индекс спроса «Навылет! AI»
               </Link>
               , выпуск «{demandIndex.edition}»: {demandIndex.periodLabel}.
               Тренд — {demandIndex.trendLabel}. Бюджет — за тур, как его

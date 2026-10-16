@@ -10,12 +10,12 @@ import { demandPages } from "@/lib/seo/demand-pages";
 import { jsonLdScript } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: { absolute: "Карта сайта — все разделы Навылет! AI" },
+  title: { absolute: "Карта сайта — все разделы Навылет! AI" },
   description:
     "Полный список страниц сайта navilet.ru: продукт и тарифы, инструкции установки виджета по платформам, задачи турагентств, спрос по направлениям и блог.",
   alternates: { canonical: "/karta-sayta" },
   openGraph: {
-    title: "Карта сайта — Навылет! AI",
+    title: "Карта сайта — Навылет! AI",
     description: "Все разделы сайта navilet.ru в одном списке.",
     url: "https://navilet.ru/karta-sayta",
     type: "website",
@@ -183,7 +183,7 @@ export default function KartaSaytaPage() {
         "@type": "CollectionPage",
         "@id": `${siteUrl}/karta-sayta#page`,
         url: `${siteUrl}/karta-sayta`,
-        name: "Карта сайта — Навылет! AI",
+        name: "Карта сайта — Навылет! AI",
         description:
           "Полный список разделов и страниц сайта navilet.ru, сгруппированных по темам.",
         isPartOf: { "@id": `${siteUrl}/#website` },

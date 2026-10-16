@@ -13,7 +13,7 @@ import DashboardCTA from "@/components/dashboard/DashboardCTA";
 import { jsonLdScript } from "@/lib/schema";
 
 export const metadata = {
-  title: { absolute: "Личный кабинет ИИ-ассистента | Навылет! AI" },
+  title: { absolute: "Личный кабинет ИИ-ассистента | Навылет! AI" },
   description:
     "Личный кабинет ИИ-ассистента: аналитика диалогов, прогнозы спроса и продаж, управление виджетом, история заявок — всё в одном месте на lk.navilet.ru.",
   keywords: [
@@ -21,12 +21,12 @@ export const metadata = {
     "аналитика ИИ турагентство",
     "управление ИИ-виджетом",
     "мониторинг диалогов турагентство",
-    "Навылет! AI личный кабинет",
+    "Навылет! AI личный кабинет",
     "lk.navilet.ru",
   ],
   alternates: { canonical: "/dashboard" },
   openGraph: {
-    title: "Личный кабинет ИИ-ассистента — Навылет! AI",
+    title: "Личный кабинет ИИ-ассистента — Навылет! AI",
     description:
       "Аналитика, история диалогов, настройка виджета и мониторинг. Управляйте ИИ-ассистентом для турагентства из единого интерфейса.",
     url: "https://navilet.ru/dashboard",
@@ -36,7 +36,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Личный кабинет ИИ-ассистента — Навылет! AI",
+    title: "Личный кабинет ИИ-ассистента — Навылет! AI",
     description:
       "Аналитика, история диалогов, настройка виджета и мониторинг.",
     images: ["/og-image.png"],
@@ -88,7 +88,7 @@ export default function DashboardPage() {
             Что посмотреть дальше
           </h2>
           <p className="mb-8 max-w-2xl text-body">
-            Личный кабинет — часть платформы «Навылет! AI». Узнайте больше о
+            Личный кабинет — часть платформы «Навылет! AI». Узнайте больше о
             продукте, ценах и интеграции.
           </p>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">

@@ -285,7 +285,7 @@ export default function RealWidgetContent({
                 className="rounded-lg bg-[#F1F5F9] font-mono text-[#1E293B] overflow-hidden"
                 style={{ padding: `${4 * s}px ${5 * s}px`, fontSize: 5.5 * s, lineHeight: 1.5 }}
               >
-                <div className="text-[#64748B]">&lt;!-- Навылет! AI Widget --&gt;</div>
+                <div className="text-[#64748B]">&lt;!-- Навылет! AI Widget --&gt;</div>
                 <div>
                   <span className="text-[#0038FF]">&lt;script</span>{" "}
                   <span className="text-[#10B981]">src</span>=

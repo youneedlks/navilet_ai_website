@@ -482,7 +482,7 @@ export default function DemoWidget({
         <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center overflow-hidden rounded-full bg-white/20 p-1">
           <Image
             src="/logo-icon.svg"
-            alt="Навылет! AI — ИИ-ассистент"
+            alt="Навылет! AI — ИИ-ассистент"
             width={28}
             height={24}
             className="h-6 w-auto brightness-0 invert"
@@ -527,7 +527,7 @@ export default function DemoWidget({
             <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-ice">
               <Image
                 src="/logo-icon.svg"
-                alt="Навылет! AI — выберите сценарий демонстрации"
+                alt="Навылет! AI — выберите сценарий демонстрации"
                 width={32}
                 height={28}
                 className="h-7 w-auto"
@@ -742,7 +742,7 @@ export default function DemoWidget({
         <div className="mt-2 text-center text-[10px] text-[#BDC3C7]">
           Powered by{" "}
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo-icon.svg" alt="Навылет! AI" className="inline-block h-3 align-middle ml-0.5" draggable={false} />
+          <img src="/logo-icon.svg" alt="Навылет! AI" className="inline-block h-3 align-middle ml-0.5" draggable={false} />
         </div>
       </div>
     </div>

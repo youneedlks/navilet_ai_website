@@ -232,7 +232,7 @@ export default function Navigation() {
           >
             <Image
               src="/logo.svg"
-              alt="Навылет! AI — ИИ-ассистент для турагентств"
+              alt="Навылет! AI — ИИ-ассистент для турагентств"
               width={220}
               height={48}
               priority

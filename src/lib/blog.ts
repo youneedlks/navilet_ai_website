@@ -35,7 +35,7 @@ function readPostFile(slug: string): Post {
     updated: data.updated ? String(data.updated) : undefined,
     category: String(data.category ?? "Гайды"),
     tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
-    author: String(data.author ?? "Команда Навылет! AI"),
+    author: String(data.author ?? "Команда Навылет! AI"),
     keywords: Array.isArray(data.keywords) ? data.keywords.map(String) : [],
     cover: String(data.cover ?? "blue"),
     readingMinutes: minutes,

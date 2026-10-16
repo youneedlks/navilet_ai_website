@@ -8,7 +8,7 @@ import { ChevronRight, HelpCircle, MessageCircleQuestion } from "lucide-react";
 import { jsonLdScript } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: { absolute: "Частые вопросы про ИИ-ассистент | Навылет! AI" },
+  title: { absolute: "Частые вопросы про ИИ-ассистент | Навылет! AI" },
   description:
     "Частые вопросы про ИИ-ассистент для турагентств: цены от 990 ₽/мес, подключение, безопасность, лимиты диалогов, интеграция с Tourvisor и MAX.",
   keywords: [
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/faq" },
   openGraph: {
-    title: "FAQ — частые вопросы про ИИ-ассистент «Навылет! AI»",
+    title: "FAQ — частые вопросы про ИИ-ассистент «Навылет! AI»",
     description:
       "Полный гид: цены, технологии, подключение, безопасность, интеграции.",
     url: "https://navilet.ru/faq",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "FAQ — частые вопросы про ИИ-ассистент «Навылет! AI»",
+    title: "FAQ — частые вопросы про ИИ-ассистент «Навылет! AI»",
     description: "Ответы на популярные вопросы про ИИ-ассистент для турбизнеса.",
     images: ["/og-image.png"],
   },
@@ -125,7 +125,7 @@ const faqJsonLd = {
       url: `${siteUrl}/faq`,
       name: "FAQ — Часто задаваемые вопросы",
       description:
-        "Ответы на частые вопросы про ИИ-ассистент «Навылет! AI» для турагентств и туроператоров.",
+        "Ответы на частые вопросы про ИИ-ассистент «Навылет! AI» для турагентств и туроператоров.",
       inLanguage: "ru-RU",
       isPartOf: { "@id": `${siteUrl}/#website` },
       breadcrumb: { "@id": `${siteUrl}/faq#breadcrumb` },
@@ -188,7 +188,7 @@ export default function FAQPage() {
           </div>
           <h1 className="font-display text-4xl font-bold leading-tight text-heading sm:text-5xl">
             Всё про <span className="whitespace-nowrap text-accent">ИИ-ассистент</span>{" "}
-            «Навылет! AI»
+            «Навылет! AI»
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-base text-body sm:text-lg">
             Самые частые вопросы о тарифах, технологиях, подключении и

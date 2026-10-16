@@ -40,7 +40,7 @@ export async function generateMetadata({
 
   const url = `${siteUrl}/blog/${post.slug}`;
   return {
-    title: { absolute: `${post.title} | Навылет! AI` },
+    title: { absolute: `${post.title} | Навылет! AI` },
     description: post.description,
     keywords: post.keywords.length ? post.keywords : post.tags,
     alternates: { canonical: `/blog/${post.slug}` },

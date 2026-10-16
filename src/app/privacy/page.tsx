@@ -4,7 +4,7 @@ import Link from "next/link";
 import { jsonLdScript } from "@/lib/schema";
 
 export const metadata = {
-  title: { absolute: "Политика конфиденциальности | Навылет! AI" },
+  title: { absolute: "Политика конфиденциальности | Навылет! AI" },
   description:
     "Политика обработки персональных данных ООО «ИИМПАКТ ПЛЮС» (ИНН 9705243471): порядок сбора, хранения и использования данных пользователей navilet.ru.",
   alternates: { canonical: "/privacy" },

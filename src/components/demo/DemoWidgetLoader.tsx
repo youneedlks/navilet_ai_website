@@ -5,7 +5,7 @@ import { useEffect } from "react";
 const LOADER_SRC = "https://lk.navilet.ru/widget-loader.js";
 
 /**
- * Встраивает реальный демо-виджет «Навылет! AI» (lk.navilet.ru).
+ * Встраивает реальный демо-виджет «Навылет! AI» (lk.navilet.ru).
  *
  * У ассистента в ЛК есть список разрешённых доменов: /api/widget/config
  * отдаёт 403 «Domain not allowed» для origin, которого в списке нет.

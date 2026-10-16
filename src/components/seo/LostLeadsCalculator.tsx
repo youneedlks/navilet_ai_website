@@ -72,7 +72,7 @@ export default function LostLeadsCalculator({ source }: { source: string }) {
             Сколько обращений приходит, когда ваш офис закрыт
           </h3>
           <p className="mt-1 text-sm text-body">
-            Расчёт на реальных диалогах сети «Навылет! AI» — два параметра,
+            Расчёт на реальных диалогах сети «Навылет! AI» — два параметра,
             результат сразу.
           </p>
         </div>

@@ -51,7 +51,7 @@ const homepageJsonLd = {
     {
       "@type": "SoftwareApplication",
       "@id": `${siteUrl}/#product`,
-      name: "Навылет! AI — ИИ-ассистент",
+      name: "Навылет! AI — ИИ-ассистент",
       alternateName: ["Навылет AI", "navylet AI", "Navilet"],
       applicationCategory: "BusinessApplication",
       applicationSubCategory: "TravelApplication",

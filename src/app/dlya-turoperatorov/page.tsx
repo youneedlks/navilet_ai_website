@@ -19,7 +19,7 @@ import {
 import { jsonLdScript } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: { absolute: "ИИ для туроператора — B2B и B2C | Навылет! AI" },
+  title: { absolute: "ИИ для туроператора — B2B и B2C | Навылет! AI" },
   description:
     "ИИ-ассистент для туроператоров: мгновенный подбор по вашей базе для агентов и виджет на B2C-сайт. Клиенты получают предложения 24/7. White-label, MAX.",
   keywords: [
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/dlya-turoperatorov" },
   openGraph: {
-    title: "ИИ для туроператора — «Навылет! AI» для B2B и B2C",
+    title: "ИИ для туроператора — «Навылет! AI» для B2B и B2C",
     description:
       "Вооружите агентов ИИ-инструментом или встройте виджет на B2C-сайт. 24/7 подбор, white-label, интеграция Tourvisor.",
     url: "https://navilet.ru/dlya-turoperatorov",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ИИ для туроператора — «Навылет! AI»",
+    title: "ИИ для туроператора — «Навылет! AI»",
     description: "B2B и B2C ИИ-инструмент для туроператоров.",
     images: ["/og-image.png"],
   },
@@ -143,7 +143,7 @@ const operatorJsonLd = {
       "@type": "WebPage",
       "@id": `${siteUrl}/dlya-turoperatorov#webpage`,
       url: `${siteUrl}/dlya-turoperatorov`,
-      name: "ИИ для туроператора — «Навылет! AI»",
+      name: "ИИ для туроператора — «Навылет! AI»",
       description:
         "ИИ-ассистент для туроператоров: B2B-инструмент для агентов и B2C-виджет на сайт.",
       inLanguage: "ru-RU",
@@ -156,7 +156,7 @@ const operatorJsonLd = {
     {
       "@type": "Service",
       "@id": `${siteUrl}/dlya-turoperatorov#service`,
-      name: "ИИ-ассистент «Навылет! AI» для туроператоров",
+      name: "ИИ-ассистент «Навылет! AI» для туроператоров",
       serviceType: "ИИ-автоматизация туроператоров (B2B + B2C)",
       provider: { "@id": `${siteUrl}/#organization` },
       areaServed: { "@type": "Country", name: "Россия" },
@@ -214,7 +214,7 @@ export default function ForOperatorsPage() {
             вооружите агентов и заработайте на B2C-сайте больше
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-base text-body sm:text-lg">
-            «Навылет! AI» закрывает два сценария: даёт партнёрским агентам
+            «Навылет! AI» закрывает два сценария: даёт партнёрским агентам
             мгновенный ИИ-инструмент подбора и превращает ваш B2C-сайт в
             интерактивную витрину. Один продукт — два контура продаж.
           </p>

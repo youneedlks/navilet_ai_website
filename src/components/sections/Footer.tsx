@@ -107,7 +107,7 @@ export default function Footer() {
             >
               <Image
                 src="/logo.svg"
-                alt="Навылет! AI — ИИ-ассистент для турагентств"
+                alt="Навылет! AI — ИИ-ассистент для турагентств"
                 width={130}
                 height={29}
                 className="h-7 w-auto"
@@ -115,7 +115,7 @@ export default function Footer() {
             </Link>
 
             <p className="text-sm text-muted">
-              &copy; {new Date().getFullYear()} Навылет! AI. Все права защищены.
+              &copy; {new Date().getFullYear()} Навылет! AI. Все права защищены.
             </p>
 
             <button
