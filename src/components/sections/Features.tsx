@@ -24,6 +24,7 @@ import {
   MousePointerClick,
   Lock,
   RotateCcw,
+  Hand,
 } from "lucide-react";
 
 const iconMap = {
@@ -44,6 +45,7 @@ const iconMap = {
   MousePointerClick,
   Lock,
   RotateCcw,
+  Hand,
 } as const;
 
 export default function Features() {
