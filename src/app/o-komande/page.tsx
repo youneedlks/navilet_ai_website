@@ -458,7 +458,7 @@ export default function AboutTeamPage() {
               Юридическое лицо
             </h2>
             <p className="mt-4 text-base text-body">
-              Российская компания, серверы в РФ, соответствие 152-ФЗ.
+              Российская компания, соответствие 152-ФЗ.
             </p>
             <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div className="rounded-2xl border border-blue-subtle/50 bg-white p-5">
