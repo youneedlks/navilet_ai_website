@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { BellRing, BookOpen, Check, Hand, Maximize2, Plug, X } from "lucide-react";
+import { BellRing, BookOpen, Check, Gift, Hand, Maximize2, Plug, X } from "lucide-react";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 
 /**
@@ -35,6 +35,7 @@ const TABS = [
       "Почта — до 3 адресов; U‑ON подключаете сами, кабинет проверит доступ",
       "Битрикс24, amoCRM и вебхук — подключаем по заявке, ответ за 1 рабочий день",
       "Кнопка «Отправить тестовую заявку» и журнал событий",
+      "Опечатка в почте для заявок? Кабинет заметит адрес на похожем, но чужом домене",
     ],
     pc: "/kabinet/integracii-pk.webp",
     phone: "/kabinet/integracii-telefon.webp",
@@ -50,6 +51,7 @@ const TABS = [
       "«Ответы и документы»: вставьте текст или загрузите Word или PDF — кабинет покажет, что взято",
       "«Тон общения»: дружелюбный, деловой, экспертный или свой",
       "Подсказка «Чего не хватает ассистенту» — заполняется в один клик",
+      "Контакты не потеряются: удалить все телефоны можно только с подтверждением, а прежние значения поддержка вернёт одной кнопкой",
     ],
     pc: "/kabinet/baza-pk.webp",
     phone: "/kabinet/baza-telefon.webp",
@@ -68,6 +70,21 @@ const TABS = [
     pc: "/kabinet/dialog-pk.webp",
     phone: null,
     alt: "Кабинет «Навылет! AI», карточка диалога: переписка, запрос клиента и кнопка «Перехватить»",
+  },
+  {
+    id: "trial",
+    icon: Gift,
+    label: "Пробный период",
+    title: "Пробный период — счётчик на виду",
+    points: [
+      "30 дней с первого диалога и до 200 диалогов — что наступит раньше",
+      "«N из 200 диалогов» — на карточке пробного периода и в меню кабинета",
+      "С 160-го диалога — предупреждение, сколько осталось",
+      "Тариф выбираете в кабинете, оплата — по счёту",
+    ],
+    pc: "/kabinet/probnyi-pk.webp",
+    phone: "/kabinet/probnyi-telefon.webp",
+    alt: "Кабинет «Навылет! AI», «Тариф и оплата»: пробный период, день 10 из 30, 172 из 200 диалогов и предупреждение «Осталось 28 диалогов»",
   },
 ] as const;
 
@@ -105,11 +122,11 @@ export default function DashboardKabinetTour() {
         </p>
       </div>
 
-      {/* На телефоне вкладки — сеткой 2×2, чтобы все были видны без прокрутки */}
+      {/* На телефоне вкладки — сеткой по две в ряд (нечётная последняя — во всю ширину), чтобы все были видны без прокрутки */}
       <div
         role="tablist"
         aria-label="Разделы кабинета"
-        className="mx-auto mt-8 grid max-w-3xl grid-cols-2 gap-1 rounded-2xl border border-blue-subtle/50 bg-surface-alt p-1.5 sm:flex"
+        className="mx-auto mt-8 grid max-w-4xl grid-cols-2 gap-1 rounded-2xl border border-blue-subtle/50 bg-surface-alt p-1.5 sm:flex"
       >
         {TABS.map((t) => {
           const on = t.id === active;
@@ -119,7 +136,7 @@ export default function DashboardKabinetTour() {
               role="tab"
               aria-selected={on}
               onClick={() => setActive(t.id)}
-              className={`flex flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-xl px-3 py-2.5 text-sm font-semibold transition-all ${
+              className={`flex flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-xl px-3 py-2.5 text-sm font-semibold transition-all ${TABS.length % 2 ? "last:col-span-2" : ""} ${
                 on
                   ? "bg-white text-accent shadow-[0_2px_8px_rgba(0,82,204,0.10)] ring-1 ring-blue-subtle/60"
                   : "text-heading hover:bg-white/60"

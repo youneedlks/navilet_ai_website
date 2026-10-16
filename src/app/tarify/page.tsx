@@ -206,7 +206,9 @@ export default function TarifyPage() {
             <strong className="font-semibold text-heading">«Про»</strong> —
             полный инструмент с консультациями и возвратом клиентов, <span className="whitespace-nowrap">
             от 1 990 ₽/мес
-            </span>. Каждый тариф работает в Web‑виджете или
+            </span>. «Лид» и «Про» подбирают туры из Турвизора — для агентств,
+            которые с ним работают{reqVersionPublished ? "; без Турвизора — «Заявка»" : ""}.
+            Каждый тариф работает в Web‑виджете или
             {" "}<span className="whitespace-nowrap">MAX‑мессенджере</span>,{" "}
             <Link
               href="/versii"
