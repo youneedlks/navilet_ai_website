@@ -16,6 +16,7 @@ import {
   Globe,
 } from "lucide-react";
 import { jsonLdScript } from "@/lib/schema";
+import { lastModified } from "@/lib/seo/page-dates";
 
 export const metadata: Metadata = {
   title: { absolute: "Кейс МГП: ИИ в сети из 396 офисов | Навылет! AI" },
@@ -106,7 +107,7 @@ const caseJsonLd = {
         "Стратегическое партнёрство «Навылет! AI» и МГП — Сети магазинов горящих путёвок: 27 лет на рынке, 396 офисов, 5+ млн обслуженных туристов. МГП — первая туристическая сеть в России, внедрившая ИИ-ассистент.",
       url: `${siteUrl}/keisy/mgp`,
       datePublished: "2025-04-09",
-      dateModified: "2026-08-30",
+      dateModified: lastModified("/keisy/mgp", "2026-08-30"),
       inLanguage: "ru-RU",
       image: [
         `${siteUrl}/events/minsk-congress-2025.png`,

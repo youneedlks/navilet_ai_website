@@ -15,6 +15,7 @@ import {
   Code2,
 } from "lucide-react";
 import { jsonLdScript } from "@/lib/schema";
+import { lastModified } from "@/lib/seo/page-dates";
 
 const siteUrl = "https://navilet.ru";
 const path = "/sravnenie";
@@ -336,7 +337,7 @@ const jsonLd = {
       description:
         "Четыре способа автоматизировать подбор туров на сайте турагентства в одной таблице: интерфейс, источник туров, каналы, возврат клиентов, запуск, цены на сентябрь 2026.",
       inLanguage: "ru-RU",
-      dateModified: "2026-09-12",
+      dateModified: lastModified(path, "2026-09-12"),
       isPartOf: { "@id": `${siteUrl}/#website` },
       breadcrumb: { "@id": `${siteUrl}${path}#breadcrumb` },
       about: { "@id": `${siteUrl}/#product` },

@@ -292,7 +292,7 @@ const siteWideJsonLd = {
         },
         {
           "@type": "ContactPoint",
-          email: "office@aimpact.ru",
+          email: "support@navilet.ru",
           contactType: "customer support",
           areaServed: "RU",
           availableLanguage: ["Russian", "ru-RU"],

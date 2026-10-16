@@ -26,6 +26,7 @@ import {
   AlertTriangle,
 } from "lucide-react";
 import { jsonLdScript } from "@/lib/schema";
+import { lastModified } from "@/lib/seo/page-dates";
 
 const siteUrl = "https://navilet.ru";
 const path = "/cifrovizaciya-turagentstva";
@@ -88,7 +89,7 @@ const jsonLd = {
         "Какие процессы турагентства переводят в цифру, в каком порядке внедрять, сколько это стоит и как проверить результат.",
       inLanguage: "ru-RU",
       datePublished: "2026-09-13",
-      dateModified: "2026-09-13",
+      dateModified: lastModified("/cifrovizaciya-turagentstva", "2026-09-13"),
       author: { "@id": `${siteUrl}/#organization` },
       publisher: { "@id": `${siteUrl}/#organization` },
       isPartOf: { "@id": `${siteUrl}/#website` },

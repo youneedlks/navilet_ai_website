@@ -16,6 +16,7 @@ import FloatingCTA from "@/components/ui/FloatingCTA";
 import InlineCTA from "@/components/ui/InlineCTA";
 import { siteUrl, siteName, siteDescription } from "./layout";
 import { jsonLdScript } from "@/lib/schema";
+import { lastModified } from "@/lib/seo/page-dates";
 import { aggregateOfferJsonLd } from "@/lib/public-offers";
 import { reqVersionPublished } from "@/lib/content";
 
@@ -34,8 +35,8 @@ const homepageJsonLd = {
       mainEntity: { "@id": `${siteUrl}/#product` },
       primaryImageOfPage: { "@id": `${siteUrl}/#logo` },
       publisher: { "@id": `${siteUrl}/#organization` },
-      datePublished: "2024-01-01",
-      dateModified: new Date().toISOString().split("T")[0],
+      datePublished: "2026-03-15",
+      dateModified: lastModified("/", "2026-10-16"),
       breadcrumb: { "@id": `${siteUrl}/#breadcrumb` },
     },
     {

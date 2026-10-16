@@ -27,6 +27,7 @@ import {
   Calculator,
 } from "lucide-react";
 import { jsonLdScript } from "@/lib/schema";
+import { lastModified } from "@/lib/seo/page-dates";
 import { aggregateOfferJsonLd, publicPlans } from "@/lib/public-offers";
 import { versionIcons } from "@/lib/version-icons";
 
@@ -150,8 +151,8 @@ const jsonLd = {
       breadcrumb: { "@id": `${siteUrl}/skolko-stoit#breadcrumb` },
       about: { "@id": `${siteUrl}/#product` },
       publisher: { "@id": `${siteUrl}/#organization` },
-      datePublished: priceCheckedAt,
-      dateModified: priceCheckedAt,
+      datePublished: "2026-08-13",
+      dateModified: lastModified("/skolko-stoit", priceCheckedAt),
     },
     {
       // AggregateOffer с lowPrice даёт Яндексу сниппет «от 990 ₽»
