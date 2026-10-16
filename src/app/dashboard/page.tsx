@@ -8,14 +8,16 @@ import DashboardAnalyticsShowcase from "@/components/dashboard/DashboardAnalytic
 import DashboardForecastShowcase from "@/components/dashboard/DashboardForecastShowcase";
 import DashboardConversationsShowcase from "@/components/dashboard/DashboardConversationsShowcase";
 import DashboardWidgetShowcase from "@/components/dashboard/DashboardWidgetShowcase";
+import DashboardKabinetTour from "@/components/dashboard/DashboardKabinetTour";
 import DashboardBenefits from "@/components/dashboard/DashboardBenefits";
 import DashboardCTA from "@/components/dashboard/DashboardCTA";
 import { jsonLdScript } from "@/lib/schema";
+import { reqVersionPublished } from "@/lib/content";
 
 export const metadata = {
   title: { absolute: "Личный кабинет ИИ-ассистента | Навылет! AI" },
   description:
-    "Личный кабинет ИИ-ассистента: аналитика диалогов, прогнозы спроса и продаж, управление виджетом, история заявок — всё в одном месте на lk.navilet.ru.",
+    "Личный кабинет ИИ-ассистента: диалоги и ответ менеджера, аналитика и прогнозы, база знаний, заявки в Telegram и MAX — всё на lk.navilet.ru.",
   keywords: [
     "личный кабинет турагентства",
     "аналитика ИИ турагентство",
@@ -28,7 +30,7 @@ export const metadata = {
   openGraph: {
     title: "Личный кабинет ИИ-ассистента — Навылет! AI",
     description:
-      "Аналитика, история диалогов, настройка виджета и мониторинг. Управляйте ИИ-ассистентом для турагентства из единого интерфейса.",
+      "Диалоги и ответ менеджера, аналитика и прогнозы, база знаний, интеграции с почтой, U-ON, Telegram и MAX — в одном кабинете.",
     url: "https://navilet.ru/dashboard",
     images: [{ url: "/og-image.png", width: 1200, height: 630 }],
     type: "website",
@@ -38,7 +40,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Личный кабинет ИИ-ассистента — Навылет! AI",
     description:
-      "Аналитика, история диалогов, настройка виджета и мониторинг.",
+      "Диалоги, аналитика, база знаний и заявки в Telegram и MAX.",
     images: ["/og-image.png"],
   },
   robots: {
@@ -78,6 +80,7 @@ export default function DashboardPage() {
       <main>
         <DashboardHero />
         <DashboardValueMetrics />
+        <DashboardKabinetTour />
         <DashboardAnalyticsShowcase />
         <DashboardForecastShowcase />
         <DashboardConversationsShowcase />
@@ -101,7 +104,9 @@ export default function DashboardPage() {
               {
                 href: "/tarify",
                 title: "Тарифы",
-                text: "Прозрачные планы от 990 ₽/мес",
+                text: reqVersionPublished
+                  ? "Прозрачные планы от 790 ₽/мес"
+                  : "Прозрачные планы от 990 ₽/мес",
               },
               {
                 href: "/integraciya-tourvisor",

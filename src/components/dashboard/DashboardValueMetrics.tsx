@@ -3,7 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
-import { Activity, BarChart3, Palette, Shield } from "lucide-react";
+import { Activity, BarChart3, Palette, Hand } from "lucide-react";
 
 const items = [
   {
@@ -22,9 +22,9 @@ const items = [
     description: "Цвета, логотип, аватар, приветственное сообщение — ваш бренд",
   },
   {
-    icon: Shield,
-    title: "24/7 мониторинг",
-    description: "Статус инфраструктуры, здоровье системы, аптайм ассистента",
+    icon: Hand,
+    title: "Ответ менеджера",
+    description: "Перехватите диалог — ассистент замолчит, клиенту ответит менеджер",
   },
 ];
 
