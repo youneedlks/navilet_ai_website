@@ -15,16 +15,16 @@ export default function Versions() {
         <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5">
           <Layers className="h-4 w-4 text-accent" />
           <span className="text-xs font-semibold text-accent sm:text-sm">
-            Два формата под модель вашего агентства
+            Два формата под модель вашего агентства
           </span>
         </div>
         <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl lg:text-[2.75rem]">
-          Один ассистент — <span className="text-accent">две версии</span>
+          Один ассистент — <span className="text-accent">две версии</span>
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-base text-body">
-          «Лид» собирает готовые заявки для ваших менеджеров.
-          «Про» — полноценный инструмент: консультирует, сопровождает
-          и возвращает клиентов. Выберите свой формат — и попробуйте его в демо.
+          «Лид» собирает готовые заявки для ваших менеджеров.
+          «Про» — полноценный инструмент: консультирует, сопровождает
+          и возвращает клиентов. Выберите свой формат — и попробуйте его в демо.
         </p>
       </motion.div>
 
@@ -37,7 +37,7 @@ export default function Versions() {
           href="/versii"
           className="inline-flex min-h-10 items-center gap-1.5 text-sm font-semibold text-accent transition-colors hover:text-accent-hover"
         >
-          Полное сравнение версий в таблице
+          Полное сравнение версий в таблице
           <ArrowRight className="h-4 w-4" />
         </Link>
       </motion.div>

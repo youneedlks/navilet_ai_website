@@ -72,10 +72,10 @@ const STAR_LABELS = ["3★", "4★", "5★", "4-5★"];
 const MEAL_LABELS = ["BB", "HB", "FB", "AI"];
 
 const QUICK_INSIGHTS = [
-  "Турция лидирует с 33% всех поисков",
-  "Пик активности: 10:00–14:00 по МСК",
+  "Турция лидирует с 33% всех поисков",
+  "Пик активности: 10:00–14:00 по МСК",
   "78% клиентов ищут 5★ отели",
-  "All Inclusive — самый популярный тип питания",
+  "All Inclusive — самый популярный тип питания",
 ];
 
 export default function RealAnalyticsContent({
@@ -92,14 +92,14 @@ export default function RealAnalyticsContent({
             Аналитика
           </div>
           <div className="text-[#64748B]" style={{ fontSize: 8.5 * s, marginTop: 1 }}>
-            Детальный анализ поисковых запросов и поведения клиентов
+            Детальный анализ поисковых запросов и поведения клиентов
           </div>
         </div>
         <div
           className="flex rounded-lg bg-white p-0.5"
           style={{ boxShadow: "0 1px 2px rgba(0,56,255,0.04)" }}
         >
-          {["7 дн", "30 дн", "90 дн"].map((p, i) => (
+          {["7 дн", "30 дн", "90 дн"].map((p, i) => (
             <div
               key={p}
               className={`rounded-md px-1.5 py-0.5 font-medium ${
@@ -189,7 +189,7 @@ export default function RealAnalyticsContent({
         {/* Heatmap */}
         <ChartCard
           icon={Calendar}
-          title="Активность по часам"
+          title="Активность по часам"
           s={s}
         >
           <div>

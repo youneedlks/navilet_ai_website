@@ -87,7 +87,7 @@ export default async function DemandPage({
           {
             "@type": "ListItem",
             position: 2,
-            name: "Спрос по направлениям",
+            name: "Спрос по направлениям",
             item: `${siteUrl}/spros`,
           },
           { "@type": "ListItem", position: 3, name: page.country, item: url },
@@ -96,8 +96,8 @@ export default async function DemandPage({
       {
         "@type": "Dataset",
         "@id": `${url}#dataset`,
-        name: `Спрос на туры: ${page.country} — индекс спроса «Навылет! AI», ${demandIndex.edition.toLowerCase()}`,
-        description: `Обезличенная статистика запросов туристов по направлению «${page.country}» из диалогов с ИИ-ассистентами турагентств: доля в поисках туров, тренд, медианный бюджет, состав группы, глубина бронирования.`,
+        name: `Спрос на туры: ${page.country} — индекс спроса «Навылет! AI», ${demandIndex.edition.toLowerCase()}`,
+        description: `Обезличенная статистика запросов туристов по направлению «${page.country}» из диалогов с ИИ-ассистентами турагентств: доля в поисках туров, тренд, медианный бюджет, состав группы, глубина бронирования.`,
         creator: {
           "@type": "Organization",
           name: "Навылет! AI",
@@ -109,7 +109,7 @@ export default async function DemandPage({
         variableMeasured: [
           {
             "@type": "PropertyValue",
-            name: "Доля в поисках туров",
+            name: "Доля в поисках туров",
             value: fmtPct(page.m.sharePct),
           },
           {
@@ -121,19 +121,19 @@ export default async function DemandPage({
             ? [
                 {
                   "@type": "PropertyValue",
-                  name: "Медианный бюджет туриста за тур",
+                  name: "Медианный бюджет туриста за тур",
                   value: fmtRub(page.m.budgetMedian),
                 },
               ]
             : []),
           {
             "@type": "PropertyValue",
-            name: "Доля запросов с детьми",
+            name: "Доля запросов с детьми",
             value: `${page.m.kidsPct}%`,
           },
           {
             "@type": "PropertyValue",
-            name: "Медиана дней от запроса до вылета",
+            name: "Медиана дней от запроса до вылета",
             value: Math.round(page.m.horizonDays),
           },
         ],
@@ -180,7 +180,7 @@ export default async function DemandPage({
               </Link>
               {" · "}
               <Link href="/spros" className="hover:text-accent">
-                Спрос по направлениям
+                Спрос по направлениям
               </Link>
               {" · "}
               <span className="text-body">{page.country}</span>
@@ -193,7 +193,7 @@ export default async function DemandPage({
             <div className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-3">
               <div className="rounded-2xl border border-blue-subtle/40 bg-blue-ice/40 p-5">
                 <div className="text-xs font-semibold uppercase tracking-wide text-muted">
-                  Доля в поисках туров
+                  Доля в поисках туров
                 </div>
                 <div className="mt-1 flex items-baseline gap-2">
                   <span className="font-display text-3xl font-bold text-heading">
@@ -228,7 +228,7 @@ export default async function DemandPage({
                     className={`h-5 w-5 ${page.inSeason ? "text-emerald-500" : "text-muted/50"}`}
                   />
                   <span className="font-display text-xl font-bold text-heading">
-                    {page.inSeason ? "в сезоне" : "не сезон"}
+                    {page.inSeason ? "в сезоне" : "не сезон"}
                   </span>
                 </div>
               </div>
@@ -238,8 +238,8 @@ export default async function DemandPage({
                 Индекс спроса «Навылет! AI»
               </Link>
               , выпуск «{demandIndex.edition}»: {demandIndex.periodLabel}.
-              Тренд — {demandIndex.trendLabel}. Бюджет — за тур, как его
-              называет сам турист. Без данных отдельных компаний.
+              Тренд — {demandIndex.trendLabel}. Бюджет — за тур, как его
+              называет сам турист. Без данных отдельных компаний.
             </p>
 
             <div className="mt-6 space-y-4 text-base leading-relaxed text-body sm:text-lg">
@@ -356,7 +356,7 @@ export default async function DemandPage({
         <section className="bg-surface-alt">
           <div className="mx-auto max-w-3xl px-5 py-14 sm:px-6 lg:px-8">
             <h2 className="font-display text-xl font-bold text-heading">
-              Спрос по другим направлениям
+              Спрос по другим направлениям
             </h2>
             <div className="mt-5 flex flex-wrap gap-2.5">
               {otherPages.map((p) => (
@@ -374,21 +374,21 @@ export default async function DemandPage({
                 href="/indeks-sprosa"
                 className="inline-flex items-center gap-1 font-semibold text-accent hover:underline"
               >
-                Индекс спроса на туры: все направления и методика{" "}
+                Индекс спроса на туры: все направления и методика{" "}
                 <ArrowRight className="h-3.5 w-3.5" />
               </Link>
               <Link
                 href="/prognozy"
                 className="inline-flex items-center gap-1 font-semibold text-accent hover:underline"
               >
-                Барометр спроса и прогнозы в личном кабинете{" "}
+                Барометр спроса и прогнозы в личном кабинете{" "}
                 <ArrowRight className="h-3.5 w-3.5" />
               </Link>
               <Link
                 href="/demo"
                 className="inline-flex items-center gap-1 font-semibold text-accent hover:underline"
               >
-                Посмотреть, как ассистент отвечает на эти вопросы{" "}
+                Посмотреть, как ассистент отвечает на эти вопросы{" "}
                 <ArrowRight className="h-3.5 w-3.5" />
               </Link>
               {/* Связки с другими кластерами: без них страницы спроса
@@ -397,21 +397,21 @@ export default async function DemandPage({
                 href="/resheniya/nochnye-zayavki"
                 className="inline-flex items-center gap-1 font-semibold text-accent hover:underline"
               >
-                Что делать с заявками, которые приходят ночью{" "}
+                Что делать с заявками, которые приходят ночью{" "}
                 <ArrowRight className="h-3.5 w-3.5" />
               </Link>
               <Link
                 href="/vidzhet"
                 className="inline-flex items-center gap-1 font-semibold text-accent hover:underline"
               >
-                Как поставить виджет подбора туров на сайт{" "}
+                Как поставить виджет подбора туров на сайт{" "}
                 <ArrowRight className="h-3.5 w-3.5" />
               </Link>
               <Link
                 href="/skolko-stoit"
                 className="inline-flex items-center gap-1 font-semibold text-accent hover:underline"
               >
-                Сколько стоит ассистент — от {priceFromLabel}/мес{" "}
+                Сколько стоит ассистент — от {priceFromLabel}/мес{" "}
                 <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </div>
@@ -432,8 +432,8 @@ export default async function DemandPage({
               Заберите спрос по направлению «{page.country}» себе
             </h2>
             <p className="mx-auto mt-3 max-w-lg text-white/70">
-              ИИ-ассистент отвечает на эти вопросы на вашем сайте — 24/7.
-              Регистрация в 3 коротких шага, 30 дней бесплатно с первого диалога.
+              ИИ-ассистент отвечает на эти вопросы на вашем сайте — 24/7.
+              Регистрация в 3 коротких шага, 30 дней бесплатно с первого диалога.
             </p>
             <div className="mt-6 flex justify-center">
               <RegisterCta source={`spros_${page.slug}_bottom`} compact dark />

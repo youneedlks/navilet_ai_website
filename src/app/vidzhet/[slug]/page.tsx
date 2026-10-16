@@ -77,7 +77,7 @@ export default async function PlatformPage({
           {
             "@type": "ListItem",
             position: 2,
-            name: "Виджет на сайт",
+            name: "Виджет на сайт",
             item: `${siteUrl}/vidzhet`,
           },
           { "@type": "ListItem", position: 3, name: page.name, item: url },
@@ -127,7 +127,7 @@ export default async function PlatformPage({
               </Link>
               {" · "}
               <Link href="/vidzhet" className="hover:text-accent">
-                Виджет на сайт
+                Виджет на сайт
               </Link>
               {" · "}
               <span className="text-body">{page.name}</span>
@@ -225,7 +225,7 @@ export default async function PlatformPage({
         <section className="bg-surface">
           <div className="mx-auto max-w-3xl px-5 py-14 sm:px-6 lg:px-8">
             <h2 className="font-display text-xl font-bold text-heading">
-              Виджет для других платформ
+              Виджет для других платформ
             </h2>
             <div className="mt-5 flex flex-wrap gap-2.5">
               {otherPlatforms.map((p) => (
@@ -243,10 +243,10 @@ export default async function PlatformPage({
                 Живое демо ассистента <ArrowRight className="h-3.5 w-3.5" />
               </Link>
               <Link href="/tarify" className="inline-flex items-center gap-1 font-semibold text-accent hover:underline">
-                Тарифы от {priceFromLabel}/мес <ArrowRight className="h-3.5 w-3.5" />
+                Тарифы от {priceFromLabel}/мес <ArrowRight className="h-3.5 w-3.5" />
               </Link>
               <Link href="/integraciya-tourvisor" className="inline-flex items-center gap-1 font-semibold text-accent hover:underline">
-                Интеграция с Tourvisor <ArrowRight className="h-3.5 w-3.5" />
+                Интеграция с Tourvisor <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </div>
           </div>
@@ -263,10 +263,10 @@ export default async function PlatformPage({
           <div className="noise-overlay pointer-events-none absolute inset-0 opacity-20" />
           <div className="relative mx-auto max-w-3xl px-5 py-14 text-center sm:px-6 lg:px-8">
             <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">
-              Ассистент на вашем сайте {page.name} — уже сегодня
+              Ассистент на вашем сайте {page.name} — уже сегодня
             </h2>
             <p className="mx-auto mt-3 max-w-lg text-white/70">
-              Регистрация в 3 коротких шага, 30 дней бесплатно с первого диалога, карта не нужна.
+              Регистрация в 3 коротких шага, 30 дней бесплатно с первого диалога, карта не нужна.
             </p>
             <div className="mt-6 flex justify-center">
               <RegisterCta source={`vidzhet_${page.slug}_bottom`} compact dark />

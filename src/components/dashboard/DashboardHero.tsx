@@ -30,7 +30,7 @@ export default function DashboardHero() {
             className="mb-6 font-display text-3xl font-bold leading-[1.1] text-heading sm:text-5xl lg:text-[3.5rem]"
             style={{ letterSpacing: "-0.02em" }}
           >
-            Полный контроль над вашим{" "}
+            Полный контроль над вашим{" "}
             <span className="whitespace-nowrap text-accent">ИИ-ассистентом</span>
           </motion.h1>
 
@@ -38,9 +38,9 @@ export default function DashboardHero() {
             variants={fadeInUp}
             className="mb-8 max-w-xl text-base leading-relaxed text-body sm:text-lg"
           >
-            Диалоги и ответ менеджера клиенту, аналитика и прогнозы, база знаний
-            агентства, заявки на почту, в U‑ON, Telegram и MAX — всё в одном
-            личном кабинете на lk.navilet.ru.
+            Диалоги и ответ менеджера клиенту, аналитика и прогнозы, база знаний
+            агентства, заявки на почту, в U‑ON, Telegram и MAX — всё в одном
+            личном кабинете на lk.navilet.ru.
           </motion.p>
 
           <motion.div variants={fadeInUp} className="mb-10 flex flex-wrap justify-center gap-4 lg:justify-start">
@@ -57,10 +57,10 @@ export default function DashboardHero() {
             className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-muted sm:gap-6 sm:text-sm lg:justify-start"
           >
             {[
-              "Заявки в Telegram и MAX",
+              "Заявки в Telegram и MAX",
               "База знаний агентства",
-              "Отчёты в CSV и PDF",
-              "Работает с телефона",
+              "Отчёты в CSV и PDF",
+              "Работает с телефона",
             ].map((item) => (
               <span key={item} className="flex items-center gap-1.5">
                 <svg

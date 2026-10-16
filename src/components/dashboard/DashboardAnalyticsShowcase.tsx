@@ -58,8 +58,8 @@ export default function DashboardAnalyticsShowcase() {
             <span className="text-accent">продаёт</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-body">
-            Отслеживайте каждый диалог, каждый поиск, каждый лид — от первого
-            сообщения клиента до запроса на бронирование
+            Отслеживайте каждый диалог, каждый поиск, каждый лид — от первого
+            сообщения клиента до запроса на бронирование
           </p>
         </motion.div>
 
@@ -77,16 +77,16 @@ export default function DashboardAnalyticsShowcase() {
               </span>
             </div>
             <h3 className="font-display text-2xl font-bold text-heading">
-              Вся картина бизнеса на одном экране
+              Вся картина бизнеса на одном экране
             </h3>
             <div className="space-y-3">
               <FeaturePoint
                 icon={MessagesSquare}
-                text="Метрики в реальном времени: диалоги, поиски, бронирования — со спарклайнами и динамикой"
+                text="Метрики в реальном времени: диалоги, поиски, бронирования — со спарклайнами и динамикой"
               />
               <FeaturePoint
                 icon={TrendingUp}
-                text="Воронка конверсии: от первого сообщения до потенциального лида с процентами каждого этапа"
+                text="Воронка конверсии: от первого сообщения до потенциального лида с процентами каждого этапа"
               />
               <FeaturePoint
                 icon={Zap}
@@ -94,7 +94,7 @@ export default function DashboardAnalyticsShowcase() {
               />
               <FeaturePoint
                 icon={Clock}
-                text="Динамика за любой период: 7 дней, 30 дней, 90 дней — переключение в один клик"
+                text="Динамика за любой период: 7 дней, 30 дней, 90 дней — переключение в один клик"
               />
             </div>
           </motion.div>
@@ -143,11 +143,11 @@ export default function DashboardAnalyticsShowcase() {
             <div className="space-y-3">
               <FeaturePoint
                 icon={Globe}
-                text="География спроса: популярные страны и города вылета — знайте, куда хотят ваши клиенты"
+                text="География спроса: популярные страны и города вылета — знайте, куда хотят ваши клиенты"
               />
               <FeaturePoint
                 icon={Calendar}
-                text="Тепловая карта активности 7×24: когда клиенты обращаются к ассистенту"
+                text="Тепловая карта активности 7×24: когда клиенты обращаются к ассистенту"
               />
               <FeaturePoint
                 icon={Search}
@@ -159,7 +159,7 @@ export default function DashboardAnalyticsShowcase() {
               />
               <FeaturePoint
                 icon={Download}
-                text="Экспорт всех данных в CSV: загружайте для своих отчётов"
+                text="Экспорт всех данных в CSV: загружайте для своих отчётов"
               />
             </div>
           </motion.div>

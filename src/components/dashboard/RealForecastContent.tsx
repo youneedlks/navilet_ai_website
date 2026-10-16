@@ -29,21 +29,21 @@ const MONTH = {
   dialogsMtd: "факт: 470",
   engaged: "≈ 185",
   engagedMtd: "факт: 66",
-  paid: "4–8 млн ₽",
-  income: "доход ≈ 400–790 тыс. ₽",
+  paid: "4–8 млн ₽",
+  income: "доход ≈ 400–790 тыс. ₽",
 };
 
 const AI_LINES = [
-  "Спрос на Египет растёт — по сети +6 п.п. за 2 недели, стоит усилить направление.",
-  "Пик заявок ожидается в выходные 19–20 июля — проверьте загрузку менеджеров.",
-  "Ваш средний чек интереса выше сети — есть запас для премиальных предложений.",
+  "Спрос на Египет растёт — по сети +6 п.п. за 2 недели, стоит усилить направление.",
+  "Пик заявок ожидается в выходные 19–20 июля — проверьте загрузку менеджеров.",
+  "Ваш средний чек интереса выше сети — есть запас для премиальных предложений.",
 ];
 
 const FACT = [
   { label: "Диалогов", value: "1 240", accent: "#0038FF", icon: MessageSquare },
-  { label: "С интересом", value: "14%", accent: "#8B5CF6", icon: MousePointerClick },
-  { label: "Ср. чек интереса", value: "214 тыс. ₽", accent: "#10B981", icon: Wallet },
-  { label: "Корзина интереса", value: "37 млн ₽", accent: "#F59E0B", icon: TrendingUp },
+  { label: "С интересом", value: "14%", accent: "#8B5CF6", icon: MousePointerClick },
+  { label: "Ср. чек интереса", value: "214 тыс. ₽", accent: "#10B981", icon: Wallet },
+  { label: "Корзина интереса", value: "37 млн ₽", accent: "#F59E0B", icon: TrendingUp },
 ];
 
 /** Барометр спроса по сети: доля спроса + тренд в п.п. + сезонность. */
@@ -70,13 +70,13 @@ export default function RealForecastContent({
       >
         <div>
           <div className="font-bold text-[#1E293B]" style={{ fontSize: 12 * s }}>
-            Отчёты и прогнозы
+            Отчёты и прогнозы
           </div>
           <div
             className="text-[#64748B]"
             style={{ fontSize: 8.5 * s, marginTop: 1 }}
           >
-            Предиктивная аналитика по данным ассистента — сайт и MAX
+            Предиктивная аналитика по данным ассистента — сайт и MAX
           </div>
         </div>
         <div
@@ -106,8 +106,8 @@ export default function RealForecastContent({
       >
         <PanelHead
           icon={CalendarClock}
-          title={`Прогноз до конца месяца · ${MONTH.label}`}
-          subtitle={`Прошло ${MONTH.elapsedDays} из ${MONTH.totalDays} дней · темп с поправкой на тренд ×${MONTH.trend}`}
+          title={`Прогноз до конца месяца · ${MONTH.label}`}
+          subtitle={`Прошло ${MONTH.elapsedDays} из ${MONTH.totalDays} дней · темп с поправкой на тренд ×${MONTH.trend}`}
           s={s}
         />
         <div
@@ -121,7 +121,7 @@ export default function RealForecastContent({
             s={s}
           />
           <ForecastCell
-            label="С интересом к покупке"
+            label="С интересом к покупке"
             value={MONTH.engaged}
             hint={MONTH.engagedMtd}
             s={s}
@@ -152,7 +152,7 @@ export default function RealForecastContent({
             icon={Sparkles}
             iconColor="#8B5CF6"
             iconBg="#F5F3FF"
-            title="AI-прогноз на 4–6 недель"
+            title="AI-прогноз на 4–6 недель"
             subtitle="Ваша динамика + тренды всей сети + сезонность направлений"
             s={s}
           />
@@ -183,13 +183,13 @@ export default function RealForecastContent({
           className="border-t border-[#E2E8F0]/60 text-[#94A3B8]"
           style={{ marginTop: 5 * s, paddingTop: 3 * s, fontSize: 6 * s }}
         >
-          Обновлено 12 июля, 09:40 · автообновление по понедельникам
+          Обновлено 12 июля, 09:40 · автообновление по понедельникам
         </div>
       </div>
 
       {!compact && (
         <>
-          <SectionDivider label="Факт за 30 дней" s={s} />
+          <SectionDivider label="Факт за 30 дней" s={s} />
           <div
             className="grid grid-cols-2 gap-1.5 sm:grid-cols-4"
             style={{ marginBottom: 6 * s }}
@@ -230,7 +230,7 @@ export default function RealForecastContent({
             })}
           </div>
 
-          <SectionDivider label="Барометр спроса по сети" s={s} />
+          <SectionDivider label="Барометр спроса по сети" s={s} />
         </>
       )}
 
@@ -245,8 +245,8 @@ export default function RealForecastContent({
       >
         <PanelHead
           icon={Globe2}
-          title="Барометр спроса по сети «Навылет! AI»"
-          subtitle="Куда смотрят туристы всех агентств сети — обезличенно"
+          title="Барометр спроса по сети «Навылет! AI»"
+          subtitle="Куда смотрят туристы всех агентств сети — обезличенно"
           s={s}
         />
         <div style={{ marginTop: 5 * s }}>
@@ -305,7 +305,7 @@ export default function RealForecastContent({
             Медианный чек сети: <b className="text-[#1E293B]">190 000 ₽</b>
           </span>
           <span className="inline-flex items-center gap-0.5">
-            <Leaf size={6 * s} className="text-[#10B981]" /> — в сезоне
+            <Leaf size={6 * s} className="text-[#10B981]" /> — в сезоне
           </span>
         </div>
       </div>
@@ -315,8 +315,7 @@ export default function RealForecastContent({
           className="text-[#94A3B8]"
           style={{ fontSize: 6 * s, marginTop: 5 * s, lineHeight: 1.5 }}
         >
-          Прогнозные суммы — диапазоны-ориентиры по поведению клиентов в чате, а не
-          фактические продажи.
+          Прогнозные суммы — диапазоны-ориентиры по поведению клиентов в чате, а не фактические продажи.
         </div>
       )}
     </div>

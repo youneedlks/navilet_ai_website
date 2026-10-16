@@ -55,16 +55,15 @@ export default function DashboardConversationsShowcase() {
             </span>
           </div>
           <h2 className="font-display text-2xl font-bold text-heading">
-            Каждый диалог — под контролем
+            Каждый диалог — под контролем
           </h2>
           <p className="text-body leading-relaxed">
-            Просматривайте полную историю каждого разговора клиента с
-            ИИ-ассистентом, включая карточки туров и результаты поиска.
+            Просматривайте полную историю каждого разговора клиента с ИИ-ассистентом, включая карточки туров и результаты поиска.
           </p>
           <div className="space-y-3">
             <FeaturePoint
               icon={Eye}
-              text="Chat replay: полное воспроизведение переписки с карточками туров в реальном виде"
+              text="Chat replay: полное воспроизведение переписки с карточками туров в реальном виде"
             />
             <FeaturePoint
               icon={UserCheck}
@@ -72,21 +71,21 @@ export default function DashboardConversationsShowcase() {
             />
             <FeaturePoint
               icon={GitBranch}
-              text="Путь клиента: визуальный timeline от начала до завершения разговора"
+              text="Путь клиента: визуальный timeline от начала до завершения разговора"
             />
             <FeaturePoint
               icon={Filter}
-              text="Умные фильтры: по статусу, дате, с карточками, с запросами на бронь"
+              text="Умные фильтры: по статусу, дате, с карточками, с запросами на бронь"
             />
             <FeaturePoint
               icon={Search}
-              text="Полнотекстовый поиск: по сообщениям, странам, городам, отелям"
+              text="Полнотекстовый поиск: по сообщениям, странам, городам, отелям"
             />
           </div>
 
           <div className="flex items-center gap-4 pt-2">
             {[
-              { dot: "bg-emerald-400", label: "Запрос на бронь" },
+              { dot: "bg-emerald-400", label: "Запрос на бронь" },
               { dot: "bg-amber-400", label: "Карточки показаны" },
               { dot: "bg-[#CBD5E1]", label: "Только чат" },
             ].map((item) => (

@@ -9,9 +9,9 @@ import { jsonLdScript } from "@/lib/schema";
 const siteUrl = "https://navilet.ru";
 
 export const metadata: Metadata = {
-  title: { absolute: "Блог про ИИ в туризме | Навылет! AI" },
+  title: { absolute: "Блог про ИИ в туризме | Навылет! AI" },
   description:
-    "Гайды, кейсы и разборы про ИИ в туризме: автоматизация турагентств, подбор туров, интеграция Tourvisor, экономика ИИ-ассистента для турбизнеса.",
+    "Гайды, кейсы и разборы про ИИ в туризме: автоматизация турагентств, подбор туров, интеграция Tourvisor, экономика ИИ-ассистента для турбизнеса.",
   keywords: [
     "ИИ в туризме блог",
     "автоматизация турагентства статьи",
@@ -21,9 +21,9 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/blog" },
   openGraph: {
-    title: "Блог про ИИ в туризме — Навылет! AI",
+    title: "Блог про ИИ в туризме — Навылет! AI",
     description:
-      "Гайды, кейсы и разборы про искусственный интеллект в туризме для турагентств и туроператоров.",
+      "Гайды, кейсы и разборы про искусственный интеллект в туризме для турагентств и туроператоров.",
     url: `${siteUrl}/blog`,
     images: [{ url: "/og-image.png", width: 1200, height: 630 }],
     type: "website",
@@ -31,9 +31,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Блог про ИИ в туризме — Навылет! AI",
+    title: "Блог про ИИ в туризме — Навылет! AI",
     description:
-      "Гайды, кейсы и разборы про искусственный интеллект в туризме для турбизнеса.",
+      "Гайды, кейсы и разборы про искусственный интеллект в туризме для турбизнеса.",
     images: ["/og-image.png"],
   },
   robots: { index: true, follow: true },
@@ -49,7 +49,7 @@ export default function BlogPage() {
         "@type": "CollectionPage",
         "@id": `${siteUrl}/blog#webpage`,
         url: `${siteUrl}/blog`,
-        name: "Блог про ИИ в туризме — Навылет! AI",
+        name: "Блог про ИИ в туризме — Навылет! AI",
         isPartOf: { "@id": `${siteUrl}/#website` },
         inLanguage: "ru-RU",
         breadcrumb: { "@id": `${siteUrl}/blog#breadcrumb` },
@@ -91,11 +91,11 @@ export default function BlogPage() {
               <span className="text-body">Блог</span>
             </nav>
             <h1 className="font-display text-4xl font-bold leading-tight text-heading sm:text-5xl">
-              Блог про ИИ в туризме
+              Блог про ИИ в туризме
             </h1>
             <p className="mt-4 max-w-2xl text-lg text-body">
-              Гайды, кейсы и разборы про автоматизацию турбизнеса: как ИИ
-              подбирает туры, обрабатывает заявки 24/7 и увеличивает конверсию.
+              Гайды, кейсы и разборы про автоматизацию турбизнеса: как ИИ
+              подбирает туры, обрабатывает заявки 24/7 и увеличивает конверсию.
             </p>
           </div>
         </section>

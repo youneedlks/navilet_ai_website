@@ -120,8 +120,8 @@ export default function Integration() {
           <span className="text-accent">без программиста</span>
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-base text-body">
-          Сами через личный кабинет — или оставьте заявку, и менеджер настроит
-          всё под ключ.
+          Сами через личный кабинет — или оставьте заявку, и менеджер настроит
+          всё под ключ.
         </p>
       </motion.div>
 

@@ -26,7 +26,7 @@ export default function DemoFirstCta({
         className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3 font-semibold text-white shadow-lg transition-transform hover:scale-[1.02]"
       >
         <MessageSquare className="h-4 w-4" />
-        Попробовать демо — без регистрации
+        Попробовать демо — без регистрации
       </Link>
       <Link
         href="/tarify"

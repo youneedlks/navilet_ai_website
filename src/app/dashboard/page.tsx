@@ -17,7 +17,7 @@ import { priceFromLabel } from "@/lib/content";
 export const metadata = {
   title: { absolute: "Личный кабинет ИИ-ассистента | Навылет! AI" },
   description:
-    "Личный кабинет ИИ-ассистента: диалоги и ответ менеджера, аналитика и прогнозы, база знаний, заявки в Telegram и MAX — всё на lk.navilet.ru.",
+    "Личный кабинет ИИ-ассистента: диалоги и ответ менеджера, аналитика и прогнозы, база знаний, заявки в Telegram и MAX — всё на lk.navilet.ru.",
   keywords: [
     "личный кабинет турагентства",
     "аналитика ИИ турагентство",
@@ -28,9 +28,9 @@ export const metadata = {
   ],
   alternates: { canonical: "/dashboard" },
   openGraph: {
-    title: "Личный кабинет ИИ-ассистента — Навылет! AI",
+    title: "Личный кабинет ИИ-ассистента — Навылет! AI",
     description:
-      "Диалоги и ответ менеджера, аналитика и прогнозы, база знаний, интеграции с почтой, U‑ON, Telegram и MAX — в одном кабинете.",
+      "Диалоги и ответ менеджера, аналитика и прогнозы, база знаний, интеграции с почтой, U‑ON, Telegram и MAX — в одном кабинете.",
     url: "https://navilet.ru/dashboard",
     images: [{ url: "/og-image.png", width: 1200, height: 630 }],
     type: "website",
@@ -38,9 +38,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Личный кабинет ИИ-ассистента — Навылет! AI",
+    title: "Личный кабинет ИИ-ассистента — Навылет! AI",
     description:
-      "Диалоги, аналитика, база знаний и заявки в Telegram и MAX.",
+      "Диалоги, аналитика, база знаний и заявки в Telegram и MAX.",
     images: ["/og-image.png"],
   },
   robots: {
@@ -91,14 +91,13 @@ export default function DashboardPage() {
             Что посмотреть дальше
           </h2>
           <p className="mb-8 max-w-2xl text-body">
-            Личный кабинет — часть платформы «Навылет! AI». Узнайте больше о
-            продукте, ценах и интеграции.
+            Личный кабинет — часть платформы «Навылет! AI». Узнайте больше о продукте, ценах и интеграции.
           </p>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
                 href: "/dlya-turagentstv",
-                title: "ИИ для турагентства",
+                title: "ИИ для турагентства",
                 text: "Как ассистент обрабатывает заявки 24/7",
               },
               {
@@ -109,12 +108,12 @@ export default function DashboardPage() {
               {
                 href: "/integraciya-tourvisor",
                 title: "Интеграция Tourvisor",
-                text: "Подбор туров по реальной базе",
+                text: "Подбор туров по реальной базе",
               },
               {
                 href: "/blog",
                 title: "Блог",
-                text: "Гайды и кейсы про ИИ в туризме",
+                text: "Гайды и кейсы про ИИ в туризме",
               },
             ].map((card) => (
               <Link

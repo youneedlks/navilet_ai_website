@@ -31,8 +31,8 @@ const firstMonth = d.bySearchMonth[0];
 const lastMonth = d.bySearchMonth[d.bySearchMonth.length - 1];
 const nov = d.byDepartureMonth.find((m) => m.month === "Ноябрь")!;
 
-const title = `Индекс спроса на туры — ${d.edition.toLowerCase()}: куда хотят туристы`;
-const description = `Доли направлений в поисках туров, тренды, бюджеты и глубина бронирования по данным диалогов туристов с ИИ-ассистентами турагентств. Выпуск «${d.edition}».`;
+const title = `Индекс спроса на туры — ${d.edition.toLowerCase()}: куда хотят туристы`;
+const description = `Доли направлений в поисках туров, тренды, бюджеты и глубина бронирования по данным диалогов туристов с ИИ-ассистентами турагентств. Выпуск «${d.edition}».`;
 
 export const metadata: Metadata = {
   title: { absolute: title },
@@ -65,21 +65,21 @@ export const metadata: Metadata = {
 
 const faq = [
   {
-    question: "Какое направление самое популярное у туристов осенью 2026 года?",
-    answer: `Турция: ${fmtPct(top[0].sharePct)} поисков тура за период ${d.periodLabel}. Но Египет быстро догоняет: в сентябре на него пришлось ${lastMonth.shares["Египет"]}% поисков против ${lastMonth.shares["Турция"]}% у Турции, а среди туров с вылетом в ноябре Египет — лидер с ${nov.top[0].pct}%.`,
+    question: "Какое направление самое популярное у туристов осенью 2026 года?",
+    answer: `Турция: ${fmtPct(top[0].sharePct)} поисков тура за период ${d.periodLabel}. Но Египет быстро догоняет: в сентябре на него пришлось ${lastMonth.shares["Египет"]}% поисков против ${lastMonth.shares["Турция"]}% у Турции, а среди туров с вылетом в ноябре Египет — лидер с ${nov.top[0].pct}%.`,
   },
   {
-    question: "Сколько туристы готовы тратить на тур?",
-    answer: `Медианный бюджет, который турист сам называет при подборе, — ${fmtRubShort(o.budgetMedian)} за тур. У половины туристов бюджет от ${fmtRubK(o.budgetP25)} до ${fmtRubK(o.budgetP75)}. Самый высокий бюджет — на Мальдивы, самый низкий — на отдых в России и Абхазии.`,
+    question: "Сколько туристы готовы тратить на тур?",
+    answer: `Медианный бюджет, который турист сам называет при подборе, — ${fmtRubShort(o.budgetMedian)} за тур. У половины туристов бюджет от ${fmtRubK(o.budgetP25)} до ${fmtRubK(o.budgetP75)}. Самый высокий бюджет — на Мальдивы, самый низкий — на отдых в России и Абхазии.`,
   },
   {
-    question: "За сколько до поездки туристы ищут тур?",
-    answer: `В среднем за ${fmtDays(o.horizonDays)} до вылета. ${o.soonPct}% туристов ищут вылет в ближайшие две недели, ${o.farPct}% — больше чем через два месяца. Быстрее всех решают по России и Турции, дольше всех планируют Таиланд и Шри-Ланку.`,
+    question: "За сколько до поездки туристы ищут тур?",
+    answer: `В среднем за ${fmtDays(o.horizonDays)} до вылета. ${o.soonPct}% туристов ищут вылет в ближайшие две недели, ${o.farPct}% — больше чем через два месяца. Быстрее всех решают по России и Турции, дольше всех планируют Таиланд и Шри-Ланку.`,
   },
   {
     question: "Откуда эти данные?",
     answer:
-      "Из обезличенных диалогов туристов с ИИ-ассистентами турагентств — клиентов «Навылет! AI»: на сайтах агентств и в мессенджерах. Учитывается последний, самый уточнённый поиск тура в каждом диалоге. Индекс обновляется раз в месяц.",
+      "Из обезличенных диалогов туристов с ИИ-ассистентами турагентств — клиентов «Навылет! AI»: на сайтах агентств и в мессенджерах. Учитывается последний, самый уточнённый поиск тура в каждом диалоге. Индекс обновляется раз в месяц.",
   },
 ];
 
@@ -94,7 +94,7 @@ const jsonLd = {
         {
           "@type": "ListItem",
           position: 2,
-          name: "Индекс спроса на туры",
+          name: "Индекс спроса на туры",
           item: `${siteUrl}${path}`,
         },
       ],
@@ -102,7 +102,7 @@ const jsonLd = {
     {
       "@type": "Article",
       "@id": `${siteUrl}${path}#article`,
-      headline: `Индекс спроса на туры — ${d.edition.toLowerCase()}`,
+      headline: `Индекс спроса на туры — ${d.edition.toLowerCase()}`,
       description,
       inLanguage: "ru-RU",
       datePublished: d.published,
@@ -117,9 +117,9 @@ const jsonLd = {
     {
       "@type": "Dataset",
       "@id": `${siteUrl}${path}#dataset`,
-      name: "Индекс спроса на туры «Навылет! AI»",
+      name: "Индекс спроса на туры «Навылет! AI»",
       description:
-        "Обезличенная статистика поисков туров в диалогах туристов с ИИ-ассистентами турагентств: доли направлений, тренды, медианный бюджет, состав группы, длительность, глубина бронирования. Обновляется ежемесячно.",
+        "Обезличенная статистика поисков туров в диалогах туристов с ИИ-ассистентами турагентств: доли направлений, тренды, медианный бюджет, состав группы, длительность, глубина бронирования. Обновляется ежемесячно.",
       url: `${siteUrl}${path}`,
       inLanguage: "ru-RU",
       creator: { "@id": `${siteUrl}/#organization` },
@@ -127,26 +127,26 @@ const jsonLd = {
       spatialCoverage: "Россия",
       dateModified: d.published,
       measurementTechnique:
-        "Последний поиск тура в каждом диалоге; параметры, которые подставляет ассистент по умолчанию, исключены",
+        "Последний поиск тура в каждом диалоге; параметры, которые подставляет ассистент по умолчанию, исключены",
       variableMeasured: [
         ...d.countries.map((c) => ({
           "@type": "PropertyValue",
-          name: `Доля в поисках туров: ${c.name}`,
+          name: `Доля в поисках туров: ${c.name}`,
           value: fmtPct(c.sharePct),
         })),
         {
           "@type": "PropertyValue",
-          name: "Медианный бюджет туриста за тур",
+          name: "Медианный бюджет туриста за тур",
           value: fmtRub(o.budgetMedian),
         },
         {
           "@type": "PropertyValue",
-          name: "Доля запросов с детьми",
+          name: "Доля запросов с детьми",
           value: `${o.kidsPct}%`,
         },
         {
           "@type": "PropertyValue",
-          name: "Медиана дней от запроса до вылета",
+          name: "Медиана дней от запроса до вылета",
           value: o.horizonDays,
         },
       ],
@@ -185,19 +185,19 @@ export default function DemandIndexPage() {
   const findings = [
     {
       title: "Египет догоняет Турцию",
-      text: `Доля Египта в поисках растёт каждый месяц: ${firstMonth.shares["Египет"]}% в июне, ${lastMonth.shares["Египет"]}% в сентябре (${fmtPp(eg.trendPp)}). Турция — ${lastMonth.shares["Турция"]}%.`,
+      text: `Доля Египта в поисках растёт каждый месяц: ${firstMonth.shares["Египет"]}% в июне, ${lastMonth.shares["Египет"]}% в сентябре (${fmtPp(eg.trendPp)}). Турция — ${lastMonth.shares["Турция"]}%.`,
     },
     {
-      title: `На ноябрь — ${nov.top[0].pct}% Египта`,
-      text: `Среди туров с вылетом в ноябре Египет почти вчетверо обгоняет Турцию. На декабрь в тройке — Египет, Таиланд и Вьетнам.`,
+      title: `На ноябрь — ${nov.top[0].pct}% Египта`,
+      text: `Среди туров с вылетом в ноябре Египет почти вчетверо обгоняет Турцию. На декабрь в тройке — Египет, Таиланд и Вьетнам.`,
     },
     {
-      title: `Бюджет — ${fmtRubK(o.budgetMedian)}`,
-      text: `Медиана за тур, которую называет сам турист. Бюджет указывают в ${o.budgetStatedPct}% диалогов — ассистент сразу фильтрует выдачу.`,
+      title: `Бюджет — ${fmtRubK(o.budgetMedian)}`,
+      text: `Медиана за тур, которую называет сам турист. Бюджет указывают в ${o.budgetStatedPct}% диалогов — ассистент сразу фильтрует выдачу.`,
     },
     {
-      title: `Каждый третий — «на ближайшие две недели»`,
-      text: `${o.soonPct}% ищут вылет в ближайшие 14 дней, в среднем тур ищут за ${fmtDays(o.horizonDays)} до вылета. Кто ответил первым, тот и продал.`,
+      title: `Каждый третий — «на ближайшие две недели»`,
+      text: `${o.soonPct}% ищут вылет в ближайшие 14 дней, в среднем тур ищут за ${fmtDays(o.horizonDays)} до вылета. Кто ответил первым, тот и продал.`,
     },
   ];
 
@@ -221,22 +221,20 @@ export default function DemandIndexPage() {
                 Главная
               </Link>
               <ChevronRight className="mx-1 h-4 w-4" />
-              <span className="text-body">Индекс спроса на туры</span>
+              <span className="text-body">Индекс спроса на туры</span>
             </nav>
             <h1 className="font-display text-4xl font-bold leading-tight text-heading sm:text-5xl">
-              Индекс спроса на туры:{" "}
+              Индекс спроса на туры:{" "}
               <span className="text-accent">{d.edition.toLowerCase()}</span>
             </h1>
             <p className="mt-6 rounded-2xl border border-accent/15 bg-blue-ice/40 p-5 text-base leading-relaxed text-body sm:text-lg">
-              Турция остаётся лидером спроса — {fmtPct(top[0].sharePct)} поисков
-              тура, но Египет быстро догоняет: {lastMonth.shares["Египет"]}% в
-              сентябре против {firstMonth.shares["Египет"]}% в июне, а на ноябрь
-              он уже лидер. Медианный бюджет — {fmtRubShort(o.budgetMedian)} за
-              тур, {o.kidsPct}% запросов — с детьми, тур ищут в среднем за{" "}
-              {fmtDays(o.horizonDays)} до вылета.
+              Турция остаётся лидером спроса — {fmtPct(top[0].sharePct)} поисков
+              тура, но Египет быстро догоняет: {lastMonth.shares["Египет"]}% в сентябре против {firstMonth.shares["Египет"]}% в июне, а на ноябрь
+              он уже лидер. Медианный бюджет — {fmtRubShort(o.budgetMedian)} за тур, {o.kidsPct}% запросов — с детьми, тур ищут в среднем за{"\u00A0"}
+              {fmtDays(o.horizonDays)} до вылета.
             </p>
             <p className="mt-4 text-sm text-muted">
-              Выпуск «{d.edition}» · {d.periodLabel} · обновляется раз в месяц ·{" "}
+              Выпуск «{d.edition}» · {d.periodLabel} · обновляется раз в месяц ·{" "}
               <a href="#metodika" className="underline hover:text-accent">
                 методика
               </a>
@@ -247,7 +245,7 @@ export default function DemandIndexPage() {
         {/* Главное */}
         <section className="bg-surface-alt">
           <div className="mx-auto max-w-3xl px-5 py-14 sm:px-6 lg:px-8">
-            <h2 className={h2}>Главное в выпуске</h2>
+            <h2 className={h2}>Главное в выпуске</h2>
             <div className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2">
               {findings.map((f) => (
                 <div key={f.title} className={card}>
@@ -268,7 +266,7 @@ export default function DemandIndexPage() {
           <div className="mx-auto max-w-3xl px-5 py-14 sm:px-6 lg:px-8">
             <h2 className={h2}>Куда хотят туристы: доли направлений</h2>
             <p className="mt-3 text-sm text-muted">
-              Доля направления в поисках туров за {d.periodLabel} · тренд:{" "}
+              Доля направления в поисках туров за {d.periodLabel} · тренд:{" "}
               {d.trendLabel}
             </p>
             <div className={`${card} mt-6 space-y-3`}>
@@ -312,9 +310,9 @@ export default function DemandIndexPage() {
         {/* Динамика по месяцам */}
         <section className="bg-surface-alt">
           <div className="mx-auto max-w-3xl px-5 py-14 sm:px-6 lg:px-8">
-            <h2 className={h2}>Как менялся спрос по месяцам</h2>
+            <h2 className={h2}>Как менялся спрос по месяцам</h2>
             <p className="mt-3 text-base leading-relaxed text-body">
-              Доля направления среди поисков, сделанных в этом месяце. Египет —
+              Доля направления среди поисков, сделанных в этом месяце. Египет —
               единственное крупное направление, которое росло каждый месяц.
             </p>
             <div className="mt-6 overflow-x-auto rounded-2xl border border-blue-subtle/40 bg-white shadow-card">
@@ -353,11 +351,10 @@ export default function DemandIndexPage() {
         {/* Куда полетят */}
         <section className="bg-surface">
           <div className="mx-auto max-w-3xl px-5 py-14 sm:px-6 lg:px-8">
-            <h2 className={h2}>Куда полетят: спрос по месяцу вылета</h2>
+            <h2 className={h2}>Куда полетят: спрос по месяцу вылета</h2>
             <p className="mt-3 text-base leading-relaxed text-body">
-              Три самых востребованных направления среди туров с вылетом в
-              этом месяце. Более поздние месяцы появятся в следующих выпусках,
-              когда по ним наберётся достаточно поисков.
+              Три самых востребованных направления среди туров с вылетом в этом месяце. Более поздние месяцы появятся в следующих выпусках,
+              когда по ним наберётся достаточно поисков.
             </p>
             <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
               {d.byDepartureMonth.map((m) => (
@@ -391,9 +388,9 @@ export default function DemandIndexPage() {
                   Бюджет
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-body">
-                  Медиана — <strong>{fmtRub(o.budgetMedian)}</strong> за тур.
-                  У половины туристов бюджет от {fmtRub(o.budgetP25)} до{" "}
-                  {fmtRub(o.budgetP75)}. Бюджет называют сами в{" "}
+                  Медиана — <strong>{fmtRub(o.budgetMedian)}</strong> за тур.
+                  У половины туристов бюджет от {fmtRub(o.budgetP25)} до{"\u00A0"}
+                  {fmtRub(o.budgetP75)}. Бюджет называют сами в{"\u00A0"}
                   {o.budgetStatedPct}% диалогов.
                 </p>
               </div>
@@ -402,9 +399,9 @@ export default function DemandIndexPage() {
                   Кто едет
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-body">
-                  <strong>{o.kidsPct}%</strong> запросов — с детьми,{" "}
-                  {o.twoAdultsPct}% — двое взрослых без детей, {o.soloPct}% —
-                  в одиночку.
+                  <strong>{o.kidsPct}%</strong> запросов — с детьми,{" "}
+                  {o.twoAdultsPct}% — двое взрослых без детей, {o.soloPct}% —
+                  в одиночку.
                 </p>
               </div>
               <div className={card}>
@@ -412,11 +409,11 @@ export default function DemandIndexPage() {
                   Сколько ночей
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-body">
-                  Чаще всего — <strong>{o.nightsTop[0].nights} ночей</strong> (
+                  Чаще всего — <strong>{o.nightsTop[0].nights} ночей</strong> (
                   {o.nightsTop[0].pct}% запросов), дальше{" "}
-                  {o.nightsTop[1].nights} ({o.nightsTop[1].pct}%) и{" "}
-                  {o.nightsTop[2].nights} ({o.nightsTop[2].pct}%). По Вьетнаму
-                  и Таиланду медиана — 9 ночей.
+                  {o.nightsTop[1].nights} ({o.nightsTop[1].pct}%) и{"\u00A0"}
+                  {o.nightsTop[2].nights} ({o.nightsTop[2].pct}%). По Вьетнаму
+                  и Таиланду медиана — 9 ночей.
                 </p>
               </div>
               <div className={card}>
@@ -425,7 +422,7 @@ export default function DemandIndexPage() {
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-body">
                   <strong>{o.allInclusivePct}%</strong> туристов сами просят
-                  «всё включено». По Турции и Египту — больше половины.
+                  «всё включено». По Турции и Египту — больше половины.
                 </p>
               </div>
               <div className={`${card} sm:col-span-2`}>
@@ -433,11 +430,11 @@ export default function DemandIndexPage() {
                   Когда ищут
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-body">
-                  В среднем за <strong>{fmtDays(o.horizonDays)}</strong> до вылета.{" "}
-                  {o.soonPct}% ищут вылет в ближайшие 14 дней, {o.farPct}% —
-                  больше чем через два месяца. Про перелёт, рейсы и пересадки
-                  спрашивают в {o.flightQuestionsPct}% диалогов — в зависимости
-                  от направления.
+                  В среднем за <strong>{fmtDays(o.horizonDays)}</strong> до вылета.{" "}
+                  {o.soonPct}% ищут вылет в ближайшие 14 дней, {o.farPct}% —
+                  больше чем через два месяца. Про перелёт, рейсы и пересадки
+                  спрашивают в {o.flightQuestionsPct}% диалогов — в зависимости
+                  от направления.
                 </p>
               </div>
             </div>
@@ -457,7 +454,7 @@ export default function DemandIndexPage() {
                     <th className="px-2.5 py-3 sm:px-4 text-right font-semibold">Дети</th>
                     <th className="px-2.5 py-3 sm:px-4 text-right font-semibold">Ночей</th>
                     <th className="px-2.5 py-3 sm:px-4 text-right font-semibold">
-                      До вылета, дн.
+                      До вылета, дн.
                     </th>
                   </tr>
                 </thead>
@@ -492,8 +489,8 @@ export default function DemandIndexPage() {
               </table>
             </div>
             <p className="mt-3 text-xs text-muted">
-              Медианы. Бюджет — за тур, как его называет турист. Направления,
-              где данных для медианы пока мало, в таблицу не включены.
+              Медианы. Бюджет — за тур, как его называет турист. Направления,
+              где данных для медианы пока мало, в таблицу не включены.
             </p>
           </div>
         </section>
@@ -504,27 +501,27 @@ export default function DemandIndexPage() {
             <h2 className={h2}>Что это значит для турагентства</h2>
             <div className="mt-6 space-y-4">
               <p className="rounded-2xl border-l-4 border-accent bg-white p-5 text-sm leading-relaxed text-body shadow-card sm:text-base">
-                <strong>Перестройте витрину на Египет и зимнюю экзотику.</strong>{" "}
-                Тур ищут в среднем за месяц до вылета: осенние запросы — это
-                вылеты в октябре–декабре, а на ноябрь и декабрь лидируют Египет,
-                Таиланд и Вьетнам.
+                <strong>Перестройте витрину на Египет и зимнюю экзотику.</strong>{" "}
+                Тур ищут в среднем за месяц до вылета: осенние запросы — это
+                вылеты в октябре–декабре, а на ноябрь и декабрь лидируют Египет,
+                Таиланд и Вьетнам.
               </p>
               <p className="rounded-2xl border-l-4 border-accent bg-white p-5 text-sm leading-relaxed text-body shadow-card sm:text-base">
                 <strong>Отвечайте быстро.</strong> Каждый третий турист ищет
-                вылет в ближайшие две недели — он выберет того, кто ответил
-                первым. Особенно вечером и в выходные:{" "}
+                вылет в ближайшие две недели — он выберет того, кто ответил
+                первым. Особенно вечером и в выходные:{" "}
                 <Link
                   href="/resheniya/nochnye-zayavki"
                   className="font-semibold text-accent hover:underline"
                 >
-                  что делать с ночными заявками
+                  что делать с ночными заявками
                 </Link>
                 .
               </p>
               <p className="rounded-2xl border-l-4 border-accent bg-white p-5 text-sm leading-relaxed text-body shadow-card sm:text-base">
-                <strong>Не заставляйте заполнять форму.</strong> Турист пишет
-                бюджет, состав и питание одним сообщением. ИИ-ассистент
-                разбирает такой запрос сам и сразу показывает туры — менеджер
+                <strong>Не заставляйте заполнять форму.</strong> Турист пишет
+                бюджет, состав и питание одним сообщением. ИИ-ассистент
+                разбирает такой запрос сам и сразу показывает туры — менеджер
                 получает готовую заявку.
               </p>
             </div>
@@ -540,29 +537,27 @@ export default function DemandIndexPage() {
             <h2 className={h2}>Методика</h2>
             <ul className="mt-6 space-y-3 text-sm leading-relaxed text-body sm:text-base">
               <li>
-                <strong>Источник.</strong> Обезличенные диалоги туристов с
-                ИИ-ассистентами турагентств — клиентов «Навылет! AI» на сайтах
-                и в мессенджерах. Демо-ассистенты на navilet.ru не учитываются.
+                <strong>Источник.</strong> Обезличенные диалоги туристов с ИИ-ассистентами турагентств — клиентов «Навылет! AI» на сайтах
+                и в мессенджерах. Демо-ассистенты на navilet.ru не учитываются.
               </li>
               <li>
-                <strong>Единица счёта.</strong> Диалог с подбором тура. Берётся
-                последний поиск в диалоге — самый уточнённый запрос туриста.
+                <strong>Единица счёта.</strong> Диалог с подбором тура. Берётся
+                последний поиск в диалоге — самый уточнённый запрос туриста.
               </li>
               <li>
-                <strong>Период.</strong> {d.periodLabel}. Тренд — {d.trendLabel},
-                в процентных пунктах.
+                <strong>Период.</strong> {d.periodLabel}. Тренд — {d.trendLabel},
+                в процентных пунктах.
               </li>
               <li>
                 <strong>Проверка параметров.</strong> Учитываем только то, что
-                турист называет сам: бюджет, дети и длительность поездки
-                подтверждаются текстом его сообщений в 77–98% диалогов.
-                Звёздность отеля ассистент часто подставляет по умолчанию,
-                поэтому её в индексе нет.
+                турист называет сам: бюджет, дети и длительность поездки
+                подтверждаются текстом его сообщений в 77–98% диалогов.
+                Звёздность отеля ассистент часто подставляет по умолчанию,
+                поэтому её в индексе нет.
               </li>
               <li>
-                <strong>Ограничения.</strong> Это не весь рынок, а запросы в
-                ассистенты агентств-клиентов; большинство — с вылетом из Москвы.
-                Абсолютные объёмы и данные отдельных компаний не публикуются.
+                <strong>Ограничения.</strong> Это не весь рынок, а запросы в ассистенты агентств-клиентов; большинство — с вылетом из Москвы.
+                Абсолютные объёмы и данные отдельных компаний не публикуются.
               </li>
               <li>
                 <strong>Как ссылаться.</strong> «Индекс спроса «Навылет! AI»,{" "}
@@ -599,13 +594,13 @@ export default function DemandIndexPage() {
                 href="/spros"
                 className="inline-flex items-center gap-1 font-semibold text-accent hover:underline"
               >
-                Разборы по направлениям <ArrowRight className="h-3.5 w-3.5" />
+                Разборы по направлениям <ArrowRight className="h-3.5 w-3.5" />
               </Link>
               <Link
                 href="/prognozy"
                 className="inline-flex items-center gap-1 font-semibold text-accent hover:underline"
               >
-                Барометр спроса по вашим диалогам в личном кабинете{" "}
+                Барометр спроса по вашим диалогам в личном кабинете{" "}
                 <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </div>
@@ -623,11 +618,10 @@ export default function DemandIndexPage() {
           <div className="noise-overlay pointer-events-none absolute inset-0 opacity-20" />
           <div className="relative mx-auto max-w-3xl px-5 py-14 text-center sm:px-6 lg:px-8">
             <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">
-              Этот спрос уже приходит на сайты агентств
+              Этот спрос уже приходит на сайты агентств
             </h2>
             <p className="mx-auto mt-3 max-w-lg text-white/70">
-              ИИ-ассистент отвечает туристам на сайте и в мессенджерах 24/7 и
-              передаёт менеджеру готовые заявки. Регистрация в 3 коротких шага.
+              ИИ-ассистент отвечает туристам на сайте и в мессенджерах 24/7 и передаёт менеджеру готовые заявки. Регистрация в 3 коротких шага.
             </p>
             <div className="mt-6 flex justify-center">
               <RegisterCta source="indeks_sprosa_bottom" compact dark />

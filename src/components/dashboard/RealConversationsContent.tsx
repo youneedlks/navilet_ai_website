@@ -23,42 +23,42 @@ interface RealConversationsContentProps {
 const TABLE_ROWS = [
   {
     dot: "#10B981",
-    preview: "Хочу тур в Турцию на двоих, всё включено на 7 ночей",
+    preview: "Хочу тур в Турцию на двоих, всё включено на 7 ночей",
     msgs: 12,
     searches: 3,
     time: "14:23",
   },
   {
     dot: "#F59E0B",
-    preview: "Подскажите горящие туры в Египет из Москвы",
+    preview: "Подскажите горящие туры в Египет из Москвы",
     msgs: 8,
     searches: 2,
     time: "13:45",
   },
   {
     dot: "#10B981",
-    preview: "Есть ли туры в Мальдивы в марте на 10 дней?",
+    preview: "Есть ли туры в Мальдивы в марте на 10 дней?",
     msgs: 15,
     searches: 4,
     time: "12:18",
   },
   {
     dot: "#F59E0B",
-    preview: "Сколько стоит перелёт в Дубай бизнес-классом?",
+    preview: "Сколько стоит перелёт в Дубай бизнес-классом?",
     msgs: 5,
     searches: 1,
     time: "11:52",
   },
   {
     dot: "#CBD5E1",
-    preview: "Можно узнать про визу в Таиланд?",
+    preview: "Можно узнать про визу в Таиланд?",
     msgs: 3,
     searches: 0,
     time: "10:30",
   },
   {
     dot: "#10B981",
-    preview: "Ищу тур в Доминикану, вылет из СПб, 2 взрослых",
+    preview: "Ищу тур в Доминикану, вылет из СПб, 2 взрослых",
     msgs: 18,
     searches: 5,
     time: "09:15",
@@ -68,22 +68,22 @@ const TABLE_ROWS = [
 const CHAT_MESSAGES = [
   {
     role: "user" as const,
-    text: "Здравствуйте! Ищу тур в Турцию на двоих, всё включено, 7 ночей",
+    text: "Здравствуйте! Ищу тур в Турцию на двоих, всё включено, 7 ночей",
     time: "14:23",
   },
   {
     role: "bot" as const,
-    text: "Здравствуйте! Подскажите, пожалуйста, из какого города вы планируете вылет и в какие даты?",
+    text: "Здравствуйте! Подскажите, пожалуйста, из какого города вы планируете вылет и в какие даты?",
     time: "14:23",
   },
   {
     role: "user" as const,
-    text: "Из Москвы, в конце марта, бюджет до 200 000 ₽",
+    text: "Из Москвы, в конце марта, бюджет до 200 000 ₽",
     time: "14:24",
   },
   {
     role: "bot" as const,
-    text: "Отлично! Нашёл несколько вариантов для вас:",
+    text: "Отлично! Нашёл несколько вариантов для вас:",
     time: "14:24",
     hasTourCards: true,
   },
@@ -96,7 +96,7 @@ const TOUR_CARDS = [
     country: "Турция",
     resort: "Белек",
     meal: "Ultra All Inclusive",
-    dates: "25 мар",
+    dates: "25 мар",
     nights: 7,
     operator: "Anex Tour",
     price: "187 450",
@@ -107,7 +107,7 @@ const TOUR_CARDS = [
     country: "Турция",
     resort: "Белек",
     meal: "All Inclusive",
-    dates: "26 мар",
+    dates: "26 мар",
     nights: 7,
     operator: "Pegas",
     price: "165 200",
@@ -117,7 +117,7 @@ const TOUR_CARDS = [
 const TIMELINE_EVENTS = [
   { icon: Play, label: "Диалог начат", detail: "14:23", color: "#0038FF", bg: "#F0F4FF" },
   { icon: Search, label: "Поиск: Турция", detail: "14:24", color: "#3B82F6", bg: "#EFF6FF" },
-  { icon: Image, label: "Показано 2 карточки", detail: "14:24", color: "#10B981", bg: "#ECFDF5" },
+  { icon: Image, label: "Показано 2 карточки", detail: "14:24", color: "#10B981", bg: "#ECFDF5" },
   { icon: CheckCircle, label: "Диалог завершён", detail: "14:46", color: "#64748B", bg: "#F1F5F9" },
 ];
 
@@ -138,7 +138,7 @@ export default function RealConversationsContent({
         style={{ fontSize: 8 * s, marginBottom: 5 * s }}
       >
         <ArrowLeft size={8 * s} />
-        <span>Назад к диалогам</span>
+        <span>Назад к диалогам</span>
       </div>
 
       <div className="grid grid-cols-3 gap-2">
@@ -163,7 +163,7 @@ export default function RealConversationsContent({
                 className="rounded-md bg-white/60 px-1.5 text-[#64748B]"
                 style={{ fontSize: 6.5 * s, paddingBlock: 1 }}
               >
-                12 сообщений
+                12 сообщений
               </span>
             </div>
             <span
@@ -329,8 +329,8 @@ export default function RealConversationsContent({
 
             {/* Info rows */}
             <div className="space-y-1.5">
-              <InfoRow s={s} icon={Clock} label="Начало" value="2 мар, 14:23" />
-              <InfoRow s={s} icon={Clock} label="Длительность" value="23 мин" />
+              <InfoRow s={s} icon={Clock} label="Начало" value="2 мар, 14:23" />
+              <InfoRow s={s} icon={Clock} label="Длительность" value="23 мин" />
               <InfoRow s={s} icon={Clock} label="Ср. время отв." value="1.1с" />
               <InfoRow s={s} icon={MessageSquare} label="Сообщений" value="12" />
               <InfoRow s={s} icon={Search} label="Поисков" value="3" />
@@ -409,9 +409,9 @@ export default function RealConversationsContent({
             </span>
             <div className="space-y-1">
               {[
-                "Турция, 7 ночей, AI, 5★",
-                "Турция, Анталья, 7 ночей",
-                "Белек, март, 2 взр.",
+                "Турция, 7 ночей, AI, 5★",
+                "Турция, Анталья, 7 ночей",
+                "Белек, март, 2 взр.",
               ].map((q, i) => (
                 <div
                   key={i}
@@ -532,7 +532,7 @@ function CompactView({ s }: { s: number }) {
             Диалоги
           </div>
           <div className="text-[#64748B]" style={{ fontSize: 8 * s }}>
-            История всех разговоров клиентов с ИИ-ассистентом
+            История всех разговоров клиентов с ИИ-ассистентом
           </div>
         </div>
         <div className="flex items-center gap-1">
@@ -559,13 +559,13 @@ function CompactView({ s }: { s: number }) {
             text: "white",
           },
           {
-            label: "С карточками",
+            label: "С карточками",
             active: false,
             bg: "#FEF3C7",
             text: "#D97706",
           },
           {
-            label: "С бронью",
+            label: "С бронью",
             active: false,
             bg: "#ECFDF5",
             text: "#10B981",
@@ -687,7 +687,7 @@ function CompactView({ s }: { s: number }) {
           style={{ padding: `${3 * s}px ${6 * s}px` }}
         >
           <span className="text-[#94A3B8]" style={{ fontSize: 6 * s }}>
-            1–6 из 2 847
+            1–6 из 2 847
           </span>
           <div className="flex items-center gap-1">
             <span className="text-[#94A3B8]" style={{ fontSize: 6 * s }}>

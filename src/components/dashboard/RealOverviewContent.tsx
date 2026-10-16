@@ -28,7 +28,7 @@ const METRICS = [
     sparkline: SPARKLINE_PATHS.conversations,
   },
   {
-    title: "Запросы на бронь",
+    title: "Запросы на бронь",
     value: "156",
     delta: 12,
     icon: BookmarkCheck,
@@ -53,18 +53,18 @@ const METRICS = [
 const FUNNEL_STEPS = [
   { label: "Все диалоги", value: 2847, color: "#0038FF" },
   { label: "Вовлечённые", value: 1923, color: "#1A4FFF" },
-  { label: "С поиском туров", value: 1456, color: "#3B82F6" },
-  { label: "С результатами", value: 1089, color: "#60A5FA" },
-  { label: "Запросы на бронь", value: 156, color: "#10B981" },
+  { label: "С поиском туров", value: 1456, color: "#3B82F6" },
+  { label: "С результатами", value: 1089, color: "#60A5FA" },
+  { label: "Запросы на бронь", value: 156, color: "#10B981" },
   { label: "Потенц. лиды", value: 89, color: "#93C5FD" },
 ];
 
 const RECENT_CONVERSATIONS = [
-  { preview: "Хочу тур в Турцию на двоих, всё включено", msgs: 12, searches: 3, dot: "#10B981" },
-  { preview: "Подскажите горящие туры в Египет", msgs: 8, searches: 2, dot: "#F59E0B" },
-  { preview: "Сколько стоит перелёт в Дубай?", msgs: 5, searches: 1, dot: "#F59E0B" },
-  { preview: "Есть ли туры в Мальдивы в марте?", msgs: 15, searches: 4, dot: "#10B981" },
-  { preview: "Можно узнать про визу в Таиланд?", msgs: 3, searches: 0, dot: "#CBD5E1" },
+  { preview: "Хочу тур в Турцию на двоих, всё включено", msgs: 12, searches: 3, dot: "#10B981" },
+  { preview: "Подскажите горящие туры в Египет", msgs: 8, searches: 2, dot: "#F59E0B" },
+  { preview: "Сколько стоит перелёт в Дубай?", msgs: 5, searches: 1, dot: "#F59E0B" },
+  { preview: "Есть ли туры в Мальдивы в марте?", msgs: 15, searches: 4, dot: "#10B981" },
+  { preview: "Можно узнать про визу в Таиланд?", msgs: 3, searches: 0, dot: "#CBD5E1" },
 ];
 
 const CHART_AREA_PATH =
@@ -75,8 +75,8 @@ const CHART_LINE_PATH =
 const INSIGHTS = [
   { text: "51% клиентов ищут туры через ассистента", color: "#0038FF" },
   { text: "38% запросов завершились показом предложений", color: "#0038FF" },
-  { text: "5.5% клиентов проявляют интерес к бронированию", color: "#10B981" },
-  { text: "Самое популярное направление: Турция (412 поисков)", color: "#0038FF" },
+  { text: "5.5% клиентов проявляют интерес к бронированию", color: "#10B981" },
+  { text: "Самое популярное направление: Турция (412 поисков)", color: "#0038FF" },
   { text: "Среднее время ответа ассистента: 1.2с", color: "#0038FF" },
   { text: "23% обращений поступают вне рабочего времени", color: "#0038FF" },
 ];
@@ -98,7 +98,7 @@ export default function RealOverviewContent({
             Добрый день, Администратор
           </div>
           <div className="text-[#64748B]" style={{ fontSize: 8.5 * s, marginTop: 1 }}>
-            Вот что происходит с вашим ИИ-ассистентом
+            Вот что происходит с вашим ИИ-ассистентом
           </div>
         </div>
         {/* Period selector */}
@@ -106,7 +106,7 @@ export default function RealOverviewContent({
           className="flex rounded-lg bg-white p-0.5"
           style={{ boxShadow: "0 1px 2px rgba(0,56,255,0.04)" }}
         >
-          {["7 дн", "30 дн", "90 дн"].map((p, i) => (
+          {["7 дн", "30 дн", "90 дн"].map((p, i) => (
             <div
               key={p}
               className={`rounded-md px-1.5 py-0.5 font-medium ${
@@ -278,7 +278,7 @@ export default function RealOverviewContent({
               strokeWidth="1.8"
             />
             {/* X-axis labels */}
-            {["18 фев", "22 фев", "26 фев", "2 мар"].map((l, i) => (
+            {["18 фев", "22 фев", "26 фев", "2 мар"].map((l, i) => (
               <text
                 key={l}
                 x={i * 84}

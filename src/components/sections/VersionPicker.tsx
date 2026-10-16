@@ -60,7 +60,7 @@ function VersionDetails({
           className="inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-accent/20 transition-colors hover:bg-accent-hover sm:text-base"
         >
           <MessageSquare className="h-4 w-4" />
-          Попробовать «{version.name}» в демо
+          Попробовать «{version.name}» в демо
         </Link>
         <button
           onClick={() =>
@@ -72,7 +72,7 @@ function VersionDetails({
           <ArrowRight className="h-4 w-4" />
         </button>
         <span className="text-center text-xs text-muted sm:ml-auto sm:text-right">
-          от {fmt(version.priceFrom)} ₽/мес · первый месяц бесплатно
+          от {fmt(version.priceFrom)} ₽/мес · первый месяц бесплатно
         </span>
       </div>
     </div>
@@ -154,7 +154,7 @@ export default function VersionPicker({
                         {version.fullName}
                       </h3>
                       <p className="text-sm font-medium text-accent">
-                        от {fmt(version.priceFrom)} ₽/мес
+                        от {fmt(version.priceFrom)} ₽/мес
                       </p>
                     </div>
                   </div>
@@ -189,7 +189,7 @@ export default function VersionPicker({
                     active ? "text-accent" : "text-muted group-hover:text-accent"
                   }`}
                 >
-                  {active ? "Скрыть функционал" : "Весь функционал и демо"}
+                  {active ? "Скрыть функционал" : "Весь функционал и демо"}
                   <ChevronDown
                     className={`h-3.5 w-3.5 transition-transform ${
                       active ? "rotate-180" : ""

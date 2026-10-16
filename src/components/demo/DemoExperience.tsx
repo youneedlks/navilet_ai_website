@@ -43,17 +43,17 @@ const steps = [
   {
     icon: Send,
     title: "Напишите запрос",
-    text: "Например: «Турция из Москвы, 7 ночей в июле, всё включено, до 200 000 ₽ на двоих».",
+    text: "Например: «Турция из Москвы, 7 ночей в июле, всё включено, до 200 000 ₽ на двоих».",
   },
   {
     icon: LayoutGrid,
     title: "Получите подбор",
-    text: "Ассистент найдёт туры, покажет карточки с ценами и соберёт их в подборку — страницу по ссылке, которую клиент открывает и пересылает своим.",
+    text: "Ассистент найдёт туры, покажет карточки с ценами и соберёт их в подборку — страницу по ссылке, которую клиент открывает и пересылает своим.",
   },
   {
     icon: Rocket,
     title: "Подключите себе",
-    text: "Такой же ассистент работает на вашем сайте и в MAX. Запуск без программиста.",
+    text: "Такой же ассистент работает на вашем сайте и в MAX. Запуск без программиста.",
   },
 ];
 
@@ -68,14 +68,14 @@ const demoVersions: {
     id: "lid",
     name: "Лид",
     caption: "лидогенерация",
-    hint: "«Лид» собирает запрос по шагам, показывает подборку и передаёт заявку с контактом менеджеру — попробуйте пройти путь клиента до заявки.",
+    hint: "«Лид» собирает запрос по шагам, показывает подборку и передаёт заявку с контактом менеджеру — попробуйте пройти путь клиента до заявки.",
     Icon: versionIcons.lid,
   },
   {
     id: "pro",
     name: "Про",
     caption: "полный инструмент",
-    hint: "«Про» консультирует без ограничений: спросите про отель, пляж или питание, попросите сравнить варианты и проверить цену.",
+    hint: "«Про» консультирует без ограничений: спросите про отель, пляж или питание, попросите сравнить варианты и проверить цену.",
     Icon: versionIcons.pro,
   },
 ];
@@ -84,17 +84,17 @@ const customization = [
   {
     icon: Palette,
     title: "Брендирование",
-    text: "Логотип, цвета, тон голоса и приветствие — под ваш бренд. White-label, без наших упоминаний.",
+    text: "Логотип, цвета, тон голоса и приветствие — под ваш бренд. White-label, без наших упоминаний.",
   },
   {
     icon: Building2,
-    title: "Ваши данные и контакты",
-    text: "Телефоны, адреса офисов, ссылки на бронирование и базу туров — ваши, не демонстрационные.",
+    title: "Ваши данные и контакты",
+    text: "Телефоны, адреса офисов, ссылки на бронирование и базу туров — ваши, не демонстрационные.",
   },
   {
     icon: Settings2,
-    title: "Настройки в кабинете",
-    text: "Приветствие, кнопки-подсказки, каналы заявок и версия ассистента — переключаются в личном кабинете.",
+    title: "Настройки в кабинете",
+    text: "Приветствие, кнопки-подсказки, каналы заявок и версия ассистента — переключаются в личном кабинете.",
   },
 ];
 
@@ -156,16 +156,16 @@ export default function DemoExperience() {
         <div className="relative mx-auto max-w-3xl px-5 pt-28 pb-14 text-center sm:px-6 sm:pt-32 lg:px-8">
           <span className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-accent">
             <span className="h-2 w-2 rounded-full bg-green-500" />
-            Живое демо · без регистрации
+            Живое демо · без регистрации
           </span>
 
           <h1 className="mt-6 font-display text-4xl font-bold leading-[1.1] text-heading sm:text-5xl">
             Попробуйте <span className="whitespace-nowrap">ИИ-ассистента</span> вживую
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-lg text-body">
-            Спросите ассистента про любой тур — направление, даты, бюджет, число
-            туристов. Он подберёт реальные варианты и покажет карточки с ценами,
-            как на сайте агентства.
+            Спросите ассистента про любой тур — направление, даты, бюджет, число
+            туристов. Он подберёт реальные варианты и покажет карточки с ценами,
+            как на сайте агентства.
           </p>
 
           {/* Переключатель версий «Лид» / «Про» */}
@@ -216,9 +216,9 @@ export default function DemoExperience() {
               <p className="mt-3 flex items-start gap-2 rounded-xl border border-amber-200 bg-amber-50/70 px-3.5 py-2.5 text-left text-[13px] leading-relaxed text-amber-900">
                 <Info className="mt-0.5 h-4 w-4 flex-shrink-0 text-amber-600" />
                 <span>
-                  Живое демо версии «{activeVersion.name}» готовим — чат ниже
-                  пока отвечает на версии «{fallbackVersion.name}». Нужна версия
-                  «{activeVersion.name}» на вашем сайте — оставьте заявку, мы её
+                  Живое демо версии «{activeVersion.name}» готовим — чат ниже
+                  пока отвечает на версии «{fallbackVersion.name}». Нужна версия
+                  «{activeVersion.name}» на вашем сайте — оставьте заявку, мы её
                   включим.
                 </span>
               </p>
@@ -258,21 +258,21 @@ export default function DemoExperience() {
               className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg border border-blue-subtle/70 bg-white px-5 py-2.5 text-sm font-semibold text-heading shadow-sm transition-colors duration-200 hover:border-accent/40 hover:bg-blue-ice/40 hover:text-accent"
             >
               <ClipboardList className="h-4 w-4 text-accent" />
-              Оставить заявку на подключение
+              Оставить заявку на подключение
             </button>
             <p className="inline-flex items-center gap-2 rounded-full bg-accent/5 px-4 py-1.5 text-sm font-medium text-accent">
               <Sparkles className="h-4 w-4" />
-              Свой ассистент — 30 дней бесплатно с первого диалога
+              Свой ассистент — 30 дней бесплатно с первого диалога
             </p>
             <span className="text-sm text-muted">
-              или откройте чат кнопкой в правом нижнем углу →
+              или откройте чат кнопкой в правом нижнем углу →
             </span>
           </div>
 
           {/* Примеры запросов — что спросить у ассистента */}
           <div className="mx-auto mt-8 max-w-2xl">
             <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-muted">
-              Примеры запросов — скопируйте в чат
+              Примеры запросов — скопируйте в чат
             </p>
             <div className="flex flex-wrap justify-center gap-2">
               {demoExampleQueries.map((q) => (
@@ -285,8 +285,8 @@ export default function DemoExperience() {
               ))}
             </div>
             <p className="mt-3 text-sm leading-relaxed text-muted">
-              Когда придут карточки, нажмите под ними «Смотреть подборку» —
-              откроется страница с турами, которую клиент получает ссылкой.
+              Когда придут карточки, нажмите под ними «Смотреть подборку» —
+              откроется страница с турами, которую клиент получает ссылкой.
             </p>
           </div>
         </div>
@@ -320,11 +320,11 @@ export default function DemoExperience() {
       <section className="mx-auto max-w-5xl px-5 py-12 sm:px-6 lg:px-8">
         <div className="mb-8 text-center">
           <h2 className="font-display text-2xl font-bold text-heading sm:text-3xl">
-            На вашем сайте ассистент работает под вашим брендом
+            На вашем сайте ассистент работает под вашим брендом
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-base text-body">
-            В демо — наш нейтральный пример. При подключении ассистент говорит
-            от имени вашего агентства.
+            В демо — наш нейтральный пример. При подключении ассистент говорит
+            от имени вашего агентства.
           </p>
         </div>
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
@@ -348,7 +348,7 @@ export default function DemoExperience() {
       {/* FAQ по демо */}
       <section className="mx-auto max-w-3xl px-5 py-12 sm:px-6 lg:px-8">
         <h2 className="mb-8 text-center font-display text-2xl font-bold text-heading sm:text-3xl">
-          Частые вопросы про демо
+          Частые вопросы про демо
         </h2>
         <div className="space-y-4">
           {demoFaqItems.map((item) => (
@@ -377,13 +377,13 @@ export default function DemoExperience() {
           </h3>
           <div className="mt-4 grid grid-cols-1 gap-x-6 gap-y-2.5 sm:grid-cols-2">
             {[
-              { href: "/versii", label: "Чем «Лид» отличается от «Про»" },
-              { href: "/tarify", label: "Тарифы и что входит в подписку" },
-              { href: "/vidzhet", label: "Установка виджета на вашу платформу" },
-              { href: "/max", label: "Тот же ассистент в мессенджере MAX" },
-              { href: "/integraciya-tourvisor", label: "Откуда берутся туры и цены" },
-              { href: "/podborki", label: "Подборки туров по ссылке" },
-              { href: "/sravnenie", label: "Сравнение с другими решениями" },
+              { href: "/versii", label: "Чем «Лид» отличается от «Про»" },
+              { href: "/tarify", label: "Тарифы и что входит в подписку" },
+              { href: "/vidzhet", label: "Установка виджета на вашу платформу" },
+              { href: "/max", label: "Тот же ассистент в мессенджере MAX" },
+              { href: "/integraciya-tourvisor", label: "Откуда берутся туры и цены" },
+              { href: "/podborki", label: "Подборки туров по ссылке" },
+              { href: "/sravnenie", label: "Сравнение с другими решениями" },
               { href: "/keisy/mgp", label: "Кейс сети МГП" },
             ].map((l) => (
               <Link
@@ -413,14 +413,13 @@ export default function DemoExperience() {
         <div className="relative mx-auto max-w-3xl px-5 py-20 text-center sm:px-6 lg:px-8 lg:py-24">
           <div className="mb-4 inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
             <Sparkles className="h-3.5 w-3.5" />
-            30 дней бесплатно
+            30 дней бесплатно
           </div>
           <h2 className="font-display text-3xl font-bold text-white sm:text-4xl">
             Хотите такого ассистента себе?
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-lg text-white/70">
-            Подключим ИИ-ассистента на ваш сайт и в мессенджеры (Web‑виджет и
-            MAX). Запуск без программиста — с вашим брендом и данными.
+            Подключим ИИ-ассистента на ваш сайт и в мессенджеры (Web‑виджет и MAX). Запуск без программиста — с вашим брендом и данными.
           </p>
 
           <div className="mt-9 flex flex-col items-center gap-3">
@@ -440,11 +439,11 @@ export default function DemoExperience() {
               className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-white/35 px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-white/10"
             >
               <ClipboardList className="h-4 w-4" />
-              Оставить заявку на подключение
+              Оставить заявку на подключение
             </button>
             <span className="text-xs text-white/45">
-              Сами или через менеджера — первый месяц бесплатно
-              в обоих случаях
+              Сами или через менеджера — первый месяц бесплатно
+              в обоих случаях
             </span>
           </div>
 

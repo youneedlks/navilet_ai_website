@@ -20,10 +20,10 @@ const inSeason = new Map(demandPages.map((p) => [p.slug, p.inSeason]));
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Спрос на туры по направлениям — статистика запросов туристов",
+    absolute: "Спрос на туры по направлениям — статистика запросов туристов",
   },
   description:
-    "Куда хотят туристы: доли направлений в поисках туров, тренды и медианные бюджеты — Турция, Египет, Вьетнам, Россия, Таиланд и другие. Индекс спроса «Навылет! AI».",
+    "Куда хотят туристы: доли направлений в поисках туров, тренды и медианные бюджеты — Турция, Египет, Вьетнам, Россия, Таиланд и другие. Индекс спроса «Навылет! AI».",
   keywords: [
     "спрос на туры статистика",
     "популярные направления туры",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/spros" },
   openGraph: {
-    title: "Спрос на туры по направлениям — данные ИИ-диалогов",
+    title: "Спрос на туры по направлениям — данные ИИ-диалогов",
     description:
       "Обезличенная статистика диалогов туристов: доли направлений, тренды, медианные бюджеты.",
     url: `${siteUrl}/spros`,
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Спрос на туры по направлениям — данные ИИ-диалогов",
+    title: "Спрос на туры по направлениям — данные ИИ-диалогов",
     description:
       "Обезличенная статистика диалогов туристов: доли направлений, тренды, бюджеты.",
     images: ["/og-image.png"],
@@ -57,7 +57,7 @@ const jsonLd = {
       "@type": "CollectionPage",
       "@id": `${siteUrl}/spros#webpage`,
       url: `${siteUrl}/spros`,
-      name: "Спрос на туры по направлениям — статистика запросов туристов",
+      name: "Спрос на туры по направлениям — статистика запросов туристов",
       isPartOf: { "@id": `${siteUrl}/#website` },
       inLanguage: "ru-RU",
       breadcrumb: { "@id": `${siteUrl}/spros#breadcrumb` },
@@ -70,7 +70,7 @@ const jsonLd = {
         {
           "@type": "ListItem",
           position: 2,
-          name: "Спрос по направлениям",
+          name: "Спрос по направлениям",
           item: `${siteUrl}/spros`,
         },
       ],
@@ -108,9 +108,8 @@ export default function SprosHubPage() {
               <span className="text-accent">спрос по направлениям</span>
             </h1>
             <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-body sm:text-lg">
-              Обезличенные данные диалогов туристов с ИИ-ассистентами
-              турагентств: какие направления растут, что туристы указывают при
-              подборе и какие бюджеты называют. Полная версия с методикой —{" "}
+              Обезличенные данные диалогов туристов с ИИ-ассистентами
+              турагентств: какие направления растут, что туристы указывают при подборе и какие бюджеты называют. Полная версия с методикой —{" "}
               <Link href="/indeks-sprosa" className="font-semibold text-accent hover:underline">
                 индекс спроса
               </Link>
@@ -127,7 +126,7 @@ export default function SprosHubPage() {
                 Барометр спроса
               </h2>
               <p className="mt-1 text-sm text-muted">
-                Доля направления в поисках туров · тренд: {demandIndex.trendLabel}
+                Доля направления в поисках туров · тренд: {demandIndex.trendLabel}
               </p>
               <div className="mt-6 space-y-3">
                 {rows.map((c) => {
@@ -186,9 +185,9 @@ export default function SprosHubPage() {
               </div>
               <p className="mt-5 border-t border-blue-subtle/40 pt-4 text-xs text-muted">
                 <Leaf className="mr-1 inline h-3 w-3 text-emerald-500" />—
-                направление в сезоне. Выпуск «{demandIndex.edition}»,{" "}
-                {demandIndex.periodLabel}. Обезличенные доли, без названий
-                компаний и абсолютных объёмов.{" "}
+                направление в сезоне. Выпуск «{demandIndex.edition}»,{" "}
+                {demandIndex.periodLabel}. Обезличенные доли, без названий
+                компаний и абсолютных объёмов.{" "}
                 <Link href="/indeks-sprosa#metodika" className="underline hover:text-accent">
                   Методика
                 </Link>
@@ -228,9 +227,9 @@ export default function SprosHubPage() {
               ))}
             </div>
             <p className="mt-8 text-center text-sm text-body">
-              Такой же барометр — по вашим собственным диалогам — есть в{" "}
+              Такой же барометр — по вашим собственным диалогам — есть в{"\u00A0"}
               <Link href="/prognozy" className="font-semibold text-accent hover:underline">
-                «Отчётах и прогнозах» в «Аналитике» личного кабинета
+                «Отчётах и прогнозах» в «Аналитике» личного кабинета
               </Link>
               .
             </p>
@@ -247,11 +246,10 @@ export default function SprosHubPage() {
           <div className="noise-overlay pointer-events-none absolute inset-0 opacity-20" />
           <div className="relative mx-auto max-w-3xl px-5 py-14 text-center sm:px-6 lg:px-8">
             <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">
-              Этот спрос уже идёт на сайты агентств
+              Этот спрос уже идёт на сайты агентств
             </h2>
             <p className="mx-auto mt-3 max-w-lg text-white/70">
-              Подключите ассистента — и вопросы туристов начнут превращаться в
-              заявки. Регистрация в 3 коротких шага, 30 дней бесплатно с первого диалога.
+              Подключите ассистента — и вопросы туристов начнут превращаться в заявки. Регистрация в 3 коротких шага, 30 дней бесплатно с первого диалога.
             </p>
             <div className="mt-6 flex justify-center">
               <RegisterCta source="spros_hub_bottom" compact dark />

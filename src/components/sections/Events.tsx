@@ -152,7 +152,7 @@ function EventModal({
                 rel="noopener noreferrer"
                 className="mt-6 inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-accent-hover"
               >
-                Подробнее о мероприятии
+                Подробнее о мероприятии
                 <ExternalLink className="h-4 w-4" />
               </a>
             )}
@@ -229,18 +229,18 @@ export default function Events() {
           >
             <div>
               <h3 className="font-display text-2xl font-bold text-heading sm:text-3xl">
-                Участие в{" "}
+                Участие в{"\u00A0"}
                 <span className="text-accent">отраслевых событиях</span>
               </h3>
               <p className="mt-2.5 max-w-xl text-body">
-                Представляем технологии ИИ-автоматизации для туризма на ведущих
-                конференциях и конгрессах индустрии
+                Представляем технологии ИИ-автоматизации для туризма на ведущих
+                конференциях и конгрессах индустрии
               </p>
               <Link
                 href="/ekspert/lukian-silagadze"
                 className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-accent hover:underline"
               >
-                Наша позиция и отзывы профессионалов
+                Наша позиция и отзывы профессионалов
                 <ChevronRight className="h-4 w-4" />
               </Link>
             </div>

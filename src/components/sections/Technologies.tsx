@@ -77,7 +77,7 @@ export default function Technologies() {
         <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl lg:text-[2.75rem]">
           Технологии <span className="whitespace-nowrap">ИИ-ассистента:</span>{" "}
           <span className="text-accent">надёжная</span>{" "}
-          <span className="whitespace-nowrap">ИИ-система</span> для туризма
+          <span className="whitespace-nowrap">ИИ-система</span> для туризма
         </h2>
       </motion.div>
 

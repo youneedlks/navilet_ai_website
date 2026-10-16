@@ -32,10 +32,10 @@ const ProIcon = versionIcons.pro;
 export const metadata: Metadata = {
   title: {
     absolute:
-      "Версии «Лид» и «Про»: сравнение и цены от 990 ₽ | Навылет! AI",
+      "Версии «Лид» и «Про»: сравнение и цены от 990 ₽ | Навылет! AI",
   },
   description:
-    "Две версии ИИ-ассистента для турагентства: «Лид» — заявки менеджеру от 990 ₽/мес, «Про» — консультации и возврат клиентов от 1 990 ₽/мес. Сравнение в таблице.",
+    "Две версии ИИ-ассистента для турагентства: «Лид» — заявки менеджеру от 990 ₽/мес, «Про» — консультации и возврат клиентов от 1 990 ₽/мес. Сравнение в таблице.",
   keywords: [
     "версии ИИ-ассистента",
     "ИИ лидогенерация турагентство",
@@ -47,9 +47,9 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/versii" },
   openGraph: {
-    title: "Версии ИИ-ассистента «Лид» и «Про» — какое решение для вашего агентства",
+    title: "Версии ИИ-ассистента «Лид» и «Про» — какое решение для вашего агентства",
     description:
-      "«Лид» собирает готовые заявки для менеджеров от 990 ₽/мес. «Про» консультирует, сопровождает и возвращает клиентов. Сравните и попробуйте обе версии в демо.",
+      "«Лид» собирает готовые заявки для менеджеров от 990 ₽/мес. «Про» консультирует, сопровождает и возвращает клиентов. Сравните и попробуйте обе версии в демо.",
     url: `${siteUrl}/versii`,
     type: "website",
     locale: "ru_RU",
@@ -57,9 +57,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Версии ИИ-ассистента «Лид» и «Про» — сравнение",
+    title: "Версии ИИ-ассистента «Лид» и «Про» — сравнение",
     description:
-      "«Лид» — заявки менеджерам от 990 ₽/мес. «Про» — консультации и возврат клиентов. Первый месяц бесплатно.",
+      "«Лид» — заявки менеджерам от 990 ₽/мес. «Про» — консультации и возврат клиентов. Первый месяц бесплатно.",
     images: ["/og-image.png"],
   },
 };
@@ -84,9 +84,9 @@ const versiiJsonLd = {
       "@type": "WebPage",
       "@id": `${siteUrl}/versii#webpage`,
       url: `${siteUrl}/versii`,
-      name: "Версии ИИ-ассистента «Лид» и «Про» — сравнение",
+      name: "Версии ИИ-ассистента «Лид» и «Про» — сравнение",
       description:
-        "Сравнение двух версий ИИ-ассистента «Навылет! AI»: «Лид» для лидогенерации и «Про» для полного сопровождения клиентов.",
+        "Сравнение двух версий ИИ-ассистента «Навылет! AI»: «Лид» для лидогенерации и «Про» для полного сопровождения клиентов.",
       inLanguage: "ru-RU",
       isPartOf: { "@id": `${siteUrl}/#website` },
       breadcrumb: { "@id": `${siteUrl}/versii#breadcrumb` },
@@ -99,9 +99,9 @@ const versiiJsonLd = {
       // «от 990 ₽», а ИИ-поиск получает цену вместе с описанием версий.
       "@type": "Product",
       "@id": `${siteUrl}/versii#product`,
-      name: "ИИ-ассистент «Навылет! AI»: версии «Лид» и «Про»",
+      name: "ИИ-ассистент «Навылет! AI»: версии «Лид» и «Про»",
       description:
-        "Две версии ИИ-ассистента для турагентства на одном движке: «Лид» — лидогенерация и готовые заявки менеджеру, «Про» — консультации без ограничений, проверка цен в диалоге и возврат клиентов в MAX.",
+        "Две версии ИИ-ассистента для турагентства на одном движке: «Лид» — лидогенерация и готовые заявки менеджеру, «Про» — консультации без ограничений, проверка цен в диалоге и возврат клиентов в MAX.",
       brand: { "@id": `${siteUrl}/#organization` },
       category: "B2B SaaS / TravelTech",
       offers: {
@@ -203,25 +203,24 @@ export default function VersiiPage() {
             <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5">
               <Sparkles className="h-4 w-4 text-accent" />
               <span className="text-xs font-semibold text-accent sm:text-sm">
-                Первый месяц бесплатно · на любой версии
+                Первый месяц бесплатно · на любой версии
               </span>
             </div>
             <h1 className="font-display text-4xl font-bold leading-tight text-heading sm:text-5xl">
               Две версии ассистента:{" "}
               <span className="whitespace-nowrap text-accent">
-                «Лид» и «Про»
+                «Лид» и «Про»
               </span>
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-base text-body sm:text-lg">
-              <strong className="font-semibold text-heading">«Лид»</strong> —
-              лидогенерация: живой диалог, подбор туров и готовая заявка вашему
+              <strong className="font-semibold text-heading">«Лид»</strong> —
+              лидогенерация: живой диалог, подбор туров и готовая заявка вашему
               менеджеру,{" "}
               <span className="whitespace-nowrap">от 990 ₽/мес</span>.{" "}
-              <strong className="font-semibold text-heading">«Про»</strong> —
-              полноценный инструмент менеджера: консультации, проверка цен и
-              возврат клиентов,{" "}
+              <strong className="font-semibold text-heading">«Про»</strong> —
+              полноценный инструмент менеджера: консультации, проверка цен и возврат клиентов,{" "}
               <span className="whitespace-nowrap">от 1 990 ₽/мес</span>. Обе
-              работают в Web‑виджете и MAX.
+              работают в Web‑виджете и MAX.
             </p>
           </div>
 
@@ -230,8 +229,8 @@ export default function VersiiPage() {
           </div>
 
           <p className="mx-auto mt-6 max-w-2xl text-center text-sm text-muted">
-            Версия меняется в личном кабинете в любой момент — история диалогов
-            и настройки сохраняются.
+            Версия меняется в личном кабинете в любой момент — история диалогов
+            и настройки сохраняются.
           </p>
         </section>
 
@@ -244,11 +243,11 @@ export default function VersiiPage() {
             Что умеет каждая версия
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-center text-base text-body">
-            Полный список возможностей: слева — то, что делает «Лид» за{" "}
+            Полный список возможностей: слева — то, что делает «Лид» за{"\u00A0"}
             <span className="whitespace-nowrap">
               {lid.priceFrom.toLocaleString("ru-RU")} ₽/мес
             </span>
-            , справа — что добавляет «Про» за{" "}
+            , справа — что добавляет «Про» за{"\u00A0"}
             <span className="whitespace-nowrap">
               {pro.priceFrom.toLocaleString("ru-RU")} ₽/мес
             </span>
@@ -274,7 +273,7 @@ export default function VersiiPage() {
                       {version.fullName}
                     </h3>
                     <p className="text-xs font-medium text-accent">
-                      от {version.priceFrom.toLocaleString("ru-RU")} ₽/мес
+                      от {version.priceFrom.toLocaleString("ru-RU")} ₽/мес
                     </p>
                   </div>
                 </div>
@@ -317,11 +316,10 @@ export default function VersiiPage() {
               </span>
               <span>
                 <span className="flex items-center gap-1.5 font-display text-base font-bold text-heading transition-colors group-hover:text-accent">
-                  Лиды для турагентства
+                  Лиды для турагентства
                 </span>
                 <span className="mt-1 block text-sm leading-relaxed text-body">
-                  Как версия «Лид» превращает трафик сайта в заявки по
-                  219–540 ₽ вместо 1 500–5 000 ₽ из рекламы.
+                  Как версия «Лид» превращает трафик сайта в заявки по 219–540 ₽ вместо 1 500–5 000 ₽ из рекламы.
                 </span>
               </span>
             </Link>
@@ -334,12 +332,11 @@ export default function VersiiPage() {
               </span>
               <span>
                 <span className="flex items-center gap-1.5 font-display text-base font-bold text-heading transition-colors group-hover:text-accent">
-                  Подборки по ссылке
+                  Подборки по ссылке
                   <ArrowRight className="h-4 w-4" />
                 </span>
                 <span className="mt-1 block text-sm leading-relaxed text-body">
-                  Есть в обеих версиях: клиент открывает страницу с турами под
-                  брендом агентства, вы видите просмотры и заявки.
+                  Есть в обеих версиях: клиент открывает страницу с турами под брендом агентства, вы видите просмотры и заявки.
                 </span>
               </span>
             </Link>
@@ -352,13 +349,13 @@ export default function VersiiPage() {
               </span>
               <span>
                 <span className="flex items-center gap-1.5 font-display text-base font-bold text-heading transition-colors group-hover:text-accent">
-                  Возврат клиентов в MAX
+                  Возврат клиентов в MAX
                   <ArrowRight className="h-4 w-4" />
                 </span>
                 <span className="mt-1 block text-sm leading-relaxed text-body">
-                  Напоминание замолчавшим и подписка на снижение цены
-                  возвращают до 40% клиентов. В «Про» входят, в «Лиде» —
-                  опциями от 290 ₽/мес.
+                  Напоминание замолчавшим и подписка на снижение цены
+                  возвращают до 40% клиентов. В «Про» входят, в «Лиде» —
+                  опциями от 290 ₽/мес.
                 </span>
               </span>
             </Link>
@@ -368,12 +365,10 @@ export default function VersiiPage() {
         {/* Полная сравнительная таблица */}
         <section className="mx-auto max-w-5xl px-5 pb-14 sm:px-6 lg:px-8 lg:pb-16">
           <h2 className="text-center font-display text-3xl font-bold text-heading sm:text-4xl">
-            Чем отличаются версии — полное сравнение
+            Чем отличаются версии — полное сравнение
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-center text-base text-body">
-            Это разные инструменты на одном движке: «Лид» ловит заявку и
-            передаёт её живому менеджеру, «Про» сам сопровождает клиента до
-            брони и возвращает ушедших.
+            Это разные инструменты на одном движке: «Лид» ловит заявку и передаёт её живому менеджеру, «Про» сам сопровождает клиента до брони и возвращает ушедших.
           </p>
 
           {/* На узких экранах таблица разворачивается в стек: название функции
@@ -468,18 +463,18 @@ export default function VersiiPage() {
               {[
                 {
                   stat: "100%",
-                  label: "диалогов с контактом",
-                  text: "В версии «Лид» контакт клиента известен с первого сообщения — ни один диалог не заканчивается «в никуда».",
+                  label: "диалогов с контактом",
+                  text: "В версии «Лид» контакт клиента известен с первого сообщения — ни один диалог не заканчивается «в никуда».",
                 },
                 {
                   stat: "107",
                   label: "реальных диалогов",
-                  text: "Версию «Лид» проверили на 107 живых диалогах клиентов — ноль сбоев после доработок.",
+                  text: "Версию «Лид» проверили на 107 живых диалогах клиентов — ноль сбоев после доработок.",
                 },
                 {
-                  stat: "до 40%",
+                  stat: "до 40%",
                   label: "замолчавших возвращаются",
-                  text: "В MAX напоминание через сутки и подписка на снижение цены возвращают в диалог до 40% замолчавших клиентов. В «Про» входят, в «Лиде» — опциями.",
+                  text: "В MAX напоминание через сутки и подписка на снижение цены возвращают в диалог до 40% замолчавших клиентов. В «Про» входят, в «Лиде» — опциями.",
                 },
               ].map((item) => (
                 <div
@@ -504,7 +499,7 @@ export default function VersiiPage() {
         {/* FAQ */}
         <section className="mx-auto max-w-3xl px-5 py-14 sm:px-6 lg:px-8 lg:py-16">
           <h2 className="mb-8 text-center font-display text-3xl font-bold text-heading sm:text-4xl">
-            Вопросы про версии
+            Вопросы про версии
           </h2>
           <div className="space-y-4">
             {versiiFaqItems.map((item) => (
@@ -533,10 +528,10 @@ export default function VersiiPage() {
               Попробуйте обе версии бесплатно
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-base text-body sm:text-lg">
-              Первый месяц — бесплатно на любой версии: «Лид» от{" "}
-              {lid.priceFrom.toLocaleString("ru-RU")} ₽/мес, «Про» от{" "}
+              Первый месяц — бесплатно на любой версии: «Лид» от{"\u00A0"}
+              {lid.priceFrom.toLocaleString("ru-RU")} ₽/мес, «Про» от{"\u00A0"}
               {pro.priceFrom.toLocaleString("ru-RU")} ₽/мес после теста.
-              Подключение — 0 ₽.
+              Подключение — 0 ₽.
             </p>
             <div className="mt-8 flex justify-center">
               <RegisterCta source="versii_cta" />

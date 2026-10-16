@@ -39,8 +39,8 @@ export const demandIndex = {
   published: "2026-09-25",
   periodFrom: "2026-06-01",
   periodTo: "2026-09-24",
-  periodLabel: "1 июня — 24 сентября 2026",
-  trendLabel: "сентябрь к июню–августу",
+  periodLabel: "1 июня — 24 сентября 2026",
+  trendLabel: "сентябрь к июню–августу",
 
   overall: {
     budgetP25: 120000,
@@ -110,7 +110,7 @@ export const demandIndex = {
       horizonDays: 40,
       soonPct: 25,
       allInclusivePct: 25,
-      resorts: [{ name: "Нячанг и Камрань", pct: 13 }],
+      resorts: [{ name: "Нячанг и Камрань", pct: 13 }],
     },
     {
       slug: "rossiya",
@@ -125,7 +125,7 @@ export const demandIndex = {
       soonPct: 39,
       allInclusivePct: 27,
       resorts: [
-        { name: "Сочи и Адлер", pct: 29 },
+        { name: "Сочи и Адлер", pct: 29 },
         { name: "Калининград", pct: 11 },
         { name: "Анапа", pct: 9 },
         { name: "Крым", pct: 7 },
@@ -254,7 +254,7 @@ export type DemandIndex = typeof demandIndex;
 
 export function countryDemand(slug: string): CountryDemand {
   const c = demandIndex.countries.find((x) => "slug" in x && x.slug === slug);
-  if (!c) throw new Error(`demand-index: нет данных для /spros/${slug}`);
+  if (!c) throw new Error(`demand-index: нет данных для /spros/${slug}`);
   return c;
 }
 

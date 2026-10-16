@@ -46,10 +46,10 @@ export function GET() {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Блог «Навылет! AI» — ИИ в туризме</title>
+    <title>Блог «Навылет! AI» — ИИ в туризме</title>
     <link>${siteUrl}/blog</link>
     <atom:link href="${siteUrl}/blog/rss.xml" rel="self" type="application/rss+xml" />
-    <description>Как турагентства внедряют ИИ-ассистентов: кейсы, цифры по сети партнёров, разборы стоимости и инструкции.</description>
+    <description>Как турагентства внедряют ИИ-ассистентов: кейсы, цифры по сети партнёров, разборы стоимости и инструкции.</description>
     <language>ru</language>
     <lastBuildDate>${rfc822(latest ?? "")}</lastBuildDate>
     <image>

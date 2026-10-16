@@ -232,7 +232,7 @@ export default function Navigation() {
           >
             <Image
               src="/logo.svg"
-              alt="Навылет! AI — ИИ-ассистент для турагентств"
+              alt="Навылет! AI — ИИ-ассистент для турагентств"
               width={220}
               height={48}
               priority
@@ -399,7 +399,7 @@ export default function Navigation() {
                   href={lkLoginUrl("nav_mobile")}
                   className="flex min-h-12 items-center border-b border-blue-subtle/30 text-base font-semibold text-heading"
                 >
-                  Войти в кабинет
+                  Войти в кабинет
                 </a>
 
                 <div className="mt-5 space-y-3">
@@ -413,7 +413,7 @@ export default function Navigation() {
                     Подключить бесплатно
                   </button>
                   <p className="text-center text-xs text-muted">
-                    Месяц бесплатно · подключение 0 ₽
+                    Месяц бесплатно · подключение 0 ₽
                   </p>
                   <a
                     href={`tel:${companyInfo.phoneRaw}`}

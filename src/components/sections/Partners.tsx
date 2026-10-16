@@ -14,9 +14,9 @@ import SkolkovoBadge from "@/components/ui/SkolkovoBadge";
 import Events from "@/components/sections/Events";
 
 const STATS = [
-  { icon: CalendarDays, value: "27 лет", label: "на рынке" },
-  { icon: MapPin, value: "396", label: "офисов по России" },
-  { icon: Users, value: "5 млн+", label: "туристов" },
+  { icon: CalendarDays, value: "27 лет", label: "на рынке" },
+  { icon: MapPin, value: "396", label: "офисов по России" },
+  { icon: Users, value: "5 млн+", label: "туристов" },
 ];
 
 const PARTNER_LOGOS = [
@@ -86,15 +86,15 @@ export default function Partners() {
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/15 bg-accent/5 px-4 py-1.5">
             <Handshake className="h-4 w-4 text-accent" />
             <span className="text-sm font-semibold text-accent">
-              Партнёры и мероприятия
+              Партнёры и мероприятия
             </span>
           </div>
           <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl lg:text-[2.75rem]">
-            Нам доверяют — и нас{" "}
-            <span className="text-accent">знают в отрасли</span>
+            Нам доверяют — и нас{" "}
+            <span className="text-accent">знают в отрасли</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base text-body sm:text-lg">
-            С кем мы работаем и где нас можно встретить лично.
+            С кем мы работаем и где нас можно встретить лично.
           </p>
         </motion.div>
 
@@ -111,7 +111,7 @@ export default function Partners() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/partners/mgp-logo.svg"
-                alt="МГП — Сеть магазинов горящих путёвок"
+                alt="МГП — Сеть магазинов горящих путёвок"
                 loading="lazy"
                 className="relative w-full max-w-[380px] object-contain"
                 draggable={false}
@@ -134,11 +134,11 @@ export default function Partners() {
               </h3>
 
               <p className="mb-6 flex-1 text-sm leading-relaxed text-body">
-                МГП — одна из крупнейших туристических сетей России
-                с 27-летней историей и 396 офисами по всей стране.
+                МГП — одна из крупнейших туристических сетей России
+                с 27-летней историей и 396 офисами по всей стране.
                 Компания стала первой, кто внедрил ИИ-ассистент «Навылет! AI»
-                в реальную работу с клиентами и активно участвует
-                в развитии продукта.
+                в реальную работу с клиентами и активно участвует
+                в развитии продукта.
               </p>
 
               <div className="flex flex-wrap gap-5">
@@ -179,7 +179,7 @@ export default function Partners() {
                 Наши партнёры
               </h3>
               <p className="mt-1.5 text-sm text-muted">
-                Сотрудничаем с ведущими организациями отрасли
+                Сотрудничаем с ведущими организациями отрасли
               </p>
             </div>
 
@@ -220,9 +220,9 @@ export default function Partners() {
           className="mt-6 flex flex-col items-center justify-center gap-5 rounded-2xl border border-blue-subtle/50 bg-white px-6 py-7 text-center shadow-[0_1px_3px_rgba(0,82,204,0.04),0_4px_16px_rgba(0,82,204,0.05)] sm:flex-row sm:gap-8 sm:px-10 sm:text-left">
           <SkolkovoBadge imgClassName="h-11 w-auto shrink-0 sm:h-14" />
           <p className="max-w-xl text-sm leading-relaxed text-body">
-            <span className="font-semibold text-heading">«Навылет! AI» — резидент ИТ-кластера Фонда «Сколково»</span>
-            {" "}— крупнейшего инновационного центра России. Мы развиваем
-            ИИ-технологии для туристической отрасли в составе его экосистемы.
+            <span className="font-semibold text-heading">«Навылет! AI» — резидент ИТ-кластера Фонда «Сколково»</span>
+            {"\u00A0"}— крупнейшего инновационного центра России. Мы развиваем
+            ИИ-технологии для туристической отрасли в составе его экосистемы.
           </p>
         </motion.div>
       </motion.div>

@@ -21,13 +21,13 @@ const minPriceLabel = priceFromLabel;
 
 /** Версии и цены «от» — одной строкой для описаний; «Заявка» — по выключателю. */
 const versionsLine = reqVersionPublished
-  ? "«Заявка» от 790 ₽, «Лид» от 990 ₽, «Про» от 1 990 ₽ в месяц"
-  : "«Лид» от 990 ₽, «Про» от 1 990 ₽ в месяц";
+  ? "«Заявка» от 790 ₽, «Лид» от 990 ₽, «Про» от 1 990 ₽ в месяц"
+  : "«Лид» от 990 ₽, «Про» от 1 990 ₽ в месяц";
 
 export const metadata: Metadata = {
-  title: { absolute: `Тарифы ИИ-ассистента — от ${minPriceLabel}/мес | Навылет! AI` },
+  title: { absolute: `Тарифы ИИ-ассистента — от ${minPriceLabel}/мес | Навылет! AI` },
   description:
-    `Тарифы ИИ-ассистента для турагентств: ${versionsLine}. Сайт или MAX, подключение 0 ₽, месяц бесплатно.`,
+    `Тарифы ИИ-ассистента для турагентств: ${versionsLine}. Сайт или MAX, подключение 0 ₽, месяц бесплатно.`,
   keywords: [
     "тарифы ИИ-ассистент",
     "стоимость ИИ-ассистент для турагентства",
@@ -42,9 +42,9 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/tarify" },
   openGraph: {
-    title: `Тарифы ИИ-ассистента «Навылет! AI» — от ${minPriceLabel}/мес`,
+    title: `Тарифы ИИ-ассистента «Навылет! AI» — от ${minPriceLabel}/мес`,
     description:
-      `${versionsLine}. Прозрачная цена за диалог, без скрытых платежей, НДС не облагается.`,
+      `${versionsLine}. Прозрачная цена за диалог, без скрытых платежей, НДС не облагается.`,
     url: "https://navilet.ru/tarify",
     type: "website",
     locale: "ru_RU",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `Тарифы ИИ-ассистента «Навылет! AI» — от ${minPriceLabel}/мес`,
+    title: `Тарифы ИИ-ассистента «Навылет! AI» — от ${minPriceLabel}/мес`,
     description:
       `${versionsLine}. Первый месяц бесплатно.`,
     images: ["/og-image.png"],
@@ -66,28 +66,28 @@ const fmt = (n: number) => n.toLocaleString("ru-RU");
 /** «Что входит в подписку»: общее для всех версий и то, чего нет у «Заявки». */
 const includedGroups = [
   {
-    title: "Во всех версиях",
+    title: "Во всех версиях",
     items: [
-      "ИИ-ассистент 24/7 на сайте или в MAX",
-      "Виджет под ваш бренд, без чужих логотипов",
-      "База знаний агентства — ведёте сами в кабинете",
-      "Заявки на почту, в U‑ON, Telegram и MAX",
-      "Ответ менеджера клиенту прямо из кабинета",
-      "Кабинет с аналитикой и воронкой",
-      "Поддержка в кабинете и на support@navilet.ru",
-      "Обработка данных по 152-ФЗ",
+      "ИИ-ассистент 24/7 на сайте или в MAX",
+      "Виджет под ваш бренд, без чужих логотипов",
+      "База знаний агентства — ведёте сами в кабинете",
+      "Заявки на почту, в U‑ON, Telegram и MAX",
+      "Ответ менеджера клиенту прямо из кабинета",
+      "Кабинет с аналитикой и воронкой",
+      "Поддержка в кабинете и на support@navilet.ru",
+      "Обработка данных по 152-ФЗ",
     ],
   },
   {
     title: reqVersionPublished
-      ? "В «Лиде» и «Про» — ещё и подбор туров"
+      ? "В «Лиде» и «Про» — ещё и подбор туров"
       : "Подбор туров",
     items: [
-      "Подбор туров по базе Tourvisor",
-      "Цены и наличие на момент запроса",
-      "Карточки туров с фото, ценами и перелётами",
+      "Подбор туров по базе Tourvisor",
+      "Цены и наличие на момент запроса",
+      "Карточки туров с фото, ценами и перелётами",
       "Горящие туры и спецпредложения",
-      "Подборка туров одной ссылкой под брендом агентства",
+      "Подборка туров одной ссылкой под брендом агентства",
     ],
   },
 ];
@@ -122,7 +122,7 @@ const tarifyJsonLd = {
       url: `${siteUrl}/tarify`,
       name: "Тарифы ИИ-ассистента «Навылет! AI»",
       description:
-        `Тарифы ИИ-ассистента: ${versionsLine}. Web‑виджет или MAX‑мессенджер. Надстройка «Второй канал».`,
+        `Тарифы ИИ-ассистента: ${versionsLine}. Web‑виджет или MAX‑мессенджер. Надстройка «Второй канал».`,
       inLanguage: "ru-RU",
       isPartOf: { "@id": `${siteUrl}/#website` },
       breadcrumb: { "@id": `${siteUrl}/tarify#breadcrumb` },
@@ -132,9 +132,9 @@ const tarifyJsonLd = {
     {
       "@type": "Product",
       "@id": `${siteUrl}/tarify#product`,
-      name: "Навылет! AI — ИИ-ассистент (подписка)",
+      name: "Навылет! AI — ИИ-ассистент (подписка)",
       description:
-        `ИИ-ассистент для турагентств и туроператоров. ${reqVersionPublished ? "«Заявка» — собирает запрос и контакт, тур подбирает менеджер; " : ""}«Лид» — лидогенерация и заявки менеджерам; «Про» — консультации, сопровождение и возврат клиентов. Работает в Web‑виджете или MAX‑мессенджере.`,
+        `ИИ-ассистент для турагентств и туроператоров. ${reqVersionPublished ? "«Заявка» — собирает запрос и контакт, тур подбирает менеджер; " : ""}«Лид» — лидогенерация и заявки менеджерам; «Про» — консультации, сопровождение и возврат клиентов. Работает в Web‑виджете или MAX‑мессенджере.`,
       brand: { "@id": `${siteUrl}/#organization` },
       category: "B2B SaaS / TravelTech",
       image: `${siteUrl}/og-image.png`,
@@ -146,13 +146,13 @@ const tarifyJsonLd = {
       "@id": `${siteUrl}/tarify#lid-addons`,
       name: "Дополнительные подключения версии «Лид»",
       description:
-        "Функции версии «Лид» в MAX‑канале: «Вернём клиента» и «Следим за ценой». В версии «Про» входят в тариф.",
+        "Функции версии «Лид» в MAX‑канале: «Вернём клиента» и «Следим за ценой». В версии «Про» входят в тариф.",
       brand: { "@id": `${siteUrl}/#organization` },
       category: "B2B SaaS / TravelTech",
       offers: [
         { key: "reoutreach", name: lidAddons.reoutreach.name, price: lidAddons.reoutreach.price, about: lidAddons.reoutreach.about },
         { key: "subscriptions", name: lidAddons.subscriptions.name, price: lidAddons.subscriptions.price, about: lidAddons.subscriptions.about },
-        { key: "bundle", name: "Обе опции", price: lidAddons.bundle, about: `«${lidAddons.reoutreach.name}» и «${lidAddons.subscriptions.name}» вместе — вместо ${lidAddons.bundleInstead} ₽.` },
+        { key: "bundle", name: "Обе опции", price: lidAddons.bundle, about: `«${lidAddons.reoutreach.name}» и «${lidAddons.subscriptions.name}» вместе — вместо ${lidAddons.bundleInstead} ₽.` },
       ].map((o) => ({
         "@type": "Offer",
         "@id": `${siteUrl}/tarify#addon-${o.key}`,
@@ -216,7 +216,7 @@ export default function TarifyPage() {
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5">
             <Sparkles className="h-4 w-4 text-accent" />
             <span className="text-xs font-semibold text-accent sm:text-sm">
-              Первый месяц бесплатно · Подключение 0 ₽ · Отмена в любой момент
+              Первый месяц бесплатно · Подключение 0 ₽ · Отмена в любой момент
             </span>
           </div>
           <h1 className="font-display text-4xl font-bold leading-tight text-heading sm:text-5xl">
@@ -224,22 +224,22 @@ export default function TarifyPage() {
             «Навылет! AI»
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-base text-body sm:text-lg">
-            Прозрачная подписка для турагентств и туроператоров.{" "}
+            Прозрачная подписка для турагентств и туроператоров.{" "}
             {reqVersionPublished && (
               <>
-                <strong className="font-semibold text-heading">«Заявка»</strong> —
-                собирает запрос и контакт, тур подбирает ваш менеджер, <span className="whitespace-nowrap">от 790 ₽/мес</span>;{" "}
+                <strong className="font-semibold text-heading">«Заявка»</strong> —
+                собирает запрос и контакт, тур подбирает ваш менеджер, <span className="whitespace-nowrap">от 790 ₽/мес</span>;{" "}
               </>
             )}
-            <strong className="font-semibold text-heading">«Лид»</strong> —
-            подбирает туры и передаёт заявку, <span className="whitespace-nowrap">от 990 ₽/мес</span>;{" "}
-            <strong className="font-semibold text-heading">«Про»</strong> —
-            полный инструмент с консультациями и возвратом клиентов, <span className="whitespace-nowrap">
-            от 1 990 ₽/мес
-            </span>. «Лид» и «Про» подбирают туры из Турвизора — для агентств,
-            которые с ним работают{reqVersionPublished ? "; без Турвизора — «Заявка»" : ""}.
-            Каждый тариф работает в Web‑виджете или
-            {" "}<span className="whitespace-nowrap">MAX‑мессенджере</span>,{" "}
+            <strong className="font-semibold text-heading">«Лид»</strong> —
+            подбирает туры и передаёт заявку, <span className="whitespace-nowrap">от 990 ₽/мес</span>;{" "}
+            <strong className="font-semibold text-heading">«Про»</strong> —
+            полный инструмент с консультациями и возвратом клиентов, <span className="whitespace-nowrap">
+            от 1 990 ₽/мес
+            </span>. «Лид» и «Про» подбирают туры из Турвизора — для агентств,
+            которые с ним работают{reqVersionPublished ? "; без Турвизора — «Заявка»" : ""}.
+            Каждый тариф работает в Web‑виджете или
+            {"\u00A0"}<span className="whitespace-nowrap">MAX‑мессенджере</span>,{" "}
             <Link
               href="/versii"
               className="font-medium text-accent underline decoration-accent/30 underline-offset-2 hover:decoration-accent"
@@ -256,12 +256,12 @@ export default function TarifyPage() {
             >
               «Второй канал»
             </a>{" "}
-            к любому тарифу. Считаете бюджет и окупаемость?{" "}
+            к любому тарифу. Считаете бюджет и окупаемость?{" "}
             <Link
               href="/skolko-stoit"
               className="font-medium text-accent underline decoration-accent/30 underline-offset-2 hover:decoration-accent"
             >
-              Разбор стоимости и сравнение с альтернативами
+              Разбор стоимости и сравнение с альтернативами
             </Link>
             .
           </p>
@@ -274,11 +274,11 @@ export default function TarifyPage() {
         <section className="bg-surface-alt">
           <div className="mx-auto max-w-5xl px-5 py-16 sm:px-6 lg:px-8 lg:py-20">
             <h2 className="text-center font-display text-3xl font-bold text-heading sm:text-4xl">
-              Что входит в подписку
+              Что входит в подписку
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-center text-base text-body">
-              Тарифы отличаются лимитом диалогов, а версии — тем, кто подбирает
-              тур: ассистент или ваш менеджер, и глубиной консультаций:{" "}
+              Тарифы отличаются лимитом диалогов, а версии — тем, кто подбирает
+              тур: ассистент или ваш менеджер, и глубиной консультаций:{" "}
               <Link
                 href="/versii"
                 className="font-medium text-accent underline decoration-accent/30 underline-offset-2 hover:decoration-accent"
@@ -315,17 +315,17 @@ export default function TarifyPage() {
         <section id="opcii" className="scroll-mt-24">
           <div className="mx-auto max-w-5xl px-5 py-16 sm:px-6 lg:px-8 lg:py-20">
             <h2 className="text-center font-display text-3xl font-bold text-heading sm:text-4xl">
-              Опции версии «Лид» в MAX
+              Опции версии «Лид» в MAX
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-center text-base text-body">
-              Возврат клиентов в «Про» входит в тариф. В «Лиде» его можно
-              подключить опциями — в кабинете, в любой момент.
+              Возврат клиентов в «Про» входит в тариф. В «Лиде» его можно
+              подключить опциями — в кабинете, в любой момент.
             </p>
             <div className="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-4 sm:grid-cols-3">
               {[
                 { title: `«${lidAddons.reoutreach.name}»`, price: lidAddons.reoutreach.price, text: lidAddons.reoutreach.about },
                 { title: `«${lidAddons.subscriptions.name}»`, price: lidAddons.subscriptions.price, text: lidAddons.subscriptions.about },
-                { title: "Обе опции", price: lidAddons.bundle, text: `Вместо ${lidAddons.bundleInstead} ₽ — выгоднее, чем по отдельности.` },
+                { title: "Обе опции", price: lidAddons.bundle, text: `Вместо ${lidAddons.bundleInstead} ₽ — выгоднее, чем по отдельности.` },
               ].map((o) => (
                 <div
                   key={o.title}
@@ -341,10 +341,10 @@ export default function TarifyPage() {
             </div>
             <ul className="mx-auto mt-8 max-w-3xl space-y-2 text-sm text-body">
               {[
-                "Работают в канале MAX — подключаются, когда MAX подключён.",
-                "Включаются и выключаются в кабинете в любой момент и начинают работать сразу; в счёт входят со следующего периода.",
-                "На пробном периоде не подключаются. Цена одна для всех тарифов «Лида».",
-                `В «Про» обе функции входят в тариф${reqVersionPublished ? "; в «Заявке» входит «Вернём клиента», «Следим за ценой» нет" : ""}.`,
+                "Работают в канале MAX — подключаются, когда MAX подключён.",
+                "Включаются и выключаются в кабинете в любой момент и начинают работать сразу; в счёт входят со следующего периода.",
+                "На пробном периоде не подключаются. Цена одна для всех тарифов «Лида».",
+                `В «Про» обе функции входят в тариф${reqVersionPublished ? "; в «Заявке» входит «Вернём клиента», «Следим за ценой» нет" : ""}.`,
               ].map((t) => (
                 <li key={t} className="flex items-start gap-2.5">
                   <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
@@ -368,7 +368,7 @@ export default function TarifyPage() {
           <details className="group rounded-2xl border border-blue-subtle/50 bg-white">
             <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 sm:px-6 [&::-webkit-details-marker]:hidden">
               <span className="font-display text-lg font-bold text-heading sm:text-xl">
-                Сравнить тарифы в таблице
+                Сравнить тарифы в таблице
               </span>
               <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent/10 transition-transform duration-200 group-open:rotate-180">
                 <ChevronRight className="h-4 w-4 rotate-90 text-accent" />
@@ -428,7 +428,7 @@ export default function TarifyPage() {
                                     colSpan={3}
                                     className="whitespace-nowrap px-4 py-3 text-left text-body"
                                   >
-                                    Индивидуально, по заявке
+                                    Индивидуально, по заявке
                                   </td>
                                 ) : (
                                   <>
@@ -459,7 +459,7 @@ export default function TarifyPage() {
               {tableVersions.map((version) => (
                 <div key={`addon-${version.id}`}>
                   <h3 className="mb-3 mt-8 text-sm font-semibold uppercase tracking-wide text-muted">
-                    «Второй канал» в версии {version.label} — Web и MAX
+                    «Второй канал» в версии {version.label} — Web и MAX
                     одновременно
                   </h3>
                   <div className="overflow-hidden rounded-xl border border-blue-subtle/50">
@@ -483,7 +483,7 @@ export default function TarifyPage() {
                               Итого диалогов
                             </th>
                             <th className="whitespace-nowrap px-4 py-3 text-right font-semibold text-heading">
-                              Сверхлимит во 2-м канале
+                              Сверхлимит во 2-м канале
                             </th>
                           </tr>
                         </thead>
@@ -533,8 +533,8 @@ export default function TarifyPage() {
               ))}
 
               <p className="mt-5 text-center text-sm text-muted">
-                Подключение MAX‑канала бесплатное — разовых платежей нет. Цены
-                окончательные: НДС не облагается (участник проекта «Сколково»).
+                Подключение MAX‑канала бесплатное — разовых платежей нет. Цены
+                окончательные: НДС не облагается (участник проекта «Сколково»).
               </p>
             </div>
           </details>
@@ -570,7 +570,7 @@ export default function TarifyPage() {
               href="/skolko-stoit"
               className="inline-flex min-h-10 items-center gap-1.5 text-sm font-semibold text-accent transition-colors hover:text-accent-hover"
             >
-              Сколько стоит ИИ-ассистент: расчёт окупаемости и сравнение
+              Сколько стоит ИИ-ассистент: расчёт окупаемости и сравнение
               <ChevronRight className="h-4 w-4" />
             </Link>
           </div>
@@ -580,11 +580,11 @@ export default function TarifyPage() {
         <section className="bg-surface-alt">
           <div className="mx-auto max-w-3xl px-5 py-16 text-center sm:px-6 lg:px-8 lg:py-20">
             <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl">
-              Не уверены, какой тариф подойдёт?
+              Не уверены, какой тариф подойдёт?
             </h2>
             <p className="mt-4 text-base text-body sm:text-lg">
-              Расскажите о вашем агентстве — поможем подобрать оптимальный
-              вариант. Можно начать с бесплатных 30 дней — отсчёт с первого диалога.
+              Расскажите о вашем агентстве — поможем подобрать оптимальный
+              вариант. Можно начать с бесплатных 30 дней — отсчёт с первого диалога.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <a

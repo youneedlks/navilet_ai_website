@@ -39,7 +39,7 @@ const ProIcon = versionIcons.pro;
 
 /** Дата последней проверки цен — показываем на странице и в разметке. */
 const priceCheckedAt = "2026-10-15";
-const priceCheckedLabel = "15 октября 2026";
+const priceCheckedLabel = "15 октября 2026";
 
 /** Цена с неразрывными пробелами: «1 990 ₽» не рвётся по строкам. */
 const rub = (value: number) => `${value.toLocaleString("ru-RU")}\u00A0₽`;
@@ -89,10 +89,10 @@ const planCountWord =
 export const metadata: Metadata = {
   title: {
     absolute:
-      `Сколько стоит ИИ для турагентства — от ${priceFromLabel}/мес | Навылет! AI`,
+      `Сколько стоит ИИ для турагентства — от ${priceFromLabel}/мес | Навылет! AI`,
   },
   description:
-    `Сколько стоит ИИ-ассистент для турагентства: от ${priceFromLabel}/мес${priceSelectionNote}. Сравнение с ботом на заказ и наймом менеджера, расчёт окупаемости.`,
+    `Сколько стоит ИИ-ассистент для турагентства: от ${priceFromLabel}/мес${priceSelectionNote}. Сравнение с ботом на заказ и наймом менеджера, расчёт окупаемости.`,
   keywords: [
     "сколько стоит ИИ для турагентства",
     "сколько стоит чат-бот для турагентства",
@@ -106,9 +106,9 @@ export const metadata: Metadata = {
   alternates: { canonical: "/skolko-stoit" },
   openGraph: {
     title:
-      `Сколько стоит ИИ-ассистент для турагентства — от ${priceFromLabel}/мес`,
+      `Сколько стоит ИИ-ассистент для турагентства — от ${priceFromLabel}/мес`,
     description:
-      "Полный разбор стоимости: тарифы обеих версий, цена диалога, сравнение с разработкой бота и наймом менеджера, расчёт окупаемости. Подключение 0 ₽, первый месяц бесплатно.",
+      "Полный разбор стоимости: тарифы обеих версий, цена диалога, сравнение с разработкой бота и наймом менеджера, расчёт окупаемости. Подключение 0 ₽, первый месяц бесплатно.",
     url: `${siteUrl}/skolko-stoit`,
     type: "article",
     locale: "ru_RU",
@@ -116,9 +116,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `Сколько стоит ИИ-ассистент для турагентства — от ${priceFromLabel}/мес`,
+    title: `Сколько стоит ИИ-ассистент для турагентства — от ${priceFromLabel}/мес`,
     description:
-      "Тарифы обеих версий, цена за диалог, сравнение с альтернативами и расчёт окупаемости. Первый месяц бесплатно.",
+      "Тарифы обеих версий, цена за диалог, сравнение с альтернативами и расчёт окупаемости. Первый месяц бесплатно.",
     images: ["/og-image.png"],
   },
 };
@@ -143,9 +143,9 @@ const jsonLd = {
       "@type": "WebPage",
       "@id": `${siteUrl}/skolko-stoit#webpage`,
       url: `${siteUrl}/skolko-stoit`,
-      name: "Сколько стоит ИИ-ассистент для турагентства",
+      name: "Сколько стоит ИИ-ассистент для турагентства",
       description:
-        "Стоимость ИИ-ассистента для турагентства: тарифы версий «Лид» и «Про», цена за диалог, сравнение с разработкой бота и наймом менеджера, расчёт окупаемости.",
+        "Стоимость ИИ-ассистента для турагентства: тарифы версий «Лид» и «Про», цена за диалог, сравнение с разработкой бота и наймом менеджера, расчёт окупаемости.",
       inLanguage: "ru-RU",
       isPartOf: { "@id": `${siteUrl}/#website` },
       breadcrumb: { "@id": `${siteUrl}/skolko-stoit#breadcrumb` },
@@ -159,11 +159,11 @@ const jsonLd = {
       // и отвечает LLM на вопрос «сколько стоит» одной строкой.
       "@type": "Product",
       "@id": `${siteUrl}/skolko-stoit#product`,
-      name: "ИИ-ассистент «Навылет! AI» для турагентств",
+      name: "ИИ-ассистент «Навылет! AI» для турагентств",
       description:
-        "Подписка на ИИ-ассистента для турагентства: подбор туров по базе Tourvisor, живой диалог на сайте и в MAX, готовая заявка менеджеру. Две версии — «Лид» и «Про».",
+        "Подписка на ИИ-ассистента для турагентства: подбор туров по базе Tourvisor, живой диалог на сайте и в MAX, готовая заявка менеджеру. Две версии — «Лид» и «Про».",
       brand: { "@id": `${siteUrl}/#organization` },
-      category: "Программное обеспечение для турагентств",
+      category: "Программное обеспечение для турагентств",
       url: `${siteUrl}/skolko-stoit`,
       offers: aggregateOfferJsonLd(),
     },
@@ -180,12 +180,12 @@ const jsonLd = {
 };
 
 const included = [
-  "Виджет в вашем фирменном стиле: логотип, цвет, название агентства",
-  "Интеграция с базой туров Tourvisor — 50+ стран и 500+ курортов",
-  "База знаний агентства — ведёте сами в кабинете: условия, рассрочка, ответы и документы",
-  "Передача заявок на почту, в U‑ON, Telegram и MAX",
+  "Виджет в вашем фирменном стиле: логотип, цвет, название агентства",
+  "Интеграция с базой туров Tourvisor — 50+ стран и 500+ курортов",
+  "База знаний агентства — ведёте сами в кабинете: условия, рассрочка, ответы и документы",
+  "Передача заявок на почту, в U‑ON, Telegram и MAX",
   "Личный кабинет: диалоги, заявки, аналитика, подборки",
-  "Обновления продукта и поддержка — без отдельной оплаты",
+  "Обновления продукта и поддержка — без отдельной оплаты",
 ];
 
 /** Таблица тарифов одной версии. На телефоне разворачивается в стек. */
@@ -214,7 +214,7 @@ function PlanTable({
                 Тариф
               </th>
               <th className="px-4 py-3 text-left font-semibold text-heading sm:px-5">
-                Цена в месяц
+                Цена в месяц
               </th>
               <th className="px-4 py-3 text-left font-semibold text-heading sm:px-5">
                 Диалогов
@@ -238,7 +238,7 @@ function PlanTable({
                 </td>
                 <td className="block sm:table-cell sm:px-5 sm:py-3">
                   <span className="mb-0.5 block text-[11px] font-bold uppercase tracking-wide text-muted sm:hidden">
-                    Цена в месяц
+                    Цена в месяц
                   </span>
                   <span className="font-semibold text-accent">
                     {rub(p.price)}
@@ -319,27 +319,26 @@ export default function SkolkoStoitPage() {
 
           <div className="mt-6 rounded-2xl border border-blue-subtle/50 bg-white p-6 shadow-card sm:p-7">
             <p className="text-lg font-semibold leading-relaxed text-heading sm:text-xl">
-              От {rub(priceFrom)} в месяц.
+              От {rub(priceFrom)} в месяц.
             </p>
             <p className="mt-3 text-base leading-relaxed text-body sm:text-lg">
               {reqVersionPublished ? (
                 <>
-                  За эти деньги агентство получает ассистента, который
-                  круглосуточно ведёт живой диалог на сайте или в MAX, собирает
-                  запрос — куда, когда, кто едет, бюджет — и контакт клиента, а
-                  тур подбирает ваш менеджер. С подбором туров по реальной базе
-                  с ценами и наличием — версия «Лид», от {rub(minLid)} в месяц.
+                  За эти деньги агентство получает ассистента, который
+                  круглосуточно ведёт живой диалог на сайте или в MAX, собирает
+                  запрос — куда, когда, кто едет, бюджет — и контакт клиента, а тур подбирает ваш менеджер. С подбором туров по реальной базе
+                  с ценами и наличием — версия «Лид», от {rub(minLid)} в месяц.
                 </>
               ) : (
                 <>
-                  За эти деньги агентство получает ассистента, который
-                  круглосуточно ведёт живой диалог на сайте или в MAX, подбирает
-                  туры по реальной базе с ценами и наличием и передаёт менеджеру
-                  готовую заявку с контактом клиента.
+                  За эти деньги агентство получает ассистента, который
+                  круглосуточно ведёт живой диалог на сайте или в MAX, подбирает
+                  туры по реальной базе с ценами и наличием и передаёт менеджеру
+                  готовую заявку с контактом клиента.
                 </>
-              )} Подключение — 0 ₽, первый месяц бесплатно.
-              Дальше цена зависит только от числа диалогов: на старших
-              тарифах — {maxDialogs} диалогов в месяц. Для сетей — тариф «Сеть»,
+              )} Подключение — 0 ₽, первый месяц бесплатно.
+              Дальше цена зависит только от числа диалогов: на старших
+              тарифах — {maxDialogs} диалогов в месяц. Для сетей — тариф «Сеть»,
               условия индивидуальные.
             </p>
           </div>
@@ -348,19 +347,19 @@ export default function SkolkoStoitPage() {
             {[
               {
                 value: rub(priceFrom),
-                label: "цена входа в месяц",
+                label: "цена входа в месяц",
                 note: reqVersionPublished
-                  ? "версия «Заявка», 40 диалогов"
-                  : "версия «Лид», 40 диалогов",
+                  ? "версия «Заявка», 40 диалогов"
+                  : "версия «Лид», 40 диалогов",
               },
               {
                 value: "0 ₽",
-                label: "подключение и настройка",
-                note: "на всех тарифах, без договора на внедрение",
+                label: "подключение и настройка",
+                note: "на всех тарифах, без договора на внедрение",
               },
               {
                 value: `${trial.days} дней`,
-                label: "бесплатно на старте",
+                label: "бесплатно на старте",
                 note: `${trial.fromLabel}, ${trial.capLabel}`,
               },
             ].map((item) => (
@@ -385,16 +384,16 @@ export default function SkolkoStoitPage() {
           <div className="mx-auto max-w-5xl px-5 py-14 sm:px-6 lg:px-8 lg:py-16">
             <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl">
               {reqVersionPublished
-                ? `Сколько стоят тарифы: три версии, по ${planCountWord} тарифа в каждой`
-                : `Сколько стоят тарифы: две версии, по ${planCountWord} тарифа в каждой`}
+                ? `Сколько стоят тарифы: три версии, по ${planCountWord} тарифа в каждой`
+                : `Сколько стоят тарифы: две версии, по ${planCountWord} тарифа в каждой`}
             </h2>
             <p className="mt-4 max-w-3xl text-base leading-relaxed text-body">
-              Ассистент выпускается в {reqVersionPublished ? "трёх" : "двух"}{" "}
+              Ассистент выпускается в {reqVersionPublished ? "трёх" : "двух"}{" "}
               версиях.{" "}
               {reqVersionPublished && (
                 <>
-                  «Заявка» собирает запрос и контакт клиента, а тур подбирает
-                  ваш менеджер, — от {rub(minReq)} до {rub(maxReq)} в месяц.{" "}
+                  «Заявка» собирает запрос и контакт клиента, а тур подбирает
+                  ваш менеджер, — от {rub(minReq)} до {rub(maxReq)} в месяц.{" "}
                 </>
               )}
               <Link
@@ -403,14 +402,12 @@ export default function SkolkoStoitPage() {
               >
                 «Лид»
               </Link>{" "}
-              сам подбирает туры и передаёт готовую заявку менеджеру — от{" "}
-              {rub(minLid)} до{" "}
-              {rub(maxLid)} в месяц. «Про» сам консультирует клиента, проверяет
-              цены в диалоге и возвращает ушедших — от {rub(minPro)} до{" "}
-              {rub(maxPro)} в месяц. Внутри версии цена растёт только вместе с
-              числом диалогов: чем больше пакет, тем дешевле один диалог. Для
-              сетей с центральным сайтом и многими офисами — тариф «Сеть»:
-              объём и цена считаются индивидуально.
+              сам подбирает туры и передаёт готовую заявку менеджеру — от{"\u00A0"}
+              {rub(minLid)} до{"\u00A0"}
+              {rub(maxLid)} в месяц. «Про» сам консультирует клиента, проверяет
+              цены в диалоге и возвращает ушедших — от {rub(minPro)} до{"\u00A0"}
+              {rub(maxPro)} в месяц. Внутри версии цена растёт только вместе с числом диалогов: чем больше пакет, тем дешевле один диалог. Для сетей с центральным сайтом и многими офисами — тариф «Сеть»:
+              объём и цена считаются индивидуально.
             </p>
 
             <div className="mt-9 space-y-6">
@@ -435,28 +432,28 @@ export default function SkolkoStoitPage() {
 
             <div className="mt-6 rounded-2xl border border-blue-subtle/50 bg-white p-5 sm:p-6">
               <h3 className="font-display text-lg font-bold text-heading">
-                Сколько стоит работать сразу на сайте и в MAX
+                Сколько стоит работать сразу на сайте и в MAX
               </h3>
               <p className="mt-2.5 text-sm leading-relaxed text-body sm:text-base">
-                Базовый тариф работает в одном канале на выбор. Второй канал —
-                надстройка с льготным лимитом диалогов: доплата от{" "}
+                Базовый тариф работает в одном канале на выбор. Второй канал —
+                надстройка с льготным лимитом диалогов: доплата от{"\u00A0"}
                 {reqVersionPublished && liteAddonReq && (
                   <>
-                    {rub(liteAddonReq.addonPrice)} в месяц в версии «Заявка»,
-                    от{" "}
+                    {rub(liteAddonReq.addonPrice)} в месяц в версии «Заявка»,
+                    от{"\u00A0"}
                   </>
                 )}
-                {rub(liteAddonLid.addonPrice)} в месяц в версии «Лид» и от{" "}
-                {rub(crossChannelAddons[0].addonPrice)} в версии «Про».
-                Например, Лайт «Лид» с двумя каналами — это{" "}
-                {rub(liteAddonLid.totalPrice)} в месяц и{" "}
+                {rub(liteAddonLid.addonPrice)} в месяц в версии «Лид» и от{"\u00A0"}
+                {rub(crossChannelAddons[0].addonPrice)} в версии «Про».
+                Например, Лайт «Лид» с двумя каналами — это{" "}
+                {rub(liteAddonLid.totalPrice)} в месяц и{"\u00A0"}
                 {liteAddonLid.totalDialogs} диалогов вместо {liteLid.dialogs}.
               </p>
               <Link
                 href="/tarify"
                 className="mt-4 inline-flex min-h-10 items-center gap-1.5 text-sm font-semibold text-accent transition-colors hover:text-accent-hover"
               >
-                Полные тарифы со всеми условиями
+                Полные тарифы со всеми условиями
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
@@ -466,13 +463,12 @@ export default function SkolkoStoitPage() {
         {/* Сравнение с альтернативами */}
         <section className="mx-auto max-w-5xl px-5 py-14 sm:px-6 lg:px-8 lg:py-16">
           <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl">
-            Почему 990 ₽ — это мало для такой задачи
+            Почему 990 ₽ — это мало для такой задачи
           </h2>
           <p className="mt-4 max-w-3xl text-base leading-relaxed text-body">
-            Сравнивать подписку честно нужно не с ценой, а с задачей: клиент
-            пишет ночью «хочу в Турцию на неделю, бюджет 200 тысяч» — и должен
-            получить конкретные варианты с ценами, а агентство — заявку с
-            контактом. Вот сколько стоят другие способы закрыть эту задачу.
+            Сравнивать подписку честно нужно не с ценой, а с задачей: клиент
+            пишет ночью «хочу в Турцию на неделю, бюджет 200 тысяч» — и должен
+            получить конкретные варианты с ценами, а агентство — заявку с контактом. Вот сколько стоят другие способы закрыть эту задачу.
           </p>
 
           <div className="mt-9 space-y-4">
@@ -502,15 +498,15 @@ export default function SkolkoStoitPage() {
           </div>
 
           <p className="mt-6 text-sm leading-relaxed text-muted">
-            Цены альтернатив — рыночные оценки по открытым прайсам и публичным
-            расценкам студий на август 2026 года. Здесь мы называем категории
-            решений, а не бренды. Подробная таблица с конкретными сервисами,
-            модулем поиска Tourvisor и ссылками на их прайсы —{" "}
+            Цены альтернатив — рыночные оценки по открытым прайсам и публичным
+            расценкам студий на август 2026 года. Здесь мы называем категории
+            решений, а не бренды. Подробная таблица с конкретными сервисами,
+            модулем поиска Tourvisor и ссылками на их прайсы —{" "}
             <Link
               href="/sravnenie"
               className="font-medium text-accent underline decoration-accent/30 underline-offset-2 hover:decoration-accent"
             >
-              на странице сравнения
+              на странице сравнения
             </Link>
             .
           </p>
@@ -520,12 +516,12 @@ export default function SkolkoStoitPage() {
         <section className="bg-surface-alt">
           <div className="mx-auto max-w-4xl px-5 py-14 sm:px-6 lg:px-8 lg:py-16">
             <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl">
-              Что уже входит в подписку и не требует доплат
+              Что уже входит в подписку и не требует доплат
             </h2>
             <p className="mt-4 text-base leading-relaxed text-body">
-              В подписке нет скрытых частей: разовых платежей за внедрение,
-              оплаты за интеграцию с агрегатором и отдельного счёта за расходы
-              на ИИ-модель не существует.
+              В подписке нет скрытых частей: разовых платежей за внедрение,
+              оплаты за интеграцию с агрегатором и отдельного счёта за расходы
+              на ИИ-модель не существует.
             </p>
             <ul className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
               {included.map((item) => (
@@ -548,16 +544,16 @@ export default function SkolkoStoitPage() {
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5">
             <Calculator className="h-4 w-4 text-accent" />
             <span className="text-xs font-semibold text-accent sm:text-sm">
-              Считаем на данных сети партнёров
+              Считаем на данных сети партнёров
             </span>
           </div>
           <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl">
             Когда подписка окупается
           </h2>
           <p className="mt-4 max-w-3xl text-base leading-relaxed text-body">
-            Подписка на ассистента — это не расход на инструмент, а цена лида.
+            Подписка на ассистента — это не расход на инструмент, а цена лида.
             Поэтому считать окупаемость проще всего так: сколько стоил один
-            квалифицированный лид и что приносит одна бронь.
+            квалифицированный лид и что приносит одна бронь.
           </p>
 
           <div className="mt-9 grid grid-cols-1 gap-5 md:grid-cols-3">
@@ -588,25 +584,25 @@ export default function SkolkoStoitPage() {
         <section className="bg-surface-alt">
           <div className="mx-auto max-w-4xl px-5 py-14 sm:px-6 lg:px-8 lg:py-16">
             <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl">
-              От чего зависит итоговая цена
+              От чего зависит итоговая цена
             </h2>
             <div className="mt-8 space-y-5">
               {[
                 {
-                  title: "Число диалогов в месяц",
-                  text: "Единственный счётчик в подписке. Диалог — это одна законченная беседа с клиентом, а не сообщение: сколько бы реплик человек ни написал, считается один диалог. Начинать разумно с тарифа под текущий трафик сайта: пересчитать пакет можно в любой момент.",
+                  title: "Число диалогов в месяц",
+                  text: "Единственный счётчик в подписке. Диалог — это одна законченная беседа с клиентом, а не сообщение: сколько бы реплик человек ни написал, считается один диалог. Начинать разумно с тарифа под текущий трафик сайта: пересчитать пакет можно в любой момент.",
                 },
                 {
                   title: "Версия ассистента",
-                  text: `${reqVersionPublished ? "«Заявка» — самая доступная: ассистент собирает запрос и контакт, а тур подбирает ваш менеджер, поэтому подбора туров и подборок в ней нет. " : ""}«Лид» дешевле «Про», потому что решает более узкую задачу: подобрать туры, довести человека до заявки и передать её менеджеру. «Про» стоит дороже, потому что консультирует без ограничений, проверяет цены в диалоге и возвращает клиентов в MAX.`,
+                  text: `${reqVersionPublished ? "«Заявка» — самая доступная: ассистент собирает запрос и контакт, а тур подбирает ваш менеджер, поэтому подбора туров и подборок в ней нет. " : ""}«Лид» дешевле «Про», потому что решает более узкую задачу: подобрать туры, довести человека до заявки и передать её менеджеру. «Про» стоит дороже, потому что консультирует без ограничений, проверяет цены в диалоге и возвращает клиентов в MAX.`,
                 },
                 {
                   title: "Количество каналов",
-                  text: "Сайт и MAX‑мессенджер считаются отдельными каналами. Один канал уже включён в тариф, второй подключается надстройкой с дополнительным лимитом диалогов по льготной цене.",
+                  text: "Сайт и MAX‑мессенджер считаются отдельными каналами. Один канал уже включён в тариф, второй подключается надстройкой с дополнительным лимитом диалогов по льготной цене.",
                 },
                 {
                   title: "Диалоги сверх лимита",
-                  text: `Если поток вырос, ассистент не отключается: сверхлимитные диалоги считаются по фиксированной цене — от\u00A0${rub(pricingPlans[0].lid.extraDialog)} на тарифе Лайт до ${rub(publicPlans[publicPlans.length - 1].lid.extraDialog)} на тарифе «${publicPlans[publicPlans.length - 1].name}» в версии «Лид».`,
+                  text: `Если поток вырос, ассистент не отключается: сверхлимитные диалоги считаются по фиксированной цене — от\u00A0${rub(pricingPlans[0].lid.extraDialog)} на тарифе Лайт до ${rub(publicPlans[publicPlans.length - 1].lid.extraDialog)} на тарифе «${publicPlans[publicPlans.length - 1].name}» в версии «Лид».`,
                 },
               ].map((item) => (
                 <div
@@ -628,7 +624,7 @@ export default function SkolkoStoitPage() {
         {/* FAQ */}
         <section className="mx-auto max-w-3xl px-5 py-14 sm:px-6 lg:px-8 lg:py-16">
           <h2 className="mb-8 font-display text-3xl font-bold text-heading sm:text-4xl">
-            Частые вопросы про стоимость
+            Частые вопросы про стоимость
           </h2>
           <div className="space-y-4">
             {skolkoStoitFaqItems.map((item) => (
@@ -654,21 +650,21 @@ export default function SkolkoStoitPage() {
               href="/tarify"
               className="inline-flex min-h-10 items-center gap-1.5 text-sm font-semibold text-accent transition-colors hover:text-accent-hover"
             >
-              Все тарифы и условия
+              Все тарифы и условия
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
               href="/versii"
               className="inline-flex min-h-10 items-center gap-1.5 text-sm font-semibold text-accent transition-colors hover:text-accent-hover"
             >
-              Сравнение версий «Лид» и «Про»
+              Сравнение версий «Лид» и «Про»
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
               href="/voprosy"
               className="inline-flex min-h-10 items-center gap-1.5 text-sm font-semibold text-accent transition-colors hover:text-accent-hover"
             >
-              Другие вопросы про ИИ в турагентстве
+              Другие вопросы про ИИ в турагентстве
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
@@ -684,12 +680,12 @@ export default function SkolkoStoitPage() {
               </span>
             </div>
             <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl">
-              Проверьте цену на своих клиентах
+              Проверьте цену на своих клиентах
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-base text-body sm:text-lg">
-              Месяц работы ассистента ничего не стоит, а после теста в личном
-              кабинете уже видно, сколько диалогов у вас реально бывает — и какой
-              тариф нужен. Дальше от {rub(priceFrom)} в месяц.
+              Месяц работы ассистента ничего не стоит, а после теста в личном
+              кабинете уже видно, сколько диалогов у вас реально бывает — и какой
+              тариф нужен. Дальше от {rub(priceFrom)} в месяц.
             </p>
             <div className="mt-8 flex justify-center">
               <RegisterCta source="skolko_stoit_cta" />

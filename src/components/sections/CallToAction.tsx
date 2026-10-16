@@ -167,8 +167,7 @@ export default function CallToAction() {
                     className="mt-0.5 h-4 w-4 shrink-0 accent-[#00E7FD]"
                   />
                   <span className="text-xs leading-relaxed text-white/60">
-                    Я даю согласие на обработку персональных данных в
-                    соответствии с{" "}
+                    Я даю согласие на обработку персональных данных в соответствии с{"\u00A0"}
                     <Link
                       href="/privacy"
                       target="_blank"
@@ -222,7 +221,7 @@ export default function CallToAction() {
                   Заявка отправлена!
                 </h3>
                 <p className="max-w-sm text-center text-white/60">
-                  Мы свяжемся с вами в ближайшее время для настройки
+                  Мы свяжемся с вами в ближайшее время для настройки
                   ИИ-ассистента.
                 </p>
               </motion.div>
@@ -234,7 +233,7 @@ export default function CallToAction() {
           variants={fadeInUp}
           className="mt-6 text-center text-sm text-white/40"
         >
-          30 дней бесплатно • Подключение 0 ₽ • Без программиста
+          30 дней бесплатно • Подключение 0 ₽ • Без программиста
         </motion.p>
       </motion.div>
     </section>

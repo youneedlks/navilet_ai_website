@@ -23,15 +23,15 @@ import Image from "next/image";
 
 /** Ответ ассистента после «Передать менеджеру» — как в версии «Лид». */
 const HANDOFF_REPLY =
-  "Передал запрос менеджеру вместе с подборкой и вашими параметрами. Он свяжется с вами и оформит выбранный вариант — обычно в течение 15 минут.";
+  "Передал запрос менеджеру вместе с подборкой и вашими параметрами. Он свяжется с вами и оформит выбранный вариант — обычно в течение 15 минут.";
 
 const priceOf = (card: DemoTourCard) => ({
   value: (card.price_per_person ?? card.price).toLocaleString("ru-RU") + " ₽",
   label: card.price_per_person
-    ? "за человека"
+    ? "за человека"
     : card.flight_included
-      ? "за тур"
-      : "за проживание",
+      ? "за тур"
+      : "за проживание",
 });
 
 function TypingIndicator() {
@@ -83,10 +83,10 @@ function TourCard({ card }: { card: DemoTourCard }) {
     ? `${card.price_per_person.toLocaleString("ru-RU")} ₽`
     : `${card.price.toLocaleString("ru-RU")} ₽`;
   const priceLabel = card.price_per_person
-    ? "за человека"
+    ? "за человека"
     : card.flight_included
-      ? "за тур"
-      : "за проживание";
+      ? "за тур"
+      : "за проживание";
   const starsText = "★".repeat(card.hotel_stars);
   const bookBtnText = card.flight_included ? "✈️ Оформить тур" : "🏨 Забронировать";
 
@@ -128,7 +128,7 @@ function TourCard({ card }: { card: DemoTourCard }) {
         )}
         {!card.flight_included && (
           <div className="absolute bottom-2 left-2 rounded-md bg-amber-500 px-1.5 py-0.5 text-[10px] font-bold text-white">
-            Без перелёта
+            Без перелёта
           </div>
         )}
       </div>
@@ -150,7 +150,7 @@ function TourCard({ card }: { card: DemoTourCard }) {
             </div>
           )}
           <div className="flex flex-wrap gap-x-3 text-[11px] text-[#2C3E50]">
-            <span>📅 {card.date_from} — {card.date_to}</span>
+            <span>📅 {card.date_from} — {card.date_to}</span>
             <span>🌙 {card.nights} ноч.</span>
           </div>
           <div className="text-[11px] text-[#2C3E50]">🍽️ {card.meal_description}</div>
@@ -165,7 +165,7 @@ function TourCard({ card }: { card: DemoTourCard }) {
           <div className="text-[10px] text-[#7F8C8D]">{priceLabel}</div>
           {card.price_per_person && (
             <div className="mt-0.5 text-[10px] text-[#95A5A6]">
-              {card.price.toLocaleString("ru-RU")} ₽ за двоих
+              {card.price.toLocaleString("ru-RU")} ₽ за двоих
             </div>
           )}
         </div>
@@ -218,10 +218,10 @@ function CollectionPreview({
           className="inline-flex cursor-pointer items-center gap-1.5 rounded-lg px-2 py-1.5 text-[12px] font-semibold text-[#0062EF] transition-colors hover:bg-[#0062EF]/8"
         >
           <ArrowLeft className="h-3.5 w-3.5" />
-          Вернуться в диалог
+          Вернуться в диалог
         </button>
         <span className="rounded-full bg-[#0062EF]/8 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-[#0062EF]">
-          Страница для клиента
+          Страница для клиента
         </span>
       </div>
 
@@ -241,7 +241,7 @@ function CollectionPreview({
               Ваше агентство
             </div>
             <div className="truncate text-[10px] text-[#95A5A6]">
-              логотип, цвет и контакты — ваши
+              логотип, цвет и контакты — ваши
             </div>
           </div>
         </div>
@@ -251,7 +251,7 @@ function CollectionPreview({
             {title}
           </h4>
           <p className="mt-1 text-[11px] text-[#7F8C8D]">
-            {cards.length} варианта · цены актуальны · ссылка живёт 7 дней
+            {cards.length} варианта · цены актуальны · ссылка живёт 7 дней
           </p>
         </div>
 
@@ -298,7 +298,7 @@ function CollectionPreview({
                     {booked === i ? (
                       <span className="inline-flex items-center gap-1 rounded-md bg-[#27AE60]/10 px-1.5 py-1 text-[10px] font-semibold text-[#27AE60]">
                         <Check className="h-3 w-3" />
-                        Заявка у менеджера
+                        Заявка у менеджера
                       </span>
                     ) : (
                       <div className="flex gap-1">
@@ -335,7 +335,7 @@ function CollectionPreview({
                       <div>
                         {card.flight_included
                           ? `Перелёт включён (вылет: ${card.departure_city})`
-                          : "Без перелёта — только проживание"}
+                          : "Без перелёта — только проживание"}
                       </div>
                     </motion.div>
                   )}
@@ -349,8 +349,8 @@ function CollectionPreview({
       <div className="flex items-start gap-2 border-t border-[#E0E0E0]/60 bg-[#F8F9FA] px-4 py-2.5">
         <ShieldCheck className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-[#27AE60]" />
         <p className="text-[10px] leading-relaxed text-[#7F8C8D]">
-          Клиент бронирует прямо здесь — заявка с выбранным вариантом уходит
-          менеджеру. Никаких ссылок на сторонние сайты.
+          Клиент бронирует прямо здесь — заявка с выбранным вариантом уходит
+          менеджеру. Никаких ссылок на сторонние сайты.
         </p>
       </div>
     </motion.div>
@@ -482,7 +482,7 @@ export default function DemoWidget({
         <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center overflow-hidden rounded-full bg-white/20 p-1">
           <Image
             src="/logo-icon.svg"
-            alt="Навылет! AI — ИИ-ассистент"
+            alt="Навылет! AI — ИИ-ассистент"
             width={28}
             height={24}
             className="h-6 w-auto brightness-0 invert"
@@ -527,7 +527,7 @@ export default function DemoWidget({
             <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-ice">
               <Image
                 src="/logo-icon.svg"
-                alt="Навылет! AI — выберите сценарий демонстрации"
+                alt="Навылет! AI — выберите сценарий демонстрации"
                 width={32}
                 height={28}
                 className="h-7 w-auto"
@@ -537,8 +537,7 @@ export default function DemoWidget({
               Выберите сценарий
             </p>
             <p className="max-w-[240px] text-xs leading-relaxed text-muted">
-              Нажмите на один из сценариев, чтобы увидеть ИИ-ассистента в
-              действии
+              Нажмите на один из сценариев, чтобы увидеть ИИ-ассистента в действии
             </p>
           </div>
         )}
@@ -670,7 +669,7 @@ export default function DemoWidget({
                 Диалог завершён
               </span>
               <span className="text-[11px] text-[#7F8C8D]">
-                Заявка с подборкой ушла менеджеру и в CRM
+                Заявка с подборкой ушла менеджеру и в CRM
               </span>
             </div>
           </motion.div>

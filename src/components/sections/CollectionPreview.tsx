@@ -20,7 +20,7 @@ const hotels = [
     name: "Barut Hemera",
     stars: 5,
     resort: "Сиде, Турция",
-    dates: "03.06–10.06 · 7 ночей",
+    dates: "03.06–10.06 · 7 ночей",
     price: "142 500 ₽",
     code: 1033,
   },
@@ -28,7 +28,7 @@ const hotels = [
     name: "Calista Luxury Resort",
     stars: 5,
     resort: "Белек, Турция",
-    dates: "02.06–09.06 · 7 ночей",
+    dates: "02.06–09.06 · 7 ночей",
     price: "186 200 ₽",
     code: 1065,
   },
@@ -42,16 +42,16 @@ const hotelChips = [
 
 const flights = [
   {
-    direction: "Туда · 3 июня",
+    direction: "Туда · 3 июня",
     from: "Москва, Шереметьево 09:40",
     to: "Анталия 13:55",
-    note: "Прямой · 4 ч 15 мин",
+    note: "Прямой · 4 ч 15 мин",
   },
   {
-    direction: "Обратно · 10 июня",
+    direction: "Обратно · 10 июня",
     from: "Анталия 15:10",
     to: "Москва, Шереметьево 19:20",
-    note: "Прямой · 4 ч 10 мин",
+    note: "Прямой · 4 ч 10 мин",
   },
 ];
 
@@ -75,7 +75,7 @@ export default function CollectionPreview() {
               Ваше агентство
             </span>
             <span className="block truncate text-[11px] text-muted">
-              логотип и цвет — ваши
+              логотип и цвет — ваши
             </span>
           </span>
         </div>
@@ -88,10 +88,10 @@ export default function CollectionPreview() {
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div className="min-w-0">
             <p className="font-display text-lg font-bold text-heading">
-              Подборка туров — Турция
+              Подборка туров — Турция
             </p>
             <p className="mt-0.5 text-xs text-muted">
-              3 варианта · цены проверены в 12:40
+              3 варианта · цены проверены в 12:40
             </p>
           </div>
           <span className="inline-flex flex-shrink-0 items-center gap-1.5 rounded-lg border border-blue-subtle/60 px-2.5 py-1.5 text-[11px] font-semibold text-accent">
@@ -133,7 +133,7 @@ export default function CollectionPreview() {
                 <p className="mt-1 font-display text-sm font-bold text-accent">
                   {h.price}
                   <span className="ml-1 text-[11px] font-medium text-muted">
-                    за тур
+                    за тур
                   </span>
                 </p>
               </div>
@@ -179,9 +179,8 @@ export default function CollectionPreview() {
           {tab === "hotel" ? (
             <div className="mt-3">
               <p className="text-xs leading-relaxed text-body">
-                Отель на первой линии в Сиде: три бассейна, детский клуб и
-                собственный песчаный пляж в 50 метрах от корпусов. Описание,
-                фото и услуги подтягиваются из Tourvisor.
+                Отель на первой линии в Сиде: три бассейна, детский клуб и собственный песчаный пляж в 50 метрах от корпусов. Описание,
+                фото и услуги подтягиваются из Tourvisor.
               </p>
               <div className="mt-2.5 flex flex-wrap gap-1.5">
                 {hotelChips.map((c) => (
@@ -225,8 +224,7 @@ export default function CollectionPreview() {
                 </div>
               ))}
               <p className="text-[11px] text-muted">
-                Клиент выбирает связку рейсов — она уходит в заявку вместе с
-                туром.
+                Клиент выбирает связку рейсов — она уходит в заявку вместе с туром.
               </p>
             </div>
           )}
@@ -240,7 +238,7 @@ export default function CollectionPreview() {
         </span>
         <span className="flex min-w-0 flex-1 items-start gap-1.5 text-[11px] leading-snug text-muted">
           <ShieldCheck className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-accent" />
-          Заявка уходит вашему менеджеру — клиента не уводят на сторонние сайты
+          Заявка уходит вашему менеджеру — клиента не уводят на сторонние сайты
         </span>
       </div>
     </div>

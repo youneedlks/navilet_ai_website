@@ -30,25 +30,25 @@ const steps = [
   {
     icon: UserPlus,
     title: "Зарегистрируйтесь",
-    text: "Форма из трёх экранов: версия ассистента и вход; компания — сайт или MAX, контакты для клиентов, часы работы и офис (или «работаем только онлайн»); куда присылать заявки. Часы и офис сами попадут в базу знаний ассистента. Карта не нужна, форма сохраняется сама.",
+    text: "Форма из трёх экранов: версия ассистента и вход; компания — сайт или MAX, контакты для клиентов, часы работы и офис (или «работаем только онлайн»); куда присылать заявки. Часы и офис сами попадут в базу знаний ассистента. Карта не нужна, форма сохраняется сама.",
   },
   {
     icon: MailCheck,
     title: "Получите доступ",
-    text: "Проверяем заявку и в течение рабочего дня присылаем на почту доступ в кабинет, код виджета и инструкцию. В письме — как за минуту подключить заявки в Telegram или MAX.",
+    text: "Проверяем заявку и в течение рабочего дня присылаем на почту доступ в кабинет, код виджета и инструкцию. В письме — как за минуту подключить заявки в Telegram или MAX.",
   },
   {
     icon: Rocket,
-    title: "Вставьте код или подключите MAX",
-    text: "Одна строка кода перед </body> — Tilda, WordPress, Битрикс подходят все. Для MAX — токен бота в кабинете, подключим за 1 рабочий день.",
+    title: "Вставьте код или подключите MAX",
+    text: "Одна строка кода перед </body> — Tilda, WordPress, Битрикс подходят все. Для MAX — токен бота в кабинете, подключим за 1 рабочий день.",
   },
 ];
 
 const included = [
-  "Подбор туров по базе Tourvisor — 50+ стран, цены на момент запроса",
-  "Ответы туристам 24/7 — ночью и в выходные",
-  "Готовые заявки с контактами — на почту, в U‑ON, Telegram и MAX",
-  "Виджет в вашем бренде: логотип и цвета",
+  "Подбор туров по базе Tourvisor — 50+ стран, цены на момент запроса",
+  "Ответы туристам 24/7 — ночью и в выходные",
+  "Готовые заявки с контактами — на почту, в U‑ON, Telegram и MAX",
+  "Виджет в вашем бренде: логотип и цвета",
 ];
 
 export default function StartLanding() {
@@ -69,16 +69,16 @@ export default function StartLanding() {
         <div className="relative mx-auto max-w-3xl px-5 pt-28 pb-12 text-center sm:px-6 sm:pt-32 lg:px-8">
           <span className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-accent">
             <Sparkles className="h-3.5 w-3.5" />
-            30 дней бесплатно · подключение 0 ₽
+            30 дней бесплатно · подключение 0 ₽
           </span>
 
           <h1 className="mt-6 font-display text-4xl font-bold leading-[1.08] text-heading sm:text-5xl">
-            <span className="whitespace-nowrap">ИИ-ассистент</span> на вашем сайте —{" "}
-            <span className="text-accent">три коротких шага до запуска</span>
+            <span className="whitespace-nowrap">ИИ-ассистент</span> на вашем сайте —{" "}
+            <span className="text-accent">три коротких шага до запуска</span>
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-lg text-body">
-            Зарегистрируйтесь — в течение рабочего дня придут доступ в кабинет
-            и код виджета. Вставьте его на сайт или подключите бота в MAX:
+            Зарегистрируйтесь — в течение рабочего дня придут доступ в кабинет
+            и код виджета. Вставьте его на сайт или подключите бота в MAX:
             ассистент отвечает туристам круглосуточно, заявки приходят
             менеджеру готовыми.
           </p>
@@ -105,10 +105,10 @@ export default function StartLanding() {
               className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-blue-subtle/70 bg-white px-5 py-2.5 text-sm font-semibold text-heading shadow-sm transition-colors duration-200 hover:border-accent/40 hover:bg-blue-ice/40 hover:text-accent"
             >
               <ClipboardList className="h-4 w-4 text-accent" />
-              Оставить заявку на подключение
+              Оставить заявку на подключение
             </button>
             <span className="text-sm text-muted">
-              Сами в кабинете или с нашей помощью — цена одна
+              Сами в кабинете или с нашей помощью — цена одна
             </span>
           </div>
 
@@ -152,12 +152,12 @@ export default function StartLanding() {
             height={1694}
             loading="lazy"
             decoding="async"
-            alt="Регистрация в кабинете «Навылет! AI», шаг 2 «Компания»: сайт или MAX, телефон менеджера, почта для клиентов, часы работы, адрес офиса или «Работаем только онлайн»"
+            alt="Регистрация в кабинете «Навылет! AI», шаг 2 «Компания»: сайт или MAX, телефон менеджера, почта для клиентов, часы работы, адрес офиса или «Работаем только онлайн»"
             className="w-full rounded-2xl border border-blue-subtle/50 shadow-card"
           />
           <figcaption className="mt-3 text-center text-sm text-muted">
-            Второй шаг регистрации: компания, контакты для клиентов, часы
-            работы и офис
+            Второй шаг регистрации: компания, контакты для клиентов, часы
+            работы и офис
           </figcaption>
         </figure>
       </section>
@@ -194,31 +194,30 @@ export default function StartLanding() {
                 Сколько стоит после теста
               </h2>
               <p className="mt-3 text-sm leading-relaxed text-body">
-                30 дней с первого диалога и до 200 диалогов — бесплатно,
-                подключение 0 ₽. Дальше —{" "}
+                30 дней с первого диалога и до 200 диалогов — бесплатно,
+                подключение 0 ₽. Дальше —{" "}
                 {reqVersionPublished && litePlan?.req && (
                   <>
-                    от{" "}
+                    от{"\u00A0"}
                     <span className="whitespace-nowrap font-semibold text-heading">
                       {fmt(litePlan.req.price)} ₽/мес
                     </span>{" "}
                     (версия «Заявка»),{" "}
                   </>
                 )}
-                от{" "}
+                от{"\u00A0"}
                 <span className="whitespace-nowrap font-semibold text-heading">
                   {litePlan ? fmt(litePlan.lid.price) : "990"} ₽/мес
                 </span>{" "}
-                (версия «Лид», {litePlan?.lid.dialogs ?? 40} диалогов) или от{" "}
+                (версия «Лид», {litePlan?.lid.dialogs ?? 40} диалогов) или от{"\u00A0"}
                 <span className="whitespace-nowrap font-semibold text-heading">
                   {litePlan ? fmt(litePlan.price) : "1 990"} ₽/мес
                 </span>{" "}
-                (версия «Про»). Для сетей — тариф «Сеть», условия
+                (версия «Про»). Для сетей — тариф «Сеть», условия
                 индивидуальные.
               </p>
               <p className="mt-3 text-xs text-muted">
-                Никаких автосписаний: карту вы не привязываете, оплата — по
-                счёту и только по вашему решению.
+                Никаких автосписаний: карту вы не привязываете, оплата — по счёту и только по вашему решению.
               </p>
             </div>
             <Link
@@ -297,11 +296,11 @@ export default function StartLanding() {
         <div className="noise-overlay pointer-events-none absolute inset-0 opacity-20" />
         <div className="relative mx-auto max-w-3xl px-5 py-16 text-center sm:px-6 lg:px-8 lg:py-20">
           <h2 className="font-display text-3xl font-bold text-white sm:text-4xl">
-            Ассистент может работать у вас уже завтра
+            Ассистент может работать у вас уже завтра
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-lg text-white/70">
-            Регистрация в три коротких шага или заявка менеджеру — первый
-            месяц бесплатно в обоих случаях.
+            Регистрация в три коротких шага или заявка менеджеру — первый
+            месяц бесплатно в обоих случаях.
           </p>
           <div className="mt-8 flex flex-col items-center gap-3">
             <a
@@ -320,7 +319,7 @@ export default function StartLanding() {
               className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-white/35 px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-white/10"
             >
               <ClipboardList className="h-4 w-4" />
-              Оставить заявку на подключение
+              Оставить заявку на подключение
             </button>
             <Link
               href="/demo"

@@ -44,7 +44,7 @@ export const officeSchedules: OfficeSchedule[] = [
   },
   {
     id: "weekdays_10_19_sat",
-    label: "Будни 10–19, сб до 16",
+    label: "Будни 10–19, сб до 16",
     offShare: 0.569,
     contactRate: 0.079,
     interestRate: 0.135,

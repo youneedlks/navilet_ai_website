@@ -20,8 +20,8 @@ export const publicVersions: {
         {
           id: "req" as const,
           label: "«Заявка»",
-          title: "Версия «Заявка» — запрос без подборки",
-          about: "собирает запрос и контакт, тур подбирает менеджер",
+          title: "Версия «Заявка» — запрос без подборки",
+          about: "собирает запрос и контакт, тур подбирает менеджер",
           pick: (p: PricingPlan) => p.req,
         },
       ]
@@ -29,15 +29,15 @@ export const publicVersions: {
   {
     id: "lid",
     label: "«Лид»",
-    title: "Версия «Лид» — лидогенерация",
-    about: "лидогенерация: подбор туров и заявка менеджеру",
+    title: "Версия «Лид» — лидогенерация",
+    about: "лидогенерация: подбор туров и заявка менеджеру",
     pick: (p) => p.lid,
   },
   {
     id: "pro",
     label: "«Про»",
-    title: "Версия «Про» — полный инструмент",
-    about: "консультации, подбор туров и возврат клиентов",
+    title: "Версия «Про» — полный инструмент",
+    about: "консультации, подбор туров и возврат клиентов",
     pick: (p) => ({
       price: p.price,
       dialogs: p.dialogs,
@@ -82,7 +82,7 @@ export function aggregateOfferJsonLd(id?: string) {
       priceCurrency: "RUB",
       url: `${siteUrl}/tarify#${plan.id}`,
       availability: "https://schema.org/InStock",
-      description: `Версия ${version.label} (${version.about}): ${values.dialogs} диалогов в месяц, сверх лимита — ${values.extraDialog} ₽ за диалог. Подключение бесплатно. ${plan.tagline}.`,
+      description: `Версия ${version.label} (${version.about}): ${values.dialogs} диалогов в месяц, сверх лимита — ${values.extraDialog} ₽ за диалог. Подключение бесплатно. ${plan.tagline}.`,
       eligibleRegion: { "@type": "Country", name: "Россия" },
       priceSpecification: {
         "@type": "UnitPriceSpecification",
@@ -92,7 +92,7 @@ export function aggregateOfferJsonLd(id?: string) {
         referenceQuantity: {
           "@type": "QuantitativeValue",
           value: values.dialogs,
-          unitText: "диалогов в месяц",
+          unitText: "диалогов в месяц",
         },
       },
     })),

@@ -36,7 +36,7 @@ export default function CookieConsent() {
           <div className="mx-auto flex max-w-xl flex-col items-center gap-3 rounded-2xl border border-gray-200 bg-white/95 px-5 py-4 shadow-xl backdrop-blur-lg sm:flex-row sm:gap-4 sm:px-6">
             <Cookie className="hidden h-5 w-5 shrink-0 text-accent sm:block" />
             <p className="text-center text-xs leading-relaxed text-body sm:text-left sm:text-sm">
-              Мы используем файлы cookie для улучшения работы сайта.{" "}
+              Мы используем файлы cookie для улучшения работы сайта.{" "}
               <Link
                 href="/privacy"
                 className="text-accent underline hover:text-accent-hover"

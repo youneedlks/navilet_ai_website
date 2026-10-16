@@ -72,7 +72,7 @@ export default function LostLeadsCalculator({ source }: { source: string }) {
             Сколько обращений приходит, когда ваш офис закрыт
           </h3>
           <p className="mt-1 text-sm text-body">
-            Расчёт на реальных диалогах сети «Навылет! AI» — два параметра,
+            Расчёт на реальных диалогах сети «Навылет! AI» — два параметра,
             результат сразу.
           </p>
         </div>
@@ -86,7 +86,7 @@ export default function LostLeadsCalculator({ source }: { source: string }) {
               htmlFor={`${source}-volume`}
               className="block text-xs font-semibold uppercase tracking-wide text-muted"
             >
-              Обращений в месяц
+              Обращений в месяц
             </label>
             <div className="mt-2 flex items-center gap-3">
               <input
@@ -96,7 +96,7 @@ export default function LostLeadsCalculator({ source }: { source: string }) {
                 step={10}
                 value={Math.min(volume, MAX)}
                 onChange={(e) => setClamped(Number(e.target.value))}
-                aria-label="Обращений в месяц"
+                aria-label="Обращений в месяц"
                 className="h-2 flex-1 cursor-pointer accent-accent"
               />
               <input
@@ -110,7 +110,7 @@ export default function LostLeadsCalculator({ source }: { source: string }) {
               />
             </div>
             <p className="mt-1.5 text-xs text-muted">
-              Все каналы: сайт, мессенджеры, соцсети. Если не знаете точно —
+              Все каналы: сайт, мессенджеры, соцсети. Если не знаете точно —
               оставьте 100.
             </p>
           </div>
@@ -158,21 +158,21 @@ export default function LostLeadsCalculator({ source }: { source: string }) {
             </span>
           </p>
           <p className="text-sm text-body">
-            в месяц — это {Math.round(schedule.offShare * 100)} из 100
+            в месяц — это {Math.round(schedule.offShare * 100)} из 100
           </p>
 
           <div className="mt-5 space-y-3 border-t border-accent/10 pt-4 text-sm text-body">
             <p>
-              Из них{" "}
+              Из них{" "}
               <span className="font-semibold text-heading">
                 {contactsRounded < 1
                   ? "меньше одного человека"
                   : `≈ ${fmt(contactsRounded)} ${plural(contactsRounded, "человек", "человека", "человек")}`}
               </span>              {" "}
               {contactsRounded <= 1
-                ? "оставит контакт или попросит бронь"
-                : "оставят контакт или попросят бронь"}
-              , а всего{" "}
+                ? "оставит контакт или попросит бронь"
+                : "оставят контакт или попросят бронь"}
+              , а всего{" "}
               <span className="font-semibold text-heading">
                 ≈ {fmt(interestedRounded)}
               </span>{" "}
@@ -185,9 +185,9 @@ export default function LostLeadsCalculator({ source }: { source: string }) {
                   contacts * 12 * bookingRate.min,
                   contacts * 12 * bookingRate.max
                 )}{" "}
-                в год
+                в год
               </span>
-              , если на обращение отвечают сразу, а не утром.
+              , если на обращение отвечают сразу, а не утром.
             </p>
           </div>
         </div>
@@ -207,28 +207,28 @@ export default function LostLeadsCalculator({ source }: { source: string }) {
       {showMethod && (
         <div className="mt-3 space-y-2 rounded-xl bg-surface-alt p-4 text-xs leading-relaxed text-body">
           <p>
-            Доля обращений вне часов работы и доля заявок среди них — по{" "}
+            Доля обращений вне часов работы и доля заявок среди них — по{"\u00A0"}
             {fmt(offhoursSource.dialogs)} диалогам ассистентов сети «Навылет!
-            AI» за {offhoursSource.period}, время по Москве. Для каждого
+            AI» за {offhoursSource.period}, время по Москве. Для каждого
             графика доли посчитаны отдельно.
           </p>
           <p>
-            «Оставят контакт» — телефон, почта или просьба о брони. «Выберут
-            тур» — то же плюс клик по конкретному туру в подборке.
+            «Оставят контакт» — телефон, почта или просьба о брони. «Выберут
+            тур» — то же плюс клик по конкретному туру в подборке.
           </p>
           <p>
-            До брони, по отраслевому ориентиру, доходит{" "}
+            До брони, по отраслевому ориентиру, доходит{" "}
             {Math.round(bookingRate.min * 100)}–
-            {Math.round(bookingRate.max * 100)}% заявок с контактом. Это
-            оценка, а не гарантия: у каждого агентства своя конверсия.
+            {Math.round(bookingRate.max * 100)}% заявок с контактом. Это
+            оценка, а не гарантия: у каждого агентства своя конверсия.
           </p>
         </div>
       )}
 
       <div className="mt-6 border-t border-gray-100 pt-6">
         <p className="mb-4 text-sm text-body">
-          Ассистент отвечает на эти обращения сам, за секунды, и передаёт
-          менеджеру заявку к утру. Первый месяц — бесплатно.
+          Ассистент отвечает на эти обращения сам, за секунды, и передаёт
+          менеджеру заявку к утру. Первый месяц — бесплатно.
         </p>
         <RegisterCta source={source} compact className="sm:justify-start" />
       </div>

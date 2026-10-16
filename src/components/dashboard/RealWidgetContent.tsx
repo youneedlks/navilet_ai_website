@@ -17,7 +17,7 @@ export default function RealWidgetContent({
           Настройки виджета
         </div>
         <div className="text-[#64748B]" style={{ fontSize: 8.5 * s, marginTop: 1 }}>
-          Настройте внешний вид и поведение чат-виджета
+          Настройте внешний вид и поведение чат-виджета
         </div>
       </div>
 
@@ -256,7 +256,7 @@ export default function RealWidgetContent({
               className="text-center text-[#64748B]"
               style={{ fontSize: 6 * s, marginTop: 3 * s }}
             >
-              Так виджет будет выглядеть на вашем сайте
+              Так виджет будет выглядеть на вашем сайте
             </div>
           </div>
 
@@ -271,7 +271,7 @@ export default function RealWidgetContent({
             >
               <div className="flex items-center justify-between" style={{ marginBottom: 3 * s }}>
                 <span className="font-semibold text-[#1E293B]" style={{ fontSize: 8 * s }}>
-                  Код для вставки
+                  Код для вставки
                 </span>
                 <div
                   className="flex items-center gap-0.5 rounded-md bg-white border border-[#E2E8F0] px-1 text-[#64748B]"

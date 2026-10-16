@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "python3 scripts/check-brand.py; python3 scripts/gen-lastmod.py || true",
+    "prebuild": "python3 scripts/check-brand.py; node scripts/typograf.mjs; python3 scripts/gen-lastmod.py || true",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

@@ -23,23 +23,23 @@ import {
 const miniFeatures = [
   {
     icon: BarChart3,
-    title: "Аналитика в реальном времени",
+    title: "Аналитика в реальном времени",
     description: "15+ графиков, воронки, тепловые карты, экспорт CSV",
   },
   {
     icon: TrendingUp,
-    title: "Прогнозы и ИИ-аналитика",
-    description: "Прогноз заявок и выручки, барометр спроса по сети",
+    title: "Прогнозы и ИИ-аналитика",
+    description: "Прогноз заявок и выручки, барометр спроса по сети",
   },
   {
     icon: MessageSquare,
     title: "Управление диалогами",
-    description: "Chat replay, профиль клиента, фильтры и поиск",
+    description: "Chat replay, профиль клиента, фильтры и поиск",
   },
   {
     icon: Palette,
     title: "Кастомизация виджета",
-    description: "Цвета, логотип, аватары — белый лейбл под ваш бренд",
+    description: "Цвета, логотип, аватары — белый лейбл под ваш бренд",
   },
 ];
 
@@ -51,12 +51,12 @@ export default function DashboardPromo() {
     <SectionWrapper id="dashboard">
       <motion.div variants={fadeInUp} className="mb-12 text-center">
         <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl lg:text-[2.75rem]">
-          Личный кабинет —{" "}
-          <span className="text-accent">аналитика и управление</span>
+          Личный кабинет —{" "}
+          <span className="text-accent">аналитика и управление</span>
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-base text-body sm:text-lg">
-          Полный контроль над ИИ-ассистентом: метрики, диалоги, настройка
-          виджета — всё в одном месте
+          Полный контроль над ИИ-ассистентом: метрики, диалоги, настройка
+          виджета — всё в одном месте
         </p>
       </motion.div>
 
@@ -120,7 +120,7 @@ export default function DashboardPromo() {
         </Button>
         <Button variant="outline" size="lg" href="/dashboard">
           <span className="flex items-center gap-2">
-            Подробнее о личном кабинете
+            Подробнее о личном кабинете
             <ArrowRight className="h-4 w-4" />
           </span>
         </Button>

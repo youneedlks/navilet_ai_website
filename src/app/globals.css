@@ -57,6 +57,16 @@ body {
   overflow-x: clip;
 }
 
+/* Абзацы и пункты списков: браузер не оставляет в последней строке одно короткое
+   слово (Chrome 117+, Safari 26+; где не поддерживается — обычный перенос).
+   Висячие предлоги и тире в начале строки — scripts/typograf.mjs при сборке. */
+@layer base {
+  p,
+  li {
+    text-wrap: pretty;
+  }
+}
+
 ::selection {
   background-color: var(--color-blue-subtle);
   color: var(--color-primary);

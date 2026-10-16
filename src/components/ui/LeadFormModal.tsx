@@ -67,13 +67,13 @@ const contactChannels: {
     id: "max",
     label: "MAX",
     Icon: MessageSquare,
-    nickPlaceholder: "@ник в MAX, если есть",
+    nickPlaceholder: "@ник в MAX, если есть",
   },
   {
     id: "telegram",
     label: "Telegram",
     Icon: Send,
-    nickPlaceholder: "@ник в Telegram, если отличается от номера",
+    nickPlaceholder: "@ник в Telegram, если отличается от номера",
   },
   {
     id: "whatsapp",
@@ -185,7 +185,7 @@ export default function LeadFormModal() {
         planName: presetPlan?.name ?? null,
         versionLabel: presetVersion?.name ?? null,
         dialogsRange: bigVolume
-          ? "больше 200 диалогов/мес — обсудить индивидуально"
+          ? "больше 200 диалогов/мес — обсудить индивидуально"
           : null,
         channelLabel: channelShortLabel[selectedChannel],
         contactChannelLabel: activeContactChannel.label,
@@ -291,8 +291,8 @@ export default function LeadFormModal() {
                     {/* Повторяем обещание из формы: человек выбрал мессенджер
                         и должен увидеть, что мы напишем именно туда. */}
                     <p className="max-w-xs text-center text-sm text-muted">
-                      Напишем вам в {activeContactChannel.label} в ближайшее
-                      время и подключим бесплатный период — {trial.days} дней {trial.fromLabel}.
+                      Напишем вам в {activeContactChannel.label} в ближайшее
+                      время и подключим бесплатный период — {trial.days} дней {trial.fromLabel}.
                     </p>
                     <button
                       onClick={closeForm}
@@ -316,10 +316,10 @@ export default function LeadFormModal() {
                         {badgeText}
                       </div>
                       <h3 className="font-display text-2xl font-bold text-heading">
-                        Первый месяц — бесплатно
+                        Первый месяц — бесплатно
                       </h3>
                       <p className="mt-1.5 text-sm text-muted">
-                        {trial.days} дней {trial.fromLabel} и {trial.capLabel}. Как вам удобнее
+                        {trial.days} дней {trial.fromLabel} и {trial.capLabel}. Как вам удобнее
                         подключиться?
                       </p>
                     </div>
@@ -343,11 +343,11 @@ export default function LeadFormModal() {
                           <span className="flex flex-wrap items-center gap-x-2 gap-y-1 font-display text-base font-bold text-heading">
                             <span className="whitespace-nowrap">Подключусь сам</span>
                             <span className="shrink-0 whitespace-nowrap rounded-full bg-accent/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-accent">
-                              3 шага
+                              3 шага
                             </span>
                           </span>
                           <span className="mt-0.5 block text-sm text-body">
-                            Регистрация в личном кабинете — доступ и код виджета в течение рабочего дня.
+                            Регистрация в личном кабинете — доступ и код виджета в течение рабочего дня.
                           </span>
                         </span>
                         <ChevronRight className="h-5 w-5 shrink-0 text-accent transition-transform group-hover:translate-x-0.5" />
@@ -366,7 +366,7 @@ export default function LeadFormModal() {
                             Оставить заявку менеджеру
                           </span>
                           <span className="mt-0.5 block text-sm text-body">
-                            Подключим под ключ и свяжемся в тот же день.
+                            Подключим под ключ и свяжемся в тот же день.
                           </span>
                         </span>
                         <ChevronRight className="h-5 w-5 shrink-0 text-muted transition-transform group-hover:translate-x-0.5" />
@@ -396,11 +396,10 @@ export default function LeadFormModal() {
                         Назад
                       </button>
                       <h3 className="font-display text-2xl font-bold text-heading">
-                        Заявка на подключение
+                        Заявка на подключение
                       </h3>
                       <p className="mt-1.5 text-sm text-muted">
-                        Менеджер настроит всё под ключ и свяжется с вами в тот
-                        же день.
+                        Менеджер настроит всё под ключ и свяжется с вами в тот же день.
                       </p>
                     </div>
 
@@ -487,7 +486,7 @@ export default function LeadFormModal() {
                           })}
                         </div>
                         <p className="mt-2 text-xs text-muted">
-                          Один канал на тест — это канал для ваших клиентов.
+                          Один канал на тест — это канал для ваших клиентов.
                           Второй можно добавить после подключения.
                         </p>
                       </div>
@@ -527,10 +526,10 @@ export default function LeadFormModal() {
                               bigVolume ? "text-accent" : "text-heading"
                             }`}
                           >
-                            У нас больше 200 диалогов в месяц
+                            У нас больше 200 диалогов в месяц
                           </span>
                           <span className="block text-xs text-body">
-                            Обсудим индивидуальные условия и лимиты.
+                            Обсудим индивидуальные условия и лимиты.
                           </span>
                         </span>
                         <span
@@ -549,11 +548,10 @@ export default function LeadFormModal() {
                       {/* ── Как связаться ──────────────────────── */}
                       <div className="border-t border-gray-100 pt-5">
                         <p className="text-xs font-semibold uppercase tracking-wide text-muted">
-                          Как с вами связаться
+                          Как с вами связаться
                         </p>
                         <p className="mt-1.5 text-xs text-body">
-                          Мы напишем в мессенджер, а не позвоним: так вам не
-                          придётся отвечать на звонок в неудобный момент.
+                          Мы напишем в мессенджер, а не позвоним: так вам не придётся отвечать на звонок в неудобный момент.
                         </p>
 
                         <div className="mt-3 grid grid-cols-3 gap-2">
@@ -633,7 +631,7 @@ export default function LeadFormModal() {
                       {activeContactChannel.nickPlaceholder && (
                         <div className="relative">
                           <label htmlFor="modal-nick" className="sr-only">
-                            Ник в мессенджере
+                            Ник в мессенджере
                           </label>
                           <AtSign className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
                           <input
@@ -655,8 +653,7 @@ export default function LeadFormModal() {
                           className="mt-0.5 h-4 w-4 shrink-0 accent-accent"
                         />
                         <span className="text-xs leading-relaxed text-muted">
-                          Я даю согласие на обработку персональных данных в
-                          соответствии с{" "}
+                          Я даю согласие на обработку персональных данных в соответствии с{"\u00A0"}
                           <Link
                             href="/privacy"
                             target="_blank"

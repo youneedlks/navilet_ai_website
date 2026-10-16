@@ -32,10 +32,10 @@ const siteUrl = "https://navilet.ru";
 export const metadata: Metadata = {
   title: {
     absolute:
-      "Подборка туров одной ссылкой клиенту — со статистикой | Навылет! AI",
+      "Подборка туров одной ссылкой клиенту — со статистикой | Навылет! AI",
   },
   description:
-    "Подборка туров одной ссылкой: ИИ-ассистент собирает страницу под брендом агентства с фото отелей, перелётами и кнопкой заявки. Вы видите просмотры.",
+    "Подборка туров одной ссылкой: ИИ-ассистент собирает страницу под брендом агентства с фото отелей, перелётами и кнопкой заявки. Вы видите просмотры.",
   keywords: [
     "подборка туров ссылкой",
     "отправить подборку туров клиенту",
@@ -46,9 +46,9 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/podborki" },
   openGraph: {
-    title: "Подборка туров одной ссылкой — с фото, перелётами и живыми ценами",
+    title: "Подборка туров одной ссылкой — с фото, перелётами и живыми ценами",
     description:
-      "Клиент открывает подборку и пересылает её семье, а вы видите просмотры, открытия туров и заявки в личном кабинете.",
+      "Клиент открывает подборку и пересылает её семье, а вы видите просмотры, открытия туров и заявки в личном кабинете.",
     url: `${siteUrl}/podborki`,
     type: "website",
     locale: "ru_RU",
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Подборка туров одной ссылкой",
     description:
-      "Фото отелей, варианты перелёта, актуальные цены и заявка внутри страницы агентства.",
+      "Фото отелей, варианты перелёта, актуальные цены и заявка внутри страницы агентства.",
     images: ["/og-image.png"],
   },
 };
@@ -83,9 +83,9 @@ const podborkiJsonLd = {
       "@type": "WebPage",
       "@id": `${siteUrl}/podborki#webpage`,
       url: `${siteUrl}/podborki`,
-      name: "Подборка туров одной ссылкой — страница клиента под брендом агентства",
+      name: "Подборка туров одной ссылкой — страница клиента под брендом агентства",
       description:
-        "Публичная страница с вариантами туров: фото и описания отелей, варианты перелёта, обновление цен и заявка агентству. Статистика просмотров и заявок — в личном кабинете.",
+        "Публичная страница с вариантами туров: фото и описания отелей, варианты перелёта, обновление цен и заявка агентству. Статистика просмотров и заявок — в личном кабинете.",
       inLanguage: "ru-RU",
       isPartOf: { "@id": `${siteUrl}/#website` },
       breadcrumb: { "@id": `${siteUrl}/podborki#breadcrumb` },
@@ -97,7 +97,7 @@ const podborkiJsonLd = {
       "@id": `${siteUrl}/podborki#howto`,
       name: "Как отправить клиенту подборку туров одной ссылкой",
       description:
-        "Ассистент показывает варианты в диалоге, клиент открывает подборку одной кнопкой и пересылает ссылку семье, а агентство видит статистику в кабинете.",
+        "Ассистент показывает варианты в диалоге, клиент открывает подборку одной кнопкой и пересылает ссылку семье, а агентство видит статистику в кабинете.",
       totalTime: "PT1M",
       step: podborkiSteps.map((s, i) => ({
         "@type": "HowToStep",
@@ -161,27 +161,24 @@ export default function PodborkiPage() {
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5">
             <Share2 className="h-4 w-4 text-accent" />
             <span className="text-xs font-semibold text-accent sm:text-sm">
-              Версии «Лид» и «Про» · Web‑виджет и MAX
+              Версии «Лид» и «Про» · Web‑виджет и MAX
             </span>
           </div>
           <h1 className="font-display text-4xl font-bold leading-tight text-heading sm:text-5xl">
-            Подборка туров —{" "}
+            Подборка туров —{" "}
             <span className="text-accent">одной ссылкой клиенту</span>
           </h1>
           <p className="mx-auto mt-5 max-w-3xl text-base text-body sm:text-lg">
-            Подборки по ссылке — функция ИИ-ассистента «Навылет! AI» для
-            турагентств: подобранные туры собираются в отдельную страницу под
-            вашим брендом — фото отелей, варианты перелёта, живые цены. Тур
-            редко выбирают в одиночку: клиент открывает страницу вне чата,
-            сравнивает и пересылает близким, а вы видите, что открыли и где
-            появилась заявка. Работает в обеих версиях, в Web и MAX, без
-            доплат.
+            Подборки по ссылке — функция ИИ-ассистента «Навылет! AI» для турагентств: подобранные туры собираются в отдельную страницу под вашим брендом — фото отелей, варианты перелёта, живые цены. Тур
+            редко выбирают в одиночку: клиент открывает страницу вне чата,
+            сравнивает и пересылает близким, а вы видите, что открыли и где
+            появилась заявка. Работает в обеих версиях, в Web и MAX, без доплат.
           </p>
 
           <div className="mx-auto mt-9 grid max-w-lg grid-cols-2 gap-3">
             {[
-              { stat: "7 дней", label: "живёт ссылка у клиента" },
-              { stat: "1 клик", label: "от варианта до заявки вам" },
+              { stat: "7 дней", label: "живёт ссылка у клиента" },
+              { stat: "1 клик", label: "от варианта до заявки вам" },
             ].map((s) => (
               <div
                 key={s.label}
@@ -202,11 +199,11 @@ export default function PodborkiPage() {
         <section className="bg-surface-alt">
           <div className="mx-auto max-w-5xl px-5 py-14 sm:px-6 lg:px-8 lg:py-16">
             <h2 className="text-center font-display text-3xl font-bold text-heading sm:text-4xl">
-              Как подборка попадает к клиенту
+              Как подборка попадает к клиенту
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-center text-base text-body">
-              Страницу собирает сам ассистент в момент, когда показал варианты —
-              менеджеру не нужно ничего верстать и пересылать вручную.
+              Страницу собирает сам ассистент в момент, когда показал варианты —
+              менеджеру не нужно ничего верстать и пересылать вручную.
             </p>
             <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-3">
               {podborkiSteps.map((s) => (
@@ -233,11 +230,11 @@ export default function PodborkiPage() {
         <section className="mx-auto max-w-6xl px-5 py-14 sm:px-6 lg:px-8 lg:py-16">
           <div className="text-center">
             <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl">
-              Что клиент видит на странице
+              Что клиент видит на странице
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-base text-body">
-              Всё, ради чего обычно уходят на сайты туроператоров — фото,
-              описание отеля и расписание рейсов — собрано в одном месте с вашим
+              Всё, ради чего обычно уходят на сайты туроператоров — фото,
+              описание отеля и расписание рейсов — собрано в одном месте с вашим
               логотипом.
             </p>
           </div>
@@ -279,15 +276,15 @@ export default function PodborkiPage() {
               <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-white px-4 py-1.5">
                 <BarChart3 className="h-4 w-4 text-accent" />
                 <span className="text-xs font-semibold text-accent sm:text-sm">
-                  Вкладка «Подборки» в «Диалогах» кабинета
+                  Вкладка «Подборки» в «Диалогах» кабинета
                 </span>
               </div>
               <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl">
-                Вы видите, что происходит со ссылкой
+                Вы видите, что происходит со ссылкой
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-base text-body">
                 Обычно после отправки вариантов наступает тишина. Здесь видно,
-                открыли ли подборку, сколько человек её смотрело и какой тур
+                открыли ли подборку, сколько человек её смотрело и какой тур
                 разглядывали дольше остальных.
               </p>
             </div>
@@ -296,7 +293,7 @@ export default function PodborkiPage() {
             <div className="mt-9 overflow-hidden rounded-2xl border border-blue-subtle/50 bg-white shadow-card">
               <div className="border-b border-blue-subtle/40 bg-gradient-to-r from-blue-ice/60 to-white px-5 py-3">
                 <p className="font-display text-sm font-bold text-heading">
-                  Подборки · 30 дней
+                  Подборки · 30 дней
                 </p>
                 <p className="text-[11px] text-muted">
                   пример данных личного кабинета
@@ -371,7 +368,7 @@ export default function PodborkiPage() {
             {/* Воронка из «Аналитики» */}
             <div className="mt-6 rounded-2xl border border-blue-subtle/50 bg-white p-5 shadow-card sm:p-6">
               <p className="text-center font-display text-sm font-bold text-heading">
-                В «Аналитике» это собирается в воронку
+                В «Аналитике» это собирается в воронку
               </p>
               <div className="mt-4 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
                 {podborkiFunnel.map((f, i) => (
@@ -391,8 +388,8 @@ export default function PodborkiPage() {
                 ))}
               </div>
               <p className="mt-4 text-center text-xs text-muted">
-                Пример за 30 дней: из 46 созданных подборок ссылками поделились
-                31 раз, открыли 24 — и семь из них закончились заявкой.
+                Пример за 30 дней: из 46 созданных подборок ссылками поделились
+                31 раз, открыли 24 — и семь из них закончились заявкой.
               </p>
             </div>
           </div>
@@ -407,16 +404,16 @@ export default function PodborkiPage() {
               </span>
               <div>
                 <h2 className="font-display text-xl font-bold text-heading sm:text-2xl">
-                  Подборка работает и на возврат клиента
+                  Подборка работает и на возврат клиента
                 </h2>
                 <p className="mt-3 text-sm leading-relaxed text-body sm:text-base">
-                  Ссылка живёт в семейном чате неделю и всё это время напоминает
-                  о вас. Когда срок выходит, страница не ломается: клиент видит
-                  брендированный экран с выходами — вернуться в диалог, написать
-                  боту в MAX, зайти на сайт или позвонить менеджеру. А в MAX
-                  ассистент ещё и возвращает замолчавших клиентов сам —
-                  напоминанием через сутки и подпиской на снижение цены (в «Про»
-                  входят, в «Лиде» — опциями).
+                  Ссылка живёт в семейном чате неделю и всё это время напоминает
+                  о вас. Когда срок выходит, страница не ломается: клиент видит
+                  брендированный экран с выходами — вернуться в диалог, написать
+                  боту в MAX, зайти на сайт или позвонить менеджеру. А в MAX
+                  ассистент ещё и возвращает замолчавших клиентов сам —
+                  напоминанием через сутки и подпиской на снижение цены (в «Про»
+                  входят, в «Лиде» — опциями).
                 </p>
                 <Link
                   href="/vozvrat-klientov"
@@ -435,19 +432,19 @@ export default function PodborkiPage() {
           <div className="mx-auto max-w-4xl px-5 py-14 sm:px-6 lg:px-8 lg:py-16">
             <div className="rounded-2xl border border-blue-subtle/50 bg-white p-6 text-center shadow-card sm:p-10">
               <h2 className="font-display text-2xl font-bold text-heading sm:text-3xl">
-                Входит в обе версии ассистента
+                Входит в обе версии ассистента
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-sm text-body sm:text-base">
-                Подборки работают и в версии «Лид» от 990 ₽/⁠мес, и в «Про»
-                от 1 990 ₽/⁠мес, в веб-виджете и в MAX‑мессенджере. Отдельной платы
-                за них нет — первый месяц бесплатно в любом случае.
+                Подборки работают и в версии «Лид» от 990 ₽/⁠мес, и в «Про»
+                от 1 990 ₽/⁠мес, в веб-виджете и в MAX‑мессенджере. Отдельной платы
+                за них нет — первый месяц бесплатно в любом случае.
               </p>
               <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <Link
                   href="/versii"
                   className="inline-flex items-center gap-1.5 rounded-xl border-2 border-accent/30 px-6 py-3 text-sm font-semibold text-accent transition-colors hover:border-accent hover:bg-blue-ice sm:text-base"
                 >
-                  Сравнить версии «Лид» и «Про»
+                  Сравнить версии «Лид» и «Про»
                   <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
@@ -465,7 +462,7 @@ export default function PodborkiPage() {
         {/* FAQ */}
         <section className="mx-auto max-w-3xl px-5 py-14 sm:px-6 lg:px-8 lg:py-16">
           <h2 className="mb-8 text-center font-display text-3xl font-bold text-heading sm:text-4xl">
-            Вопросы про подборки
+            Вопросы про подборки
           </h2>
           <div className="space-y-4">
             {podborkiFaqItems.map((item) => (
@@ -491,10 +488,10 @@ export default function PodborkiPage() {
         <section className="bg-surface-alt">
           <div className="mx-auto max-w-3xl px-5 py-16 text-center sm:px-6 lg:px-8 lg:py-20">
             <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl">
-              Пусть варианты уходят страницей, а не скриншотами
+              Пусть варианты уходят страницей, а не скриншотами
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-base text-body sm:text-lg">
-              Подключите ассистента — первый месяц бесплатно, настройка 0 ₽.
+              Подключите ассистента — первый месяц бесплатно, настройка 0 ₽.
             </p>
             <div className="mt-8 flex justify-center">
               <RegisterCta source="podborki_cta" />

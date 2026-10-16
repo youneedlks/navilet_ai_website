@@ -49,7 +49,7 @@ const NAV_GROUPS: {
     { id: "integrations", icon: Plug, label: "Интеграции" },
   ],
   [
-    { id: "billing", icon: Receipt, label: "Тариф и оплата" },
+    { id: "billing", icon: Receipt, label: "Тариф и оплата" },
     { id: "support", icon: LifeBuoy, label: "Поддержка" },
     { id: "account", icon: UserCircle, label: "Аккаунт" },
   ],
@@ -58,12 +58,12 @@ const NAV_GROUPS: {
 const SCREEN_TITLES: Record<Screen, string> = {
   overview: "Обзор",
   analytics: "Аналитика",
-  reports: "Аналитика › Отчёты и прогнозы",
+  reports: "Аналитика › Отчёты и прогнозы",
   conversations: "Диалоги",
   widget: "Виджет",
   knowledge: "База знаний",
   integrations: "Интеграции",
-  billing: "Тариф и оплата",
+  billing: "Тариф и оплата",
   support: "Поддержка",
   account: "Аккаунт",
 };

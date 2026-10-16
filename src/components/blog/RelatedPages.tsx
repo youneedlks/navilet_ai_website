@@ -15,7 +15,7 @@ export default function RelatedPages({ links }: { links: PostLink[] }) {
         id="related-pages"
         className="font-display text-xl font-bold text-heading sm:text-2xl"
       >
-        По теме на сайте
+        По теме на сайте
       </h2>
       <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-3">
         {links.map((item) => (

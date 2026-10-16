@@ -53,36 +53,36 @@ export default function DashboardForecastShowcase() {
           <div className="inline-flex items-center gap-2 rounded-full bg-blue-ice px-4 py-1.5">
             <TrendingUp className="h-4 w-4 text-accent" />
             <span className="text-sm font-semibold text-accent">
-              Прогнозы и предиктивная аналитика
+              Прогнозы и предиктивная аналитика
             </span>
           </div>
           <h2 className="font-display text-2xl font-bold text-heading">
-            Не только что было — но и что будет дальше
+            Не только что было — но и что будет дальше
           </h2>
           <p className="leading-relaxed text-body">
-            Отдельный раздел кабинета превращает диалоги ассистента в прогноз:
-            сколько заявок и денег принесёт месяц и куда движется спрос.
+            Отдельный раздел кабинета превращает диалоги ассистента в прогноз:
+            сколько заявок и денег принесёт месяц и куда движется спрос.
           </p>
           <div className="space-y-3">
             <FeaturePoint
               icon={CalendarClock}
-              text="Прогноз до конца месяца: ожидаемые диалоги, клиенты с интересом и сумма оплаченных туров — с вашим доходом"
+              text="Прогноз до конца месяца: ожидаемые диалоги, клиенты с интересом и сумма оплаченных туров — с вашим доходом"
             />
             <FeaturePoint
               icon={Sparkles}
-              text="AI-прогноз на 4–6 недель: модель смотрит вашу динамику, тренды всей сети и сезонность направлений"
+              text="AI-прогноз на 4–6 недель: модель смотрит вашу динамику, тренды всей сети и сезонность направлений"
             />
             <FeaturePoint
               icon={Globe2}
-              text="Барометр спроса по сети: куда смотрят туристы всех агентств прямо сейчас — обезличенно"
+              text="Барометр спроса по сети: куда смотрят туристы всех агентств прямо сейчас — обезличенно"
             />
             <FeaturePoint
               icon={Wallet}
-              text="Факт за 30 дней: средний чек интереса и корзина спроса — для сайта и MAX"
+              text="Факт за 30 дней: средний чек интереса и корзина спроса — для сайта и MAX"
             />
             <FeaturePoint
               icon={HelpCircle}
-              text="«Как это посчитано»: у каждого числа — прозрачная формула, без чёрного ящика"
+              text="«Как это посчитано»: у каждого числа — прозрачная формула, без чёрного ящика"
             />
           </div>
 
@@ -90,7 +90,7 @@ export default function DashboardForecastShowcase() {
             href="/prognozy"
             className="inline-flex items-center gap-1.5 pt-1 text-sm font-semibold text-accent transition-colors hover:text-accent-hover"
           >
-            Подробнее об «Отчётах и прогнозах»
+            Подробнее об «Отчётах и прогнозах»
             <ArrowRight className="h-4 w-4" />
           </Link>
         </motion.div>

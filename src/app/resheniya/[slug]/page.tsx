@@ -225,7 +225,7 @@ export default async function ScenarioPage({
         <section className="bg-surface">
           <div className="mx-auto max-w-3xl px-5 py-14 sm:px-6 lg:px-8">
             <h2 className="font-display text-xl font-bold text-heading">
-              По теме
+              По теме
             </h2>
             <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-sm">
               {page.related.map((r) => (
@@ -266,10 +266,10 @@ export default async function ScenarioPage({
           <div className="noise-overlay pointer-events-none absolute inset-0 opacity-20" />
           <div className="relative mx-auto max-w-3xl px-5 py-14 text-center sm:px-6 lg:px-8">
             <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">
-              Проверьте на своём агентстве — бесплатно
+              Проверьте на своём агентстве — бесплатно
             </h2>
             <p className="mx-auto mt-3 max-w-lg text-white/70">
-              Регистрация в 3 коротких шага, 30 дней теста с первого диалога, без созвонов.
+              Регистрация в 3 коротких шага, 30 дней теста с первого диалога, без созвонов.
             </p>
             <div className="mt-6 flex justify-center">
               <RegisterCta source={`resheniya_${page.slug}_bottom`} compact dark />

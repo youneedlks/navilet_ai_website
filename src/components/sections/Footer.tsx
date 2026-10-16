@@ -131,7 +131,7 @@ export default function Footer() {
             >
               <Image
                 src="/logo.svg"
-                alt="Навылет! AI — ИИ-ассистент для турагентств"
+                alt="Навылет! AI — ИИ-ассистент для турагентств"
                 width={130}
                 height={29}
                 className="h-7 w-auto"
@@ -146,7 +146,7 @@ export default function Footer() {
               onClick={() => openForm()}
               className="flex h-10 cursor-pointer items-center rounded-lg bg-surface-alt px-5 text-sm font-semibold text-muted transition-colors hover:bg-blue-ice hover:text-accent"
             >
-              Связаться с нами
+              Связаться с нами
             </button>
           </div>
 

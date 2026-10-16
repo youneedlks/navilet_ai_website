@@ -72,9 +72,9 @@ const addonValues = (
 
 /** Что входит в индивидуальный тариф «Сеть» — вместо цены и лимитов. */
 const customPlanPoints = [
-  "Отдельный ассистент на каждый офис",
-  "Лимит диалогов под поток сети",
-  "Сайт и MAX, любая версия",
+  "Отдельный ассистент на каждый офис",
+  "Лимит диалогов под поток сети",
+  "Сайт и MAX, любая версия",
 ];
 
 /** Порядок в переключателе — по цене, «Заявка» первой (решение владельца 16.10). */
@@ -95,27 +95,27 @@ const versionMeta: Record<
 > = {
   req: {
     name: "Заявка",
-    caption: "запрос без подборки · от\u00A0790\u00A0₽",
-    short: "от 790\u00A0₽",
+    caption: "запрос без подборки · от\u00A0790\u00A0₽",
+    short: "от 790\u00A0₽",
     Icon: versionIcons.req,
     blurb:
-      "«Заявка» собирает запрос — куда, когда, на сколько, кто едет, бюджет — и контакт клиента. Тур подбирает ваш менеджер.",
+      "«Заявка» собирает запрос — куда, когда, на сколько, кто едет, бюджет — и контакт клиента. Тур подбирает ваш менеджер.",
   },
   lid: {
     name: "Лид",
     caption: "лидогенерация · от 990\u00A0₽",
-    short: "от 990\u00A0₽",
+    short: "от 990\u00A0₽",
     Icon: versionIcons.lid,
     blurb:
-      "«Лид» ведёт живой диалог, подбирает туры и передаёт готовую заявку с контактом вашему менеджеру.",
+      "«Лид» ведёт живой диалог, подбирает туры и передаёт готовую заявку с контактом вашему менеджеру.",
   },
   pro: {
     name: "Про",
     caption: "полный инструмент · от 1\u00A0990\u00A0₽",
-    short: "от 1\u00A0990\u00A0₽",
+    short: "от 1\u00A0990\u00A0₽",
     Icon: versionIcons.pro,
     blurb:
-      "«Про» консультирует без ограничений, проверяет цены в чате и возвращает клиентов в MAX.",
+      "«Про» консультирует без ограничений, проверяет цены в чате и возвращает клиентов в MAX.",
   },
 };
 
@@ -176,7 +176,7 @@ function PlanCard({
         )}
       </div>
       <p className="text-sm font-medium text-accent">
-        {plan.custom ? "Объём и цена — под вашу сеть" : `${dialogs} диалогов / мес`}
+        {plan.custom ? "Объём и цена — под вашу сеть" : `${dialogs} диалогов / мес`}
       </p>
 
       <div className="my-5 h-px w-full bg-blue-subtle/60" />
@@ -200,7 +200,7 @@ function PlanCard({
             <Check className="h-3 w-3 text-accent" />
           </span>
           <span>
-            Доп. диалог сверх лимита —{" "}
+            Доп. диалог сверх лимита —{" "}
             <span className="font-semibold text-heading">{extraDialog} ₽</span>
           </span>
         </li>
@@ -209,7 +209,7 @@ function PlanCard({
             <Check className="h-3 w-3 text-accent" />
           </span>
           <span>
-            В тарифе —{" "}
+            В тарифе —{" "}
             <span className="font-semibold text-heading">
               ~{effectivePerDialog} ₽ / диалог
             </span>
@@ -219,7 +219,7 @@ function PlanCard({
           <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-accent/10">
             <Check className="h-3 w-3 text-accent" />
           </span>
-          <span>Канал на выбор — Web или MAX</span>
+          <span>Канал на выбор — Web или MAX</span>
         </li>
         {version === "lid" && (
           <li className="flex items-start gap-2.5">
@@ -227,9 +227,9 @@ function PlanCard({
               <Check className="h-3 w-3 text-accent" />
             </span>
             <span>
-              В MAX — опции возврата клиентов{" "}
+              В MAX — опции возврата клиентов{" "}
               <a href="/tarify#opcii" className="whitespace-nowrap font-semibold text-heading underline decoration-accent/30 underline-offset-2 hover:text-accent">
-                от {lidAddons.reoutreach.price} ₽/мес
+                от {lidAddons.reoutreach.price} ₽/мес
               </a>
             </span>
           </li>
@@ -246,14 +246,14 @@ function PlanCard({
       </Button>
       {plan.custom ? (
         <p className="mt-1 flex min-h-10 items-center justify-center px-2 text-center text-xs text-muted">
-          Подключаем по заявке
+          Подключаем по заявке
         </p>
       ) : (
         <button
           onClick={() => onSelect(plan)}
           className="mt-1 min-h-10 cursor-pointer px-2 text-center text-xs font-medium text-muted underline decoration-blue-subtle underline-offset-2 transition-colors hover:text-accent hover:decoration-accent/40"
         >
-          Или подключим с менеджером — оставьте заявку
+          Или подключим с менеджером — оставьте заявку
         </button>
       )}
     </motion.div>
@@ -312,7 +312,7 @@ function CrossChannelCard({
         <span className="text-sm font-medium text-muted">/ мес</span>
       </div>
       <p className="text-sm font-medium text-accent">
-        +{values.extraDialogs} диалогов во втором канале
+        +{values.extraDialogs} диалогов во втором канале
       </p>
 
       <div className="my-4 h-px w-full bg-blue-subtle/60" />
@@ -320,19 +320,19 @@ function CrossChannelCard({
       {/* Total */}
       <div className="mb-4 rounded-xl bg-white/80 px-3.5 py-2.5 ring-1 ring-blue-subtle/40">
         <p className="text-[11px] font-semibold uppercase tracking-wide text-muted">
-          Итого с тарифом
+          Итого с тарифом
         </p>
         <p className="mt-0.5 font-display text-lg font-bold text-heading">
           <span className="whitespace-nowrap">{fmt(values.totalPrice)}&nbsp;₽</span>
           <span className="ml-1 text-sm font-medium text-muted">/ мес</span>
         </p>
         <p className="text-xs font-medium text-body">
-          {values.totalDialogs} диалогов в двух каналах
+          {values.totalDialogs} диалогов в двух каналах
         </p>
       </div>
 
       <p className="mb-5 text-xs text-muted">
-        Доп. диалог во втором канале —{" "}
+        Доп. диалог во втором канале —{" "}
         <span className="font-semibold text-body">
           {values.extraDialogPrice} ₽
         </span>
@@ -415,15 +415,14 @@ export default function Pricing({ showHeader = true }: { showHeader?: boolean })
             {/* Условия акции повторяет плашка ниже — в бейдже оставляем суть */}
             {promoActive
               ? "Первый месяц бесплатно"
-              : "Первый месяц бесплатно • Подключение 0 ₽ • Отмена в любой момент"}
+              : "Первый месяц бесплатно • Подключение 0 ₽ • Отмена в любой момент"}
           </span>
         </div>
         <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl lg:text-[2.75rem]">
           Тарифы <span className="whitespace-nowrap text-accent">ИИ-ассистента</span>
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-base text-body">
-          Каждый тариф работает в одном канале на выбор — Web‑виджет или
-          MAX‑мессенджер. Нужны оба сразу? Подключите{" "}
+          Каждый тариф работает в одном канале на выбор — Web‑виджет или MAX‑мессенджер. Нужны оба сразу? Подключите{" "}
           <a
             href="#cross-channel"
             className="font-medium text-accent underline decoration-accent/30 underline-offset-2 hover:decoration-accent"
@@ -522,7 +521,7 @@ export default function Pricing({ showHeader = true }: { showHeader?: boolean })
                   {promo.headline}
                 </p>
                 <p className="text-sm text-body">
-                  30 дней с первого диалога · до 200 диалогов · подключение 0 ₽
+                  30 дней с первого диалога · до 200 диалогов · подключение 0 ₽
                 </p>
               </div>
             </div>
@@ -555,7 +554,7 @@ export default function Pricing({ showHeader = true }: { showHeader?: boolean })
         </div>
         <span className="hidden text-muted sm:inline">·</span>
         <span className="text-center text-xs text-muted sm:text-left sm:text-sm">
-          Цены и лимиты идентичны в обоих каналах
+          Цены и лимиты идентичны в обоих каналах
         </span>
       </motion.div>
 
@@ -590,13 +589,12 @@ export default function Pricing({ showHeader = true }: { showHeader?: boolean })
             </span>
           </div>
           <h3 className="font-display text-2xl font-bold text-heading sm:text-3xl">
-            Web и MAX <span className="text-accent">одновременно</span>
+            Web и MAX <span className="text-accent">одновременно</span>
           </h3>
           <p className="mx-auto mt-3 max-w-2xl text-sm text-body sm:text-base">
-            Базовый тариф работает в одном канале. Если хотите использовать
-            ИИ-ассистента сразу <strong className="font-semibold text-heading">и в Web‑виджете на сайте, и в MAX‑мессенджере</strong> — добавьте «Второй канал»
-            к выбранному тарифу. Получите дополнительный лимит диалогов во
-            втором канале по льготной цене. Цены — для версии «{activeMeta.name}».
+            Базовый тариф работает в одном канале. Если хотите использовать
+            ИИ-ассистента сразу <strong className="font-semibold text-heading">и в Web‑виджете на сайте, и в MAX‑мессенджере</strong> — добавьте «Второй канал»
+            к выбранному тарифу. Получите дополнительный лимит диалогов во втором канале по льготной цене. Цены — для версии «{activeMeta.name}».
           </p>
         </div>
 
@@ -628,11 +626,11 @@ export default function Pricing({ showHeader = true }: { showHeader?: boolean })
             </span>
           </div>
           <h3 className="font-display text-2xl font-bold text-heading sm:text-3xl">
-            Подключение и настройка — бесплатно
+            Подключение и настройка — бесплатно
           </h3>
           <p className="mx-auto mt-3 max-w-xl text-sm text-body sm:text-base">
-            Никаких разовых платежей ни на одном тарифе. Вы платите только
-            месячную подписку — настройку и запуск мы берём на себя.
+            Никаких разовых платежей ни на одном тарифе. Вы платите только
+            месячную подписку — настройку и запуск мы берём на себя.
           </p>
         </div>
 
@@ -644,23 +642,23 @@ export default function Pricing({ showHeader = true }: { showHeader?: boolean })
           {[
             {
               icon: Globe,
-              title: "Виджет на вашем сайте",
-              text: "Настройка под фирменный стиль и установка одной строкой кода.",
+              title: "Виджет на вашем сайте",
+              text: "Настройка под фирменный стиль и установка одной строкой кода.",
             },
             {
               icon: Layers,
-              title: "Интеграция с Tourvisor",
-              text: "Уже подключена на нашей стороне — настраивать ничего не нужно.",
+              title: "Интеграция с Tourvisor",
+              text: "Уже подключена на нашей стороне — настраивать ничего не нужно.",
             },
             {
               icon: MessageSquare,
-              title: "MAX‑канал — тоже 0 ₽",
-              text: "Создайте бота на платформе «MAX для партнёров» и передайте токен в кабинете — подключим за 1 рабочий день.",
+              title: "MAX‑канал — тоже 0 ₽",
+              text: "Создайте бота на платформе «MAX для партнёров» и передайте токен в кабинете — подключим за 1 рабочий день.",
             },
             {
               icon: Inbox,
-              title: "Заявки — на почту, в U‑ON, Telegram и MAX",
-              text: "U‑ON подключаете сами в кабинете, Битрикс24 и amoCRM — по заявке. В Telegram и MAX — до 5 чатов менеджеров.",
+              title: "Заявки — на почту, в U‑ON, Telegram и MAX",
+              text: "U‑ON подключаете сами в кабинете, Битрикс24 и amoCRM — по заявке. В Telegram и MAX — до 5 чатов менеджеров.",
             },
           ].map((item) => (
             <motion.div
@@ -686,8 +684,8 @@ export default function Pricing({ showHeader = true }: { showHeader?: boolean })
         >
           <Info className="mt-0.5 h-3.5 w-3.5 flex-shrink-0" />
           <span>
-            Цены окончательные: НДС не облагается (участник проекта «Сколково»).
-            Оплата ежемесячно по счёту, банковским переводом; разовых платежей нет.
+            Цены окончательные: НДС не облагается (участник проекта «Сколково»).
+            Оплата ежемесячно по счёту, банковским переводом; разовых платежей нет.
           </span>
         </motion.p>
       </motion.div>
@@ -704,13 +702,13 @@ export default function Pricing({ showHeader = true }: { showHeader?: boolean })
           </span>
         </Button>
         <p className="text-center text-sm text-body">
-          Регистрация — 3 коротких шага. Доступ и код виджета — после проверки заявки.
+          Регистрация — 3 коротких шага. Доступ и код виджета — после проверки заявки.
         </p>
         <button
           onClick={() => openForm({ versionId: version, path: "request" })}
           className="min-h-10 cursor-pointer px-3 text-sm font-medium text-muted underline decoration-blue-subtle underline-offset-2 transition-colors hover:text-accent hover:decoration-accent/40"
         >
-          Нужна помощь с подключением? Оставьте заявку
+          Нужна помощь с подключением? Оставьте заявку
         </button>
       </motion.div>
     </SectionWrapper>

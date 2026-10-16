@@ -8,9 +8,9 @@ import { ChevronRight, HelpCircle, MessageCircleQuestion } from "lucide-react";
 import { jsonLdScript } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: { absolute: "Частые вопросы про ИИ-ассистент | Навылет! AI" },
+  title: { absolute: "Частые вопросы про ИИ-ассистент | Навылет! AI" },
   description:
-    `Частые вопросы про ИИ-ассистент для турагентств: цены от ${priceFromLabel}/мес, подключение, безопасность, лимиты диалогов, интеграция с Tourvisor и MAX.`,
+    `Частые вопросы про ИИ-ассистент для турагентств: цены от ${priceFromLabel}/мес, подключение, безопасность, лимиты диалогов, интеграция с Tourvisor и MAX.`,
   keywords: [
     "ИИ-ассистент турагентство FAQ",
     "ИИ-ассистент вопросы",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/faq" },
   openGraph: {
-    title: "FAQ — частые вопросы про ИИ-ассистент «Навылет! AI»",
+    title: "FAQ — частые вопросы про ИИ-ассистент «Навылет! AI»",
     description:
       "Полный гид: цены, технологии, подключение, безопасность, интеграции.",
     url: "https://navilet.ru/faq",
@@ -33,8 +33,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "FAQ — частые вопросы про ИИ-ассистент «Навылет! AI»",
-    description: "Ответы на популярные вопросы про ИИ-ассистент для турбизнеса.",
+    title: "FAQ — частые вопросы про ИИ-ассистент «Навылет! AI»",
+    description: "Ответы на популярные вопросы про ИИ-ассистент для турбизнеса.",
     images: ["/og-image.png"],
   },
 };
@@ -45,28 +45,28 @@ const siteUrl = "https://navilet.ru";
 const faqSections = [
   {
     id: "product",
-    title: "О продукте",
+    title: "О продукте",
     icon: HelpCircle,
     matcher: (q: string) =>
       /как работает|что такое.*навылет|интегрируется|конверс/i.test(q),
   },
   {
     id: "pricing",
-    title: "Цены и тарифы",
+    title: "Цены и тарифы",
     icon: HelpCircle,
     matcher: (q: string) =>
       /сколько стоит|тариф|второй канал|подключени|диалог|лимит/i.test(q),
   },
   {
     id: "channels",
-    title: "Каналы и подключение",
+    title: "Каналы и подключение",
     icon: HelpCircle,
     matcher: (q: string) =>
       /кана|подключи|max|web|сайт/i.test(q),
   },
   {
     id: "tech",
-    title: "Технологии и безопасность",
+    title: "Технологии и безопасность",
     icon: HelpCircle,
     matcher: (q: string) =>
       /языковая|gpt|llm|данные|безопасн|152-фз/i.test(q),
@@ -123,9 +123,9 @@ const faqJsonLd = {
       "@type": "WebPage",
       "@id": `${siteUrl}/faq#webpage`,
       url: `${siteUrl}/faq`,
-      name: "FAQ — Часто задаваемые вопросы",
+      name: "FAQ — Часто задаваемые вопросы",
       description:
-        "Ответы на частые вопросы про ИИ-ассистент «Навылет! AI» для турагентств и туроператоров.",
+        "Ответы на частые вопросы про ИИ-ассистент «Навылет! AI» для турагентств и туроператоров.",
       inLanguage: "ru-RU",
       isPartOf: { "@id": `${siteUrl}/#website` },
       breadcrumb: { "@id": `${siteUrl}/faq#breadcrumb` },
@@ -191,8 +191,7 @@ export default function FAQPage() {
             «Навылет! AI»
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-base text-body sm:text-lg">
-            Самые частые вопросы о тарифах, технологиях, подключении и
-            безопасности. Если не нашли ответ — напишите на{" "}
+            Самые частые вопросы о тарифах, технологиях, подключении и безопасности. Если не нашли ответ — напишите на{"\u00A0"}
             <a
               href="mailto:office@aimpact.ru"
               className="font-semibold text-accent underline decoration-accent/30 underline-offset-2 hover:decoration-accent"
@@ -268,7 +267,7 @@ export default function FAQPage() {
         <section className="bg-surface-alt">
           <div className="mx-auto max-w-3xl px-5 py-16 text-center sm:px-6 lg:px-8 lg:py-20">
             <h2 className="font-display text-2xl font-bold text-heading sm:text-3xl">
-              Не нашли ответ?
+              Не нашли ответ?
             </h2>
             <p className="mt-4 text-base text-body">
               Посмотрите{" "}
@@ -278,14 +277,14 @@ export default function FAQPage() {
               >
                 полную страницу тарифов
               </Link>{" "}
-              или подробности про{" "}
+              или подробности про{"\u00A0"}
               <Link
                 href="/integraciya-tourvisor"
                 className="font-semibold text-accent underline decoration-accent/30 underline-offset-2 hover:decoration-accent"
               >
-                интеграцию с Tourvisor
+                интеграцию с Tourvisor
               </Link>
-              . Или позвоните +7 (963) 799-79-77.
+              . Или позвоните +7 (963) 799-79-77.
             </p>
           </div>
         </section>

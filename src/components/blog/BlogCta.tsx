@@ -13,8 +13,8 @@ interface BlogCtaProps {
 }
 
 export default function BlogCta({
-  title = "Попробуйте ИИ-ассистент в деле",
-  text = "Подключение без программиста, первый месяц бесплатно. Покажем, как ассистент обрабатывает заявки вашего агентства.",
+  title = "Попробуйте ИИ-ассистент в деле",
+  text = "Подключение без программиста, первый месяц бесплатно. Покажем, как ассистент обрабатывает заявки вашего агентства.",
   buttonText = "Подключить ИИ бесплатно",
   variant = "form",
 }: BlogCtaProps) {
@@ -38,7 +38,7 @@ export default function BlogCta({
         <div>
           <div className="mb-2 inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
             <Sparkles className="h-3.5 w-3.5" />
-            30 дней бесплатно
+            30 дней бесплатно
           </div>
           <h3 className="font-display text-xl font-bold text-white">{title}</h3>
           <p className="mt-1.5 max-w-md text-sm text-white/70">{text}</p>
@@ -47,7 +47,7 @@ export default function BlogCta({
           {demoFirst ? (
             <>
               <Link href="/demo" className={primary}>
-                Посмотреть демо за минуту
+                Посмотреть демо за минуту
               </Link>
               <button
                 onClick={() => openForm()}

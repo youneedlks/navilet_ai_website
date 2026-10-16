@@ -10,13 +10,13 @@ import { demandPages } from "@/lib/seo/demand-pages";
 import { jsonLdScript } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: { absolute: "Карта сайта — все разделы Навылет! AI" },
+  title: { absolute: "Карта сайта — все разделы Навылет! AI" },
   description:
-    "Полный список страниц сайта navilet.ru: продукт и тарифы, инструкции установки виджета по платформам, задачи турагентств, спрос по направлениям и блог.",
+    "Полный список страниц сайта navilet.ru: продукт и тарифы, инструкции установки виджета по платформам, задачи турагентств, спрос по направлениям и блог.",
   alternates: { canonical: "/karta-sayta" },
   openGraph: {
-    title: "Карта сайта — Навылет! AI",
-    description: "Все разделы сайта navilet.ru в одном списке.",
+    title: "Карта сайта — Навылет! AI",
+    description: "Все разделы сайта navilet.ru в одном списке.",
     url: "https://navilet.ru/karta-sayta",
     type: "website",
     locale: "ru_RU",
@@ -35,71 +35,71 @@ type Group = {
 const groups: Group[] = [
   {
     title: "Продукт",
-    note: "Что такое ИИ-ассистент, как он работает и сколько стоит.",
+    note: "Что такое ИИ-ассистент, как он работает и сколько стоит.",
     links: [
-      { href: "/", label: "Главная — ИИ-ассистент для турагентств" },
-      { href: "/demo", label: "Демо — попробовать ассистента без регистрации" },
+      { href: "/", label: "Главная — ИИ-ассистент для турагентств" },
+      { href: "/demo", label: "Демо — попробовать ассистента без регистрации" },
       {
         href: "/versii",
-        label: "Версии ассистента: «Лид» и «Про» — сравнение",
+        label: "Версии ассистента: «Лид» и «Про» — сравнение",
       },
       {
         href: "/podborki",
-        label: "Подборки: страница с турами по ссылке клиенту",
+        label: "Подборки: страница с турами по ссылке клиенту",
       },
       {
         href: "/vozvrat-klientov",
-        label: "Возврат клиентов: напоминание и подписка на цену",
+        label: "Возврат клиентов: напоминание и подписка на цену",
       },
       {
         href: "/lidy-dlya-turagentstva",
-        label: "Лиды для турагентства: заявки от 219 ₽",
+        label: "Лиды для турагентства: заявки от 219 ₽",
       },
       {
         href: "/chat-bot-dlya-turagentstva",
-        label: "Чат-бот для турагентства с подбором туров",
+        label: "Чат-бот для турагентства с подбором туров",
       },
       {
         href: "/max",
-        label: "ИИ-ассистент турагентства в мессенджере MAX",
+        label: "ИИ-ассистент турагентства в мессенджере MAX",
       },
       {
         href: "/sravnenie",
         label: "Сравнение: ИИ-ассистент, модуль поиска, чат-бот, разработка",
       },
-      { href: "/tarify", label: "Тарифы и что входит в подписку" },
+      { href: "/tarify", label: "Тарифы и что входит в подписку" },
       {
         href: "/skolko-stoit",
         label: "Сколько стоит ИИ-ассистент: цены, сравнение, окупаемость",
       },
-      { href: "/start", label: "Как начать: регистрация и код виджета" },
+      { href: "/start", label: "Как начать: регистрация и код виджета" },
       { href: "/dashboard", label: "Личный кабинет: аналитика диалогов" },
-      { href: "/prognozy", label: "ИИ-аналитика: прогнозы спроса и продаж" },
+      { href: "/prognozy", label: "ИИ-аналитика: прогнозы спроса и продаж" },
       {
         href: "/integraciya-tourvisor",
-        label: "Интеграция с Tourvisor: откуда берутся туры и цены",
+        label: "Интеграция с Tourvisor: откуда берутся туры и цены",
       },
     ],
   },
   {
     title: "Кому подходит",
-    note: "Разбор сценариев для разных типов туристического бизнеса.",
+    note: "Разбор сценариев для разных типов туристического бизнеса.",
     links: [
       {
         href: "/cifrovizaciya-turagentstva",
-        label: "Цифровизация турагентства: гид и чеклист",
+        label: "Цифровизация турагентства: гид и чеклист",
       },
-      { href: "/dlya-turagentstv", label: "Для турагентств" },
-      { href: "/dlya-turoperatorov", label: "Для туроператоров" },
-      { href: "/dlya-setey-agentstv", label: "Для сетей агентств и франшиз" },
+      { href: "/dlya-turagentstv", label: "Для турагентств" },
+      { href: "/dlya-turoperatorov", label: "Для туроператоров" },
+      { href: "/dlya-setey-agentstv", label: "Для сетей агентств и франшиз" },
       { href: "/keisy/mgp", label: "Кейс: сеть «Магазины горящих путёвок»" },
     ],
   },
   {
-    title: "Установка виджета по платформам",
-    note: "Пошаговые инструкции с нюансами каждой платформы.",
+    title: "Установка виджета по платформам",
+    note: "Пошаговые инструкции с нюансами каждой платформы.",
     links: [
-      { href: "/vidzhet", label: "Все платформы — обзор" },
+      { href: "/vidzhet", label: "Все платформы — обзор" },
       ...platformPages.map((p) => ({
         href: `/vidzhet/${p.slug}`,
         label: `Виджет для ${p.name}`,
@@ -108,9 +108,9 @@ const groups: Group[] = [
   },
   {
     title: "Задачи турагентств",
-    note: "Конкретные проблемы и то, как ассистент их закрывает.",
+    note: "Конкретные проблемы и то, как ассистент их закрывает.",
     links: [
-      { href: "/resheniya", label: "Все задачи — обзор" },
+      { href: "/resheniya", label: "Все задачи — обзор" },
       ...scenarioPages.map((p) => ({
         href: `/resheniya/${p.slug}`,
         label: p.h1,
@@ -118,11 +118,11 @@ const groups: Group[] = [
     ],
   },
   {
-    title: "Спрос по направлениям",
-    note: "Что спрашивают туристы — по данным диалогов с ассистентом.",
+    title: "Спрос по направлениям",
+    note: "Что спрашивают туристы — по данным диалогов с ассистентом.",
     links: [
-      { href: "/indeks-sprosa", label: "Индекс спроса на туры — ежемесячный выпуск" },
-      { href: "/spros", label: "Все направления — обзор" },
+      { href: "/indeks-sprosa", label: "Индекс спроса на туры — ежемесячный выпуск" },
+      { href: "/spros", label: "Все направления — обзор" },
       ...demandPages.map((p) => ({
         href: `/spros/${p.slug}`,
         label: p.h1.split(":")[0],
@@ -130,13 +130,13 @@ const groups: Group[] = [
     ],
   },
   {
-    title: "Компания и документы",
-    note: "О проекте, ответы на вопросы и правовая информация.",
+    title: "Компания и документы",
+    note: "О проекте, ответы на вопросы и правовая информация.",
     links: [
-      { href: "/o-komande", label: "О компании и команде" },
+      { href: "/o-komande", label: "О компании и команде" },
       { href: "/ekspert/lukian-silagadze", label: "Эксперт: Силагадзе Лукиан Ираклиевич" },
       { href: "/faq", label: "Частые вопросы (FAQ)" },
-      { href: "/voprosy", label: "Вопросы и ответы о внедрении ИИ" },
+      { href: "/voprosy", label: "Вопросы и ответы о внедрении ИИ" },
       { href: "/privacy", label: "Политика конфиденциальности" },
     ],
   },
@@ -149,7 +149,7 @@ export default function KartaSaytaPage() {
     ...groups,
     {
       title: "Блог",
-      note: "Разборы, кейсы и практика внедрения ИИ в турбизнесе.",
+      note: "Разборы, кейсы и практика внедрения ИИ в турбизнесе.",
       links: [
         { href: "/blog", label: "Все статьи" },
         ...posts.map((p) => ({ href: `/blog/${p.slug}`, label: p.title })),
@@ -183,9 +183,9 @@ export default function KartaSaytaPage() {
         "@type": "CollectionPage",
         "@id": `${siteUrl}/karta-sayta#page`,
         url: `${siteUrl}/karta-sayta`,
-        name: "Карта сайта — Навылет! AI",
+        name: "Карта сайта — Навылет! AI",
         description:
-          "Полный список разделов и страниц сайта navilet.ru, сгруппированных по темам.",
+          "Полный список разделов и страниц сайта navilet.ru, сгруппированных по темам.",
         isPartOf: { "@id": `${siteUrl}/#website` },
         publisher: { "@id": `${siteUrl}/#organization` },
       },
@@ -224,9 +224,8 @@ export default function KartaSaytaPage() {
             Карта сайта
           </h1>
           <p className="mt-5 max-w-2xl text-base text-body sm:text-lg">
-            Все разделы navilet.ru в одном списке — {totalLinks} страниц,
-            сгруппированных по темам. Если ищете инструкцию под свою платформу или
-            разбор конкретной задачи агентства, начните отсюда.
+            Все разделы navilet.ru в одном списке — {totalLinks} страниц,
+            сгруппированных по темам. Если ищете инструкцию под свою платформу или разбор конкретной задачи агентства, начните отсюда.
           </p>
         </section>
 

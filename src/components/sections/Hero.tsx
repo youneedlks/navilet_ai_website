@@ -126,8 +126,8 @@ export default function Hero() {
             variants={heroRise}
             className="mb-10 text-sm text-muted"
           >
-            Месяц бесплатно · подключение 0 ₽ · дальше{" "}
-            <span className="whitespace-nowrap">от {priceFromLabel}/мес</span>
+            Месяц бесплатно · подключение 0 ₽ · дальше{" "}
+            <span className="whitespace-nowrap">от {priceFromLabel}/мес</span>
           </motion.p>
 
           <PartnerLogos />

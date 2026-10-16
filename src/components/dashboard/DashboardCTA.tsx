@@ -55,8 +55,8 @@ export default function DashboardCTA() {
           variants={fadeInUp}
           className="mx-auto mb-10 max-w-lg text-base text-white/70 sm:text-lg"
         >
-          Подключите личный кабинет и получите доступ ко всей аналитике,
-          управлению диалогами и настройке виджета. 30 дней бесплатно с первого диалога.
+          Подключите личный кабинет и получите доступ ко всей аналитике,
+          управлению диалогами и настройке виджета. 30 дней бесплатно с первого диалога.
         </motion.p>
 
         <motion.div
@@ -72,7 +72,7 @@ export default function DashboardCTA() {
             className="!border-white/25 !text-white hover:!bg-white/10"
             onClick={() => openForm()}
           >
-            Связаться с нами
+            Связаться с нами
           </Button>
         </motion.div>
 
@@ -80,7 +80,7 @@ export default function DashboardCTA() {
           variants={fadeInUp}
           className="mt-6 text-sm text-white/40"
         >
-          30 дней бесплатно · Подключение 0 ₽ · Полный доступ ко всем функциям
+          30 дней бесплатно · Подключение 0 ₽ · Полный доступ ко всем функциям
         </motion.p>
       </motion.div>
     </section>

@@ -24,9 +24,9 @@ import {
 } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: { absolute: "ИИ для туроператора — B2B и B2C | Навылет! AI" },
+  title: { absolute: "ИИ для туроператора — B2B и B2C | Навылет! AI" },
   description:
-    "ИИ-ассистент для туроператоров: мгновенный подбор по вашей базе для агентов и виджет на B2C-сайт. Клиенты получают предложения 24/7. White-label, MAX.",
+    "ИИ-ассистент для туроператоров: мгновенный подбор по вашей базе для агентов и виджет на B2C-сайт. Клиенты получают предложения 24/7. White-label, MAX.",
   keywords: [
     "ИИ для туроператора",
     "ИИ-ассистент туроператор",
@@ -41,9 +41,9 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/dlya-turoperatorov" },
   openGraph: {
-    title: "ИИ для туроператора — «Навылет! AI» для B2B и B2C",
+    title: "ИИ для туроператора — «Навылет! AI» для B2B и B2C",
     description:
-      "Вооружите агентов ИИ-инструментом или встройте виджет на B2C-сайт. 24/7 подбор, white-label, интеграция Tourvisor.",
+      "Вооружите агентов ИИ-инструментом или встройте виджет на B2C-сайт. 24/7 подбор, white-label, интеграция Tourvisor.",
     url: "https://navilet.ru/dlya-turoperatorov",
     type: "website",
     locale: "ru_RU",
@@ -51,8 +51,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ИИ для туроператора — «Навылет! AI»",
-    description: "B2B и B2C ИИ-инструмент для туроператоров.",
+    title: "ИИ для туроператора — «Навылет! AI»",
+    description: "B2B и B2C ИИ-инструмент для туроператоров.",
     images: ["/og-image.png"],
   },
 };
@@ -63,38 +63,38 @@ const scenarios = [
   {
     icon: Briefcase,
     badge: "B2B-сценарий",
-    title: "ИИ-инструмент для агентов",
-    text: "Дайте партнёрским агентствам и собственным менеджерам мгновенный инструмент подбора по вашей базе и фидам туроператоров. Запрос на естественном языке → готовая подборка за секунды. Освобождает агентов от рутинных операций и сокращает цикл сделки.",
+    title: "ИИ-инструмент для агентов",
+    text: "Дайте партнёрским агентствам и собственным менеджерам мгновенный инструмент подбора по вашей базе и фидам туроператоров. Запрос на естественном языке → готовая подборка за секунды. Освобождает агентов от рутинных операций и сокращает цикл сделки.",
     points: [
-      "Запросы на естественном языке: «Турция на 7 ночей семьёй, бюджет 200к, all inclusive»",
-      "Поиск по 50+ направлениям через АПИ Tourvisor с учётом ваших комиссий",
-      "Сравнение нескольких вариантов в одном диалоге",
-      "Возможность встроить инструмент в B2B-кабинет агента",
+      "Запросы на естественном языке: «Турция на 7 ночей семьёй, бюджет 200к, all inclusive»",
+      "Поиск по 50+ направлениям через АПИ Tourvisor с учётом ваших комиссий",
+      "Сравнение нескольких вариантов в одном диалоге",
+      "Возможность встроить инструмент в B2B-кабинет агента",
     ],
   },
   {
     icon: Globe,
     badge: "B2C-сценарий",
-    title: "Виджет на ваш B2C-сайт",
-    text: "Превращает сайт туроператора в интерактивную витрину. Клиент получает живую консультацию и подборку туров без ожидания менеджера. Конверсия растёт за счёт обработки ночных и выходных обращений.",
+    title: "Виджет на ваш B2C-сайт",
+    text: "Превращает сайт туроператора в интерактивную витрину. Клиент получает живую консультацию и подборку туров без ожидания менеджера. Конверсия растёт за счёт обработки ночных и выходных обращений.",
     points: [
-      "Виджет на сайте + опциональный MAX‑мессенджер",
-      "White-label под бренд туроператора: лого, цвета, приветствие",
-      "Заявки на почту, в U‑ON, Telegram и MAX; другие CRM и вебхук — по заявке",
-      "Аналитика обращений: топ-направления, конверсия, нагрузка по часам",
+      "Виджет на сайте + опциональный MAX‑мессенджер",
+      "White-label под бренд туроператора: лого, цвета, приветствие",
+      "Заявки на почту, в U‑ON, Telegram и MAX; другие CRM и вебхук — по заявке",
+      "Аналитика обращений: топ-направления, конверсия, нагрузка по часам",
     ],
   },
 ];
 
 const outcomes = [
-  "Каждый агент закрывает в 3–5 раз больше сделок без расширения штата",
-  "B2C-сайт отвечает ночью и в выходные — на это время приходится больше половины обращений",
-  "Live-цены и наличие из Tourvisor — без отказов «уже забронировано»",
-  "White-label виджет — клиент видит ваш бренд, а не сторонний сервис",
-  "Подключение MAX‑мессенджера расширяет канал коммуникации с клиентом",
-  "Соответствие 152-ФЗ, договор поручения на обработку персональных данных — для корпоративной службы безопасности",
-  "Аналитика и сегментация диалогов в личном кабинете",
-  "Гибкая настройка скриптов под специфику туроператора и его направлений",
+  "Каждый агент закрывает в 3–5 раз больше сделок без расширения штата",
+  "B2C-сайт отвечает ночью и в выходные — на это время приходится больше половины обращений",
+  "Live-цены и наличие из Tourvisor — без отказов «уже забронировано»",
+  "White-label виджет — клиент видит ваш бренд, а не сторонний сервис",
+  "Подключение MAX‑мессенджера расширяет канал коммуникации с клиентом",
+  "Соответствие 152-ФЗ, договор поручения на обработку персональных данных — для корпоративной службы безопасности",
+  "Аналитика и сегментация диалогов в личном кабинете",
+  "Гибкая настройка скриптов под специфику туроператора и его направлений",
 ];
 
 const rub = (value: number) => `${value.toLocaleString("ru-RU")}\u00A0₽`;
@@ -115,26 +115,26 @@ const tariffsForOperators: {
     icon: Users,
     title: "Региональный туроператор",
     rec: "«Про» · «Стандарт» + Второй канал",
-    detail: `${addon("standart").totalDialogs} диалогов в месяц, Web + MAX, подключение 0 ₽`,
+    detail: `${addon("standart").totalDialogs} диалогов в месяц, Web + MAX, подключение 0 ₽`,
     price: `${rub(addon("standart").totalPrice)}/мес`,
-    when: "До 5 агентств-партнёров, базовая B2C-витрина",
+    when: "До 5 агентств-партнёров, базовая B2C-витрина",
     href: "/tarify#standart",
   },
   {
     icon: Briefcase,
     title: "Туроператор федерального уровня",
     rec: "«Про» · «Бизнес» + Второй канал",
-    detail: `${addon("biznes").totalDialogs} диалогов в месяц, Web + MAX, подключение 0 ₽`,
+    detail: `${addon("biznes").totalDialogs} диалогов в месяц, Web + MAX, подключение 0 ₽`,
     price: `${rub(addon("biznes").totalPrice)}/мес`,
-    when: "Активная B2C-витрина и от 5 до 15 агентских партнёров",
+    when: "Активная B2C-витрина и от 5 до 15 агентских партнёров",
     isPopular: true,
     href: "/tarify#biznes",
   },
   {
     icon: Network,
     title: "Сетевой холдинг / ассоциация",
-    rec: `Тариф «${plan("set").name}» — любая версия`,
-    detail: "Объём диалогов и цена — под ваш поток, Web + MAX",
+    rec: `Тариф «${plan("set").name}» — любая версия`,
+    detail: "Объём диалогов и цена — под ваш поток, Web + MAX",
     price: "Индивидуально",
     when: "Региональные сети, ассоциации, B2B-маркетплейсы туров",
     href: "/dlya-setey-agentstv",
@@ -152,7 +152,7 @@ const operatorJsonLd = {
         {
           "@type": "ListItem",
           position: 2,
-          name: "Для туроператоров",
+          name: "Для туроператоров",
           item: `${siteUrl}/dlya-turoperatorov`,
         },
       ],
@@ -161,9 +161,9 @@ const operatorJsonLd = {
       "@type": "WebPage",
       "@id": `${siteUrl}/dlya-turoperatorov#webpage`,
       url: `${siteUrl}/dlya-turoperatorov`,
-      name: "ИИ для туроператора — «Навылет! AI»",
+      name: "ИИ для туроператора — «Навылет! AI»",
       description:
-        "ИИ-ассистент для туроператоров: B2B-инструмент для агентов и B2C-виджет на сайт.",
+        "ИИ-ассистент для туроператоров: B2B-инструмент для агентов и B2C-виджет на сайт.",
       inLanguage: "ru-RU",
       isPartOf: { "@id": `${siteUrl}/#website` },
       breadcrumb: { "@id": `${siteUrl}/dlya-turoperatorov#breadcrumb` },
@@ -174,7 +174,7 @@ const operatorJsonLd = {
     {
       "@type": "Service",
       "@id": `${siteUrl}/dlya-turoperatorov#service`,
-      name: "ИИ-ассистент «Навылет! AI» для туроператоров",
+      name: "ИИ-ассистент «Навылет! AI» для туроператоров",
       serviceType: "ИИ-автоматизация туроператоров (B2B + B2C)",
       provider: { "@id": `${siteUrl}/#organization` },
       areaServed: { "@type": "Country", name: "Россия" },
@@ -184,7 +184,7 @@ const operatorJsonLd = {
           "Туроператоры (региональные, федеральные), сетевые холдинги, ассоциации турбизнеса",
       },
       description:
-        `ИИ-инструмент для туроператоров: вооружите агентов мгновенным подбором по вашей базе или встройте виджет на B2C-сайт. Интеграция Tourvisor, MAX‑мессенджер, white-label.`,
+        `ИИ-инструмент для туроператоров: вооружите агентов мгновенным подбором по вашей базе или встройте виджет на B2C-сайт. Интеграция Tourvisor, MAX‑мессенджер, white-label.`,
       offers: { "@id": `${siteUrl}/#product` },
     },
   ],
@@ -214,7 +214,7 @@ export default function ForOperatorsPage() {
               <ChevronRight className="h-4 w-4" aria-hidden />
             </li>
             <li aria-current="page" className="font-semibold text-heading">
-              Для туроператоров
+              Для туроператоров
             </li>
           </ol>
         </nav>
@@ -224,7 +224,7 @@ export default function ForOperatorsPage() {
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5">
             <Sparkles className="h-4 w-4 text-accent" />
             <span className="text-xs font-semibold text-accent sm:text-sm">
-              Решение для туроператоров
+              Решение для туроператоров
             </span>
           </div>
           <h1 className="font-display text-4xl font-bold leading-tight text-heading sm:text-5xl">
@@ -233,8 +233,7 @@ export default function ForOperatorsPage() {
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-base text-body sm:text-lg">
             «Навылет! AI» закрывает два сценария: даёт партнёрским агентам
-            мгновенный ИИ-инструмент подбора и превращает ваш B2C-сайт в
-            интерактивную витрину. Один продукт — два контура продаж.
+            мгновенный ИИ-инструмент подбора и превращает ваш B2C-сайт в интерактивную витрину. Один продукт — два контура продаж.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
@@ -259,11 +258,10 @@ export default function ForOperatorsPage() {
             </span>
             <p className="text-sm leading-relaxed text-body">
               <strong className="font-semibold text-heading">
-                Работаем на вашей базе туров
+                Работаем на вашей базе туров
               </strong>{" "}
               — подключаем её напрямую, ассистент показывает только ваши
-              предложения и цены. Запуск для туроператоров идёт пилотом: объём и
-              условия обсуждаем индивидуально, на взаимовыгодных условиях.
+              предложения и цены. Запуск для туроператоров идёт пилотом: объём и условия обсуждаем индивидуально, на взаимовыгодных условиях.
             </p>
           </div>
         </section>
@@ -274,11 +272,10 @@ export default function ForOperatorsPage() {
             <div className="text-center">
               <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl">
                 Два сценария использования{" "}
-                <span className="text-accent">в одном продукте</span>
+                <span className="text-accent">в одном продукте</span>
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-base text-body">
-                Один тариф, одна интеграция — работаете и с агентской сетью, и
-                с B2C-сайтом.
+                Один тариф, одна интеграция — работаете и с агентской сетью, и с B2C-сайтом.
               </p>
             </div>
             <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2">
@@ -317,7 +314,7 @@ export default function ForOperatorsPage() {
         <section className="mx-auto max-w-5xl px-5 py-16 sm:px-6 lg:px-8 lg:py-20">
           <div className="text-center">
             <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl">
-              Технологически совместим с задачами{" "}
+              Технологически совместим с задачами{" "}
               <span className="text-accent">корпоративного туроператора</span>
             </h2>
           </div>
@@ -326,17 +323,17 @@ export default function ForOperatorsPage() {
               {
                 icon: Cpu,
                 title: "GPT-5-mini + RAG",
-                text: "Языковая модель + Retrieval-Augmented Generation: ИИ не «выдумывает» данные о ценах и наличии, всё подтверждается у Tourvisor в реальном времени.",
+                text: "Языковая модель + Retrieval-Augmented Generation: ИИ не «выдумывает» данные о ценах и наличии, всё подтверждается у Tourvisor в реальном времени.",
               },
               {
                 icon: Layers,
                 title: "Multi-channel",
-                text: "Один ИИ-движок обслуживает Web‑виджет и MAX‑мессенджер одновременно. Подключение второго канала через надстройку.",
+                text: "Один ИИ-движок обслуживает Web‑виджет и MAX‑мессенджер одновременно. Подключение второго канала через надстройку.",
               },
               {
                 icon: ShieldCheck,
-                title: "Безопасность по 152-ФЗ",
-                text: "Шифрование TLS, договор поручения на обработку персональных данных с каждым клиентом, согласие посетителя на cookie. Подходит для службы безопасности корпоративного туроператора.",
+                title: "Безопасность по 152-ФЗ",
+                text: "Шифрование TLS, договор поручения на обработку персональных данных с каждым клиентом, согласие посетителя на cookie. Подходит для службы безопасности корпоративного туроператора.",
               },
             ].map((t) => (
               <div
@@ -387,9 +384,8 @@ export default function ForOperatorsPage() {
               Какой тариф для туроператора
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-base text-body">
-              Для туроператоров обычно нужен «Второй канал» (Web + MAX
-              одновременно): B2C-витрина + чат-канал с клиентом. Цены ниже — с
-              двумя каналами; вся линейка начинается от{" "}
+              Для туроператоров обычно нужен «Второй канал» (Web + MAX
+              одновременно): B2C-витрина + чат-канал с клиентом. Цены ниже — с двумя каналами; вся линейка начинается от{"\u00A0"}
               <Link
                 href="/skolko-stoit"
                 className="whitespace-nowrap font-medium text-accent underline decoration-accent/30 underline-offset-2 hover:decoration-accent"
@@ -446,11 +442,11 @@ export default function ForOperatorsPage() {
         <section className="bg-surface-alt">
           <div className="mx-auto max-w-3xl px-5 py-16 text-center sm:px-6 lg:px-8 lg:py-20">
             <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl">
-              Готовы вооружить агентов и B2C-сайт?
+              Готовы вооружить агентов и B2C-сайт?
             </h2>
             <p className="mt-4 text-base text-body sm:text-lg">
-              Расскажите о ваших задачах — подберём тариф и обсудим условия
-              пилота. 30 дней бесплатно с первого диалога, подключение 0 ₽.
+              Расскажите о ваших задачах — подберём тариф и обсудим условия
+              пилота. 30 дней бесплатно с первого диалога, подключение 0 ₽.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link

@@ -26,7 +26,7 @@ export default function Metrics() {
       >
         <motion.div variants={fadeInUp} className="mb-14 text-center">
           <h2 className="font-display text-3xl font-bold text-white sm:text-4xl">
-            Результаты на реальных данных
+            Результаты на реальных данных
           </h2>
         </motion.div>
 
@@ -58,11 +58,11 @@ export default function Metrics() {
           className="mt-14 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 border-t border-white/10 pt-10"
         >
           {[
-            "10 функций API",
+            "10 функций API",
             "50+ стран",
             "500+ курортов",
             "15+ safety-nets",
-            "Группы до 9 чел",
+            "Группы до 9 чел",
           ].map((item) => (
             <span
               key={item}
