@@ -8,6 +8,8 @@ import {
   vozvratFeatures,
   vozvratAntiSpam,
   vozvratFaqItems,
+  lidAddons,
+  reqVersionPublished,
 } from "@/lib/content";
 import {
   ChevronRight,
@@ -35,11 +37,11 @@ export const metadata: Metadata = {
       "Возврат клиентов: ИИ сам возвращает туристов в диалог | Навылет! AI",
   },
   description:
-    "ИИ-ассистент сам возвращает замолчавших клиентов: догоняющие сообщения с откликом до 40%, напоминания и подписка на снижение цены в MAX. Без спама.",
+    "ИИ-ассистент сам возвращает замолчавших клиентов в MAX: напоминание через сутки и подписка на снижение цены. В «Про» входит, в «Лиде» — опцией от 290 ₽.",
   keywords: [
     "возврат клиентов турагентство",
     "повторные продажи туры",
-    "догоняющие сообщения мессенджер",
+    "напоминание клиенту в мессенджере",
     "подписка на снижение цены тура",
     "автоматизация работы с базой турагентства",
     "ИИ возврат клиентов",
@@ -49,7 +51,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Возврат клиентов — ИИ сам возвращает туристов в диалог",
     description:
-      "Догоняющие сообщения с откликом до 40%, умные подписки и персональные предложения. Клиент вернулся — диалог оживает с полной памятью запроса.",
+      "Напоминание замолчавшим, подписка на снижение цены с памятью запроса и персональные предложения. До 40% клиентов возвращаются в диалог.",
     url: `${siteUrl}/vozvrat-klientov`,
     type: "website",
     locale: "ru_RU",
@@ -59,7 +61,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Возврат клиентов — ИИ возвращает туристов в диалог",
     description:
-      "Отклик до 40% на догоняющие сообщения. Умные подписки на снижение цены. Без спама.",
+      "До 40% замолчавших клиентов возвращаются в диалог. Подписка на снижение цены. Без спама.",
     images: ["/og-image.png"],
   },
 };
@@ -86,7 +88,7 @@ const vozvratJsonLd = {
       url: `${siteUrl}/vozvrat-klientov`,
       name: "Возврат клиентов: ИИ-ассистент сам возвращает туристов в диалог",
       description:
-        "Догоняющие сообщения, напоминания, умные подписки и персональные предложения в MAX‑мессенджере. Отклик до 40%.",
+        "Напоминание замолчавшим, подписка на снижение цены и персональные предложения в MAX‑мессенджере. До 40% клиентов возвращаются в диалог.",
       inLanguage: "ru-RU",
       isPartOf: { "@id": `${siteUrl}/#website` },
       breadcrumb: { "@id": `${siteUrl}/vozvrat-klientov#breadcrumb` },
@@ -96,10 +98,10 @@ const vozvratJsonLd = {
     {
       "@type": "Service",
       "@id": `${siteUrl}/vozvrat-klientov#service`,
-      name: "Возврат клиентов турагентства — догоняющие сообщения и подписки",
+      name: "Возврат клиентов турагентства — «Вернём клиента» и «Следим за ценой»",
       serviceType: "Автоматический возврат клиентов в диалог (retention)",
       description:
-        "Функция версии «Про» ИИ-ассистента «Навылет! AI»: догоняющие сообщения в MAX‑мессенджере с откликом до 40%, напоминания через день (~28% отклика), подписка на снижение цены и умная подписка с памятью запроса. Защита от спама: пауза 3 дня, стоп перед вылетом, отписка одним словом.",
+        "Функции ИИ-ассистента «Навылет! AI» в MAX‑мессенджере: «Вернём клиента» — через сутки одно напоминание замолчавшему клиенту (~28% отклика), «Следим за ценой» — подписка на снижение цены с памятью запроса. В версии «Про» входят, в версии «Лид» — опциями. Защита от спама: не больше 3 сообщений без ответа, стоп перед вылетом, отписка одним словом.",
       provider: { "@id": `${siteUrl}/#organization` },
       areaServed: "RU",
       audience: {
@@ -107,13 +109,36 @@ const vozvratJsonLd = {
         name: "Турагентства и туроператоры",
       },
       isRelatedTo: { "@id": `${siteUrl}/#product` },
-      offers: {
-        "@type": "Offer",
-        price: "1990",
-        priceCurrency: "RUB",
-        description:
-          "Входит в версию «Про» — от 1 990 ₽/мес, первый месяц бесплатно (до 200 диалогов).",
-      },
+      offers: [
+        {
+          "@type": "Offer",
+          name: "Версия «Про» — обе функции входят",
+          price: "1990",
+          priceCurrency: "RUB",
+          description: "Входят в версию «Про» — от 1 990 ₽/мес.",
+        },
+        {
+          "@type": "Offer",
+          name: `«${lidAddons.reoutreach.name}» — опция версии «Лид»`,
+          price: String(lidAddons.reoutreach.price),
+          priceCurrency: "RUB",
+          description: lidAddons.reoutreach.about,
+        },
+        {
+          "@type": "Offer",
+          name: `«${lidAddons.subscriptions.name}» — опция версии «Лид»`,
+          price: String(lidAddons.subscriptions.price),
+          priceCurrency: "RUB",
+          description: lidAddons.subscriptions.about,
+        },
+        {
+          "@type": "Offer",
+          name: "Обе опции версии «Лид»",
+          price: String(lidAddons.bundle),
+          priceCurrency: "RUB",
+          description: `«${lidAddons.reoutreach.name}» и «${lidAddons.subscriptions.name}» вместе — ${lidAddons.bundle} ₽/мес вместо ${lidAddons.bundleInstead} ₽.`,
+        },
+      ],
     },
     {
       "@type": "FAQPage",
@@ -170,7 +195,7 @@ export default function VozvratKlientovPage() {
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5">
             <MessageSquare className="h-4 w-4 text-accent" />
             <span className="text-xs font-semibold text-accent sm:text-sm">
-              Версия «Про» · MAX‑мессенджер
+              «Про» — входит · «Лид» — опцией · MAX
             </span>
           </div>
           <h1 className="font-display text-4xl font-bold leading-tight text-heading sm:text-5xl">
@@ -179,17 +204,17 @@ export default function VozvratKlientovPage() {
           </h1>
           <p className="mx-auto mt-5 max-w-3xl text-base text-body sm:text-lg">
             Клиент получил подборку и замолчал — обычно такой лид потерян.
-            ИИ-ассистент «Навылет! AI» возвращает его сам: догоняющее сообщение
-            приносит отклик до 40%, напоминание через день — около 28%, а умная
-            подписка следит за ценами и пишет клиенту, когда его тур подешевел.
-            Всё — автоматически и без спама.
+            ИИ-ассистент «Навылет! AI» возвращает его сам: через сутки один раз
+            напоминает о подборке — откликаются около 28% клиентов, а подписка
+            на снижение цены пишет клиенту, когда его тур подешевел. Всё —
+            автоматически и без спама.
           </p>
 
           {/* Ключевые цифры */}
           <div className="mx-auto mt-9 grid max-w-xl grid-cols-2 gap-3">
             {[
-              { stat: "до 40%", label: "отклик на догоняющее сообщение" },
-              { stat: "~28%", label: "отклик на напоминание через день" },
+              { stat: "до 40%", label: "замолчавших клиентов возвращаются в диалог" },
+              { stat: "~28%", label: "отвечают на напоминание через сутки" },
             ].map((s) => (
               <div
                 key={s.label}
@@ -210,7 +235,7 @@ export default function VozvratKlientovPage() {
         <section className="bg-surface-alt">
           <div className="mx-auto max-w-6xl px-5 py-14 sm:px-6 lg:px-8 lg:py-16">
             <h2 className="text-center font-display text-3xl font-bold text-heading sm:text-4xl">
-              Шесть механик, которые работают за вас
+              Пять механик, которые работают за вас
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-center text-base text-body">
               Каждое касание несёт клиенту ценность — конкретную выгоду по его
@@ -361,15 +386,37 @@ export default function VozvratKlientovPage() {
         <section className="mx-auto max-w-4xl px-5 py-14 sm:px-6 lg:px-8 lg:py-16">
           <div className="rounded-2xl border border-blue-subtle/50 bg-white p-6 text-center shadow-card sm:p-10">
             <h2 className="font-display text-2xl font-bold text-heading sm:text-3xl">
-              Доступно в версии <span className="text-accent">«Про»</span>
+              В «Про» — входит, в «Лиде» — <span className="text-accent">опцией</span>
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-sm text-body sm:text-base">
               Возврат клиентов, безлимитные консультации и проверка цен в чате
               входят в версию «Про» —{" "}
-              <span className="whitespace-nowrap">
-                от 1 990 ₽/мес
-              </span>
-              . Первый месяц бесплатно.
+              <span className="whitespace-nowrap">от 1 990 ₽/мес</span>. В
+              версии «Лид» обе функции подключаются в кабинете опциями.
+              {reqVersionPublished && " В «Заявке» «Вернём клиента» входит."}
+            </p>
+            <div className="mx-auto mt-6 grid max-w-xl grid-cols-1 gap-3 text-left sm:grid-cols-3">
+              {[
+                { name: `«${lidAddons.reoutreach.name}»`, price: lidAddons.reoutreach.price, note: "" },
+                { name: `«${lidAddons.subscriptions.name}»`, price: lidAddons.subscriptions.price, note: "" },
+                { name: "Обе опции", price: lidAddons.bundle, note: `вместо ${lidAddons.bundleInstead} ₽` },
+              ].map((o) => (
+                <div
+                  key={o.name}
+                  className="rounded-xl border border-blue-subtle/50 bg-surface-alt px-4 py-3"
+                >
+                  <p className="text-sm font-semibold text-heading">{o.name}</p>
+                  <p className="mt-1 whitespace-nowrap font-display text-lg font-bold text-accent">
+                    {o.price} ₽/мес
+                  </p>
+                  {o.note && <p className="text-xs text-muted">{o.note}</p>}
+                </div>
+              ))}
+            </div>
+            <p className="mx-auto mt-3 max-w-xl text-xs text-muted">
+              Опции работают в MAX, подключаются после выбора тарифа — на
+              пробном периоде их нет. Цифры отклика — по данным наших
+              ассистентов.
             </p>
             <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link
@@ -383,7 +430,7 @@ export default function VozvratKlientovPage() {
                 href="/tarify"
                 className="inline-flex items-center gap-1.5 rounded-xl border-2 border-accent/30 px-6 py-3 text-sm font-semibold text-accent transition-colors hover:border-accent hover:bg-blue-ice sm:text-base"
               >
-                Тарифы версии «Про»
+                Тарифы и опции
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>

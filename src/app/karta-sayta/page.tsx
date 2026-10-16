@@ -49,7 +49,7 @@ const groups: Group[] = [
       },
       {
         href: "/vozvrat-klientov",
-        label: "Возврат клиентов: догоняющие сообщения и подписки",
+        label: "Возврат клиентов: напоминание и подписка на цену",
       },
       {
         href: "/lidy-dlya-turagentstva",

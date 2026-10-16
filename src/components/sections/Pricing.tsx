@@ -9,6 +9,7 @@ import {
   crossChannelAddons,
   promo,
   reqVersionPublished,
+  lidAddons,
   type PricingPlan,
   type CrossChannelAddon,
   type AssistantVersionId,
@@ -123,9 +124,11 @@ function PlanCard({
   values,
   onSelect,
   onRegister,
+  version,
 }: {
   plan: PricingPlan;
   values: VersionPlanValues;
+  version: AssistantVersionId;
   onSelect: (plan: PricingPlan) => void;
   onRegister: (plan: PricingPlan) => void;
 }) {
@@ -218,6 +221,19 @@ function PlanCard({
           </span>
           <span>Канал на выбор — Web или MAX</span>
         </li>
+        {version === "lid" && (
+          <li className="flex items-start gap-2.5">
+            <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-accent/10">
+              <Check className="h-3 w-3 text-accent" />
+            </span>
+            <span>
+              В MAX — опции возврата клиентов{" "}
+              <a href="/tarify#opcii" className="whitespace-nowrap font-semibold text-heading underline decoration-accent/30 underline-offset-2 hover:text-accent">
+                от {lidAddons.reoutreach.price} ₽/мес
+              </a>
+            </span>
+          </li>
+        )}
       </ul>
       )}
 
@@ -555,6 +571,7 @@ export default function Pricing({ showHeader = true }: { showHeader?: boolean })
             values={planValues(plan, version)}
             onSelect={(p) => handleSelectPlan(p)}
             onRegister={(p) => handleRegister(p)}
+            version={version}
           />
         ))}
       </motion.div>

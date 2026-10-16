@@ -9,6 +9,7 @@ import {
   crossChannelAddons,
   tarifyFaqItems,
   reqVersionPublished,
+  lidAddons,
   priceFromLabel,
 } from "@/lib/content";
 import { ChevronRight, Check, Sparkles, Phone, Mail } from "lucide-react";
@@ -138,6 +139,35 @@ const tarifyJsonLd = {
       category: "B2B SaaS / TravelTech",
       image: `${siteUrl}/og-image.png`,
       offers: aggregateOfferJsonLd(`${siteUrl}/tarify#offers`),
+    },
+    {
+      // Опции «Лида» — отдельным продуктом: в общий диапазон цен тарифов они не входят.
+      "@type": "Product",
+      "@id": `${siteUrl}/tarify#lid-addons`,
+      name: "Дополнительные подключения версии «Лид»",
+      description:
+        "Функции версии «Лид» в MAX‑канале: «Вернём клиента» и «Следим за ценой». В версии «Про» входят в тариф.",
+      brand: { "@id": `${siteUrl}/#organization` },
+      category: "B2B SaaS / TravelTech",
+      offers: [
+        { key: "reoutreach", name: lidAddons.reoutreach.name, price: lidAddons.reoutreach.price, about: lidAddons.reoutreach.about },
+        { key: "subscriptions", name: lidAddons.subscriptions.name, price: lidAddons.subscriptions.price, about: lidAddons.subscriptions.about },
+        { key: "bundle", name: "Обе опции", price: lidAddons.bundle, about: `«${lidAddons.reoutreach.name}» и «${lidAddons.subscriptions.name}» вместе — вместо ${lidAddons.bundleInstead} ₽.` },
+      ].map((o) => ({
+        "@type": "Offer",
+        "@id": `${siteUrl}/tarify#addon-${o.key}`,
+        name: o.name,
+        price: String(o.price),
+        priceCurrency: "RUB",
+        url: `${siteUrl}/tarify#opcii`,
+        description: o.about,
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          price: String(o.price),
+          priceCurrency: "RUB",
+          unitText: "MONTHLY",
+        },
+      })),
     },
     {
       "@type": "FAQPage",
@@ -278,6 +308,58 @@ export default function TarifyPage() {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Опции «Лида» (прайс-лист 1.4, раздел 8) */}
+        <section id="opcii" className="scroll-mt-24">
+          <div className="mx-auto max-w-5xl px-5 py-16 sm:px-6 lg:px-8 lg:py-20">
+            <h2 className="text-center font-display text-3xl font-bold text-heading sm:text-4xl">
+              Опции версии «Лид» в MAX
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-center text-base text-body">
+              Возврат клиентов в «Про» входит в тариф. В «Лиде» его можно
+              подключить опциями — в кабинете, в любой момент.
+            </p>
+            <div className="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-4 sm:grid-cols-3">
+              {[
+                { title: `«${lidAddons.reoutreach.name}»`, price: lidAddons.reoutreach.price, text: lidAddons.reoutreach.about },
+                { title: `«${lidAddons.subscriptions.name}»`, price: lidAddons.subscriptions.price, text: lidAddons.subscriptions.about },
+                { title: "Обе опции", price: lidAddons.bundle, text: `Вместо ${lidAddons.bundleInstead} ₽ — выгоднее, чем по отдельности.` },
+              ].map((o) => (
+                <div
+                  key={o.title}
+                  className="flex flex-col rounded-2xl border border-blue-subtle/50 bg-white p-6 shadow-card"
+                >
+                  <h3 className="font-display text-lg font-bold text-heading">{o.title}</h3>
+                  <p className="mt-2 whitespace-nowrap font-display text-2xl font-bold text-accent">
+                    {o.price} ₽/мес
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-body">{o.text}</p>
+                </div>
+              ))}
+            </div>
+            <ul className="mx-auto mt-8 max-w-3xl space-y-2 text-sm text-body">
+              {[
+                "Работают в канале MAX — подключаются, когда MAX подключён.",
+                "Включаются и выключаются в кабинете в любой момент и начинают работать сразу; в счёт входят со следующего периода.",
+                "На пробном периоде не подключаются. Цена одна для всех тарифов «Лида».",
+                `В «Про» обе функции входят в тариф${reqVersionPublished ? "; в «Заявке» входит «Вернём клиента», «Следим за ценой» нет" : ""}.`,
+              ].map((t) => (
+                <li key={t} className="flex items-start gap-2.5">
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                  <span>{t}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-6 text-center text-sm">
+              <Link
+                href="/vozvrat-klientov"
+                className="font-medium text-accent underline decoration-accent/30 underline-offset-2 hover:decoration-accent"
+              >
+                Как ассистент возвращает клиентов
+              </Link>
+            </p>
           </div>
         </section>
 
