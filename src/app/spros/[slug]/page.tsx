@@ -17,6 +17,7 @@ import RegisterCta from "@/components/seo/RegisterCta";
 import { demandPages, getDemandPage } from "@/lib/seo/demand-pages";
 import { demandIndex, fmtPct, fmtPp, fmtRub } from "@/lib/seo/demand-index";
 import { jsonLdScript } from "@/lib/schema";
+import { priceFromLabel } from "@/lib/content";
 
 const siteUrl = "https://navilet.ru";
 
@@ -410,7 +411,7 @@ export default async function DemandPage({
                 href="/skolko-stoit"
                 className="inline-flex items-center gap-1 font-semibold text-accent hover:underline"
               >
-                Сколько стоит ассистент — от 990 ₽/мес{" "}
+                Сколько стоит ассистент — от {priceFromLabel}/мес{" "}
                 <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </div>

@@ -16,7 +16,7 @@ import {
   pillarSources,
   pricesCheckedAt,
 } from "@/lib/seo/digital-pillar";
-import { networkResults } from "@/lib/content";
+import { networkResults, priceFromLabel } from "@/lib/content";
 import {
   ChevronRight,
   ArrowRight,
@@ -402,7 +402,7 @@ export default function DigitalPillarPage() {
               {[
                 {
                   what: "ИИ-ассистент на сайте",
-                  price: "от 990 ₽/мес",
+                  price: `от ${priceFromLabel}/мес`,
                   note: "подключение 0 ₽, первый месяц бесплатно",
                 },
                 {

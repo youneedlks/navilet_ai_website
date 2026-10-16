@@ -10,6 +10,7 @@ import PromoBanner from "@/components/ui/PromoBanner";
 import MetrikaClickTracker from "@/components/analytics/MetrikaClickTracker";
 import ScrollReset from "@/components/utils/ScrollReset";
 import { jsonLdScript } from "@/lib/schema";
+import { priceFromLabel } from "@/lib/content";
 
 const inter = Inter({
   subsets: ["latin", "cyrillic"],
@@ -82,7 +83,7 @@ const keywords = [
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${siteName} — ИИ-ассистент для турагентств от 990 ₽/мес`,
+    default: `${siteName} — ИИ-ассистент для турагентств от ${priceFromLabel}/мес`,
     template: `%s | ${siteName}`,
   },
   description: siteDescription,

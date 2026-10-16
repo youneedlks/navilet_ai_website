@@ -3,14 +3,14 @@ import Link from "next/link";
 import Navigation from "@/components/sections/Navigation";
 import Footer from "@/components/sections/Footer";
 import FloatingCTA from "@/components/ui/FloatingCTA";
-import { faqItems } from "@/lib/content";
+import { faqItems, priceFromLabel } from "@/lib/content";
 import { ChevronRight, HelpCircle, MessageCircleQuestion } from "lucide-react";
 import { jsonLdScript } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: { absolute: "Частые вопросы про ИИ-ассистент | Навылет! AI" },
   description:
-    "Частые вопросы про ИИ-ассистент для турагентств: цены от 990 ₽/мес, подключение, безопасность, лимиты диалогов, интеграция с Tourvisor и MAX.",
+    `Частые вопросы про ИИ-ассистент для турагентств: цены от ${priceFromLabel}/мес, подключение, безопасность, лимиты диалогов, интеграция с Tourvisor и MAX.`,
   keywords: [
     "ИИ-ассистент турагентство FAQ",
     "ИИ-ассистент вопросы",

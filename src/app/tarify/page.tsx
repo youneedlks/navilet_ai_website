@@ -11,12 +11,13 @@ import {
   reqVersionPublished,
   type PricingPlan,
   type VersionPlanValues,
+  priceFromLabel,
 } from "@/lib/content";
 import { ChevronRight, Check, Sparkles, Phone, Mail } from "lucide-react";
 import { jsonLdScript } from "@/lib/schema";
 
 /** Минимальная цена для заголовков: «Заявка» от 790 ₽, без неё — «Лид» от 990 ₽. */
-const minPriceLabel = reqVersionPublished ? "790\u00A0₽" : "990\u00A0₽";
+const minPriceLabel = priceFromLabel;
 
 /** Версии и цены «от» — одной строкой для описаний; «Заявка» — по выключателю. */
 const versionsLine = reqVersionPublished

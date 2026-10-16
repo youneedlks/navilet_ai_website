@@ -12,7 +12,7 @@ import DashboardKabinetTour from "@/components/dashboard/DashboardKabinetTour";
 import DashboardBenefits from "@/components/dashboard/DashboardBenefits";
 import DashboardCTA from "@/components/dashboard/DashboardCTA";
 import { jsonLdScript } from "@/lib/schema";
-import { reqVersionPublished } from "@/lib/content";
+import { priceFromLabel } from "@/lib/content";
 
 export const metadata = {
   title: { absolute: "Личный кабинет ИИ-ассистента | Навылет! AI" },
@@ -104,9 +104,7 @@ export default function DashboardPage() {
               {
                 href: "/tarify",
                 title: "Тарифы",
-                text: reqVersionPublished
-                  ? "Прозрачные планы от 790 ₽/мес"
-                  : "Прозрачные планы от 990 ₽/мес",
+                text: `Прозрачные планы от ${priceFromLabel}/мес`,
               },
               {
                 href: "/integraciya-tourvisor",

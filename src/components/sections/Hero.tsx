@@ -9,7 +9,7 @@ import {
   heroScaleIn,
   fadeIn,
 } from "@/lib/animations";
-import { heroContent, promo } from "@/lib/content";
+import { heroContent, promo, priceFromLabel } from "@/lib/content";
 import { isPromoActive } from "@/lib/promo";
 import Button from "@/components/ui/Button";
 import DemoWidget from "@/components/DemoWidget";
@@ -126,7 +126,8 @@ export default function Hero() {
             variants={heroRise}
             className="mb-10 text-sm text-muted"
           >
-            Месяц бесплатно · подключение 0 ₽ · дальше от 990 ₽/мес
+            Месяц бесплатно · подключение 0 ₽ · дальше{" "}
+            <span className="whitespace-nowrap">от {priceFromLabel}/мес</span>
           </motion.p>
 
           <PartnerLogos />

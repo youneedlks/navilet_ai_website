@@ -13,6 +13,10 @@ import {
   costPaybackFootnote,
   skolkoStoitFaqItems,
   trial,
+  reqVersionPublished,
+  priceFrom,
+  priceFromLabel,
+  priceSelectionNote,
 } from "@/lib/content";
 import {
   ChevronRight,
@@ -61,10 +65,10 @@ const maxPro = Math.max(...proPlans.map((p) => p.price));
 export const metadata: Metadata = {
   title: {
     absolute:
-      "Сколько стоит ИИ для турагентства — от 990 ₽/мес | Навылет! AI",
+      `Сколько стоит ИИ для турагентства — от ${priceFromLabel}/мес | Навылет! AI`,
   },
   description:
-    "Сколько стоит ИИ-ассистент для турагентства: от 990 ₽/мес («Лид») и от 1 990 ₽/мес («Про»). Сравнение с ботом на заказ и наймом менеджера, расчёт окупаемости.",
+    `Сколько стоит ИИ-ассистент для турагентства: от ${priceFromLabel}/мес${priceSelectionNote}. Сравнение с ботом на заказ и наймом менеджера, расчёт окупаемости.`,
   keywords: [
     "сколько стоит ИИ для турагентства",
     "сколько стоит чат-бот для турагентства",
@@ -78,7 +82,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/skolko-stoit" },
   openGraph: {
     title:
-      "Сколько стоит ИИ-ассистент для турагентства — от 990 ₽/мес",
+      `Сколько стоит ИИ-ассистент для турагентства — от ${priceFromLabel}/мес`,
     description:
       "Полный разбор стоимости: тарифы обеих версий, цена диалога, сравнение с разработкой бота и наймом менеджера, расчёт окупаемости. Подключение 0 ₽, первый месяц бесплатно.",
     url: `${siteUrl}/skolko-stoit`,
@@ -88,7 +92,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Сколько стоит ИИ-ассистент для турагентства — от 990 ₽/мес",
+    title: `Сколько стоит ИИ-ассистент для турагентства — от ${priceFromLabel}/мес`,
     description:
       "Тарифы обеих версий, цена за диалог, сравнение с альтернативами и расчёт окупаемости. Первый месяц бесплатно.",
     images: ["/og-image.png"],
@@ -343,13 +347,25 @@ export default function SkolkoStoitPage() {
 
           <div className="mt-6 rounded-2xl border border-blue-subtle/50 bg-white p-6 shadow-card sm:p-7">
             <p className="text-lg font-semibold leading-relaxed text-heading sm:text-xl">
-              От {rub(minLid)} в месяц.
+              От {rub(priceFrom)} в месяц.
             </p>
             <p className="mt-3 text-base leading-relaxed text-body sm:text-lg">
-              За эти деньги агентство получает ассистента, который круглосуточно
-              ведёт живой диалог на сайте или в MAX, подбирает туры по реальной
-              базе с ценами и наличием и передаёт менеджеру готовую заявку с
-              контактом клиента. Подключение — 0 ₽, первый месяц бесплатно.
+              {reqVersionPublished ? (
+                <>
+                  За эти деньги агентство получает ассистента, который
+                  круглосуточно ведёт живой диалог на сайте или в MAX, собирает
+                  запрос — куда, когда, кто едет, бюджет — и контакт клиента, а
+                  тур подбирает ваш менеджер. С подбором туров по реальной базе
+                  с ценами и наличием — версия «Лид», от {rub(minLid)} в месяц.
+                </>
+              ) : (
+                <>
+                  За эти деньги агентство получает ассистента, который
+                  круглосуточно ведёт живой диалог на сайте или в MAX, подбирает
+                  туры по реальной базе с ценами и наличием и передаёт менеджеру
+                  готовую заявку с контактом клиента.
+                </>
+              )} Подключение — 0 ₽, первый месяц бесплатно.
               Дальше цена зависит только от числа диалогов: {rub(maxLid)} в
               месяц — это уже 500 диалогов.
             </p>
@@ -358,9 +374,11 @@ export default function SkolkoStoitPage() {
           <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
             {[
               {
-                value: rub(minLid),
+                value: rub(priceFrom),
                 label: "цена входа в месяц",
-                note: "версия «Лид», 40 диалогов",
+                note: reqVersionPublished
+                  ? "версия «Заявка», 40 диалогов"
+                  : "версия «Лид», 40 диалогов",
               },
               {
                 value: "0 ₽",
@@ -673,7 +691,7 @@ export default function SkolkoStoitPage() {
             <p className="mx-auto mt-4 max-w-xl text-base text-body sm:text-lg">
               Месяц работы ассистента ничего не стоит, а после теста в личном
               кабинете уже видно, сколько диалогов у вас реально бывает — и какой
-              тариф нужен. Дальше от {rub(minLid)} в месяц.
+              тариф нужен. Дальше от {rub(priceFrom)} в месяц.
             </p>
             <div className="mt-8 flex justify-center">
               <RegisterCta source="skolko_stoit_cta" />

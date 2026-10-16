@@ -7,6 +7,7 @@ import Footer from "@/components/sections/Footer";
 import RegisterCta from "@/components/seo/RegisterCta";
 import { platformPages, getPlatformPage } from "@/lib/seo/platform-pages";
 import { jsonLdScript } from "@/lib/schema";
+import { priceFromLabel } from "@/lib/content";
 
 const siteUrl = "https://navilet.ru";
 
@@ -242,7 +243,7 @@ export default async function PlatformPage({
                 Живое демо ассистента <ArrowRight className="h-3.5 w-3.5" />
               </Link>
               <Link href="/tarify" className="inline-flex items-center gap-1 font-semibold text-accent hover:underline">
-                Тарифы от 990 ₽/мес <ArrowRight className="h-3.5 w-3.5" />
+                Тарифы от {priceFromLabel}/мес <ArrowRight className="h-3.5 w-3.5" />
               </Link>
               <Link href="/integraciya-tourvisor" className="inline-flex items-center gap-1 font-semibold text-accent hover:underline">
                 Интеграция с Tourvisor <ArrowRight className="h-3.5 w-3.5" />

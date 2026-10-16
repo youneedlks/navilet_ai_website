@@ -9,6 +9,9 @@ import {
   pricingPlans,
   assistantVersions,
   networkResults,
+  priceFromLabel,
+  priceSelectionNote,
+  reqVersionPublished,
 } from "@/lib/content";
 import {
   ChevronRight,
@@ -49,7 +52,7 @@ export const metadata: Metadata = {
     absolute: "ИИ-ассистент турагентства в MAX: бот подбирает туры | Навылет! AI",
   },
   description:
-    "Бот турагентства в мессенджере MAX: подбор туров по Tourvisor в диалоге, подборка одной страницей, возврат замолчавших клиентов. Подключение 0 ₽, от 990 ₽/мес.",
+    `Бот турагентства в MAX: подбор туров по Tourvisor в диалоге, подборка и возврат клиентов. Подключение 0 ₽, от ${priceFromLabel}/мес${priceSelectionNote}.`,
   keywords: [
     "ИИ-ассистент в MAX",
     "бот для турагентства в MAX",
@@ -63,7 +66,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "ИИ-ассистент турагентства в MAX — подбор туров и возврат клиентов",
     description:
-      "Тот же ассистент, что на сайте, — в чате национального мессенджера. Карточки туров, подборка одной страницей, догоняющие сообщения и подписка на цену. От 990 ₽/мес.",
+      `Тот же ассистент, что на сайте, — в чате национального мессенджера. Карточки туров, подборка одной страницей, догоняющие сообщения и подписка на цену. От ${priceFromLabel}/мес.`,
     url: `${siteUrl}${path}`,
     type: "website",
     locale: "ru_RU",
@@ -73,7 +76,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "ИИ-ассистент турагентства в MAX",
     description:
-      "Подбор туров и возврат клиентов в мессенджере MAX. Подключение 0 ₽, от 990 ₽/мес.",
+      `Подбор туров и возврат клиентов в мессенджере MAX. Подключение 0 ₽, от ${priceFromLabel}/мес.`,
     images: ["/og-image.png"],
   },
 };
@@ -218,7 +221,7 @@ const jsonLd = {
         price: String(lid.priceFrom),
         priceCurrency: "RUB",
         description:
-          "Любой тариф от 990 ₽/мес работает в MAX как в основном канале. Подключение бота 0 ₽, первый месяц бесплатно.",
+          `Любой тариф от ${priceFromLabel}/мес работает в MAX как в основном канале. Подключение бота 0 ₽, первый месяц бесплатно.`,
       },
     },
     {
@@ -323,8 +326,8 @@ const channelRows = [
   },
   {
     feature: "Стоимость",
-    web: "Любой тариф от 990 ₽/мес",
-    max: "Любой тариф от 990 ₽/мес; вторым каналом — от +490 ₽/мес",
+    web: `Любой тариф от ${priceFromLabel}/мес`,
+    max: `Любой тариф от ${priceFromLabel}/мес; вторым каналом — от +${reqVersionPublished ? 390 : 490} ₽/мес`,
   },
 ];
 

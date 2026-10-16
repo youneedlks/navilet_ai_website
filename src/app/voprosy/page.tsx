@@ -4,13 +4,14 @@ import Navigation from "@/components/sections/Navigation";
 import Footer from "@/components/sections/Footer";
 import FloatingCTA from "@/components/ui/FloatingCTA";
 import { jsonLdScript } from "@/lib/schema";
+import { priceFromLabel } from "@/lib/content";
 
 const siteUrl = "https://navilet.ru";
 
 export const metadata: Metadata = {
   title: { absolute: "Вопросы и ответы про ИИ для турагентств | Навылет! AI" },
   description:
-    "Главные вопросы про ИИ для турагентств: что это, сколько стоит (от 990 ₽/мес), чем отличается от чат-бота, как подключить, 152-ФЗ и результаты по сети.",
+    `Главные вопросы про ИИ для турагентств: что это, сколько стоит (от ${priceFromLabel}/мес), чем отличается от чат-бота, как подключить, 152-ФЗ и результаты по сети.`,
   keywords: [
     "ИИ для турагентства вопросы",
     "что такое ИИ-ассистент",
