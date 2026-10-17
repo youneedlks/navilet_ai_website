@@ -555,22 +555,28 @@ export default function ChatBotPage() {
         <section className="bg-surface-alt">
           <div className="mx-auto max-w-5xl px-5 py-14 sm:px-6 lg:px-8">
             <h2 className="text-center font-display text-2xl font-bold text-heading sm:text-3xl">
-              Две версии чат-бота: «Лид» и «Про»
+              {reqVersionPublished
+                ? "Три версии чат-бота: «Заявка», «Лид» и «Про»"
+                : "Две версии чат-бота: «Лид» и «Про»"}
             </h2>
             <p className="mx-auto mt-3 max-w-2xl text-center text-base text-body">
               Движок один, режим работы разный. Версия меняется в кабинете в любой момент, первый месяц бесплатный на любой из них.
             </p>
-            <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2">
-              {[lid, pro].map((v) => (
+            <div
+              className={`mt-8 grid grid-cols-1 gap-5 ${
+                assistantVersions.length > 2 ? "lg:grid-cols-3" : "sm:grid-cols-2"
+              }`}
+            >
+              {assistantVersions.map((v) => (
                 <div
                   key={v.id}
                   className="flex flex-col rounded-2xl border border-blue-subtle/40 bg-white p-6 shadow-card"
                 >
-                  <div className="flex items-baseline justify-between gap-3">
-                    <h3 className="font-display text-lg font-bold text-heading">
+                  <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+                    <h3 className="whitespace-nowrap font-display text-lg font-bold text-heading">
                       {v.fullName}
                     </h3>
-                    <span className="font-display text-base font-bold text-accent">
+                    <span className="whitespace-nowrap font-display text-base font-bold text-accent">
                       от {rub(v.priceFrom)}/мес
                     </span>
                   </div>

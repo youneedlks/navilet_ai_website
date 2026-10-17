@@ -172,7 +172,7 @@ export default function PodborkiPage() {
             Подборки по ссылке — функция ИИ-ассистента «Навылет! AI» для турагентств: подобранные туры собираются в отдельную страницу под вашим брендом — фото отелей, варианты перелёта, живые цены. Тур
             редко выбирают в одиночку: клиент открывает страницу вне чата,
             сравнивает и пересылает близким, а вы видите, что открыли и где
-            появилась заявка. Работает в обеих версиях, в Web и MAX, без доплат.
+            появилась заявка. Работает в версиях «Лид» и «Про», в Web и MAX, без доплат.
           </p>
 
           <div className="mx-auto mt-9 grid max-w-lg grid-cols-2 gap-3">
@@ -432,7 +432,7 @@ export default function PodborkiPage() {
           <div className="mx-auto max-w-4xl px-5 py-14 sm:px-6 lg:px-8 lg:py-16">
             <div className="rounded-2xl border border-blue-subtle/50 bg-white p-6 text-center shadow-card sm:p-10">
               <h2 className="font-display text-2xl font-bold text-heading sm:text-3xl">
-                Входит в обе версии ассистента
+                Входит в «Лид» и «Про»
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-sm text-body sm:text-base">
                 Подборки работают и в версии «Лид» от 990 ₽/⁠мес, и в «Про»

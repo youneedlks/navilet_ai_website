@@ -241,31 +241,33 @@ const maxFeatures = [
     icon: MessageSquare,
     title: "Диалог как с менеджером",
     text: "Клиент пишет в чат свободным текстом — «Египет в ноябре на троих до 250 тысяч». Ассистент уточняет недостающее и не переспрашивает то, что уже сказано.",
-    versions: "обе версии",
+    versions: reqVersionPublished ? "все версии" : "обе версии",
   },
   {
     icon: Search,
     title: "Подбор по Tourvisor",
     text: "Поиск по всем туроператорам в реальном времени, карточки с фото, звёздами, питанием и ценой на момент запроса прямо в мессенджере.",
-    versions: "обе версии",
+    versions: reqVersionPublished ? "«Лид» и «Про»" : "обе версии",
   },
   {
     icon: Link2,
     title: "Кнопка «Подборка одной страницей»",
     text: "Под ответом ассистента — кнопка, открывающая страницу с турами под брендом агентства: галерея отеля, вкладка «Перелёт», «Обновить цены», «Забронировать».",
-    versions: "обе версии",
+    versions: reqVersionPublished ? "«Лид» и «Про»" : "обе версии",
   },
   {
     icon: Send,
     title: "Заявка менеджеру",
     text: "Контакт, запрос и выбранный тур уходят на почту, в U‑ON, Telegram и MAX с историей чата. Клиент остаётся в диалоге, а менеджер может перехватить его и ответить сам прямо из кабинета.",
-    versions: "обе версии",
+    versions: reqVersionPublished ? "все версии" : "обе версии",
   },
   {
     icon: RotateCcw,
     title: "Возврат замолчавших",
     text: "Получил подборку и пропал — через сутки ассистент один раз напомнит о себе и предложит обновлённую подборку (~28% отвечают).",
-    versions: "«Про» — входит, «Лид» — опция 290 ₽/мес",
+    versions: reqVersionPublished
+      ? "«Заявка» и «Про» — входит, «Лид» — 290 ₽/мес"
+      : "«Про» — входит, «Лид» — опция 290 ₽/мес",
   },
   {
     icon: TrendingDown,
@@ -372,7 +374,7 @@ export default function MaxPage() {
             <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5">
               <Smartphone className="h-4 w-4 text-accent" />
               <span className="text-xs font-semibold text-accent sm:text-sm">
-                Канал MAX · обе версии ассистента
+                Канал MAX · {reqVersionPublished ? "все версии" : "обе версии"} ассистента
               </span>
             </div>
             <h1 className="font-display text-4xl font-bold leading-tight text-heading sm:text-5xl">

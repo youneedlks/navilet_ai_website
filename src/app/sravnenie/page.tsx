@@ -518,7 +518,7 @@ export default function SravneniePage() {
                 href="/versii"
                 className="inline-flex items-center gap-1 font-semibold text-accent hover:underline"
               >
-                Версии «Лид» и «Про» <ArrowRight className="h-3.5 w-3.5" />
+                Версии ассистента <ArrowRight className="h-3.5 w-3.5" />
               </Link>
               <Link
                 href="/integraciya-tourvisor"

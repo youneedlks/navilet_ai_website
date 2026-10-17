@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Check, ChevronDown, ArrowRight, MessageSquare } from "lucide-react";
 import {
   assistantVersions,
+  demoAssistants,
   type AssistantVersion,
   type AssistantVersionId,
 } from "@/lib/content";
@@ -49,6 +50,8 @@ function VersionDetails({
       </div>
 
       <div className="mt-6 flex flex-col items-stretch gap-3 border-t border-blue-subtle/40 pt-5 sm:flex-row sm:items-center">
+        {/* Демо есть не у всех версий: у «Заявки» пока нет демо-ассистента */}
+        {demoAssistants[version.id] && (
         <Link
           href={`/demo?v=${version.id}`}
           onClick={() =>
@@ -62,11 +65,16 @@ function VersionDetails({
           <MessageSquare className="h-4 w-4" />
           Попробовать «{version.name}» в демо
         </Link>
+        )}
         <button
           onClick={() =>
             openForm({ versionId: version.id, source: `${source}_details` })
           }
-          className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg border-2 border-accent/30 px-6 py-[10px] text-sm font-semibold text-accent transition-colors hover:border-accent hover:bg-blue-ice sm:text-base"
+          className={
+            demoAssistants[version.id]
+              ? "inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg border-2 border-accent/30 px-6 py-[10px] text-sm font-semibold text-accent transition-colors hover:border-accent hover:bg-blue-ice sm:text-base"
+              : "inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-accent/20 transition-colors hover:bg-accent-hover sm:text-base"
+          }
         >
           Подключить бесплатно
           <ArrowRight className="h-4 w-4" />
@@ -112,7 +120,11 @@ export default function VersionPicker({
 
   return (
     <div>
-      <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+      <div
+        className={`grid grid-cols-1 gap-5 ${
+          assistantVersions.length > 2 ? "lg:grid-cols-3" : "lg:grid-cols-2"
+        }`}
+      >
         {assistantVersions.map((version) => {
           const active = selected === version.id;
           const Icon = versionIcons[version.id];
@@ -189,7 +201,11 @@ export default function VersionPicker({
                     active ? "text-accent" : "text-muted group-hover:text-accent"
                   }`}
                 >
-                  {active ? "Скрыть функционал" : "Весь функционал и демо"}
+                  {active
+                    ? "Скрыть функционал"
+                    : demoAssistants[version.id]
+                      ? "Весь функционал и демо"
+                      : "Весь функционал"}
                   <ChevronDown
                     className={`h-3.5 w-3.5 transition-transform ${
                       active ? "rotate-180" : ""

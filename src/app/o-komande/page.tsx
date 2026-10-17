@@ -12,7 +12,7 @@ import {
   Building2,
   ArrowRight,
 } from "lucide-react";
-import { companyInfo, events } from "@/lib/content";
+import { companyInfo, events, reqVersionPublished } from "@/lib/content";
 import { jsonLdScript } from "@/lib/schema";
 
 export const metadata: Metadata = {
@@ -110,8 +110,8 @@ const whatWeDo = [
     label: "Установка виджета",
   },
   {
-    title: "Две версии ассистента",
-    text: "«Лид» собирает заявки и передаёт менеджеру, «Про» консультирует без ограничений и возвращает ушедших клиентов.",
+    title: reqVersionPublished ? "Три версии ассистента" : "Две версии ассистента",
+    text: `${reqVersionPublished ? "«Заявка» собирает запрос и контакт для менеджера без подбора туров. " : ""}«Лид» собирает заявки и передаёт менеджеру, «Про» консультирует без ограничений и возвращает ушедших клиентов.`,
     href: "/versii",
     label: "Сравнение версий",
   },

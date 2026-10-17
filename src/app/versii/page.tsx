@@ -11,6 +11,7 @@ import {
   versionCompareGroups,
   versionCompareMaxNote,
   versiiFaqItems,
+  reqVersionPublished,
 } from "@/lib/content";
 import {
   ChevronRight,
@@ -28,14 +29,20 @@ const siteUrl = "https://navilet.ru";
 
 const LidIcon = versionIcons.lid;
 const ProIcon = versionIcons.pro;
+const ReqIcon = versionIcons.req;
+const minVersionPrice = Math.min(...assistantVersions.map((v) => v.priceFrom));
 
 export const metadata: Metadata = {
   title: {
     absolute:
-      "Версии «Лид» и «Про»: сравнение и цены от 990 ₽ | Навылет! AI",
+      reqVersionPublished
+        ? "Версии «Заявка», «Лид» и «Про»: сравнение и цены от 790 ₽ | Навылет! AI"
+        : "Версии «Лид» и «Про»: сравнение и цены от 990 ₽ | Навылет! AI",
   },
   description:
-    "Две версии ИИ-ассистента для турагентства: «Лид» — заявки менеджеру от 990 ₽/мес, «Про» — консультации и возврат клиентов от 1 990 ₽/мес. Сравнение в таблице.",
+    reqVersionPublished
+      ? "Три версии ИИ-ассистента: «Заявка» — запрос без подбора от 790 ₽/мес, «Лид» — подбор туров и заявка от 990 ₽, «Про» — консультации от 1 990 ₽."
+      : "Две версии ИИ-ассистента для турагентства: «Лид» — заявки менеджеру от 990 ₽/мес, «Про» — консультации и возврат клиентов от 1 990 ₽/мес. Сравнение в таблице.",
   keywords: [
     "версии ИИ-ассистента",
     "ИИ лидогенерация турагентство",
@@ -47,9 +54,13 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/versii" },
   openGraph: {
-    title: "Версии ИИ-ассистента «Лид» и «Про» — какое решение для вашего агентства",
+    title: reqVersionPublished
+      ? "Версии ИИ-ассистента «Заявка», «Лид» и «Про» — какое решение для вашего агентства"
+      : "Версии ИИ-ассистента «Лид» и «Про» — какое решение для вашего агентства",
     description:
-      "«Лид» собирает готовые заявки для менеджеров от 990 ₽/мес. «Про» консультирует, сопровождает и возвращает клиентов. Сравните и попробуйте обе версии в демо.",
+      reqVersionPublished
+        ? "«Заявка» собирает запрос и контакт от 790 ₽/мес, «Лид» подбирает туры и передаёт заявку от 990 ₽, «Про» консультирует и возвращает клиентов. Сравните версии."
+        : "«Лид» собирает готовые заявки для менеджеров от 990 ₽/мес. «Про» консультирует, сопровождает и возвращает клиентов. Сравните и попробуйте обе версии в демо.",
     url: `${siteUrl}/versii`,
     type: "website",
     locale: "ru_RU",
@@ -57,9 +68,13 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Версии ИИ-ассистента «Лид» и «Про» — сравнение",
+    title: reqVersionPublished
+      ? "Версии ИИ-ассистента «Заявка», «Лид» и «Про» — сравнение"
+      : "Версии ИИ-ассистента «Лид» и «Про» — сравнение",
     description:
-      "«Лид» — заявки менеджерам от 990 ₽/мес. «Про» — консультации и возврат клиентов. Первый месяц бесплатно.",
+      reqVersionPublished
+        ? "«Заявка» — от 790 ₽/мес, «Лид» — от 990 ₽, «Про» — от 1 990 ₽. Первый месяц бесплатно."
+        : "«Лид» — заявки менеджерам от 990 ₽/мес. «Про» — консультации и возврат клиентов. Первый месяц бесплатно.",
     images: ["/og-image.png"],
   },
 };
@@ -84,9 +99,12 @@ const versiiJsonLd = {
       "@type": "WebPage",
       "@id": `${siteUrl}/versii#webpage`,
       url: `${siteUrl}/versii`,
-      name: "Версии ИИ-ассистента «Лид» и «Про» — сравнение",
-      description:
-        "Сравнение двух версий ИИ-ассистента «Навылет! AI»: «Лид» для лидогенерации и «Про» для полного сопровождения клиентов.",
+      name: reqVersionPublished
+        ? "Версии ИИ-ассистента «Заявка», «Лид» и «Про» — сравнение"
+        : "Версии ИИ-ассистента «Лид» и «Про» — сравнение",
+      description: reqVersionPublished
+        ? "Сравнение трёх версий ИИ-ассистента «Навылет! AI»: «Заявка» собирает запрос без подбора туров, «Лид» — для лидогенерации, «Про» — для полного сопровождения клиентов."
+        : "Сравнение двух версий ИИ-ассистента «Навылет! AI»: «Лид» для лидогенерации и «Про» для полного сопровождения клиентов.",
       inLanguage: "ru-RU",
       isPartOf: { "@id": `${siteUrl}/#website` },
       breadcrumb: { "@id": `${siteUrl}/versii#breadcrumb` },
@@ -99,17 +117,18 @@ const versiiJsonLd = {
       // «от 990 ₽», а ИИ-поиск получает цену вместе с описанием версий.
       "@type": "Product",
       "@id": `${siteUrl}/versii#product`,
-      name: "ИИ-ассистент «Навылет! AI»: версии «Лид» и «Про»",
-      description:
-        "Две версии ИИ-ассистента для турагентства на одном движке: «Лид» — лидогенерация и готовые заявки менеджеру, «Про» — консультации без ограничений, проверка цен в диалоге и возврат клиентов в MAX.",
+      name: reqVersionPublished
+        ? "ИИ-ассистент «Навылет! AI»: версии «Заявка», «Лид» и «Про»"
+        : "ИИ-ассистент «Навылет! AI»: версии «Лид» и «Про»",
+      description: `${reqVersionPublished ? "Три версии ИИ-ассистента для турагентства: «Заявка» — сбор запроса и контакта без подбора туров, тур подбирает менеджер; " : "Две версии ИИ-ассистента для турагентства на одном движке: "}«Лид» — лидогенерация и готовые заявки менеджеру, «Про» — консультации без ограничений, проверка цен в диалоге и возврат клиентов в MAX.`,
       brand: { "@id": `${siteUrl}/#organization` },
       category: "B2B SaaS / TravelTech",
       offers: {
         "@type": "AggregateOffer",
         priceCurrency: "RUB",
-        lowPrice: "990",
+        lowPrice: String(minVersionPrice),
         highPrice: "7990",
-        offerCount: 2,
+        offerCount: assistantVersions.length,
         availability: "https://schema.org/InStock",
         url: `${siteUrl}/tarify`,
         offers: assistantVersions.map((v) => ({
@@ -207,20 +226,26 @@ export default function VersiiPage() {
               </span>
             </div>
             <h1 className="font-display text-4xl font-bold leading-tight text-heading sm:text-5xl">
-              Две версии ассистента:{" "}
-              <span className="whitespace-nowrap text-accent">
-                «Лид» и «Про»
+              {reqVersionPublished ? "Три версии ассистента:" : "Две версии ассистента:"}{" "}
+              <span className="text-accent">
+                {reqVersionPublished ? "«Заявка», «Лид» и «Про»" : "«Лид» и «Про»"}
               </span>
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-base text-body sm:text-lg">
+              {reqVersionPublished && (
+                <>
+                  <strong className="font-semibold text-heading">«Заявка»</strong> —
+                  собирает запрос и контакт, тур подбирает ваш менеджер, Турвизор не нужен, <span className="whitespace-nowrap">от 790 ₽/мес</span>.{" "}
+                </>
+              )}
               <strong className="font-semibold text-heading">«Лид»</strong> —
               лидогенерация: живой диалог, подбор туров и готовая заявка вашему
               менеджеру,{" "}
               <span className="whitespace-nowrap">от 990 ₽/мес</span>.{" "}
               <strong className="font-semibold text-heading">«Про»</strong> —
               полноценный инструмент менеджера: консультации, проверка цен и возврат клиентов,{" "}
-              <span className="whitespace-nowrap">от 1 990 ₽/мес</span>. Обе
-              работают в Web‑виджете и MAX.
+              <span className="whitespace-nowrap">от 1 990 ₽/мес</span>.{" "}
+              {reqVersionPublished ? "Все" : "Обе"} работают в Web‑виджете и MAX.
             </p>
           </div>
 
@@ -243,7 +268,8 @@ export default function VersiiPage() {
             Что умеет каждая версия
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-center text-base text-body">
-            Полный список возможностей: слева — то, что делает «Лид» за{"\u00A0"}
+            {reqVersionPublished && "Полный список возможностей каждой версии. "}
+            {!reqVersionPublished && <>Полный список возможностей: слева — то, что делает «Лид» за{"\u00A0"}
             <span className="whitespace-nowrap">
               {lid.priceFrom.toLocaleString("ru-RU")} ₽/мес
             </span>
@@ -251,18 +277,24 @@ export default function VersiiPage() {
             <span className="whitespace-nowrap">
               {pro.priceFrom.toLocaleString("ru-RU")} ₽/мес
             </span>
-            .
+            .</>}
           </p>
 
-          <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2">
-            {[lid, pro].map((version) => (
+          <div
+            className={`mt-10 grid grid-cols-1 gap-6 ${
+              assistantVersions.length > 2 ? "lg:grid-cols-3" : "lg:grid-cols-2"
+            }`}
+          >
+            {assistantVersions.map((version) => (
               <div
                 key={version.id}
                 className="rounded-2xl border border-blue-subtle/50 bg-white p-6 shadow-card sm:p-7"
               >
                 <div className="flex items-center gap-3 border-b border-blue-subtle/40 pb-4">
                   <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10">
-                    {version.id === "lid" ? (
+                    {version.id === "req" ? (
+                      <ReqIcon className="h-5 w-5 text-accent" />
+                    ) : version.id === "lid" ? (
                       <LidIcon className="h-5 w-5 text-accent" />
                     ) : (
                       <ProIcon className="h-5 w-5 text-accent" />
@@ -336,7 +368,7 @@ export default function VersiiPage() {
                   <ArrowRight className="h-4 w-4" />
                 </span>
                 <span className="mt-1 block text-sm leading-relaxed text-body">
-                  Есть в обеих версиях: клиент открывает страницу с турами под брендом агентства, вы видите просмотры и заявки.
+                  Есть в «Лид» и «Про»: клиент открывает страницу с турами под брендом агентства, вы видите просмотры и заявки.
                 </span>
               </span>
             </Link>
@@ -368,6 +400,7 @@ export default function VersiiPage() {
             Чем отличаются версии — полное сравнение
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-center text-base text-body">
+            {reqVersionPublished && "«Заявка» собирает запрос, а тур подбирает менеджер. "}
             Это разные инструменты на одном движке: «Лид» ловит заявку и передаёт её живому менеджеру, «Про» сам сопровождает клиента до брони и возвращает ушедших.
           </p>
 
@@ -375,13 +408,24 @@ export default function VersiiPage() {
               строкой, под ней две колонки со значениями «Лид» и «Про». */}
           <div className="mt-10 overflow-hidden rounded-2xl border border-blue-subtle/50">
             <div className="sm:overflow-x-auto">
-              <table className="block w-full text-sm sm:table sm:min-w-[640px]">
+              <table className={`block w-full text-sm sm:table ${reqVersionPublished ? "sm:min-w-[820px]" : "sm:min-w-[640px]"}`}>
                 <thead className="hidden sm:table-header-group">
                   <tr className="bg-surface-alt">
-                    <th className="w-[40%] px-4 py-3.5 text-left font-semibold text-heading sm:px-5">
+                    <th className={`${reqVersionPublished ? "w-[31%]" : "w-[40%]"} px-4 py-3.5 text-left font-semibold text-heading sm:px-5`}>
                       Возможность
                     </th>
-                    <th className="w-[30%] px-4 py-3.5 text-left sm:px-5">
+                    {reqVersionPublished && (
+                      <th className="w-[23%] px-4 py-3.5 text-left sm:px-5">
+                        <span className="flex items-center gap-2 font-display font-bold text-heading">
+                          <ReqIcon className="h-4 w-4 text-accent" />
+                          «Заявка»
+                        </span>
+                        <span className="mt-0.5 block text-xs font-medium text-accent">
+                          от 790 ₽/мес
+                        </span>
+                      </th>
+                    )}
+                    <th className={`${reqVersionPublished ? "w-[23%]" : "w-[30%]"} px-4 py-3.5 text-left sm:px-5`}>
                       <span className="flex items-center gap-2 font-display font-bold text-heading">
                         <LidIcon className="h-4 w-4 text-accent" />
                         «Лид»
@@ -390,7 +434,7 @@ export default function VersiiPage() {
                         от 990 ₽/мес
                       </span>
                     </th>
-                    <th className="w-[30%] px-4 py-3.5 text-left sm:px-5">
+                    <th className={`${reqVersionPublished ? "w-[23%]" : "w-[30%]"} px-4 py-3.5 text-left sm:px-5`}>
                       <span className="flex items-center gap-2 font-display font-bold text-heading">
                         <ProIcon className="h-4 w-4 text-accent" />
                         «Про»
@@ -406,7 +450,7 @@ export default function VersiiPage() {
                     <Fragment key={group.title}>
                       <tr className="block bg-blue-ice/40 sm:table-row">
                         <td
-                          colSpan={3}
+                          colSpan={reqVersionPublished ? 4 : 3}
                           className="block px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-accent sm:table-cell sm:px-5"
                         >
                           {group.title}
@@ -415,11 +459,19 @@ export default function VersiiPage() {
                       {group.rows.map((row) => (
                         <tr
                           key={row.feature}
-                          className="grid grid-cols-2 gap-x-4 border-t border-blue-subtle/30 bg-white px-4 py-3.5 sm:table-row sm:px-0 sm:py-0 sm:align-top sm:hover:bg-blue-ice/15"
+                          className={`grid ${reqVersionPublished ? "grid-cols-3 gap-x-2 text-[13px] hyphens-auto sm:text-sm sm:hyphens-manual" : "grid-cols-2 gap-x-3"} border-t border-blue-subtle/30 bg-white px-4 py-3.5 sm:table-row sm:px-0 sm:py-0 sm:align-top sm:hover:bg-blue-ice/15`}
                         >
-                          <td className="col-span-2 block font-medium text-heading sm:table-cell sm:px-5 sm:py-3">
+                          <td className={`${reqVersionPublished ? "col-span-3 text-sm hyphens-manual" : "col-span-2"} block font-medium text-heading sm:table-cell sm:px-5 sm:py-3`}>
                             {row.feature}
                           </td>
+                          {reqVersionPublished && (
+                            <td className="mt-2 block sm:mt-0 sm:table-cell sm:px-5 sm:py-3">
+                              <span className="mb-1 block text-[11px] font-bold uppercase tracking-wide text-muted sm:hidden">
+                                Заявка
+                              </span>
+                              <CompareCell value={row.req ?? "—"} />
+                            </td>
+                          )}
                           <td className="mt-2 block sm:mt-0 sm:table-cell sm:px-5 sm:py-3">
                             <span className="mb-1 block text-[11px] font-bold uppercase tracking-wide text-muted sm:hidden">
                               Лид
@@ -450,7 +502,7 @@ export default function VersiiPage() {
               href="/tarify"
               className="inline-flex min-h-10 items-center gap-1.5 text-sm font-semibold text-accent transition-colors hover:text-accent-hover"
             >
-              Смотреть тарифы обеих версий
+              {reqVersionPublished ? "Смотреть тарифы всех версий" : "Смотреть тарифы обеих версий"}
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
@@ -525,10 +577,12 @@ export default function VersiiPage() {
         <section className="bg-surface-alt">
           <div className="mx-auto max-w-3xl px-5 py-16 text-center sm:px-6 lg:px-8 lg:py-20">
             <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl">
-              Попробуйте обе версии бесплатно
+              {reqVersionPublished ? "Попробуйте любую версию бесплатно" : "Попробуйте обе версии бесплатно"}
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-base text-body sm:text-lg">
-              Первый месяц — бесплатно на любой версии: «Лид» от{"\u00A0"}
+              Первый месяц — бесплатно на любой версии:{" "}
+              {reqVersionPublished && <>«Заявка» от{"\u00A0"}790 ₽/мес,{" "}</>}
+              «Лид» от{"\u00A0"}
               {lid.priceFrom.toLocaleString("ru-RU")} ₽/мес, «Про» от{"\u00A0"}
               {pro.priceFrom.toLocaleString("ru-RU")} ₽/мес после теста.
               Подключение — 0 ₽.

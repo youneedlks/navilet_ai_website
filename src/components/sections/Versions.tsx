@@ -6,8 +6,9 @@ import { Layers, ArrowRight } from "lucide-react";
 import { fadeInUp } from "@/lib/animations";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import VersionPicker from "@/components/sections/VersionPicker";
+import { reqVersionPublished } from "@/lib/content";
 
-/** Секция «Две версии ассистента» на главной: выбор формата под модель агентства. */
+/** Секция «Версии ассистента» на главной: выбор формата под модель агентства. */
 export default function Versions() {
   return (
     <SectionWrapper id="versions" alt>
@@ -15,16 +16,19 @@ export default function Versions() {
         <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5">
           <Layers className="h-4 w-4 text-accent" />
           <span className="text-xs font-semibold text-accent sm:text-sm">
-            Два формата под модель вашего агентства
+            {reqVersionPublished ? "Три формата" : "Два формата"} под модель вашего агентства
           </span>
         </div>
         <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl lg:text-[2.75rem]">
-          Один ассистент — <span className="text-accent">две версии</span>
+          Один ассистент —{" "}
+          <span className="text-accent">{reqVersionPublished ? "три версии" : "две версии"}</span>
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-base text-body">
-          «Лид» собирает готовые заявки для ваших менеджеров.
+          {reqVersionPublished &&
+            "«Заявка» собирает запрос и контакт — тур подбирает ваш менеджер, Турвизор не нужен. "}
+          «Лид» подбирает туры и передаёт готовую заявку менеджеру.
           «Про» — полноценный инструмент: консультирует, сопровождает
-          и возвращает клиентов. Выберите свой формат — и попробуйте его в демо.
+          и возвращает клиентов. Выберите свой формат.
         </p>
       </motion.div>
 

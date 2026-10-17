@@ -8,6 +8,7 @@ import { platformPages } from "@/lib/seo/platform-pages";
 import { scenarioPages } from "@/lib/seo/scenario-pages";
 import { demandPages } from "@/lib/seo/demand-pages";
 import { jsonLdScript } from "@/lib/schema";
+import { reqVersionPublished } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: { absolute: "Карта сайта — все разделы Навылет! AI" },
@@ -41,7 +42,9 @@ const groups: Group[] = [
       { href: "/demo", label: "Демо — попробовать ассистента без регистрации" },
       {
         href: "/versii",
-        label: "Версии ассистента: «Лид» и «Про» — сравнение",
+        label: reqVersionPublished
+          ? "Версии ассистента: «Заявка», «Лид» и «Про» — сравнение"
+          : "Версии ассистента: «Лид» и «Про» — сравнение",
       },
       {
         href: "/podborki",
