@@ -203,6 +203,7 @@
 - Модуль Tourvisor на сайт: как поставить и что добавить — https://navilet.ru/blog/modul-tourvisor-na-sayt
 - API Tourvisor для турагентства: XML-шлюзы, цены, доступ — https://navilet.ru/blog/api-tourvisor
 - Tourvisor, Qui-Quo, U-ON и CRM: как связать в 2026 — https://navilet.ru/blog/tourvisor-qui-quo-u-on-crm
+- Как работать в Tourvisor быстрее: 12 приёмов турагента — https://navilet.ru/blog/kak-rabotat-v-tourvisor-bystree
 - Бот для турагентства в MAX: как завести и что он умеет — https://navilet.ru/blog/bot-turagentstva-v-max
 - Сколько стоит ИИ для турагентства: разбор и расчёт — https://navilet.ru/blog/skolko-stoit-ii-dlya-turagentstva
 - Чат-бот или ИИ-ассистент для турагентства: в чём разница — https://navilet.ru/blog/chat-bot-vs-ii-assistent
