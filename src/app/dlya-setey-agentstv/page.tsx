@@ -341,6 +341,13 @@ export default function NetworksPage() {
             </div>
             <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
               <Link
+                href="/dlya-turagentstv"
+                className="inline-flex items-center gap-1 font-semibold text-accent hover:underline"
+              >
+                ИИ для небольшого турагентства{" "}
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+              <Link
                 href="/lidy-dlya-turagentstva"
                 className="inline-flex items-center gap-1 font-semibold text-accent hover:underline"
               >

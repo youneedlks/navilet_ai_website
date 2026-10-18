@@ -92,7 +92,7 @@ const groups: Group[] = [
         href: "/cifrovizaciya-turagentstva",
         label: "Цифровизация турагентства: гид и чеклист",
       },
-      { href: "/dlya-turagentstv", label: "Для турагентств" },
+      { href: "/dlya-turagentstv", label: "Для небольших турагентств и частных турагентов" },
       { href: "/dlya-turoperatorov", label: "Для туроператоров" },
       { href: "/dlya-setey-agentstv", label: "Для сетей агентств и франшиз" },
       { href: "/keisy/mgp", label: "Кейс: сеть «Магазины горящих путёвок»" },
