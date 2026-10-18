@@ -237,7 +237,7 @@ export default function TourvisorIntegrationPage() {
                   <p className="font-display text-lg font-semibold text-heading">
                     {item.label}
                   </p>
-                  <p className="mt-1 text-sm text-muted">{item.sub}</p>
+                  <p className="mt-1 hyphens-auto text-sm text-muted">{item.sub}</p>
                 </li>
               ))}
             </ul>
@@ -377,9 +377,9 @@ export default function TourvisorIntegrationPage() {
                 text: "Как поставить поиск туров Tourvisor, сколько стоит и что добавить рядом.",
               },
               {
-                href: "/vidzhet",
-                title: "Установка виджета на ваш сайт",
-                text: "Пошаговые инструкции для Tilda, WordPress, 1С-Битрикс, Wix и самописных сайтов.",
+                href: "/blog/api-tourvisor",
+                title: "API Tourvisor",
+                text: "XML-шлюзы, цены и доступ — и когда своя разработка на API не нужна.",
               },
               {
                 href: "/dlya-turagentstv",
