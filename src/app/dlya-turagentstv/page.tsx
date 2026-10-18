@@ -476,7 +476,11 @@ export default function ForAgenciesPage() {
               Форма, конструктор, сотрудник или ассистент
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-base text-body">
-              Что выбирают небольшие агентства, чтобы не терять обращения. Цены — рыночные оценки, как в нашем{" "}
+              Что выбирают небольшие агентства, чтобы не терять обращения. Конкретные продукты с ценами — в{"\u00A0"}
+              <Link href="/blog/ii-assistenty-dlya-turagentstv-2026" className="font-semibold text-accent underline decoration-accent/30 underline-offset-2">
+                подборке решений 2026
+              </Link>
+              . Цены здесь — рыночные оценки, как в нашем{" "}
               <Link href="/sravnenie" className="font-semibold text-accent underline decoration-accent/30 underline-offset-2">
                 сравнении решений
               </Link>

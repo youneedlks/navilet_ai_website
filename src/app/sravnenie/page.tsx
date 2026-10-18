@@ -525,6 +525,12 @@ export default function SravneniePage() {
             </div>
             <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
               <Link
+                href="/blog/ii-assistenty-dlya-turagentstv-2026"
+                className="inline-flex items-center gap-1 font-semibold text-accent hover:underline"
+              >
+                9 решений для турагентств: подборка 2026 <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+              <Link
                 href="/versii"
                 className="inline-flex items-center gap-1 font-semibold text-accent hover:underline"
               >
