@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { BellRing, BookOpen, Check, Gift, Hand, Maximize2, Plug, X } from "lucide-react";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 
@@ -22,6 +23,10 @@ const TABS = [
       "Подключение за минуту, без кодов: «Подключить» → «Старт» в мессенджере",
       "Заявка приходит целиком: имя, телефон, что искал клиент и кнопка «Открыть диалог»",
     ],
+    more: {
+      href: "/blog/uvedomleniya-o-zayavkah-telegram-max",
+      label: "Как подключить уведомления — по шагам",
+    },
     pc: "/kabinet/telegram-pk.webp",
     phone: "/kabinet/telegram-telefon.webp",
     alt: "Кабинет «Навылет! AI», раздел «Интеграции → Telegram»: подключённые чаты и события",
@@ -166,6 +171,14 @@ export default function DashboardKabinetTour() {
               </li>
             ))}
           </ul>
+          {"more" in tab && tab.more && (
+            <Link
+              href={tab.more.href}
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-hover"
+            >
+              {tab.more.label} →
+            </Link>
+          )}
         </div>
 
         <button

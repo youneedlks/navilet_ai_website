@@ -3,6 +3,7 @@
  *   <Figure src="/blog/slug/kadr.webp" width={1600} height={1284} alt="…" caption="…" />
  * Размеры обязательны — место под картинку резервируется сразу, вёрстка не прыгает.
  * Клик открывает кадр целиком в новой вкладке: на телефоне мелкий текст экрана иначе не прочитать.
+ * narrow — для вертикальных кадров (окно, телефон): не шире ~420 px, по центру.
  */
 export default function Figure({
   src,
@@ -10,15 +11,17 @@ export default function Figure({
   caption,
   width,
   height,
+  narrow = false,
 }: {
   src: string;
   alt: string;
   caption?: string;
   width: number;
   height: number;
+  narrow?: boolean;
 }) {
   return (
-    <figure className="not-prose my-8">
+    <figure className={`not-prose my-8 ${narrow ? "mx-auto max-w-[420px]" : ""}`}>
       <a href={src} target="_blank" rel="noopener" className="block">
         <img
           src={src}

@@ -659,6 +659,13 @@ export default function MaxPage() {
                   >
                     инструкции
                   </Link>
+                  . Как получать заявки и просьбы позвать менеджера в чаты Telegram и MAX — в{"\u00A0"}
+                  <Link
+                    href="/blog/uvedomleniya-o-zayavkah-telegram-max"
+                    className="font-medium text-accent underline decoration-accent/30 underline-offset-2 hover:decoration-accent"
+                  >
+                    статье про уведомления
+                  </Link>
                   .
                 </p>
               </div>

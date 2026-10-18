@@ -199,6 +199,7 @@
 - Как ИИ-ассистент обрабатывает заявки турагентства 24/7 — https://navilet.ru/blog/keys-ii-assistent-24-7
 - Интеграция Tourvisor с ИИ: как устроен подбор туров — https://navilet.ru/blog/integraciya-tourvisor-ii-podbor
 - ИИ-ассистент для турагентства без Турвизора: заявки 24/7 (версия «Заявка», от 790 ₽/мес) — https://navilet.ru/blog/ii-assistent-bez-tourvisor
+- Уведомления о заявках в Telegram и MAX для турагентства (почта, U-ON, перехват диалога) — https://navilet.ru/blog/uvedomleniya-o-zayavkah-telegram-max
 - Модуль Tourvisor на сайт: как поставить и что добавить — https://navilet.ru/blog/modul-tourvisor-na-sayt
 - Бот для турагентства в MAX: как завести и что он умеет — https://navilet.ru/blog/bot-turagentstva-v-max
 - Сколько стоит ИИ для турагентства: разбор и расчёт — https://navilet.ru/blog/skolko-stoit-ii-dlya-turagentstva
