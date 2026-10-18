@@ -119,12 +119,16 @@ const customization = [
 export default function DemoExperience() {
   const { openForm } = useLeadForm();
   const [version, setVersion] = useState<AssistantVersionId>("pro");
+  // Виджет ставим только после чтения ?v= — иначе сначала загрузится «Про»
+  // (версия по умолчанию) и останется на странице вторым виджетом.
+  const [versionReady, setVersionReady] = useState(false);
 
   // Deep-link: /demo?v=req|lid|pro открывает нужную версию (карточки версий
   // на главной и /versii ведут сюда с предустановкой)
   useEffect(() => {
     const v = new URLSearchParams(window.location.search).get("v");
     if (demoVersions.some((d) => d.id === v)) setVersion(v as AssistantVersionId);
+    setVersionReady(true);
   }, []);
 
   const switchVersion = (next: AssistantVersionId) => {
@@ -501,7 +505,7 @@ export default function DemoExperience() {
       </section>
 
       {/* Виджет пересоздаётся при смене версии — меняется data-assistant-id */}
-      <DemoWidgetLoader assistantId={liveAssistantId} />
+      {versionReady && <DemoWidgetLoader assistantId={liveAssistantId} />}
     </>
   );
 }
