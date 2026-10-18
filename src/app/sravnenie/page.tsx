@@ -4,7 +4,7 @@ import Navigation from "@/components/sections/Navigation";
 import Footer from "@/components/sections/Footer";
 import FloatingCTA from "@/components/ui/FloatingCTA";
 import RegisterCta from "@/components/seo/RegisterCta";
-import { assistantVersions, trial } from "@/lib/content";
+import { assistantVersions, reqVersionPublished, trial } from "@/lib/content";
 import {
   ChevronRight,
   ArrowRight,
@@ -227,6 +227,16 @@ const chooseIf = [
     href: "/chat-bot-dlya-turagentstva",
     label: "Какие бывают чат-боты",
   },
+  ...(reqVersionPublished
+    ? [
+        {
+          title: "Тур подбирают менеджеры или Турвизора нет",
+          text: "Ассистент в версии «Заявка» отвечает туристу 24/7 на сайте или в MAX, собирает запрос и контакт и передаёт менеджеру заявку со сводкой. Туры подбирает менеджер, Турвизор не нужен, от 790 ₽/мес.",
+          href: "/blog/ii-assistent-bez-tourvisor",
+          label: "Ассистент без Турвизора",
+        },
+      ]
+    : []),
   {
     title: "У вас своя база туроператоров, 1С и нестандартный процесс брони",
     text: "Тогда разработка на заказ оправдана: интеграции по ТЗ никто, кроме подрядчика, не сделает. Закладывайте 2–4 недели, разовый бюджет от 130 000 ₽ и ежемесячную поддержку.",

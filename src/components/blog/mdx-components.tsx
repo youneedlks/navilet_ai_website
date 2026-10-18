@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import BlogCta from "@/components/blog/BlogCta";
 import Note from "@/components/blog/Note";
+import Figure from "@/components/blog/Figure";
 import { Step, Steps } from "@/components/blog/Steps";
 import { reqVersionPublished } from "@/lib/content";
 
@@ -27,6 +28,7 @@ export const mdxComponents = {
   a: MdxLink,
   Cta: BlogCta,
   Note,
+  Figure,
   Steps,
   Step,
   IfReq,

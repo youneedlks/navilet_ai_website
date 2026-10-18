@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   title: {
     absolute:
       reqVersionPublished
-        ? "Версии «Заявка», «Лид» и «Про»: сравнение и цены от 790 ₽ | Навылет! AI"
+        ? "Версии «Заявка», «Лид», «Про»: сравнение и цены от 790 ₽ | Навылет! AI"
         : "Версии «Лид» и «Про»: сравнение и цены от 990 ₽ | Навылет! AI",
   },
   description:
@@ -235,7 +235,8 @@ export default function VersiiPage() {
               {reqVersionPublished && (
                 <>
                   <strong className="font-semibold text-heading">«Заявка»</strong> —
-                  собирает запрос и контакт, тур подбирает ваш менеджер, Турвизор не нужен, <span className="whitespace-nowrap">от 790 ₽/мес</span>.{" "}
+                  собирает запрос и контакт, тур подбирает ваш менеджер,{" "}
+                  <Link href="/blog/ii-assistent-bez-tourvisor" className="text-accent underline decoration-accent/30 underline-offset-2 hover:decoration-accent">Турвизор не нужен</Link>, <span className="whitespace-nowrap">от 790 ₽/мес</span>.{" "}
                 </>
               )}
               <strong className="font-semibold text-heading">«Лид»</strong> —

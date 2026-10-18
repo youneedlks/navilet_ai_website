@@ -10,7 +10,7 @@ import PromoBanner from "@/components/ui/PromoBanner";
 import MetrikaClickTracker from "@/components/analytics/MetrikaClickTracker";
 import ScrollReset from "@/components/utils/ScrollReset";
 import { jsonLdScript } from "@/lib/schema";
-import { priceFromLabel } from "@/lib/content";
+import { priceFromLabel, reqVersionPublished } from "@/lib/content";
 
 const inter = Inter({
   subsets: ["latin", "cyrillic"],
@@ -31,7 +31,7 @@ const YANDEX_METRIKA_ID = 108200337;
 
 export const siteName = "Навылет! AI";
 const siteDescription =
-  "ИИ-ассистент для турагентств: подбирает туры по реальной базе, консультирует и передаёт менеджеру готовую заявку. От 990 ₽/мес, первый месяц бесплатно.";
+  `ИИ-ассистент для турагентств: собирает заявки 24/7 на сайте и в MAX, подбирает туры по базе Tourvisor, передаёт менеджеру. От ${priceFromLabel}/мес, месяц бесплатно.`;
 
 const keywords = [
   "Навылет! AI",
@@ -236,6 +236,28 @@ const siteWideJsonLd = {
         name: "Версии ИИ-ассистента «Навылет! AI»",
         url: `${siteUrl}/versii`,
         itemListElement: [
+          ...(reqVersionPublished
+            ? [
+                {
+                  "@type": "Offer",
+                  name: "Версия «Заявка» — запрос и контакт клиента 24/7",
+                  description:
+                    "Собирает запрос туриста и контакт на сайте или в MAX и передаёт менеджеру заявку со сводкой; тур подбирает менеджер, Турвизор не нужен. Цена входа — 790 ₽/мес за 40 диалогов.",
+                  url: `${siteUrl}/versii`,
+                  price: "790",
+                  priceCurrency: "RUB",
+                  availability: "https://schema.org/InStock",
+                  priceSpecification: {
+                    "@type": "UnitPriceSpecification",
+                    price: "790",
+                    priceCurrency: "RUB",
+                    unitText: "MONTHLY",
+                    billingDuration: 1,
+                    billingIncrement: 1,
+                  },
+                },
+              ]
+            : []),
           {
             "@type": "Offer",
             name: "Версия «Лид» — лидогенерация и заявки менеджеру",

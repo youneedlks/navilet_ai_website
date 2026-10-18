@@ -10,6 +10,8 @@ interface BlogCtaProps {
   buttonText?: string;
   /** "demo" — для середины статьи: первой кнопкой демо, второй — форма. */
   variant?: "form" | "demo";
+  /** Адрес демо, например "/demo?v=req" — открыть нужную версию. */
+  demoHref?: string;
 }
 
 export default function BlogCta({
@@ -17,6 +19,7 @@ export default function BlogCta({
   text = "Подключение без программиста, первый месяц бесплатно. Покажем, как ассистент обрабатывает заявки вашего агентства.",
   buttonText = "Подключить ИИ бесплатно",
   variant = "form",
+  demoHref = "/demo",
 }: BlogCtaProps) {
   const { openForm } = useLeadForm();
   const demoFirst = variant === "demo";
@@ -46,7 +49,7 @@ export default function BlogCta({
         <div className="flex shrink-0 flex-col gap-2.5 sm:items-stretch">
           {demoFirst ? (
             <>
-              <Link href="/demo" className={primary}>
+              <Link href={demoHref} className={primary}>
                 Посмотреть демо за минуту
               </Link>
               <button
@@ -64,7 +67,7 @@ export default function BlogCta({
               >
                 {buttonText}
               </button>
-              <Link href="/demo" className={secondary}>
+              <Link href={demoHref} className={secondary}>
                 Попробовать демо
               </Link>
             </>
