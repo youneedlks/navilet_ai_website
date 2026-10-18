@@ -50,7 +50,7 @@ function VersionDetails({
       </div>
 
       <div className="mt-6 flex flex-col items-stretch gap-3 border-t border-blue-subtle/40 pt-5 sm:flex-row sm:items-center">
-        {/* Демо есть не у всех версий: у «Заявки» пока нет демо-ассистента */}
+        {/* Кнопка демо — только у версий, у которых есть демо-ассистент */}
         {demoAssistants[version.id] && (
         <Link
           href={`/demo?v=${version.id}`}
@@ -63,7 +63,7 @@ function VersionDetails({
           className="inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-accent/20 transition-colors hover:bg-accent-hover sm:text-base"
         >
           <MessageSquare className="h-4 w-4" />
-          Попробовать «{version.name}» в демо
+          Попробовать {version.id === "req" ? "«Заявку»" : `«${version.name}»`} в демо
         </Link>
         )}
         <button

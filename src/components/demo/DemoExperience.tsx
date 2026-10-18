@@ -27,6 +27,7 @@ import {
   demoExampleQueries,
   demoAssistants,
   demoFallbackVersion,
+  reqVersionPublished,
   type AssistantVersionId,
 } from "@/lib/content";
 import { lkRegisterUrl } from "@/lib/lk";
@@ -39,17 +40,23 @@ declare global {
   }
 }
 
-const steps = [
+const steps = (version: AssistantVersionId) => [
   {
     icon: Send,
     title: "Напишите запрос",
     text: "Например: «Турция из Москвы, 7 ночей в июле, всё включено, до 200 000 ₽ на двоих».",
   },
-  {
-    icon: LayoutGrid,
-    title: "Получите подбор",
-    text: "Ассистент найдёт туры, покажет карточки с ценами и соберёт их в подборку — страницу по ссылке, которую клиент открывает и пересылает своим.",
-  },
+  version === "req"
+    ? {
+        icon: ClipboardList,
+        title: "Получите сводку",
+        text: "Ассистент уточнит недостающее, соберёт запрос в сводку и попросит контакт — так заявку получит ваш менеджер, который подберёт тур.",
+      }
+    : {
+        icon: LayoutGrid,
+        title: "Получите подбор",
+        text: "Ассистент найдёт туры, покажет карточки с ценами и соберёт их в подборку — страницу по ссылке, которую клиент открывает и пересылает своим.",
+      },
   {
     icon: Rocket,
     title: "Подключите себе",
@@ -64,6 +71,17 @@ const demoVersions: {
   hint: string;
   Icon: typeof versionIcons.lid;
 }[] = [
+  ...(reqVersionPublished
+    ? [
+        {
+          id: "req" as const,
+          name: "Заявка",
+          caption: "запрос без подборки",
+          hint: "«Заявка» собирает запрос — куда, когда, кто едет, бюджет — и контакт, а тур подбирает ваш менеджер. Напишите запрос как турист и дойдите до сводки: такую заявку получит менеджер.",
+          Icon: versionIcons.req,
+        },
+      ]
+    : []),
   {
     id: "lid",
     name: "Лид",
@@ -102,11 +120,11 @@ export default function DemoExperience() {
   const { openForm } = useLeadForm();
   const [version, setVersion] = useState<AssistantVersionId>("pro");
 
-  // Deep-link: /demo?v=lid|pro открывает нужную версию (карточки версий
+  // Deep-link: /demo?v=req|lid|pro открывает нужную версию (карточки версий
   // на главной и /versii ведут сюда с предустановкой)
   useEffect(() => {
     const v = new URLSearchParams(window.location.search).get("v");
-    if (v === "lid" || v === "pro") setVersion(v);
+    if (demoVersions.some((d) => d.id === v)) setVersion(v as AssistantVersionId);
   }, []);
 
   const switchVersion = (next: AssistantVersionId) => {
@@ -163,20 +181,20 @@ export default function DemoExperience() {
             Попробуйте <span className="whitespace-nowrap">ИИ-ассистента</span> вживую
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-lg text-body">
-            Спросите ассистента про любой тур — направление, даты, бюджет, число
-            туристов. Он подберёт реальные варианты и покажет карточки с ценами,
-            как на сайте агентства.
+            {version === "req"
+              ? "Напишите ассистенту запрос, как турист: направление, даты, бюджет, число туристов. Он соберёт запрос и контакт для менеджера — как на сайте агентства."
+              : "Спросите ассистента про любой тур — направление, даты, бюджет, число туристов. Он подберёт реальные варианты и покажет карточки с ценами, как на сайте агентства."}
           </p>
 
-          {/* Переключатель версий «Лид» / «Про» */}
-          <div className="mx-auto mt-7 max-w-md">
+          {/* Переключатель версий: «Заявка» / «Лид» / «Про» */}
+          <div className={`mx-auto mt-7 ${demoVersions.length > 2 ? "max-w-xl" : "max-w-md"}`}>
             <p className="mb-2.5 text-xs font-semibold uppercase tracking-wide text-muted">
               Какую версию попробовать
             </p>
             <div
               role="tablist"
               aria-label="Версия демо-ассистента"
-              className="grid grid-cols-2 gap-1 rounded-2xl border border-blue-subtle/50 bg-surface-alt p-1.5"
+              className={`grid ${demoVersions.length > 2 ? "grid-cols-3" : "grid-cols-2"} gap-1 rounded-2xl border border-blue-subtle/50 bg-surface-alt p-1.5`}
             >
               {demoVersions.map((v) => {
                 const active = version === v.id;
@@ -197,8 +215,9 @@ export default function DemoExperience() {
                         active ? "text-accent" : "text-heading"
                       }`}
                     >
-                      <v.Icon className="h-4 w-4" />
-                      Версия «{v.name}»
+                      <v.Icon className="h-4 w-4 shrink-0" />
+                      <span className="sm:hidden">«{v.name}»</span>
+                      <span className="hidden sm:inline">Версия «{v.name}»</span>
                     </span>
                     <span className="mt-0.5 text-[11px] font-medium text-muted sm:text-xs">
                       {v.caption}
@@ -285,8 +304,9 @@ export default function DemoExperience() {
               ))}
             </div>
             <p className="mt-3 text-sm leading-relaxed text-muted">
-              Когда придут карточки, нажмите под ними «Смотреть подборку» —
-              откроется страница с турами, которую клиент получает ссылкой.
+              {version === "req"
+                ? "В конце ассистент покажет сводку запроса и попросит контакт — в демо заявка никуда не уходит."
+                : "Когда придут карточки, нажмите под ними «Смотреть подборку» — откроется страница с турами, которую клиент получает ссылкой."}
             </p>
           </div>
         </div>
@@ -295,7 +315,7 @@ export default function DemoExperience() {
       {/* Steps */}
       <section className="mx-auto max-w-5xl px-5 py-8 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
-          {steps.map((s, i) => (
+          {steps(version).map((s, i) => (
             <motion.div
               key={s.title}
               initial={{ opacity: 0, y: 16 }}
@@ -377,7 +397,12 @@ export default function DemoExperience() {
           </h3>
           <div className="mt-4 grid grid-cols-1 gap-x-6 gap-y-2.5 sm:grid-cols-2">
             {[
-              { href: "/versii", label: "Чем «Лид» отличается от «Про»" },
+              {
+                href: "/versii",
+                label: reqVersionPublished
+                  ? "Чем отличаются «Заявка», «Лид» и «Про»"
+                  : "Чем «Лид» отличается от «Про»",
+              },
               { href: "/tarify", label: "Тарифы и что входит в подписку" },
               { href: "/vidzhet", label: "Установка виджета на вашу платформу" },
               { href: "/max", label: "Тот же ассистент в мессенджере MAX" },
