@@ -11,6 +11,7 @@ import DashboardWidgetShowcase from "@/components/dashboard/DashboardWidgetShowc
 import DashboardKabinetTour from "@/components/dashboard/DashboardKabinetTour";
 import DashboardBenefits from "@/components/dashboard/DashboardBenefits";
 import DashboardCTA from "@/components/dashboard/DashboardCTA";
+import CabinetVideo from "@/components/video/CabinetVideo";
 import { jsonLdScript } from "@/lib/schema";
 import { priceFromLabel } from "@/lib/content";
 
@@ -80,6 +81,19 @@ export default function DashboardPage() {
       <main>
         <DashboardHero />
         <DashboardValueMetrics />
+        {/* Ролик: путь заявки в кабинете — от уведомления до ответа менеджера */}
+        <section className="bg-surface-alt">
+          <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:px-8 lg:py-16">
+            <h2 className="text-center font-display text-3xl font-bold text-heading sm:text-4xl">
+              Заявка в кабинете — за 20 секунд
+            </h2>
+            <p className="mx-auto mt-4 mb-8 max-w-2xl text-center text-base text-body sm:mb-10">
+              Так менеджер видит заявку от ассистента: уведомление, переписка, контакт и сводка запроса — и ответ клиенту
+              одной кнопкой.
+            </p>
+            <CabinetVideo />
+          </div>
+        </section>
         <DashboardKabinetTour />
         <DashboardAnalyticsShowcase />
         <DashboardForecastShowcase />

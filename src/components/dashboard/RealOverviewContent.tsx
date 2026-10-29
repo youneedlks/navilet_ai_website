@@ -344,105 +344,101 @@ export default function RealOverviewContent({
         </div>
       </div>
 
-      {/* Insights */}
-      {!compact && (
-        <div
-          className="rounded-xl bg-white"
-          style={{
-            padding: `${6 * s}px ${7 * s}px`,
-            boxShadow: "0 1px 2px rgba(0,56,255,0.04)",
-            marginBottom: 6 * s,
-          }}
-        >
-          <div className="flex items-center gap-1" style={{ marginBottom: 3 * s }}>
-            <div
-              className="flex items-center justify-center rounded-md bg-[#FFFBEB]"
-              style={{ width: 12 * s, height: 12 * s }}
-            >
-              <Zap size={7 * s} className="text-[#F59E0B]" />
-            </div>
-            <span className="font-semibold text-[#1E293B]" style={{ fontSize: 8 * s }}>
-              Быстрые инсайты
-            </span>
+      {/* Insights — и в компактном виде: без них под графиками оставалась пустота, обзор выглядел обрезанным */}
+      <div
+        className="rounded-xl bg-white"
+        style={{
+          padding: `${6 * s}px ${7 * s}px`,
+          boxShadow: "0 1px 2px rgba(0,56,255,0.04)",
+          marginBottom: 6 * s,
+        }}
+      >
+        <div className="flex items-center gap-1" style={{ marginBottom: 3 * s }}>
+          <div
+            className="flex items-center justify-center rounded-md bg-[#FFFBEB]"
+            style={{ width: 12 * s, height: 12 * s }}
+          >
+            <Zap size={7 * s} className="text-[#F59E0B]" />
           </div>
-          <div className="grid grid-cols-1 gap-x-3 gap-y-0.5 sm:grid-cols-2">
-            {INSIGHTS.map((ins, i) => (
-              <div key={i} className="flex items-start gap-1">
-                <TrendingUp
-                  size={6 * s}
-                  style={{ color: ins.color, marginTop: 1 }}
-                  className="shrink-0"
-                />
-                <span className="text-[#64748B]" style={{ fontSize: 6.5 * s }}>
-                  {ins.text}
-                </span>
-              </div>
-            ))}
-          </div>
+          <span className="font-semibold text-[#1E293B]" style={{ fontSize: 8 * s }}>
+            Быстрые инсайты
+          </span>
         </div>
-      )}
+        <div className="grid grid-cols-1 gap-x-3 gap-y-0.5 sm:grid-cols-2">
+          {INSIGHTS.map((ins, i) => (
+            <div key={i} className="flex items-start gap-1">
+              <TrendingUp
+                size={6 * s}
+                style={{ color: ins.color, marginTop: 1 }}
+                className="shrink-0"
+              />
+              <span className="text-[#64748B]" style={{ fontSize: 6.5 * s }}>
+                {ins.text}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
 
       {/* Recent conversations */}
-      {!compact && (
+      <div
+        className="rounded-xl bg-white overflow-hidden"
+        style={{ boxShadow: "0 1px 2px rgba(0,56,255,0.04)" }}
+      >
         <div
-          className="rounded-xl bg-white overflow-hidden"
-          style={{ boxShadow: "0 1px 2px rgba(0,56,255,0.04)" }}
+          className="flex items-center justify-between"
+          style={{ padding: `${5 * s}px ${7 * s}px` }}
         >
-          <div
-            className="flex items-center justify-between"
-            style={{ padding: `${5 * s}px ${7 * s}px` }}
+          <span
+            className="font-semibold text-[#1E293B]"
+            style={{ fontSize: 8 * s }}
           >
-            <span
-              className="font-semibold text-[#1E293B]"
-              style={{ fontSize: 8 * s }}
-            >
-              Последние диалоги
-            </span>
-            <span
-              className="font-medium text-[#0038FF]"
-              style={{ fontSize: 7 * s }}
-            >
-              Все диалоги →
-            </span>
-          </div>
-          <div className="border-t border-[#E2E8F0]/50">
-            {RECENT_CONVERSATIONS.map((conv, i) => (
-              <div
-                key={i}
-                className="flex items-center gap-1.5 border-b border-[#E2E8F0]/30 last:border-0"
-                style={{
-                  padding: `${3 * s}px ${7 * s}px`,
-                }}
-              >
-                <span
-                  className="rounded-full shrink-0"
-                  style={{
-                    width: 4 * s,
-                    height: 4 * s,
-                    backgroundColor: conv.dot,
-                  }}
-                />
-                <span
-                  className="flex-1 text-[#1E293B] truncate"
-                  style={{ fontSize: 7 * s }}
-                >
-                  {conv.preview}
-                </span>
-                <div className="flex items-center gap-2 shrink-0">
-                  <span className="flex items-center gap-0.5 text-[#94A3B8]" style={{ fontSize: 6 * s }}>
-                    <MessageSquare size={6 * s} />
-                    {conv.msgs}
-                  </span>
-                  <span className="flex items-center gap-0.5 text-[#94A3B8]" style={{ fontSize: 6 * s }}>
-                    <Search size={6 * s} />
-                    {conv.searches}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
+            Последние диалоги
+          </span>
+          <span
+            className="font-medium text-[#0038FF]"
+            style={{ fontSize: 7 * s }}
+          >
+            Все диалоги →
+          </span>
         </div>
-      )}
+        <div className="border-t border-[#E2E8F0]/50">
+          {RECENT_CONVERSATIONS.map((conv, i) => (
+            <div
+              key={i}
+              className="flex items-center gap-1.5 border-b border-[#E2E8F0]/30 last:border-0"
+              style={{
+                padding: `${3 * s}px ${7 * s}px`,
+              }}
+            >
+              <span
+                className="rounded-full shrink-0"
+                style={{
+                  width: 4 * s,
+                  height: 4 * s,
+                  backgroundColor: conv.dot,
+                }}
+              />
+              <span
+                className="flex-1 text-[#1E293B] truncate"
+                style={{ fontSize: 7 * s }}
+              >
+                {conv.preview}
+              </span>
+              <div className="flex items-center gap-2 shrink-0">
+                <span className="flex items-center gap-0.5 text-[#94A3B8]" style={{ fontSize: 6 * s }}>
+                  <MessageSquare size={6 * s} />
+                  {conv.msgs}
+                </span>
+                <span className="flex items-center gap-0.5 text-[#94A3B8]" style={{ fontSize: 6 * s }}>
+                  <Search size={6 * s} />
+                  {conv.searches}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

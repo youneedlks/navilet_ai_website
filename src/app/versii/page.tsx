@@ -5,6 +5,7 @@ import Navigation from "@/components/sections/Navigation";
 import Footer from "@/components/sections/Footer";
 import FloatingCTA from "@/components/ui/FloatingCTA";
 import VersionPicker from "@/components/sections/VersionPicker";
+import VersionVideos from "@/components/video/VersionVideos";
 import RegisterCta from "@/components/seo/RegisterCta";
 import {
   assistantVersions,
@@ -258,6 +259,20 @@ export default function VersiiPage() {
             Версия меняется в личном кабинете в любой момент — история диалогов
             и настройки сохраняются.
           </p>
+        </section>
+
+        {/* Ролики: как работает каждая версия на одном и том же запросе туриста */}
+        <section className="bg-surface-alt">
+          <div className="mx-auto max-w-6xl px-5 py-14 sm:px-6 lg:px-8 lg:py-16">
+            <h2 className="text-center font-display text-3xl font-bold text-heading sm:text-4xl">
+              Посмотрите каждую версию в деле
+            </h2>
+            <p className="mx-auto mt-4 mb-8 max-w-2xl text-center text-base text-body sm:mb-10">
+              Один и тот же турист хочет в Турцию в июне. Переключайте версии — увидите, что делает ассистент
+              и с чем к менеджеру приходит заявка.
+            </p>
+            <VersionVideos />
+          </div>
         </section>
 
         {/* Полный функционал обеих версий — серверный рендер.

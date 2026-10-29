@@ -5,6 +5,7 @@ import Footer from "@/components/sections/Footer";
 import FloatingCTA from "@/components/ui/FloatingCTA";
 import RegisterCta from "@/components/seo/RegisterCta";
 import CollectionPreview from "@/components/sections/CollectionPreview";
+import PodborkaVideo from "@/components/video/PodborkaVideo";
 import {
   podborkiSteps,
   podborkiClientFeatures,
@@ -205,23 +206,8 @@ export default function PodborkiPage() {
               Страницу собирает сам ассистент в момент, когда показал варианты —
               менеджеру не нужно ничего верстать и пересылать вручную.
             </p>
-            <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-3">
-              {podborkiSteps.map((s) => (
-                <div
-                  key={s.step}
-                  className="rounded-2xl border border-blue-subtle/50 bg-white p-6 shadow-card"
-                >
-                  <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-accent/10 font-display text-base font-bold text-accent">
-                    {s.step}
-                  </span>
-                  <h3 className="mt-4 font-display text-base font-bold text-heading">
-                    {s.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-body">
-                    {s.description}
-                  </p>
-                </div>
-              ))}
+            <div className="mt-10">
+              <PodborkaVideo />
             </div>
           </div>
         </section>

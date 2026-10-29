@@ -12,11 +12,12 @@ import {
 import { heroContent, promo, priceFromLabel } from "@/lib/content";
 import { isPromoActive } from "@/lib/promo";
 import Button from "@/components/ui/Button";
-import DemoWidget from "@/components/DemoWidget";
+import Link from "next/link";
+import ScenePlayer from "@/components/video/ScenePlayer";
+import HeroProScene, { HERO_PRO_DURATION, HERO_PRO_H, HERO_PRO_W } from "@/components/video/HeroProScene";
 import SkolkovoBadge from "@/components/ui/SkolkovoBadge";
-import { demoScenarios } from "@/lib/scenarios";
 import { useLeadForm } from "@/contexts/LeadFormContext";
-import { Globe, MessageSquare, Sparkles } from "lucide-react";
+import { ArrowRight, Globe, MessageSquare, Sparkles } from "lucide-react";
 
 function PartnerLogos() {
   return (
@@ -44,7 +45,6 @@ function PartnerLogos() {
 
 export default function Hero() {
   const words = heroContent.title.split(" ");
-  const heroScenario = demoScenarios[0];
   const { openForm } = useLeadForm();
   const [promoOn, setPromoOn] = useState(false);
 
@@ -133,16 +133,37 @@ export default function Hero() {
           <PartnerLogos />
         </motion.div>
 
-        {/* Right: chat widget — same DemoWidget as LiveDemo section */}
+        {/* Right: ролик — полный диалог версии «Про» в виджете (сцена в коде, без видеофайла) */}
         <motion.div
           variants={heroScaleIn}
           initial="hidden"
           animate="visible"
-          className="w-full flex-shrink-0 lg:w-[440px]"
+          className="mx-auto w-full max-w-[440px] flex-shrink-0 lg:mx-0 lg:w-[440px]"
         >
           <div className="relative">
             <div className="absolute -inset-3 rounded-3xl bg-gradient-to-br from-[#0097F5]/8 to-[#00E7FD]/8 blur-xl" />
-            <DemoWidget scenario={heroScenario} className="relative" />
+            <div className="relative">
+              <ScenePlayer
+                Scene={HeroProScene}
+                duration={HERO_PRO_DURATION}
+                width={HERO_PRO_W}
+                height={HERO_PRO_H}
+                initialAt={0}
+                stillAt={16.5}
+                controls
+                className="rounded-2xl border border-[#E0E0E0]/50 bg-white shadow-xl"
+                label="Пример диалога в версии «Про»: турист просит тур в Турцию, ассистент уточняет город вылета, даты, состав и категорию отеля, показывает три отеля с ценами, рассказывает об отеле и о том, что входит в стоимость, и передаёт заявку менеджеру."
+                aside={
+                  <Link
+                    href="/demo"
+                    className="inline-flex flex-shrink-0 items-center gap-1 text-sm font-semibold text-accent hover:underline"
+                  >
+                    Попробовать самому
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                }
+              />
+            </div>
           </div>
         </motion.div>
       </div>

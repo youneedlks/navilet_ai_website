@@ -35,3 +35,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# ролики: зависимости и рендеры Remotion (файлы для соцсетей — в .handoff/site-материалы/video/fayly)
+/video/node_modules/
+/video/out/

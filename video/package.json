@@ -1,0 +1,16 @@
+{
+  "name": "navilet-video",
+  "private": true,
+  "description": "Ролики для navilet.ru: сцены из src/components/video, рендер Remotion",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "render:zayavka": "remotion render src/index.ts Zayavka out/zayavka.mp4 --codec=h264 --crf=26 && remotion render src/index.ts Zayavka out/zayavka.webm --codec=vp9 --crf=36",
+    "render:hero": "remotion render src/index.ts HeroPro out/hero-pro.mp4 --public-dir ../public --codec=h264 --crf=26 && remotion render src/index.ts HeroPro out/hero-pro.webm --public-dir ../public --codec=vp9 --crf=36",
+    "render:how": "remotion render src/index.ts HowItWorks out/how-it-works.mp4 --codec=h264 --crf=26 && remotion render src/index.ts HowItWorks out/how-it-works.webm --codec=vp9 --crf=36 && remotion still src/index.ts HowItWorks out/how-it-works-poster.jpg --frame=330 --image-format=jpeg --jpeg-quality=82"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.539",
+    "@remotion/google-fonts": "4.0.539",
+    "remotion": "4.0.539"
+  }
+}
