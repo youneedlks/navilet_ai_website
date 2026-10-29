@@ -89,7 +89,7 @@ const TABS = [
     ],
     pc: "/kabinet/probnyi-pk.webp",
     phone: "/kabinet/probnyi-telefon.webp",
-    alt: "Кабинет «Навылет! AI», «Тариф и оплата»: пробный период, день 10 из 30, 172 из 200 диалогов и предупреждение «Осталось 28 диалогов»",
+    alt: "Кабинет «Навылет! AI», «Тариф и оплата»: пробный период, день 23 из 30, 172 из 200 диалогов и предупреждение «Осталось 28 диалогов»",
   },
 ] as const;
 
@@ -127,11 +127,12 @@ export default function DashboardKabinetTour() {
         </p>
       </div>
 
-      {/* На телефоне вкладки — сеткой по две в ряд (нечётная последняя — во всю ширину), чтобы все были видны без прокрутки */}
+      {/* Вкладки сеткой: на телефоне по две в ряд, на планшете по три (нечётная последняя растягивается), в строку — только
+          на широком экране: иначе пять вкладок не помещались на ширине 640–1000 px */}
       <div
         role="tablist"
         aria-label="Разделы кабинета"
-        className="mx-auto mt-8 grid max-w-4xl grid-cols-2 gap-1 rounded-2xl border border-blue-subtle/50 bg-surface-alt p-1.5 sm:flex"
+        className="mx-auto mt-8 grid max-w-4xl grid-cols-2 gap-1 rounded-2xl border border-blue-subtle/50 bg-surface-alt p-1.5 sm:grid-cols-3 lg:flex"
       >
         {TABS.map((t) => {
           const on = t.id === active;

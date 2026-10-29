@@ -85,8 +85,8 @@ export default function DashboardConversationsShowcase() {
 
           <div className="flex items-center gap-4 pt-2">
             {[
-              { dot: "bg-emerald-400", label: "Запрос на бронь" },
-              { dot: "bg-amber-400", label: "Карточки показаны" },
+              { dot: "bg-[#0E9F8A]", label: "Запрос на бронь" },
+              { dot: "bg-[#7458F6]", label: "Карточки показаны" },
               { dot: "bg-[#CBD5E1]", label: "Только чат" },
             ].map((item) => (
               <span

@@ -13,11 +13,13 @@ import {
   Globe2,
 } from "lucide-react";
 
+import { METRIC, TILE_STYLE, valueColor } from "@/lib/cabinetTheme";
+
 interface RealForecastContentProps {
   compact?: boolean;
 }
 
-const SEMANTIC_COLORS = ["#0038FF", "#F59E0B", "#10B981", "#EF4444", "#8B5CF6"];
+/** Вид кабинета с 29.10.2026: распределения — шкала синего (valueColor), деньги и интерес к покупке — бирюзовые. */
 
 /** Прогноз до конца месяца (герой). Демо-цифры одного агентства. */
 const MONTH = {
@@ -40,10 +42,10 @@ const AI_LINES = [
 ];
 
 const FACT = [
-  { label: "Диалогов", value: "1 240", accent: "#0038FF", icon: MessageSquare },
-  { label: "С интересом", value: "14%", accent: "#8B5CF6", icon: MousePointerClick },
-  { label: "Ср. чек интереса", value: "214 тыс. ₽", accent: "#10B981", icon: Wallet },
-  { label: "Корзина интереса", value: "37 млн ₽", accent: "#F59E0B", icon: TrendingUp },
+  { label: "Диалогов", value: "1 240", accent: METRIC.blue, icon: MessageSquare },
+  { label: "С интересом", value: "14%", accent: METRIC.emerald, icon: MousePointerClick },
+  { label: "Ср. чек интереса", value: "214 тыс. ₽", accent: METRIC.emerald, icon: Wallet },
+  { label: "Корзина интереса", value: "37 млн ₽", accent: METRIC.emerald, icon: TrendingUp },
 ];
 
 /** Барометр спроса по сети: доля спроса + тренд в п.п. + сезонность. */
@@ -69,7 +71,7 @@ export default function RealForecastContent({
         style={{ marginBottom: 6 * s }}
       >
         <div>
-          <div className="font-bold text-[#1E293B]" style={{ fontSize: 12 * s }}>
+          <div className="font-bold text-[#0F172A]" style={{ fontSize: 12 * s }}>
             Отчёты и прогнозы
           </div>
           <div
@@ -84,7 +86,8 @@ export default function RealForecastContent({
           style={{
             padding: `${3 * s}px ${6 * s}px`,
             fontSize: 7 * s,
-            boxShadow: "0 1px 2px rgba(0,56,255,0.04)",
+            boxShadow: "0 1px 3px rgba(15,23,42,.048), 0 14px 34px -12px rgba(15,23,42,.128)",
+          border: "1px solid rgba(15,23,42,.05)",
           }}
         >
           <RefreshCw size={7 * s} />
@@ -99,8 +102,8 @@ export default function RealForecastContent({
         className="rounded-xl bg-white"
         style={{
           padding: `${7 * s}px ${8 * s}px`,
-          borderLeft: "2.5px solid #0038FF",
-          boxShadow: "0 1px 2px rgba(0,56,255,0.04)",
+          boxShadow: "0 1px 3px rgba(15,23,42,.048), 0 14px 34px -12px rgba(15,23,42,.128)",
+          border: "1px solid rgba(15,23,42,.05)",
           marginBottom: 6 * s,
         }}
       >
@@ -142,22 +145,20 @@ export default function RealForecastContent({
         className="rounded-xl bg-white"
         style={{
           padding: `${7 * s}px ${8 * s}px`,
-          borderLeft: "2.5px solid #8B5CF6",
-          boxShadow: "0 1px 2px rgba(0,56,255,0.04)",
+          boxShadow: "0 1px 3px rgba(15,23,42,.048), 0 14px 34px -12px rgba(15,23,42,.128)",
+          border: "1px solid rgba(15,23,42,.05)",
           marginBottom: compact ? 0 : 6 * s,
         }}
       >
         <div className="flex items-start justify-between gap-2">
           <PanelHead
             icon={Sparkles}
-            iconColor="#8B5CF6"
-            iconBg="#F5F3FF"
             title="AI-прогноз на 4–6 недель"
             subtitle="Ваша динамика + тренды всей сети + сезонность направлений"
             s={s}
           />
           <div
-            className="flex shrink-0 items-center gap-1 rounded-md bg-[#F5F3FF] font-semibold text-[#7C3AED]"
+            className="flex shrink-0 items-center gap-1 rounded-md bg-[#EBF0FF] font-semibold text-[#0038FF]"
             style={{ padding: `${2.5 * s}px ${5 * s}px`, fontSize: 6.5 * s }}
           >
             <RefreshCw size={6.5 * s} />
@@ -168,19 +169,19 @@ export default function RealForecastContent({
           {AI_LINES.map((line, i) => (
             <div key={i} className="flex items-start gap-1.5">
               <span
-                className="shrink-0 font-bold text-[#8B5CF6]"
+                className="shrink-0 font-bold text-[#0038FF]"
                 style={{ fontSize: 8 * s, lineHeight: 1.2 }}
               >
                 •
               </span>
-              <span className="text-[#334155]" style={{ fontSize: 7.5 * s }}>
+              <span className="text-[#475569]" style={{ fontSize: 7.5 * s }}>
                 {line}
               </span>
             </div>
           ))}
         </div>
         <div
-          className="border-t border-[#E2E8F0]/60 text-[#94A3B8]"
+          className="border-t border-[#E2E8F0]/60 text-[#64748B]"
           style={{ marginTop: 5 * s, paddingTop: 3 * s, fontSize: 6 * s }}
         >
           Обновлено 12 июля, 09:40 · автообновление по понедельникам
@@ -202,7 +203,8 @@ export default function RealForecastContent({
                   className="rounded-xl bg-white"
                   style={{
                     padding: `${5 * s}px ${6 * s}px`,
-                    boxShadow: "0 1px 2px rgba(0,56,255,0.04)",
+                    boxShadow: "0 1px 3px rgba(15,23,42,.048), 0 14px 34px -12px rgba(15,23,42,.128)",
+          border: "1px solid rgba(15,23,42,.05)",
                   }}
                 >
                   <div className="flex items-center justify-between gap-1">
@@ -212,15 +214,15 @@ export default function RealForecastContent({
                     >
                       {f.label}
                     </span>
-                    <Icon
-                      size={8 * s}
-                      style={{ color: f.accent }}
-                      strokeWidth={1.9}
-                      className="shrink-0"
-                    />
+                    <span
+                      className="inline-flex shrink-0 items-center justify-center rounded-md"
+                      style={{ width: 13 * s, height: 13 * s, background: f.accent.tint, color: f.accent.main }}
+                    >
+                      <Icon size={7.5 * s} strokeWidth={1.9} />
+                    </span>
                   </div>
                   <div
-                    className="font-bold text-[#1E293B] whitespace-nowrap"
+                    className="font-bold text-[#0F172A] whitespace-nowrap"
                     style={{ fontSize: 10.5 * s, marginTop: 2 * s }}
                   >
                     {f.value}
@@ -239,7 +241,8 @@ export default function RealForecastContent({
         className="rounded-xl bg-white"
         style={{
           padding: `${7 * s}px ${8 * s}px`,
-          boxShadow: "0 1px 2px rgba(0,56,255,0.04)",
+          boxShadow: "0 1px 3px rgba(15,23,42,.048), 0 14px 34px -12px rgba(15,23,42,.128)",
+          border: "1px solid rgba(15,23,42,.05)",
           marginTop: compact ? 6 * s : 0,
         }}
       >
@@ -250,35 +253,35 @@ export default function RealForecastContent({
           s={s}
         />
         <div style={{ marginTop: 5 * s }}>
-          {BAROMETER.map((b, i) => (
+          {BAROMETER.map((b) => (
             <div
               key={b.country}
               className="flex items-center gap-1.5"
               style={{ paddingBlock: 2 * s }}
             >
               <span
-                className="flex shrink-0 items-center gap-0.5 font-medium text-[#1E293B]"
+                className="flex shrink-0 items-center gap-0.5 font-medium text-[#0F172A]"
                 style={{ fontSize: 7 * s, width: 46 * s }}
               >
                 <span className="truncate">{b.country}</span>
                 {b.season && (
-                  <Leaf size={6 * s} className="text-[#10B981] shrink-0" />
+                  <Leaf size={6 * s} className="text-[#047857] shrink-0" />
                 )}
               </span>
               <div
-                className="flex-1 rounded-full bg-[#F1F5F9] overflow-hidden"
+                className="flex-1 rounded-full bg-[#EEF2F7] overflow-hidden"
                 style={{ height: 3.5 * s }}
               >
                 <div
                   className="h-full rounded-full"
                   style={{
                     width: `${(b.share / maxShare) * 100}%`,
-                    backgroundColor: SEMANTIC_COLORS[i % SEMANTIC_COLORS.length],
+                    backgroundColor: valueColor(b.share, maxShare),
                   }}
                 />
               </div>
               <span
-                className="shrink-0 text-right font-semibold text-[#1E293B]"
+                className="shrink-0 text-right font-semibold text-[#0F172A]"
                 style={{ fontSize: 7 * s, width: 16 * s }}
               >
                 {b.share}%
@@ -302,17 +305,17 @@ export default function RealForecastContent({
           }}
         >
           <span>
-            Медианный чек сети: <b className="text-[#1E293B]">190 000 ₽</b>
+            Медианный чек сети: <b className="text-[#0F172A]">190 000 ₽</b>
           </span>
           <span className="inline-flex items-center gap-0.5">
-            <Leaf size={6 * s} className="text-[#10B981]" /> — в сезоне
+            <Leaf size={6 * s} className="text-[#047857]" /> — в сезоне
           </span>
         </div>
       </div>
 
       {!compact && (
         <div
-          className="text-[#94A3B8]"
+          className="text-[#64748B]"
           style={{ fontSize: 6 * s, marginTop: 5 * s, lineHeight: 1.5 }}
         >
           Прогнозные суммы — диапазоны-ориентиры по поведению клиентов в чате, а не фактические продажи.
@@ -330,7 +333,7 @@ function SectionDivider({ label, s }: { label: string; s: number }) {
     >
       <div className="flex-1 border-t border-[#E2E8F0]" />
       <span
-        className="font-semibold uppercase text-[#94A3B8]"
+        className="font-semibold uppercase text-[#64748B]"
         style={{ fontSize: 6 * s, letterSpacing: "0.06em" }}
       >
         {label}
@@ -346,7 +349,7 @@ function PanelHead({
   subtitle,
   s,
   iconColor = "#0038FF",
-  iconBg = "#F0F4FF",
+  iconBg = "#EBF0FF",
 }: {
   icon: typeof CalendarClock;
   title: string;
@@ -365,7 +368,7 @@ function PanelHead({
       </div>
       <div className="min-w-0">
         <div
-          className="font-semibold text-[#1E293B]"
+          className="font-semibold text-[#0F172A]"
           style={{ fontSize: 8.5 * s }}
         >
           {title}
@@ -397,13 +400,7 @@ function ForecastCell({
   s: number;
 }) {
   return (
-    <div
-      className="rounded-lg"
-      style={{
-        padding: `${5 * s}px ${6 * s}px`,
-        backgroundColor: money ? "rgba(16,185,129,0.10)" : "rgba(0,56,255,0.05)",
-      }}
-    >
+    <div style={{ ...TILE_STYLE, borderRadius: 8 * s, padding: `${5 * s}px ${6 * s}px` }}>
       <div
         className="font-medium uppercase text-[#64748B]"
         style={{ fontSize: 5.5 * s, letterSpacing: "0.02em", lineHeight: 1.25 }}
@@ -415,13 +412,13 @@ function ForecastCell({
         style={{
           fontSize: (money ? 9 : 11) * s,
           marginTop: 2 * s,
-          color: money ? "#059669" : "#1E293B",
+          color: money ? METRIC.emerald.main : "#0F172A",
           lineHeight: 1.15,
         }}
       >
         {value}
       </div>
-      <div className="text-[#94A3B8]" style={{ fontSize: 5.5 * s, marginTop: 1 }}>
+      <div className="text-[#64748B]" style={{ fontSize: 5.5 * s, marginTop: 1 }}>
         {hint}
       </div>
     </div>
@@ -431,7 +428,7 @@ function ForecastCell({
 function TrendBadge({ pp, s }: { pp: number; s: number }) {
   if (pp === 0) {
     return (
-      <span className="text-[#94A3B8]">
+      <span className="text-[#64748B]">
         <Minus size={7 * s} />
       </span>
     );
@@ -441,7 +438,7 @@ function TrendBadge({ pp, s }: { pp: number; s: number }) {
   return (
     <span
       className="inline-flex items-center gap-0.5 font-semibold"
-      style={{ fontSize: 6 * s, color: up ? "#10B981" : "#F59E0B" }}
+      style={{ fontSize: 6 * s, color: up ? "#047857" : "#DC2626" }}
     >
       <Icon size={7 * s} />
       {up ? "+" : ""}

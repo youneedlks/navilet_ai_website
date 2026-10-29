@@ -139,7 +139,7 @@ export default function ScenePlayer({
               type="button"
               onClick={toggle}
               aria-label={paused ? "Продолжить ролик" : "Поставить ролик на паузу"}
-              className="flex h-8 w-8 flex-shrink-0 cursor-pointer items-center justify-center rounded-full border border-blue-subtle/60 bg-white text-accent transition-colors hover:border-accent/40 hover:bg-accent/5"
+              className="flex h-9 w-9 flex-shrink-0 cursor-pointer items-center justify-center rounded-full border border-blue-subtle/60 bg-white text-accent transition-colors hover:border-accent/40 hover:bg-accent/5"
             >
               {paused ? <Play className="h-3.5 w-3.5 translate-x-px fill-current" /> : <Pause className="h-3.5 w-3.5 fill-current" />}
             </button>

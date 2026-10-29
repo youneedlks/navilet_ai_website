@@ -113,7 +113,7 @@ export default function RealDashboardFrame({
       <div className="flex" style={{ minHeight: compact ? 300 : undefined }}>
         {/* Sidebar */}
         <div
-          className="flex flex-col border-r border-[#E2E8F0] bg-white/95 backdrop-blur-sm shrink-0"
+          className="flex flex-col border-r border-[#E2E8F0] bg-white shrink-0"
           style={{ width: sideW }}
         >
           {/* Logo area */}
@@ -167,7 +167,7 @@ export default function RealDashboardFrame({
                     className={`flex items-center justify-center rounded-xl transition-colors ${
                       isActive
                         ? "bg-[#F0F4FF] text-[#0038FF]"
-                        : "text-[#94A3B8]"
+                        : "text-[#64748B]"
                     }`}
                     style={{
                       height: compact ? 30 : 34,
@@ -186,7 +186,7 @@ export default function RealDashboardFrame({
           {/* User avatar */}
           <div className="flex items-center justify-center border-t border-[#E2E8F0] py-2.5">
             <div
-              className="rounded-full bg-gradient-to-br from-[#0038FF] to-[#3B82F6] flex items-center justify-center"
+              className="rounded-full bg-[#0038FF] flex items-center justify-center"
               style={{
                 width: compact ? 22 : 26,
                 height: compact ? 22 : 26,
@@ -206,25 +206,25 @@ export default function RealDashboardFrame({
         <div className="flex flex-1 flex-col min-w-0">
           {/* Header */}
           <div
-            className="flex items-center justify-between border-b border-[#E2E8F0] bg-white/80 backdrop-blur-sm px-3"
+            className="flex items-center justify-between border-b border-[#E2E8F0] bg-white px-3"
             style={{ height: headerH }}
           >
             <span
-              className="font-semibold text-[#1E293B] truncate"
+              className="font-semibold text-[#0F172A] truncate"
               style={{ fontSize: compact ? 10 : 11 }}
             >
               {SCREEN_TITLES[activeScreen]}
             </span>
             <div className="flex items-center gap-2">
               <div
-                className="hidden sm:flex items-center gap-1 text-[#94A3B8]"
+                className="hidden sm:flex items-center gap-1 rounded-lg border border-[#E2E8F0] bg-white px-1.5 py-0.5 text-[#64748B]"
                 style={{ fontSize: compact ? 7 : 8 }}
               >
                 <Clock size={compact ? 7 : 8} />
                 <span>Только что</span>
               </div>
               <div
-                className="flex items-center gap-1 rounded-lg bg-[#F1F5F9] px-2"
+                className="flex items-center gap-1 rounded-lg border border-[#E2E8F0] bg-white px-2 shadow-[0_1px_2px_rgba(15,23,42,0.04)]"
                 style={{
                   height: compact ? 18 : 20,
                   fontSize: compact ? 7 : 8,
@@ -232,9 +232,9 @@ export default function RealDashboardFrame({
               >
                 <Search
                   size={compact ? 8 : 9}
-                  className="text-[#94A3B8]"
+                  className="text-[#64748B]"
                 />
-                <span className="text-[#94A3B8]">Поиск</span>
+                <span className="text-[#64748B]">Поиск</span>
                 <span
                   className="hidden sm:inline rounded border border-[#E2E8F0] bg-white px-0.5 text-[#94A3B8] font-mono ml-0.5"
                   style={{ fontSize: compact ? 5 : 6 }}
@@ -243,7 +243,7 @@ export default function RealDashboardFrame({
                 </span>
               </div>
               <div
-                className="rounded-full bg-gradient-to-br from-[#0038FF] to-[#3B82F6] flex items-center justify-center"
+                className="rounded-full bg-[#0038FF] flex items-center justify-center"
                 style={{
                   width: compact ? 16 : 20,
                   height: compact ? 16 : 20,
@@ -261,7 +261,7 @@ export default function RealDashboardFrame({
 
           {/* Content */}
           <div
-            className="flex-1 overflow-hidden bg-[#F8FAFC]"
+            className="flex-1 overflow-hidden bg-[#F2F5FA]"
             style={{ padding: contentPad }}
           >
             {children}

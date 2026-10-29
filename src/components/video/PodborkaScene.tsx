@@ -289,7 +289,7 @@ function CabinetNote({ t }: { t: number }) {
   return (
     <div style={{ position: "absolute", inset: 0, background: `rgba(15,23,42,${0.4 * k})`, display: "flex", alignItems: "center", justifyContent: "center", zIndex: 4 }}>
       <div style={{ width: 330, background: "#fff", borderRadius: 16, padding: "14px 16px 10px", boxShadow: "0 24px 60px rgba(0,34,82,0.35)", opacity: k, transform: `translateY(${(1 - k) * 30}px) scale(${0.96 + 0.04 * k})`, fontFamily: FONT }}>
-        <div style={{ fontSize: 10.5, fontWeight: 700, color: BLUE, textTransform: "uppercase", letterSpacing: 0.5 }}>Кабинет агентства · Подборки</div>
+        <div style={{ fontSize: 10.5, fontWeight: 700, color: "#0038FF", textTransform: "uppercase", letterSpacing: 0.5 }}>Кабинет агентства · Подборки</div>
         <div style={{ marginTop: 4, fontSize: 15, fontWeight: 800, color: INK, fontFamily: FONT_DISPLAY }}>Подборка туров — Турция</div>
         <div style={{ marginTop: 8 }}>
           {row("Открыли", "3 раза")}

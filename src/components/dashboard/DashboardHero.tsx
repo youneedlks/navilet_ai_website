@@ -84,7 +84,6 @@ export default function DashboardHero() {
           className="w-full flex-shrink-0 lg:w-[620px]"
         >
           <div className="relative">
-            <div className="absolute -inset-3 rounded-3xl bg-gradient-to-br from-[#0097F5]/8 to-[#00E7FD]/8 blur-xl" />
             <RealDashboardFrame
               activeScreen="overview"
               className="relative"

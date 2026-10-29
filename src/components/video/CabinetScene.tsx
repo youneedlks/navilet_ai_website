@@ -1,12 +1,13 @@
 import type { CSSProperties, ReactNode } from "react";
-import { BLUE, GREY, INK, LogoFinale, ManagerToast, defaultAsset, press, type SceneProps } from "./widgetKit";
+import { LogoFinale, ManagerToast, defaultAsset, press, type SceneProps } from "./widgetKit";
+import { CAB, CHANNEL, METRIC, PANEL_STYLE, TILE_STYLE, valueColor } from "../../lib/cabinetTheme";
 import { FONT, clamp01, ease, p } from "./HowItWorksScene";
 
 /**
  * Кабинет агентства (/dashboard): в «Диалогах» появляется заявка → менеджер
  * открывает диалог (переписка, профиль, «Запрос клиента») → «Перехватить»:
  * ассистент замолкает, менеджер отвечает сам → воронка в «Аналитике».
- * Вёрстка — по реальному кабинету (скриншот dialog-pk). Две раскладки:
+ * Вёрстка — по реальному кабинету в новом виде (прод кабинета 0a426c2 от 29.10.2026). Две раскладки:
  * широкая (ПК, 880×560) и узкая (телефон, 400×600) с общим сценарием.
  */
 
@@ -29,9 +30,14 @@ export function cabinetStage(t: number): number {
   return 3;
 }
 
-const GREEN = "#16A34A";
-const LINE = "#E8EDF4";
+// Цвета — из вида кабинета (cabinetTheme): синий кабинета, тексты, линии; бирюзовый — заявки, фиолетовый — туры.
+const BLUE = CAB.blue;
+const INK = CAB.text;
+const GREY = CAB.text3;
+const LINE = CAB.line;
 const SOFT = "#F6F8FB";
+/** Плашка «Менеджер за рулём» в кабинете — статус, зелёная. */
+const OPERATOR = { bg: "#ECFDF5", border: "#A7F3D0", text: "#065F46", sub: "#047857" };
 
 const REPLY = "Анна, добрый вечер! Подобрал три отеля у моря — пришлю подборку в течение 10 минут.";
 
@@ -57,18 +63,19 @@ const CHAT: { me?: boolean; text: string }[] = [
 function statusStyle(s: string): CSSProperties {
   s = s.replace(/\u00a0/g, " "); // типограф ставит неразрывные пробелы в строки
   const booking = s === "Запрос на бронь";
+  const tour = s === "Подборка открыта";
   return {
     borderRadius: 999,
     padding: "2px 8px",
     fontSize: 10.5,
     fontWeight: 600,
     whiteSpace: "nowrap",
-    color: booking ? GREEN : s === "Подборка открыта" ? BLUE : "#64748B",
-    background: booking ? "rgba(22,163,74,0.1)" : s === "Подборка открыта" ? "rgba(0,98,239,0.08)" : "#F1F5F9",
+    color: booking ? METRIC.emerald.main : tour ? METRIC.violet.main : CAB.text2,
+    background: booking ? METRIC.emerald.tint : tour ? METRIC.violet.tint : "#F1F5F9",
   };
 }
 
-const card: CSSProperties = { background: "#fff", border: `1px solid ${LINE}`, borderRadius: 14 };
+const card: CSSProperties = { ...PANEL_STYLE };
 
 /* ── Курсор / касание ─────────────────────────────────────────── */
 
@@ -134,7 +141,7 @@ function DialogList({ t, narrow }: { t: number; narrow: boolean }) {
         ))}
       </div>
       {!narrow && (
-        <div style={{ display: "grid", gridTemplateColumns: "1.3fr 0.7fr 1.3fr 0.7fr 0.9fr", padding: "8px 16px", fontSize: 10.5, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: 0.4, background: SOFT }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1.3fr 0.7fr 1.3fr 0.7fr 0.9fr", padding: "8px 16px", fontSize: 10.5, fontWeight: 700, color: GREY, textTransform: "uppercase", letterSpacing: 0.4, background: SOFT }}>
           <span>Клиент</span>
           <span>Канал</span>
           <span>Статус</span>
@@ -152,7 +159,7 @@ function DialogList({ t, narrow }: { t: number; narrow: boolean }) {
           <div key={r.name} style={{ height: rowH, overflow: "hidden", borderTop: i === 0 && narrow ? "none" : `1px solid ${LINE}`, background: bg, opacity: isNew ? k : 1 }}>
             {narrow ? (
               <div style={{ height: h, display: "flex", alignItems: "center", gap: 10, padding: "0 14px" }}>
-                <span style={{ width: 34, height: 34, borderRadius: 17, background: "#E8F1FF", color: BLUE, fontWeight: 700, fontSize: 13, display: "inline-flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>{r.name[0]}</span>
+                <span style={{ width: 34, height: 34, borderRadius: 17, background: METRIC.blue.tint, color: BLUE, fontWeight: 700, fontSize: 13, display: "inline-flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>{r.name[0]}</span>
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <div style={{ fontSize: 13, fontWeight: 700, color: INK }}>
                     {r.name} <span style={{ fontSize: 11, fontWeight: 500, color: GREY }}>· {r.ch}</span>
@@ -164,7 +171,7 @@ function DialogList({ t, narrow }: { t: number; narrow: boolean }) {
             ) : (
               <div style={{ height: h, display: "grid", gridTemplateColumns: "1.3fr 0.7fr 1.3fr 0.7fr 0.9fr", alignItems: "center", padding: "0 16px", fontSize: 12.5, color: INK }}>
                 <span style={{ display: "flex", alignItems: "center", gap: 8, fontWeight: 600 }}>
-                  <span style={{ width: 26, height: 26, borderRadius: 13, background: "#E8F1FF", color: BLUE, fontWeight: 700, fontSize: 11, display: "inline-flex", alignItems: "center", justifyContent: "center" }}>{r.name[0]}</span>
+                  <span style={{ width: 26, height: 26, borderRadius: 13, background: METRIC.blue.tint, color: BLUE, fontWeight: 700, fontSize: 11, display: "inline-flex", alignItems: "center", justifyContent: "center" }}>{r.name[0]}</span>
                   {r.name}
                   {isNew && <span style={{ width: 7, height: 7, borderRadius: 4, background: BLUE }} />}
                 </span>
@@ -194,11 +201,11 @@ function Bubble({ me, manager, children, k = 1 }: { me?: boolean; manager?: bool
           fontSize: 12,
           lineHeight: 1.45,
           color: INK,
-          background: manager ? "rgba(22,163,74,0.1)" : "#fff",
-          border: `1px solid ${manager ? "rgba(22,163,74,0.35)" : me ? "#D6E4F5" : LINE}`,
+          background: manager ? METRIC.blue.tint : "#fff",
+          border: `1px solid ${manager ? "rgba(0,56,255,0.18)" : me ? "#D6E4F5" : LINE}`,
         }}
       >
-        {manager && <div style={{ fontSize: 10, fontWeight: 700, color: GREEN, marginBottom: 1 }}>Менеджер · вы</div>}
+        {manager && <div style={{ fontSize: 10, fontWeight: 700, color: BLUE, marginBottom: 1 }}>Менеджер · вы</div>}
         {children}
       </div>
     </div>
@@ -217,6 +224,15 @@ function Transcript({ t, narrow }: { t: number; narrow: boolean }) {
         <span style={{ borderRadius: 999, padding: "2px 8px", fontSize: 10.5, fontWeight: 600, color: BLUE, border: "1px solid #D6E4F5", background: "#fff" }}>● Сайт</span>
         <span style={{ fontSize: 10.5, color: GREY }}>{sent > 0 ? 9 : 8} сообщений</span>
       </div>
+      {taken && (
+        <div style={{ margin: "0 14px 6px", display: "flex", alignItems: "center", gap: 8, borderRadius: 10, padding: "6px 10px", background: OPERATOR.bg, border: `1px solid ${OPERATOR.border}`, opacity: p(t, TAKE + 0.15, 0.3) }}>
+          <span style={{ fontSize: 13 }}>🎧</span>
+          <div style={{ lineHeight: 1.3 }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: OPERATOR.text }}>Менеджер за рулём · вы</div>
+            <div style={{ fontSize: 10, color: OPERATOR.sub }}>Ассистент на паузе · с 20:16</div>
+          </div>
+        </div>
+      )}
       <div style={{ flex: 1, minHeight: 0, overflow: "hidden", display: "flex", flexDirection: "column", justifyContent: "flex-end", gap: 6, padding: "0 14px 8px" }}>
         {chat.map((m, i) => (
           <Bubble key={i} me={m.me}>
@@ -236,16 +252,16 @@ function Transcript({ t, narrow }: { t: number; narrow: boolean }) {
               borderRadius: 8,
               padding: "5px 10px",
               fontSize: 11.5,
-              fontWeight: 700,
-              color: "#fff",
-              background: taken ? "#F59E0B" : GREEN,
+              fontWeight: 600,
+              color: taken ? CAB.text2 : "#fff",
+              background: taken ? "#F1F5F9" : CAB.action,
               transform: `scale(${1 - 0.07 * press(t, TAKE)})`,
               whiteSpace: "nowrap",
             }}
           >
-            {taken ? "⏸ Ассистент на паузе · отвечаете вы" : "✋ Перехватить"}
+            {taken ? "↺ Вернуть боту" : "✋ Перехватить"}
           </span>
-          {!narrow && <span style={{ borderRadius: 8, padding: "5px 10px", fontSize: 11.5, color: GREY, background: SOFT }}>Уведомления</span>}
+          {!narrow && <span style={{ borderRadius: 8, padding: "5px 10px", fontSize: 11.5, color: CAB.text2, background: "#F1F5F9" }}>Уведомления</span>}
         </div>
         <div style={{ display: "flex", gap: 8 }}>
           <div
@@ -254,7 +270,7 @@ function Transcript({ t, narrow }: { t: number; narrow: boolean }) {
               minWidth: 0,
               height: 34,
               borderRadius: 9,
-              border: `1px solid ${taken ? "rgba(0,98,239,0.45)" : LINE}`,
+              border: `1px solid ${taken ? "rgba(0,56,255,0.45)" : LINE}`,
               display: "flex",
               alignItems: "center",
               justifyContent: typed && t < SEND + 0.2 ? "flex-end" : "flex-start",
@@ -265,7 +281,7 @@ function Transcript({ t, narrow }: { t: number; narrow: boolean }) {
               whiteSpace: "nowrap",
             }}
           >
-            <span style={{ flexShrink: 0 }}>{typed && t < SEND + 0.2 ? typed : taken ? "Напишите клиенту…" : "Перехватите диалог, чтобы ответить…"}</span>
+            <span style={{ flexShrink: 0 }}>{typed && t < SEND + 0.2 ? typed : taken ? "Ответ клиенту…" : "Перехватите диалог, чтобы ответить…"}</span>
           </div>
           <span
             style={{
@@ -276,7 +292,7 @@ function Transcript({ t, narrow }: { t: number; narrow: boolean }) {
               fontSize: 12,
               fontWeight: 700,
               color: "#fff",
-              background: taken ? BLUE : "#9DBEF5",
+              background: taken ? BLUE : "rgba(0,56,255,0.5)",
               transform: `scale(${1 - 0.07 * press(t, SEND)})`,
             }}
           >
@@ -299,7 +315,7 @@ function RequestPanel({ compact }: { compact?: boolean }) {
     <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
       {!compact && (
         <div style={{ ...card, padding: "12px 14px" }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
             <span style={{ fontSize: 13, fontWeight: 700, color: INK }}>Профиль клиента</span>
             <span style={statusStyle("Запрос на бронь")}>Запрос на бронь</span>
           </div>
@@ -335,7 +351,7 @@ function Analytics({ t, narrow }: { t: number; narrow: boolean }) {
     <div style={{ ...card, padding: narrow ? "14px 14px" : "16px 20px" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
         <span style={{ fontSize: 14, fontWeight: 700, color: INK }}>Воронка · 30 дней</span>
-        <span style={{ fontSize: 10.5, color: "#94A3B8" }}>пример данных</span>
+        <span style={{ fontSize: 10.5, color: GREY }}>пример данных</span>
       </div>
       <div style={{ marginTop: 14, display: "flex", flexDirection: "column", gap: narrow ? 12 : 14 }}>
         {bars.map(([label, v], i) => {
@@ -346,8 +362,8 @@ function Analytics({ t, narrow }: { t: number; narrow: boolean }) {
                 <span>{label}</span>
                 <span style={{ fontWeight: 700 }}>{Math.round(v * k)}%</span>
               </div>
-              <div style={{ height: narrow ? 12 : 14, borderRadius: 7, background: "#EEF3FA", overflow: "hidden" }}>
-                <div style={{ width: `${v * k}%`, height: "100%", borderRadius: 7, background: i === 3 ? "linear-gradient(90deg,#16A34A,#22C55E)" : "linear-gradient(90deg,#0062EF,#00B4F5)" }} />
+              <div style={{ height: narrow ? 12 : 14, borderRadius: 7, background: CAB.track, overflow: "hidden" }}>
+                <div style={{ width: `${v * k}%`, height: "100%", borderRadius: 7, background: i === 3 ? METRIC.emerald.main : valueColor(v, 100) }} />
               </div>
             </div>
           );
@@ -362,7 +378,7 @@ function Analytics({ t, narrow }: { t: number; narrow: boolean }) {
           .map(([label, value], i) => {
             const k = p(t, TO_ANALYTICS + 1.4 + i * 0.2, 0.5);
             return (
-              <div key={label} style={{ borderRadius: 12, background: SOFT, border: `1px solid ${LINE}`, padding: "10px 12px", opacity: k, transform: `translateY(${(1 - k) * 8}px)` }}>
+              <div key={label} style={{ ...TILE_STYLE, padding: "10px 12px", opacity: k, transform: `translateY(${(1 - k) * 8}px)` }}>
                 <div style={{ fontSize: 20, fontWeight: 800, color: INK }}>{value}</div>
                 <div style={{ fontSize: 11, color: GREY, marginTop: 2 }}>{label}</div>
               </div>
@@ -376,8 +392,8 @@ function Analytics({ t, narrow }: { t: number; narrow: boolean }) {
             <span style={{ color: GREY }}>Сайт 64% · MAX 36%</span>
           </div>
           <div style={{ display: "flex", height: 12, borderRadius: 6, overflow: "hidden" }}>
-            <div style={{ width: "64%", background: BLUE }} />
-            <div style={{ width: "36%", background: "#7C3AED" }} />
+            <div style={{ width: "64%", background: CHANNEL.widget }} />
+            <div style={{ width: "36%", background: CHANNEL.max }} />
           </div>
         </div>
       )}
@@ -411,16 +427,17 @@ function Wide({ t, asset }: { t: number; asset: (p: string) => string }) {
   const k = appear(t);
   const active = screen === "analytics" ? "Аналитика" : "Диалоги";
   return (
-    <div style={{ position: "relative", width: CABINET_WIDE.w, height: CABINET_WIDE.h, background: "#FBFCFE", display: "flex", fontFamily: FONT, overflow: "hidden" }}>
+    <div style={{ position: "relative", width: CABINET_WIDE.w, height: CABINET_WIDE.h, background: CAB.bg, display: "flex", fontFamily: FONT, overflow: "hidden" }}>
       <div style={{ width: 176, flexShrink: 0, borderRight: `1px solid ${LINE}`, background: "#fff", padding: "16px 10px" }}>
         <img src={asset("/logo.svg")} alt="" style={{ height: 30, width: "auto", display: "block", marginLeft: 4 }} />
         {NAV.map(([group, items]) => (
           <div key={group} style={{ marginTop: 16 }}>
-            <div style={{ fontSize: 9.5, fontWeight: 700, color: "#94A3B8", letterSpacing: 0.6, padding: "0 8px 4px" }}>{group}</div>
+            <div style={{ fontSize: 9.5, fontWeight: 700, color: GREY, letterSpacing: 0.6, padding: "0 8px 4px" }}>{group}</div>
             {items.map((it) => {
               const on = it === active;
               return (
-                <div key={it} style={{ borderRadius: 9, padding: "6px 9px", fontSize: 12.5, fontWeight: on ? 700 : 500, color: on ? BLUE : "#475569", background: on ? "#EEF4FF" : "transparent" }}>
+                <div key={it} style={{ position: "relative", borderRadius: 9, padding: "6px 9px", fontSize: 12.5, fontWeight: on ? 700 : 500, color: on ? BLUE : CAB.text2, background: on ? CAB.activeBg : "transparent" }}>
+                  {on && <span style={{ position: "absolute", left: -10, top: 7, bottom: 7, width: 3, borderRadius: "0 3px 3px 0", background: BLUE }} />}
                   {it}
                 </div>
               );
@@ -479,7 +496,7 @@ function Narrow({ t, asset }: { t: number; asset: (p: string) => string }) {
   const k = appear(t);
   const title = screen === "analytics" ? "Аналитика" : screen === "detail" ? "Анна · Сайт" : "Диалоги";
   return (
-    <div style={{ position: "relative", width: CABINET_NARROW.w, height: CABINET_NARROW.h, background: "#FBFCFE", fontFamily: FONT, overflow: "hidden", display: "flex", flexDirection: "column" }}>
+    <div style={{ position: "relative", width: CABINET_NARROW.w, height: CABINET_NARROW.h, background: CAB.bg, fontFamily: FONT, overflow: "hidden", display: "flex", flexDirection: "column" }}>
       <div style={{ height: 56, flexShrink: 0, borderBottom: `1px solid ${LINE}`, background: "#fff", display: "flex", alignItems: "center", gap: 10, padding: "0 14px" }}>
         <span style={{ fontSize: 18, color: INK }}>{screen === "detail" ? "‹" : "☰"}</span>
         <span style={{ flex: 1, fontSize: 15, fontWeight: 700, color: INK }}>{title}</span>

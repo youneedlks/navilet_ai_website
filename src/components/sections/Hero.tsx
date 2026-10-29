@@ -156,7 +156,7 @@ export default function Hero() {
                 aside={
                   <Link
                     href="/demo"
-                    className="inline-flex flex-shrink-0 items-center gap-1 text-sm font-semibold text-accent hover:underline"
+                    className="-my-2 inline-flex flex-shrink-0 items-center gap-1 py-2.5 text-sm font-semibold text-accent hover:underline"
                   >
                     Попробовать самому
                     <ArrowRight className="h-4 w-4" />

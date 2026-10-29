@@ -22,28 +22,28 @@ interface RealConversationsContentProps {
 
 const TABLE_ROWS = [
   {
-    dot: "#10B981",
+    dot: "#0E9F8A",
     preview: "Хочу тур в Турцию на двоих, всё включено на 7 ночей",
     msgs: 12,
     searches: 3,
     time: "14:23",
   },
   {
-    dot: "#F59E0B",
+    dot: "#7458F6",
     preview: "Подскажите горящие туры в Египет из Москвы",
     msgs: 8,
     searches: 2,
     time: "13:45",
   },
   {
-    dot: "#10B981",
+    dot: "#0E9F8A",
     preview: "Есть ли туры в Мальдивы в марте на 10 дней?",
     msgs: 15,
     searches: 4,
     time: "12:18",
   },
   {
-    dot: "#F59E0B",
+    dot: "#7458F6",
     preview: "Сколько стоит перелёт в Дубай бизнес-классом?",
     msgs: 5,
     searches: 1,
@@ -57,7 +57,7 @@ const TABLE_ROWS = [
     time: "10:30",
   },
   {
-    dot: "#10B981",
+    dot: "#0E9F8A",
     preview: "Ищу тур в Доминикану, вылет из СПб, 2 взрослых",
     msgs: 18,
     searches: 5,
@@ -115,9 +115,9 @@ const TOUR_CARDS = [
 ];
 
 const TIMELINE_EVENTS = [
-  { icon: Play, label: "Диалог начат", detail: "14:23", color: "#0038FF", bg: "#F0F4FF" },
-  { icon: Search, label: "Поиск: Турция", detail: "14:24", color: "#3B82F6", bg: "#EFF6FF" },
-  { icon: Image, label: "Показано 2 карточки", detail: "14:24", color: "#10B981", bg: "#ECFDF5" },
+  { icon: Play, label: "Диалог начат", detail: "14:23", color: "#0038FF", bg: "#EBF0FF" },
+  { icon: Search, label: "Поиск: Турция", detail: "14:24", color: "#7458F6", bg: "#EEEAFF" },
+  { icon: Image, label: "Показано 2 карточки", detail: "14:24", color: "#7458F6", bg: "#EEEAFF" },
   { icon: CheckCircle, label: "Диалог завершён", detail: "14:46", color: "#64748B", bg: "#F1F5F9" },
 ];
 
@@ -145,7 +145,7 @@ export default function RealConversationsContent({
         {/* Chat replay (2 cols) */}
         <div
           className="col-span-2 rounded-xl bg-[#F1F5F9] overflow-hidden"
-          style={{ boxShadow: "0 1px 3px rgba(0,56,255,0.06)" }}
+          style={{ boxShadow: "0 1px 3px rgba(15,23,42,.048), 0 14px 34px -12px rgba(15,23,42,.128)" }}
         >
           {/* Chat header */}
           <div
@@ -154,7 +154,7 @@ export default function RealConversationsContent({
           >
             <div className="flex items-center gap-2">
               <span
-                className="font-semibold text-[#1E293B]"
+                className="font-semibold text-[#0F172A]"
                 style={{ fontSize: 9 * s }}
               >
                 Переписка
@@ -235,15 +235,15 @@ export default function RealConversationsContent({
                     <div
                       className={`rounded-2xl px-2 py-1.5 leading-relaxed ${
                         msg.role === "user"
-                          ? "bg-[#F0F4FF] text-[#1E293B] rounded-br-sm border border-[#0038FF]/10"
-                          : "bg-white text-[#1E293B] rounded-bl-sm border border-[#E2E8F0]/60 shadow-sm"
+                          ? "bg-[#F0F4FF] text-[#0F172A] rounded-br-sm border border-[#0038FF]/10"
+                          : "bg-white text-[#0F172A] rounded-bl-sm border border-[#E2E8F0]/60 shadow-sm"
                       }`}
                       style={{ fontSize: 7.5 * s }}
                     >
                       {msg.text}
                     </div>
                     <span
-                      className={`text-[#94A3B8] mt-0.5 ${msg.role === "user" ? "text-right" : ""}`}
+                      className={`text-[#64748B] mt-0.5 ${msg.role === "user" ? "text-right" : ""}`}
                       style={{ fontSize: 5.5 * s }}
                     >
                       {msg.time}
@@ -281,7 +281,7 @@ export default function RealConversationsContent({
             className="rounded-xl bg-white"
             style={{
               padding: `${7 * s}px ${8 * s}px`,
-              boxShadow: "0 1px 3px rgba(0,56,255,0.06)",
+              boxShadow: "0 1px 3px rgba(15,23,42,.048), 0 14px 34px -12px rgba(15,23,42,.128)",
             }}
           >
             <div
@@ -289,13 +289,13 @@ export default function RealConversationsContent({
               style={{ marginBottom: 5 * s }}
             >
               <span
-                className="font-semibold text-[#1E293B]"
+                className="font-semibold text-[#0F172A]"
                 style={{ fontSize: 9 * s }}
               >
                 Профиль клиента
               </span>
               <span
-                className="flex items-center gap-0.5 rounded-lg bg-[#ECFDF5] text-[#10B981] px-1.5"
+                className="flex items-center gap-0.5 rounded-lg bg-[#E2F5F1] text-[#0E9F8A] px-1.5"
                 style={{ fontSize: 6.5 * s, paddingBlock: 2 }}
               >
                 <BookmarkCheck size={7 * s} />
@@ -316,7 +316,7 @@ export default function RealConversationsContent({
               </div>
               <div>
                 <div
-                  className="font-medium text-[#1E293B]"
+                  className="font-medium text-[#0F172A]"
                   style={{ fontSize: 7.5 * s }}
                 >
                   Chrome · macOS
@@ -342,11 +342,11 @@ export default function RealConversationsContent({
             className="rounded-xl bg-white"
             style={{
               padding: `${7 * s}px ${8 * s}px`,
-              boxShadow: "0 1px 3px rgba(0,56,255,0.06)",
+              boxShadow: "0 1px 3px rgba(15,23,42,.048), 0 14px 34px -12px rgba(15,23,42,.128)",
             }}
           >
             <span
-              className="font-semibold text-[#1E293B] block"
+              className="font-semibold text-[#0F172A] block"
               style={{ fontSize: 8 * s, marginBottom: 5 * s }}
             >
               Путь клиента
@@ -378,12 +378,12 @@ export default function RealConversationsContent({
                     </div>
                     <div style={{ paddingBottom: isLast ? 0 : 4 * s }}>
                       <div
-                        className="font-medium text-[#1E293B] leading-tight"
+                        className="font-medium text-[#0F172A] leading-tight"
                         style={{ fontSize: 6.5 * s }}
                       >
                         {ev.label}
                       </div>
-                      <div className="text-[#94A3B8]" style={{ fontSize: 5.5 * s }}>
+                      <div className="text-[#64748B]" style={{ fontSize: 5.5 * s }}>
                         {ev.detail}
                       </div>
                     </div>
@@ -398,11 +398,11 @@ export default function RealConversationsContent({
             className="rounded-xl bg-white"
             style={{
               padding: `${6 * s}px ${8 * s}px`,
-              boxShadow: "0 1px 3px rgba(0,56,255,0.06)",
+              boxShadow: "0 1px 3px rgba(15,23,42,.048), 0 14px 34px -12px rgba(15,23,42,.128)",
             }}
           >
             <span
-              className="font-semibold text-[#1E293B] block"
+              className="font-semibold text-[#0F172A] block"
               style={{ fontSize: 7.5 * s, marginBottom: 3 * s }}
             >
               Поисковые запросы
@@ -420,7 +420,7 @@ export default function RealConversationsContent({
                 >
                   <Search
                     size={6 * s}
-                    className="text-[#94A3B8] shrink-0"
+                    className="text-[#64748B] shrink-0"
                   />
                   {q}
                 </div>
@@ -439,13 +439,13 @@ function TourCard({ card, s }: { card: (typeof TOUR_CARDS)[0]; s: number }) {
       className="bg-white border border-[#E2E8F0]/60 rounded-xl flex gap-2 shadow-sm"
       style={{ padding: `${4 * s}px ${5 * s}px` }}
     >
-      {/* Color indicator strip */}
+      {/* Место под фото тура */}
       <div
-        className="rounded-lg shrink-0 bg-gradient-to-b from-[#0038FF] to-[#3B82F6] overflow-hidden"
+        className="rounded-lg shrink-0 bg-[#EBF0FF] overflow-hidden"
         style={{ width: 32 * s, height: 38 * s }}
       >
         <div className="w-full h-full flex items-end justify-center pb-0.5">
-          <MapPin size={8 * s} className="text-white/70" />
+          <MapPin size={8 * s} className="text-[#0038FF]/60" />
         </div>
       </div>
 
@@ -453,7 +453,7 @@ function TourCard({ card, s }: { card: (typeof TOUR_CARDS)[0]; s: number }) {
         {/* Hotel name + stars */}
         <div className="flex items-center gap-1" style={{ marginBottom: 1 }}>
           <span
-            className="font-semibold text-[#1E293B] truncate"
+            className="font-semibold text-[#0F172A] truncate"
             style={{ fontSize: 7.5 * s }}
           >
             {card.hotel}
@@ -526,7 +526,7 @@ function CompactView({ s }: { s: number }) {
       >
         <div>
           <div
-            className="font-bold text-[#1E293B]"
+            className="font-bold text-[#0F172A]"
             style={{ fontSize: 12 * s }}
           >
             Диалоги
@@ -540,8 +540,8 @@ function CompactView({ s }: { s: number }) {
             className="flex items-center gap-0.5 rounded-xl bg-white border border-[#E2E8F0]/60 px-2"
             style={{ height: 16 * s, fontSize: 7.5 * s }}
           >
-            <Search size={8 * s} className="text-[#94A3B8]" />
-            <span className="text-[#94A3B8]">Поиск</span>
+            <Search size={8 * s} className="text-[#64748B]" />
+            <span className="text-[#64748B]">Поиск</span>
           </div>
         </div>
       </div>
@@ -555,20 +555,20 @@ function CompactView({ s }: { s: number }) {
           {
             label: "Все",
             active: true,
-            bg: "#1E293B",
+            bg: "#0038FF",
             text: "white",
           },
           {
             label: "С карточками",
             active: false,
-            bg: "#FEF3C7",
-            text: "#D97706",
+            bg: "#EEEAFF",
+            text: "#7458F6",
           },
           {
             label: "С бронью",
             active: false,
-            bg: "#ECFDF5",
-            text: "#10B981",
+            bg: "#E2F5F1",
+            text: "#0E9F8A",
           },
         ].map((f) => (
           <span
@@ -589,13 +589,13 @@ function CompactView({ s }: { s: number }) {
         ))}
         <div className="flex items-center gap-1.5 ml-auto">
           {[
-            { color: "#10B981", label: "Бронь" },
-            { color: "#F59E0B", label: "Карточки" },
+            { color: "#0E9F8A", label: "Бронь" },
+            { color: "#7458F6", label: "Карточки" },
             { color: "#CBD5E1", label: "Чат" },
           ].map((l) => (
             <span
               key={l.label}
-              className="flex items-center gap-0.5 text-[#94A3B8]"
+              className="flex items-center gap-0.5 text-[#64748B]"
               style={{ fontSize: 6 * s }}
             >
               <span
@@ -615,7 +615,7 @@ function CompactView({ s }: { s: number }) {
       {/* Table */}
       <div
         className="rounded-xl bg-white overflow-hidden"
-        style={{ boxShadow: "0 1px 3px rgba(0,56,255,0.06)" }}
+        style={{ boxShadow: "0 1px 3px rgba(15,23,42,.048), 0 14px 34px -12px rgba(15,23,42,.128)" }}
       >
         {/* Table header */}
         <div
@@ -640,7 +640,7 @@ function CompactView({ s }: { s: number }) {
         {TABLE_ROWS.map((row, i) => (
           <div
             key={i}
-            className="flex items-center border-t border-[#E2E8F0]/40 hover:bg-[#F0F4FF]/30 transition-colors"
+            className="flex items-center border-t border-[#E2E8F0]/40"
             style={{ padding: `${3 * s}px ${6 * s}px` }}
           >
             <span style={{ width: "5%" }}>
@@ -654,7 +654,7 @@ function CompactView({ s }: { s: number }) {
               />
             </span>
             <span
-              className="text-[#1E293B] truncate"
+              className="text-[#0F172A] truncate"
               style={{ width: "55%", fontSize: 7.5 * s }}
             >
               {row.preview}
@@ -674,7 +674,7 @@ function CompactView({ s }: { s: number }) {
               {row.searches}
             </span>
             <span
-              className="text-right text-[#94A3B8]"
+              className="text-right text-[#64748B]"
               style={{ width: "10%", fontSize: 6.5 * s }}
             >
               {row.time}
@@ -686,11 +686,11 @@ function CompactView({ s }: { s: number }) {
           className="flex items-center justify-between border-t border-[#E2E8F0]/40 bg-[#F1F5F9]/30"
           style={{ padding: `${3 * s}px ${6 * s}px` }}
         >
-          <span className="text-[#94A3B8]" style={{ fontSize: 6 * s }}>
+          <span className="text-[#64748B]" style={{ fontSize: 6 * s }}>
             1–6 из 2 847
           </span>
           <div className="flex items-center gap-1">
-            <span className="text-[#94A3B8]" style={{ fontSize: 6 * s }}>
+            <span className="text-[#64748B]" style={{ fontSize: 6 * s }}>
               ← Пред.
             </span>
             <span className="text-[#0038FF] font-semibold" style={{ fontSize: 6 * s }}>
@@ -721,7 +721,7 @@ function InfoRow({
         <span style={{ fontSize: 7 * s }}>{label}</span>
       </div>
       <span
-        className="font-medium text-[#1E293B]"
+        className="font-medium text-[#0F172A]"
         style={{ fontSize: 7 * s }}
       >
         {value}
