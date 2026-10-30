@@ -1,49 +1,48 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { staggerContainer, fadeInUp, scaleIn } from "@/lib/animations";
-import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 import RealDashboardFrame from "./RealDashboardFrame";
 import RealOverviewContent from "./RealOverviewContent";
+import { useLeadForm } from "@/contexts/LeadFormContext";
 import { lkRegisterUrl } from "@/lib/lk";
 import { metrikaGoals, reachMetrikaGoal } from "@/lib/metrika";
 
+/**
+ * Первый экран /dashboard отвечает на вопрос «что увидят менеджеры». Одна главная
+ * кнопка — регистрация; демо и менеджер — ссылками, как на главной.
+ */
 export default function DashboardHero() {
-  return (
-    <section className="relative overflow-hidden bg-white">
-      <div className="pointer-events-none absolute -right-40 -top-40 h-[700px] w-[700px] rounded-full bg-[#00E7FD]/[0.07] blur-[120px]" />
-      <div className="pointer-events-none absolute -left-20 top-1/3 h-[500px] w-[500px] rounded-full bg-[#0097F5]/[0.05] blur-[100px]" />
+  const { openForm } = useLeadForm();
 
-      <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-12 px-5 pt-24 pb-16 sm:px-6 sm:pt-32 sm:pb-20 lg:flex-row lg:items-start lg:gap-12 lg:px-8 lg:pt-36 lg:pb-24">
-        {/* Left: content */}
+  return (
+    <section className="bg-white">
+      <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 px-5 pt-24 pb-16 sm:px-6 sm:pt-32 sm:pb-20 lg:flex-row lg:items-start lg:gap-12 lg:px-8 lg:pt-36 lg:pb-24">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
           className="flex flex-1 flex-col items-center text-center lg:items-start lg:pt-8 lg:text-left"
         >
-          <Badge className="mb-6">Личный кабинет</Badge>
-
           <motion.h1
             variants={fadeInUp}
-            className="mb-6 font-display text-3xl font-bold leading-[1.1] text-heading sm:text-5xl lg:text-[3.5rem]"
+            className="mb-6 font-display text-3xl font-bold leading-[1.1] text-heading sm:text-5xl lg:text-[3.25rem]"
             style={{ letterSpacing: "-0.02em" }}
           >
-            Полный контроль над вашим{" "}
-            <span className="whitespace-nowrap text-accent">ИИ-ассистентом</span>
+            Личный кабинет: <span className="text-accent">заявки, диалоги и аналитика</span> в одном месте
           </motion.h1>
 
           <motion.p
             variants={fadeInUp}
             className="mb-8 max-w-xl text-base leading-relaxed text-body sm:text-lg"
           >
-            Диалоги и ответ менеджера клиенту, аналитика и прогнозы, база знаний
-            агентства, заявки на почту, в U‑ON, Telegram и MAX — всё в одном
-            личном кабинете на lk.navilet.ru.
+            Менеджер видит каждую заявку — переписку, телефон и что искал клиент — и может ответить сам.
+            Заявки приходят в Telegram, MAX, на почту или в U‑ON, кабинет работает и с телефона.
           </motion.p>
 
-          <motion.div variants={fadeInUp} className="mb-10 flex flex-wrap justify-center gap-4 lg:justify-start">
+          <motion.div variants={fadeInUp} className="flex flex-col items-center gap-3 lg:items-start">
             <Button
               variant="primary"
               size="lg"
@@ -52,51 +51,30 @@ export default function DashboardHero() {
             >
               Подключить бесплатно
             </Button>
-            <Button variant="outline" size="lg" href="/demo">
-              Посмотреть демо
-            </Button>
-          </motion.div>
-
-          <motion.div
-            variants={fadeInUp}
-            className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-muted sm:gap-6 sm:text-sm lg:justify-start"
-          >
-            {[
-              "Заявки в Telegram и MAX",
-              "База знаний агентства",
-              "Отчёты в CSV и PDF",
-              "Работает с телефона",
-            ].map((item) => (
-              <span key={item} className="flex items-center gap-1.5">
-                <svg
-                  viewBox="0 0 16 16"
-                  fill="currentColor"
-                  className="h-3.5 w-3.5 text-accent"
-                >
-                  <path d="M8 0a8 8 0 110 16A8 8 0 018 0zm3.78 5.22a.75.75 0 00-1.06 0L7 8.94 5.28 7.22a.75.75 0 10-1.06 1.06l2.25 2.25a.75.75 0 001.06 0l4.25-4.25a.75.75 0 000-1.06z" />
-                </svg>
-                {item}
-              </span>
-            ))}
+            <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-sm font-semibold lg:justify-start">
+              <Link href="/demo" className="inline-flex min-h-10 items-center text-accent hover:underline">
+                Посмотреть демо
+              </Link>
+              <button
+                type="button"
+                onClick={() => openForm({ source: "dashboard_hero", path: "request" })}
+                className="inline-flex min-h-10 cursor-pointer items-center text-body hover:text-accent hover:underline"
+              >
+                Подключить с менеджером
+              </button>
+            </div>
           </motion.div>
         </motion.div>
 
-        {/* Right: real dashboard */}
         <motion.div
           variants={scaleIn}
           initial="hidden"
           animate="visible"
           className="w-full flex-shrink-0 lg:w-[620px]"
         >
-          <div className="relative">
-            <RealDashboardFrame
-              activeScreen="overview"
-              className="relative"
-              animate={false}
-            >
-              <RealOverviewContent />
-            </RealDashboardFrame>
-          </div>
+          <RealDashboardFrame activeScreen="overview" animate={false}>
+            <RealOverviewContent />
+          </RealDashboardFrame>
         </motion.div>
       </div>
     </section>

@@ -116,10 +116,7 @@ export default function DashboardKabinetTour() {
   return (
     <SectionWrapper>
       <div className="mx-auto max-w-3xl text-center">
-        <span className="inline-flex items-center gap-2 rounded-full bg-blue-ice px-4 py-1.5 text-sm font-semibold text-accent">
-          Новое в кабинете
-        </span>
-        <h2 className="mt-4 font-display text-3xl font-bold text-heading sm:text-4xl">
+        <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl">
           Всё для работы с заявками — в одном кабинете
         </h2>
         <p className="mt-3 text-body">

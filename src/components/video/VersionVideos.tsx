@@ -61,12 +61,17 @@ export default function VersionVideos() {
   const [id, setId] = useState<AssistantVersionId>(versions[0].id);
   const root = useRef<HTMLDivElement>(null);
 
-  // Ссылка вида /versii#v-lid (строки версий на главной) открывает нужную вкладку и прокручивает к ролику
+  // Ссылка вида /versii#v-lid (строки версий на главной и на /versii) открывает нужную вкладку и прокручивает к ролику
   useEffect(() => {
-    const m = window.location.hash.match(/^#v-(req|lid|pro)$/);
-    if (!m || !versions.some((v) => v.id === m[1])) return;
-    setId(m[1] as AssistantVersionId);
-    root.current?.scrollIntoView({ block: "start" });
+    const fromHash = () => {
+      const m = window.location.hash.match(/^#v-(req|lid|pro)$/);
+      if (!m || !versions.some((v) => v.id === m[1])) return;
+      setId(m[1] as AssistantVersionId);
+      root.current?.scrollIntoView({ block: "start" });
+    };
+    fromHash();
+    window.addEventListener("hashchange", fromHash);
+    return () => window.removeEventListener("hashchange", fromHash);
   }, [versions]);
   const version = versions.find((v) => v.id === id) ?? versions[0];
   const v = VIDEOS[version.id];

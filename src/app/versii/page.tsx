@@ -4,9 +4,10 @@ import Link from "next/link";
 import Navigation from "@/components/sections/Navigation";
 import Footer from "@/components/sections/Footer";
 import FloatingCTA from "@/components/ui/FloatingCTA";
-import VersionPicker from "@/components/sections/VersionPicker";
+import VersionRows from "@/components/sections/VersionRows";
 import VersionVideos from "@/components/video/VersionVideos";
 import RegisterCta from "@/components/seo/RegisterCta";
+import OpenDetailsOnHash from "@/components/ui/OpenDetailsOnHash";
 import {
   assistantVersions,
   versionCompareGroups,
@@ -14,15 +15,7 @@ import {
   versiiFaqItems,
   reqVersionPublished,
 } from "@/lib/content";
-import {
-  ChevronRight,
-  Check,
-  Minus,
-  Sparkles,
-  ArrowRight,
-  Link2,
-  RotateCcw,
-} from "lucide-react";
+import { ArrowRight, Check, ChevronDown, ChevronRight, Minus } from "lucide-react";
 import { jsonLdScript } from "@/lib/schema";
 import { versionIcons } from "@/lib/version-icons";
 
@@ -186,9 +179,6 @@ function CompareCell({ value }: { value: string | boolean }) {
 }
 
 export default function VersiiPage() {
-  const lid = assistantVersions.find((v) => v.id === "lid")!;
-  const pro = assistantVersions.find((v) => v.id === "pro")!;
-
   return (
     <>
       <script
@@ -217,15 +207,10 @@ export default function VersiiPage() {
           </ol>
         </nav>
 
-        {/* Hero + интерактивный выбор */}
+        {/* Первый экран: версии строками — ситуация агентства, версия и цена;
+            по нажатию — полный список возможностей и действия версии */}
         <section className="mx-auto max-w-5xl px-5 py-10 sm:px-6 sm:py-14 lg:px-8">
           <div className="text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5">
-              <Sparkles className="h-4 w-4 text-accent" />
-              <span className="text-xs font-semibold text-accent sm:text-sm">
-                Первый месяц бесплатно · на любой версии
-              </span>
-            </div>
             <h1 className="font-display text-4xl font-bold leading-tight text-heading sm:text-5xl">
               {reqVersionPublished ? "Три версии ассистента:" : "Две версии ассистента:"}{" "}
               <span className="text-accent">
@@ -233,32 +218,14 @@ export default function VersiiPage() {
               </span>
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-base text-body sm:text-lg">
-              {reqVersionPublished && (
-                <>
-                  <strong className="font-semibold text-heading">«Заявка»</strong> —
-                  собирает запрос и контакт, тур подбирает ваш менеджер,{" "}
-                  <Link href="/blog/ii-assistent-bez-tourvisor" className="text-accent underline decoration-accent/30 underline-offset-2 hover:decoration-accent">Турвизор не нужен</Link>, <span className="whitespace-nowrap">от 790 ₽/мес</span>.{" "}
-                </>
-              )}
-              <strong className="font-semibold text-heading">«Лид»</strong> —
-              лидогенерация: живой диалог, подбор туров и готовая заявка вашему
-              менеджеру,{" "}
-              <span className="whitespace-nowrap">от 990 ₽/мес</span>.{" "}
-              <strong className="font-semibold text-heading">«Про»</strong> —
-              полноценный инструмент менеджера: консультации, проверка цен и возврат клиентов,{" "}
-              <span className="whitespace-nowrap">от 1 990 ₽/мес</span>.{" "}
-              {reqVersionPublished ? "Все" : "Обе"} работают в Web‑виджете и MAX.
+              {reqVersionPublished ? "Все три" : "Обе"} работают на сайте и в MAX. Первый месяц бесплатно на любой
+              версии, сменить её можно в кабинете в любой момент.
             </p>
           </div>
 
-          <div className="mt-10">
-            <VersionPicker source="versii" />
+          <div className="mt-8 sm:mt-10">
+            <VersionRows source="versii" />
           </div>
-
-          <p className="mx-auto mt-6 max-w-2xl text-center text-sm text-muted">
-            Версия меняется в личном кабинете в любой момент — история диалогов
-            и настройки сохраняются.
-          </p>
         </section>
 
         {/* Ролики: как работает каждая версия на одном и том же запросе туриста */}
@@ -275,245 +242,130 @@ export default function VersiiPage() {
           </div>
         </section>
 
-        {/* Полный функционал обеих версий — серверный рендер.
-            В интерактивной карточке выше эти списки появляются только
-            после клика, то есть в HTML их нет: ни поиск, ни ИИ-краулеры
-            такой контент не видят. Здесь он есть всегда. */}
+        {/* Сравнение: главное — абзацем, полная таблица — по нажатию
+            (в <details> она остаётся в HTML для поиска и ИИ) */}
         <section className="mx-auto max-w-5xl px-5 py-14 sm:px-6 lg:px-8 lg:py-16">
           <h2 className="text-center font-display text-3xl font-bold text-heading sm:text-4xl">
-            Что умеет каждая версия
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-center text-base text-body">
-            {reqVersionPublished && "Полный список возможностей каждой версии. "}
-            {!reqVersionPublished && <>Полный список возможностей: слева — то, что делает «Лид» за{"\u00A0"}
-            <span className="whitespace-nowrap">
-              {lid.priceFrom.toLocaleString("ru-RU")} ₽/мес
-            </span>
-            , справа — что добавляет «Про» за{"\u00A0"}
-            <span className="whitespace-nowrap">
-              {pro.priceFrom.toLocaleString("ru-RU")} ₽/мес
-            </span>
-            .</>}
-          </p>
-
-          <div
-            className={`mt-10 grid grid-cols-1 gap-6 ${
-              assistantVersions.length > 2 ? "lg:grid-cols-3" : "lg:grid-cols-2"
-            }`}
-          >
-            {assistantVersions.map((version) => (
-              <div
-                key={version.id}
-                className="rounded-2xl border border-blue-subtle/50 bg-white p-6 shadow-card sm:p-7"
-              >
-                <div className="flex items-center gap-3 border-b border-blue-subtle/40 pb-4">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10">
-                    {version.id === "req" ? (
-                      <ReqIcon className="h-5 w-5 text-accent" />
-                    ) : version.id === "lid" ? (
-                      <LidIcon className="h-5 w-5 text-accent" />
-                    ) : (
-                      <ProIcon className="h-5 w-5 text-accent" />
-                    )}
-                  </span>
-                  <div>
-                    <h3 className="font-display text-lg font-bold text-heading">
-                      {version.fullName}
-                    </h3>
-                    <p className="text-xs font-medium text-accent">
-                      от {version.priceFrom.toLocaleString("ru-RU")} ₽/мес
-                    </p>
-                  </div>
-                </div>
-
-                <div className="mt-5 space-y-5">
-                  {version.featureGroups.map((group) => (
-                    <div key={group.title}>
-                      <h4 className="mb-2.5 text-xs font-bold uppercase tracking-wide text-muted">
-                        {group.title}
-                      </h4>
-                      <ul className="space-y-2">
-                        {group.items.map((item) => (
-                          <li
-                            key={item}
-                            className="flex items-start gap-2 text-sm leading-relaxed text-body"
-                          >
-                            <span className="mt-0.5 flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center rounded-full bg-accent/10">
-                              <Check className="h-2.5 w-2.5 text-accent" />
-                            </span>
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Ключевые сценарии заслуживают отдельного разбора — прямые
-              ссылки с версии на тематические страницы. */}
-          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            <Link
-              href="/lidy-dlya-turagentstva"
-              className="group flex items-start gap-3 rounded-2xl border border-blue-subtle/50 bg-white p-5 transition-colors hover:border-accent/40 hover:bg-blue-ice/30"
-            >
-              <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-accent/10">
-                <LidIcon className="h-4 w-4 text-accent" />
-              </span>
-              <span>
-                <span className="flex items-center gap-1.5 font-display text-base font-bold text-heading transition-colors group-hover:text-accent">
-                  Лиды для турагентства
-                </span>
-                <span className="mt-1 block text-sm leading-relaxed text-body">
-                  Как версия «Лид» превращает трафик сайта в заявки по 219–540 ₽ вместо 1 500–5 000 ₽ из рекламы.
-                </span>
-              </span>
-            </Link>
-            <Link
-              href="/podborki"
-              className="group flex items-start gap-3 rounded-2xl border border-blue-subtle/50 bg-white p-5 transition-colors hover:border-accent/40 hover:bg-blue-ice/30"
-            >
-              <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-accent/10">
-                <Link2 className="h-4 w-4 text-accent" />
-              </span>
-              <span>
-                <span className="flex items-center gap-1.5 font-display text-base font-bold text-heading transition-colors group-hover:text-accent">
-                  Подборки по ссылке
-                  <ArrowRight className="h-4 w-4" />
-                </span>
-                <span className="mt-1 block text-sm leading-relaxed text-body">
-                  Есть в «Лид» и «Про»: клиент открывает страницу с турами под брендом агентства, вы видите просмотры и заявки.
-                </span>
-              </span>
-            </Link>
-            <Link
-              href="/vozvrat-klientov"
-              className="group flex items-start gap-3 rounded-2xl border border-blue-subtle/50 bg-white p-5 transition-colors hover:border-accent/40 hover:bg-blue-ice/30"
-            >
-              <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-accent/10">
-                <RotateCcw className="h-4 w-4 text-accent" />
-              </span>
-              <span>
-                <span className="flex items-center gap-1.5 font-display text-base font-bold text-heading transition-colors group-hover:text-accent">
-                  Возврат клиентов в MAX
-                  <ArrowRight className="h-4 w-4" />
-                </span>
-                <span className="mt-1 block text-sm leading-relaxed text-body">
-                  Напоминание замолчавшим и подписка на снижение цены
-                  возвращают до 40% клиентов. В «Про» входят, в «Лиде» —
-                  опциями от 290 ₽/мес.
-                </span>
-              </span>
-            </Link>
-          </div>
-        </section>
-
-        {/* Полная сравнительная таблица */}
-        <section className="mx-auto max-w-5xl px-5 pb-14 sm:px-6 lg:px-8 lg:pb-16">
-          <h2 className="text-center font-display text-3xl font-bold text-heading sm:text-4xl">
-            Чем отличаются версии — полное сравнение
+            Чем отличаются версии
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-center text-base text-body">
             {reqVersionPublished && "«Заявка» собирает запрос, а тур подбирает менеджер. "}
             Это разные инструменты на одном движке: «Лид» ловит заявку и передаёт её живому менеджеру, «Про» сам сопровождает клиента до брони и возвращает ушедших.
           </p>
 
-          {/* На узких экранах таблица разворачивается в стек: название функции
-              строкой, под ней две колонки со значениями «Лид» и «Про». */}
-          <div className="mt-10 overflow-hidden rounded-2xl border border-blue-subtle/50">
-            <div className="sm:overflow-x-auto">
-              <table className={`block w-full text-sm sm:table ${reqVersionPublished ? "sm:min-w-[820px]" : "sm:min-w-[640px]"}`}>
-                <thead className="hidden sm:table-header-group">
-                  <tr className="bg-surface-alt">
-                    <th className={`${reqVersionPublished ? "w-[31%]" : "w-[40%]"} px-4 py-3.5 text-left font-semibold text-heading sm:px-5`}>
-                      Возможность
-                    </th>
-                    {reqVersionPublished && (
-                      <th className="w-[23%] px-4 py-3.5 text-left sm:px-5">
+          <dl className="mx-auto mt-8 grid max-w-4xl grid-cols-1 gap-x-8 gap-y-5 text-center sm:grid-cols-3">
+            {[
+              { stat: "100%", text: "диалогов в «Лиде» — с контактом клиента: телефон известен с первого сообщения" },
+              { stat: "107", text: "живых диалогов клиентов — проверка «Лида», ноль сбоев после доработок" },
+              { stat: "до 40%", text: "замолчавших клиентов возвращаются в диалог в MAX. В «Про» входит, в «Лиде» — опцией" },
+            ].map((item) => (
+              <div key={item.stat}>
+                <dt className="font-display text-3xl font-bold text-accent">{item.stat}</dt>
+                <dd className="mt-1 text-sm leading-relaxed text-body">{item.text}</dd>
+              </div>
+            ))}
+          </dl>
+
+          <details id="sravnenie" className="group mt-10 scroll-mt-24 overflow-hidden rounded-2xl border border-blue-subtle/50 bg-white">
+            <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 font-display text-base font-bold text-heading transition-colors hover:bg-blue-ice/40 sm:px-6 sm:text-lg [&::-webkit-details-marker]:hidden">
+              Полное сравнение версий — таблица
+              <ChevronDown className="h-5 w-5 shrink-0 text-muted transition-transform group-open:rotate-180" aria-hidden />
+            </summary>
+            {/* На узких экранах таблица разворачивается в стек: название функции
+                строкой, под ней колонки со значениями версий. */}
+            <div className="border-t border-blue-subtle/40">
+              <div className="sm:overflow-x-auto">
+                <table className={`block w-full text-sm sm:table ${reqVersionPublished ? "sm:min-w-[820px]" : "sm:min-w-[640px]"}`}>
+                  <thead className="hidden sm:table-header-group">
+                    <tr className="bg-surface-alt">
+                      <th className={`${reqVersionPublished ? "w-[31%]" : "w-[40%]"} px-4 py-3.5 text-left font-semibold text-heading sm:px-5`}>
+                        Возможность
+                      </th>
+                      {reqVersionPublished && (
+                        <th className="w-[23%] px-4 py-3.5 text-left sm:px-5">
+                          <span className="flex items-center gap-2 font-display font-bold text-heading">
+                            <ReqIcon className="h-4 w-4 text-accent" />
+                            «Заявка»
+                          </span>
+                          <span className="mt-0.5 block text-xs font-medium text-accent">
+                            от 790 ₽/мес
+                          </span>
+                        </th>
+                      )}
+                      <th className={`${reqVersionPublished ? "w-[23%]" : "w-[30%]"} px-4 py-3.5 text-left sm:px-5`}>
                         <span className="flex items-center gap-2 font-display font-bold text-heading">
-                          <ReqIcon className="h-4 w-4 text-accent" />
-                          «Заявка»
+                          <LidIcon className="h-4 w-4 text-accent" />
+                          «Лид»
                         </span>
                         <span className="mt-0.5 block text-xs font-medium text-accent">
-                          от 790 ₽/мес
+                          от 990 ₽/мес
                         </span>
                       </th>
-                    )}
-                    <th className={`${reqVersionPublished ? "w-[23%]" : "w-[30%]"} px-4 py-3.5 text-left sm:px-5`}>
-                      <span className="flex items-center gap-2 font-display font-bold text-heading">
-                        <LidIcon className="h-4 w-4 text-accent" />
-                        «Лид»
-                      </span>
-                      <span className="mt-0.5 block text-xs font-medium text-accent">
-                        от 990 ₽/мес
-                      </span>
-                    </th>
-                    <th className={`${reqVersionPublished ? "w-[23%]" : "w-[30%]"} px-4 py-3.5 text-left sm:px-5`}>
-                      <span className="flex items-center gap-2 font-display font-bold text-heading">
-                        <ProIcon className="h-4 w-4 text-accent" />
-                        «Про»
-                      </span>
-                      <span className="mt-0.5 block text-xs font-medium text-accent">
-                        от 1 990 ₽/мес
-                      </span>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="block sm:table-row-group">
-                  {versionCompareGroups.map((group) => (
-                    <Fragment key={group.title}>
-                      <tr className="block bg-blue-ice/40 sm:table-row">
-                        <td
-                          colSpan={reqVersionPublished ? 4 : 3}
-                          className="block px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-accent sm:table-cell sm:px-5"
-                        >
-                          {group.title}
-                        </td>
-                      </tr>
-                      {group.rows.map((row) => (
-                        <tr
-                          key={row.feature}
-                          className={`grid ${reqVersionPublished ? "grid-cols-3 gap-x-2 text-[13px] hyphens-auto sm:text-sm sm:hyphens-manual" : "grid-cols-2 gap-x-3"} border-t border-blue-subtle/30 bg-white px-4 py-3.5 sm:table-row sm:px-0 sm:py-0 sm:align-top sm:hover:bg-blue-ice/15`}
-                        >
-                          <td className={`${reqVersionPublished ? "col-span-3 text-sm hyphens-manual" : "col-span-2"} block font-medium text-heading sm:table-cell sm:px-5 sm:py-3`}>
-                            {row.feature}
-                          </td>
-                          {reqVersionPublished && (
-                            <td className="mt-2 block sm:mt-0 sm:table-cell sm:px-5 sm:py-3">
-                              <span className="mb-1 block text-[11px] font-bold uppercase tracking-wide text-muted sm:hidden">
-                                Заявка
-                              </span>
-                              <CompareCell value={row.req ?? "—"} />
-                            </td>
-                          )}
-                          <td className="mt-2 block sm:mt-0 sm:table-cell sm:px-5 sm:py-3">
-                            <span className="mb-1 block text-[11px] font-bold uppercase tracking-wide text-muted sm:hidden">
-                              Лид
-                            </span>
-                            <CompareCell value={row.lid} />
-                          </td>
-                          <td className="mt-2 block sm:mt-0 sm:table-cell sm:px-5 sm:py-3">
-                            <span className="mb-1 block text-[11px] font-bold uppercase tracking-wide text-muted sm:hidden">
-                              Про
-                            </span>
-                            <CompareCell value={row.pro} />
+                      <th className={`${reqVersionPublished ? "w-[23%]" : "w-[30%]"} px-4 py-3.5 text-left sm:px-5`}>
+                        <span className="flex items-center gap-2 font-display font-bold text-heading">
+                          <ProIcon className="h-4 w-4 text-accent" />
+                          «Про»
+                        </span>
+                        <span className="mt-0.5 block text-xs font-medium text-accent">
+                          от 1 990 ₽/мес
+                        </span>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="block sm:table-row-group">
+                    {versionCompareGroups.map((group) => (
+                      <Fragment key={group.title}>
+                        <tr className="block bg-blue-ice/40 sm:table-row">
+                          <td
+                            colSpan={reqVersionPublished ? 4 : 3}
+                            className="block px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-accent sm:table-cell sm:px-5"
+                          >
+                            {group.title}
                           </td>
                         </tr>
-                      ))}
-                    </Fragment>
-                  ))}
-                </tbody>
-              </table>
+                        {group.rows.map((row) => (
+                          <tr
+                            key={row.feature}
+                            className={`grid ${reqVersionPublished ? "grid-cols-3 gap-x-2 text-[13px] hyphens-auto sm:text-sm sm:hyphens-manual" : "grid-cols-2 gap-x-3"} border-t border-blue-subtle/30 bg-white px-4 py-3.5 sm:table-row sm:px-0 sm:py-0 sm:align-top sm:hover:bg-blue-ice/15`}
+                          >
+                            <td className={`${reqVersionPublished ? "col-span-3 text-sm hyphens-manual" : "col-span-2"} block font-medium text-heading sm:table-cell sm:px-5 sm:py-3`}>
+                              {row.feature}
+                            </td>
+                            {reqVersionPublished && (
+                              <td className="mt-2 block sm:mt-0 sm:table-cell sm:px-5 sm:py-3">
+                                <span className="mb-1 block text-[11px] font-bold uppercase tracking-wide text-muted sm:hidden">
+                                  Заявка
+                                </span>
+                                <CompareCell value={row.req ?? "—"} />
+                              </td>
+                            )}
+                            <td className="mt-2 block sm:mt-0 sm:table-cell sm:px-5 sm:py-3">
+                              <span className="mb-1 block text-[11px] font-bold uppercase tracking-wide text-muted sm:hidden">
+                                Лид
+                              </span>
+                              <CompareCell value={row.lid} />
+                            </td>
+                            <td className="mt-2 block sm:mt-0 sm:table-cell sm:px-5 sm:py-3">
+                              <span className="mb-1 block text-[11px] font-bold uppercase tracking-wide text-muted sm:hidden">
+                                Про
+                              </span>
+                              <CompareCell value={row.pro} />
+                            </td>
+                          </tr>
+                        ))}
+                      </Fragment>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
-          </div>
 
-          <p className="mx-auto mt-5 max-w-3xl text-center text-xs leading-relaxed text-muted">
-            {versionCompareMaxNote}
-          </p>
+            <p className="border-t border-blue-subtle/40 px-5 py-4 text-xs leading-relaxed text-muted sm:px-6">
+              {versionCompareMaxNote}
+            </p>
+          </details>
 
-          <div className="mt-8 text-center">
+          <div className="mt-6 text-center">
             <Link
               href="/tarify"
               className="inline-flex min-h-10 items-center gap-1.5 text-sm font-semibold text-accent transition-colors hover:text-accent-hover"
@@ -521,46 +373,6 @@ export default function VersiiPage() {
               {reqVersionPublished ? "Смотреть тарифы всех версий" : "Смотреть тарифы обеих версий"}
               <ArrowRight className="h-4 w-4" />
             </Link>
-          </div>
-        </section>
-
-        {/* Надёжность «Лид» + сила «Про» */}
-        <section className="bg-surface-alt">
-          <div className="mx-auto max-w-5xl px-5 py-14 sm:px-6 lg:px-8 lg:py-16">
-            <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-              {[
-                {
-                  stat: "100%",
-                  label: "диалогов с контактом",
-                  text: "В версии «Лид» контакт клиента известен с первого сообщения — ни один диалог не заканчивается «в никуда».",
-                },
-                {
-                  stat: "107",
-                  label: "реальных диалогов",
-                  text: "Версию «Лид» проверили на 107 живых диалогах клиентов — ноль сбоев после доработок.",
-                },
-                {
-                  stat: "до 40%",
-                  label: "замолчавших возвращаются",
-                  text: "В MAX напоминание через сутки и подписка на снижение цены возвращают в диалог до 40% замолчавших клиентов. В «Про» входят, в «Лиде» — опциями.",
-                },
-              ].map((item) => (
-                <div
-                  key={item.label}
-                  className="rounded-2xl border border-blue-subtle/50 bg-white p-6 text-center shadow-card"
-                >
-                  <p className="font-display text-3xl font-bold text-accent">
-                    {item.stat}
-                  </p>
-                  <p className="mt-1 text-sm font-semibold text-heading">
-                    {item.label}
-                  </p>
-                  <p className="mt-2.5 text-sm leading-relaxed text-body">
-                    {item.text}
-                  </p>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
 
@@ -596,18 +408,14 @@ export default function VersiiPage() {
               {reqVersionPublished ? "Попробуйте любую версию бесплатно" : "Попробуйте обе версии бесплатно"}
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-base text-body sm:text-lg">
-              Первый месяц — бесплатно на любой версии:{" "}
-              {reqVersionPublished && <>«Заявка» от{"\u00A0"}790 ₽/мес,{" "}</>}
-              «Лид» от{"\u00A0"}
-              {lid.priceFrom.toLocaleString("ru-RU")} ₽/мес, «Про» от{"\u00A0"}
-              {pro.priceFrom.toLocaleString("ru-RU")} ₽/мес после теста.
-              Подключение — 0 ₽.
+              Первый месяц бесплатно на любой версии, подключение — 0 ₽.
             </p>
             <div className="mt-8 flex justify-center">
-              <RegisterCta source="versii_cta" />
+              <RegisterCta source="versii_cta" compact />
             </div>
           </div>
         </section>
+        <OpenDetailsOnHash />
       </main>
       <Footer />
       <FloatingCTA />

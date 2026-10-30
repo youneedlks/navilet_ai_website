@@ -5,19 +5,13 @@ import { motion } from "framer-motion";
 import { ArrowRight, ChevronRight } from "lucide-react";
 import { fadeInUp } from "@/lib/animations";
 import SectionWrapper from "@/components/ui/SectionWrapper";
-import { assistantVersions, type AssistantVersionId } from "@/lib/content";
+import { assistantVersions, versionSituation } from "@/lib/content";
 
 /**
  * Версии на главной — строками, как список поездок в Uber: строку называем
  * ситуацией агентства (её человек узнаёт), версию и цену — второй строкой,
  * действие одно — нажать на строку. Подробности и ролик версии — на /versii.
  */
-const SITUATION: Record<AssistantVersionId, string> = {
-  req: "Нет Турвизора или туры подбирают менеджеры",
-  lid: "Нужен подбор туров и заявки с телефоном",
-  pro: "Нужны консультации и возврат клиентов",
-};
-
 export default function Versions() {
   return (
     <SectionWrapper id="versions" alt paddingClassName="py-16 lg:py-20">
@@ -38,7 +32,7 @@ export default function Versions() {
               className="flex items-center gap-4 px-5 py-4 transition-colors hover:bg-blue-ice/40 sm:px-6 sm:py-5"
             >
               <span className="min-w-0 flex-1">
-                <span className="block font-display text-base font-bold text-heading sm:text-lg">{SITUATION[v.id]}</span>
+                <span className="block font-display text-base font-bold text-heading sm:text-lg">{versionSituation[v.id]}</span>
                 <span className="mt-0.5 block text-sm text-body">
                   «{v.name}» · <span className="whitespace-nowrap">от {v.priceFrom.toLocaleString("ru-RU")} ₽/мес</span>
                 </span>
