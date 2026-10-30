@@ -6,10 +6,10 @@ import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 import RealDashboardFrame from "./RealDashboardFrame";
 import RealOverviewContent from "./RealOverviewContent";
-import { useLeadForm } from "@/contexts/LeadFormContext";
+import { lkRegisterUrl } from "@/lib/lk";
+import { metrikaGoals, reachMetrikaGoal } from "@/lib/metrika";
 
 export default function DashboardHero() {
-  const { openForm } = useLeadForm();
   return (
     <section className="relative overflow-hidden bg-white">
       <div className="pointer-events-none absolute -right-40 -top-40 h-[700px] w-[700px] rounded-full bg-[#00E7FD]/[0.07] blur-[120px]" />
@@ -44,8 +44,13 @@ export default function DashboardHero() {
           </motion.p>
 
           <motion.div variants={fadeInUp} className="mb-10 flex flex-wrap justify-center gap-4 lg:justify-start">
-            <Button variant="primary" size="lg" onClick={() => openForm()}>
-              Попробовать бесплатно
+            <Button
+              variant="primary"
+              size="lg"
+              href={lkRegisterUrl({ from: "dashboard_hero" })}
+              onClick={() => reachMetrikaGoal(metrikaGoals.trialClick, { source: "dashboard_hero" })}
+            >
+              Подключить бесплатно
             </Button>
             <Button variant="outline" size="lg" href="/demo">
               Посмотреть демо

@@ -166,7 +166,7 @@ export default function DemoExperience() {
 
   /** Заявка на подключение с демо — с версией, которую человек тестировал. */
   const handleRequestClick = (source: string) => () =>
-    openForm({ source, versionId: version });
+    openForm({ source, versionId: version, path: "request" });
 
   return (
     <>
@@ -267,10 +267,7 @@ export default function DemoExperience() {
                 className="group inline-flex items-center justify-center gap-2 rounded-lg border-2 border-accent/30 px-6 py-3.5 text-base font-semibold text-accent transition-colors duration-200 hover:border-accent hover:bg-blue-ice sm:px-8 sm:py-4 sm:text-lg"
               >
                 <Rocket className="h-5 w-5" />
-                <span className="sm:hidden">Зарегистрироваться</span>
-                <span className="hidden sm:inline">
-                  Зарегистрироваться бесплатно
-                </span>
+                Подключить бесплатно
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </a>
             </div>
@@ -281,7 +278,7 @@ export default function DemoExperience() {
               className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg border border-blue-subtle/70 bg-white px-5 py-2.5 text-sm font-semibold text-heading shadow-sm transition-colors duration-200 hover:border-accent/40 hover:bg-blue-ice/40 hover:text-accent"
             >
               <ClipboardList className="h-4 w-4 text-accent" />
-              Оставить заявку на подключение
+              Подключить с менеджером
             </button>
             <p className="inline-flex items-center gap-2 rounded-full bg-accent/5 px-4 py-1.5 text-sm font-medium text-accent">
               <Sparkles className="h-4 w-4" />
@@ -460,7 +457,7 @@ export default function DemoExperience() {
               onClick={handleTrialClick("demo_bottom")}
               className="inline-flex cursor-pointer items-center justify-center rounded-xl bg-white px-8 py-4 text-lg font-semibold text-primary shadow-lg shadow-black/10 transition-all hover:bg-blue-ice hover:shadow-xl"
             >
-              Зарегистрироваться бесплатно
+              Подключить бесплатно
             </a>
             <button
               type="button"
@@ -468,7 +465,7 @@ export default function DemoExperience() {
               className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-white/35 px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-white/10"
             >
               <ClipboardList className="h-4 w-4" />
-              Оставить заявку на подключение
+              Подключить с менеджером
             </button>
             <span className="text-xs text-white/45">
               Сами или через менеджера — первый месяц бесплатно

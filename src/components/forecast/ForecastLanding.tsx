@@ -19,7 +19,8 @@ import RealForecastContent from "@/components/dashboard/RealForecastContent";
 import SkolkovoBadge from "@/components/ui/SkolkovoBadge";
 import CountUp from "@/components/ui/CountUp";
 import { forecastFaqItems, networkResults } from "@/lib/content";
-import { useLeadForm } from "@/contexts/LeadFormContext";
+import { lkRegisterUrl } from "@/lib/lk";
+import { metrikaGoals, reachMetrikaGoal } from "@/lib/metrika";
 const capabilities = [
   {
     icon: CalendarClock,
@@ -62,8 +63,7 @@ const methodology = [
 ];
 
 export default function ForecastLanding() {
-  const { openForm } = useLeadForm();
-  const register = (source: string) => openForm({ source });
+  const register = (source: string) => reachMetrikaGoal(metrikaGoals.trialClick, { source });
 
   return (
     <>
@@ -98,9 +98,10 @@ export default function ForecastLanding() {
             </p>
 
             <div className="mb-6 flex flex-col items-center gap-3 sm:flex-row lg:items-start">
-              <button
+              <a
+                href={lkRegisterUrl({ from: "prognozy_hero" })}
                 onClick={() => register("prognozy_hero")}
-                className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-accent/25 transition-all duration-200 hover:shadow-xl hover:shadow-accent/35 sm:text-lg"
+                className="inline-flex items-center justify-center gap-2 rounded-xl px-7 py-3.5 text-base font-semibold text-white shadow-lg shadow-accent/25 transition-all duration-200 hover:shadow-xl hover:shadow-accent/35 sm:text-lg"
                 style={{
                   background:
                     "linear-gradient(135deg, #0062EF 0%, #0097F5 60%, #00CCF5 100%)",
@@ -108,7 +109,7 @@ export default function ForecastLanding() {
               >
                 Подключить бесплатно
                 <ArrowRight className="h-5 w-5" />
-              </button>
+              </a>
               <Link
                 href="/demo"
                 className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-accent/30 px-7 py-3.5 text-base font-semibold text-accent transition-colors hover:border-accent hover:bg-blue-ice sm:text-lg"
@@ -363,13 +364,14 @@ export default function ForecastLanding() {
             шага, 30 дней бесплатно с первого диалога.
           </p>
           <div className="mt-8 flex flex-col items-center gap-3">
-            <button
+            <a
+                href={lkRegisterUrl({ from: "prognozy_bottom" })}
               onClick={() => register("prognozy_bottom")}
-              className="inline-flex cursor-pointer items-center gap-2 rounded-xl bg-white px-8 py-4 text-lg font-semibold text-primary shadow-lg shadow-black/10 transition-all hover:bg-blue-ice hover:shadow-xl"
+              className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-lg font-semibold text-primary shadow-lg shadow-black/10 transition-all hover:bg-blue-ice hover:shadow-xl"
             >
               Подключить бесплатно
               <ArrowRight className="h-5 w-5" />
-            </button>
+            </a>
             <Link
               href="/demo"
               className="inline-flex min-h-10 items-center gap-1.5 px-2 text-sm text-white/60 underline decoration-white/30 underline-offset-2 transition-colors hover:text-white"

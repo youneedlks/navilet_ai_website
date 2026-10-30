@@ -284,7 +284,7 @@ export const scenarioPages: ScenarioPage[] = [
     related: [
       { href: "/resheniya/zayavki-s-sayta", label: "Мало заявок с сайта: чиним конверсию" },
       { href: "/prognozy", label: "ИИ-аналитика и прогнозы спроса" },
-      { href: "/start", label: "Подключить бесплатно" },
+      { href: "/start", label: "Как подключить ассистента: 3 шага" },
     ],
   },
   {
@@ -350,7 +350,7 @@ export const scenarioPages: ScenarioPage[] = [
     related: [
       { href: "/tarify#lite", label: `Тариф Лайт — от ${priceFromLabel}/мес` },
       { href: "/vidzhet/tilda", label: "Виджет на сайт Tilda за 10 минут" },
-      { href: "/start", label: "Зарегистрироваться бесплатно" },
+      { href: "/start", label: "Как подключить ассистента: 3 шага" },
     ],
   },
   {

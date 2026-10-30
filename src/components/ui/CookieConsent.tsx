@@ -3,10 +3,13 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { Cookie, X } from "lucide-react";
 
 const STORAGE_KEY = "cookie-consent-accepted";
 
+/**
+ * Плашка о cookie — одной строкой (около 56 px), чтобы на телефоне не закрывать
+ * треть экрана и плавающую кнопку. Крестик был тем же «Принять», поэтому убран.
+ */
 export default function CookieConsent() {
   const [visible, setVisible] = useState(false);
 
@@ -27,42 +30,25 @@ export default function CookieConsent() {
     <AnimatePresence>
       {visible && (
         <motion.div
-          initial={{ y: 100, opacity: 0 }}
+          initial={{ y: 80, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 100, opacity: 0 }}
+          exit={{ y: 80, opacity: 0 }}
           transition={{ type: "spring", damping: 25, stiffness: 300 }}
-          className="fixed inset-x-0 bottom-0 z-[70] px-4 pb-4 sm:px-6"
+          className="fixed inset-x-0 bottom-0 z-[70] px-3 pb-3 sm:px-6 sm:pb-4"
         >
-          <div className="mx-auto flex max-w-xl flex-col items-center gap-3 rounded-2xl border border-gray-200 bg-white/95 px-5 py-4 shadow-xl backdrop-blur-lg sm:flex-row sm:gap-4 sm:px-6">
-            <Cookie className="hidden h-5 w-5 shrink-0 text-accent sm:block" />
-            <p className="text-center text-xs leading-relaxed text-body sm:text-left sm:text-sm">
+          <div className="mx-auto flex max-w-xl items-center gap-3 rounded-2xl border border-gray-200 bg-white px-4 py-2.5 shadow-xl sm:px-5">
+            <p className="min-w-0 flex-1 text-xs leading-snug text-body sm:text-sm">
               Мы используем файлы cookie для улучшения работы сайта.{" "}
-              <Link
-                href="/privacy"
-                className="text-accent underline hover:text-accent-hover"
-              >
+              <Link href="/privacy" className="whitespace-nowrap text-accent underline hover:text-accent-hover">
                 Подробнее
               </Link>
             </p>
-            <div className="flex shrink-0 items-center gap-2">
-              <button
-                onClick={accept}
-                className="flex h-10 cursor-pointer items-center rounded-lg px-5 text-sm font-semibold text-white transition-colors"
-                style={{
-                  background:
-                    "linear-gradient(135deg, #0062EF 0%, #0097F5 100%)",
-                }}
-              >
-                Принять
-              </button>
-              <button
-                onClick={accept}
-                className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg text-gray-400 transition-colors hover:text-gray-600"
-                aria-label="Закрыть"
-              >
-                <X className="h-4 w-4" />
-              </button>
-            </div>
+            <button
+              onClick={accept}
+              className="flex h-10 shrink-0 cursor-pointer items-center rounded-lg bg-accent px-4 text-sm font-semibold text-white transition-colors hover:bg-accent-hover"
+            >
+              Принять
+            </button>
           </div>
         </motion.div>
       )}

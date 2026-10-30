@@ -111,7 +111,7 @@ export default function Hero() {
               </Link>
               <button
                 type="button"
-                onClick={() => openForm({ source: "hero" })}
+                onClick={() => openForm({ source: "hero", path: "request" })}
                 className="inline-flex min-h-10 cursor-pointer items-center text-body hover:text-accent hover:underline"
               >
                 Подключить с менеджером

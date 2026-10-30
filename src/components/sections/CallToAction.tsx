@@ -57,7 +57,7 @@ export default function CallToAction() {
           </Button>
           <button
             type="button"
-            onClick={() => openForm({ source: "home_cta" })}
+            onClick={() => openForm({ source: "home_cta", path: "request" })}
             className="inline-flex min-h-10 cursor-pointer items-center text-sm font-semibold text-white/85 hover:text-white hover:underline"
           >
             {ctaContent.ctaSecondary}

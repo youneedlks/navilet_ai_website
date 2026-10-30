@@ -120,7 +120,7 @@ export default function TariffPicker() {
           <li id={network.id} className="scroll-mt-28">
             <button
               type="button"
-              onClick={() => openForm({ planId: network.id, planName: network.name, versionId: version, source: "tarify_set" })}
+              onClick={() => openForm({ planId: network.id, planName: network.name, versionId: version, source: "tarify_set", path: "request" })}
               className="flex w-full cursor-pointer items-center gap-3 px-4 py-3.5 text-left transition-colors hover:bg-blue-ice/40 sm:gap-4 sm:px-6 sm:py-4"
             >
               <span className="min-w-0 flex-1">
@@ -157,7 +157,7 @@ export default function TariffPicker() {
         </Button>
         <button
           type="button"
-          onClick={() => openForm({ versionId: version, source: "tarify_manager" })}
+          onClick={() => openForm({ versionId: version, source: "tarify_manager", path: "request" })}
           className="inline-flex min-h-10 cursor-pointer items-center text-sm font-semibold text-body hover:text-accent hover:underline"
         >
           Подключить с менеджером

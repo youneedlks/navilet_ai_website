@@ -98,7 +98,7 @@ export default function StartLanding() {
                   "linear-gradient(135deg, #0062EF 0%, #0097F5 60%, #00CCF5 100%)",
               }}
             >
-              Зарегистрироваться бесплатно
+              Подключить бесплатно
               {/* На узком экране подпись переносится в две строки — стрелка
                   рядом с ней смотрится случайной, поэтому убираем её. */}
               <ArrowRight className="hidden h-5 w-5 sm:block" />
@@ -106,11 +106,11 @@ export default function StartLanding() {
             {/* Второй путь для тех, кто не хочет настраивать сам */}
             <button
               type="button"
-              onClick={() => openForm({ source: "start_landing_hero_request" })}
+              onClick={() => openForm({ source: "start_landing_hero_request", path: "request" })}
               className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-blue-subtle/70 bg-white px-5 py-2.5 text-sm font-semibold text-heading shadow-sm transition-colors duration-200 hover:border-accent/40 hover:bg-blue-ice/40 hover:text-accent"
             >
               <ClipboardList className="h-4 w-4 text-accent" />
-              Оставить заявку на подключение
+              Подключить с менеджером
             </button>
             <span className="text-sm text-muted">
               Сами в кабинете или с нашей помощью — цена одна
@@ -313,18 +313,18 @@ export default function StartLanding() {
               onClick={() => register("start_landing_bottom")}
               className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-lg font-semibold text-primary shadow-lg shadow-black/10 transition-all hover:bg-blue-ice hover:shadow-xl"
             >
-              Зарегистрироваться бесплатно
+              Подключить бесплатно
               <ArrowRight className="h-5 w-5" />
             </a>
             <button
               type="button"
               onClick={() =>
-                openForm({ source: "start_landing_bottom_request" })
+                openForm({ source: "start_landing_bottom_request", path: "request" })
               }
               className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-white/35 px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-white/10"
             >
               <ClipboardList className="h-4 w-4" />
-              Оставить заявку на подключение
+              Подключить с менеджером
             </button>
             <Link
               href="/demo"

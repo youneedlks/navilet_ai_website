@@ -5,14 +5,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLeadForm } from "@/contexts/LeadFormContext";
-import { Phone, Mail, MapPin, LifeBuoy } from "lucide-react";
+import { useState } from "react";
+import { Phone, Mail, MapPin, LifeBuoy, ChevronDown } from "lucide-react";
 import SkolkovoBadge from "@/components/ui/SkolkovoBadge";
-
-const CTA_HREFS = new Set(["/#cta"]);
 
 export default function Footer() {
   const { openForm } = useLeadForm();
   const pathname = usePathname();
+  // На телефоне колонки ссылок свёрнуты (раньше подвал занимал там почти два экрана);
+  // ссылки остаются в HTML — их видят поисковые роботы.
+  const [openSection, setOpenSection] = useState<string | null>(null);
   const sections = [
     footerLinks.product,
     footerLinks.solutions,
@@ -27,53 +29,54 @@ export default function Footer() {
             Без него на страницах без h3 получался скачок уровней (h2 → h4),
             а скринридер не понимал, к чему относятся названия колонок. */}
         <h2 className="sr-only">Разделы сайта</h2>
-        <div className="grid grid-cols-2 gap-x-8 gap-y-6 md:grid-cols-5 lg:gap-12">
-          {sections.map((section) => (
-            <div key={section.title}>
-              <h3 className="mb-4 font-display text-sm font-semibold text-heading">
-                {section.title}
-              </h3>
-              {/* Пункты держат высоту 40px — на телефоне по ним попадают
-                  пальцем без промахов. */}
-              <ul className="[overflow-wrap:anywhere]">
-                {section.links.map((link) =>
-                  CTA_HREFS.has(link.href) ? (
-                    <li key={link.label}>
-                      <button
-                        onClick={() => openForm()}
-                        className="flex min-h-10 cursor-pointer items-center py-2 text-left text-sm text-body transition-colors hover:text-accent"
-                      >
-                        {link.label}
-                      </button>
-                    </li>
-                  ) : link.href.startsWith("http") ? (
-                    // Документы кабинета (оферта, прайс-лист) — в новой вкладке
-                    <li key={link.label}>
-                      <a
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener"
-                        className="flex min-h-10 items-center py-2 text-sm text-body transition-colors hover:text-accent"
-                      >
-                        {link.label}
-                      </a>
-                    </li>
-                  ) : (
-                    <li key={link.label}>
-                      <Link
-                        href={link.href}
-                        className="flex min-h-10 items-center py-2 text-sm text-body transition-colors hover:text-accent"
-                      >
-                        {link.label}
-                      </Link>
-                    </li>
-                  )
-                )}
-              </ul>
-            </div>
-          ))}
+        <div className="grid grid-cols-1 md:grid-cols-5 md:gap-x-8 lg:gap-12">
+          {sections.map((section) => {
+            const open = openSection === section.title;
+            return (
+              <div key={section.title} className="border-b border-blue-subtle/40 md:border-0">
+                <h3 className="font-display text-sm font-semibold text-heading md:mb-4">
+                  <button
+                    type="button"
+                    aria-expanded={open}
+                    onClick={() => setOpenSection(open ? null : section.title)}
+                    className="flex min-h-12 w-full cursor-pointer items-center justify-between text-left md:pointer-events-none md:min-h-0 md:cursor-default"
+                  >
+                    {section.title}
+                    <ChevronDown className={`h-4 w-4 text-muted transition-transform md:hidden ${open ? "rotate-180" : ""}`} />
+                  </button>
+                </h3>
+                {/* Пункты держат высоту 40px — на телефоне по ним попадают пальцем без промахов. */}
+                <ul className={`${open ? "block" : "hidden"} pb-3 [overflow-wrap:anywhere] md:block md:pb-0`}>
+                  {section.links.map((link) =>
+                    link.href.startsWith("http") ? (
+                      // Документы кабинета (оферта, прайс-лист) — в новой вкладке
+                      <li key={link.label}>
+                        <a
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener"
+                          className="flex min-h-10 items-center py-2 text-sm text-body transition-colors hover:text-accent"
+                        >
+                          {link.label}
+                        </a>
+                      </li>
+                    ) : (
+                      <li key={link.label}>
+                        <Link
+                          href={link.href}
+                          className="flex min-h-10 items-center py-2 text-sm text-body transition-colors hover:text-accent"
+                        >
+                          {link.label}
+                        </Link>
+                      </li>
+                    )
+                  )}
+                </ul>
+              </div>
+            );
+          })}
 
-          <div className="col-span-2 sm:col-span-1">
+          <div className="pt-6 md:pt-0">
             <h3 className="mb-4 font-display text-sm font-semibold text-heading">
               Контакты
             </h3>
@@ -143,10 +146,10 @@ export default function Footer() {
             </p>
 
             <button
-              onClick={() => openForm()}
+              onClick={() => openForm({ source: "footer", path: "request" })}
               className="flex h-10 cursor-pointer items-center rounded-lg bg-surface-alt px-5 text-sm font-semibold text-muted transition-colors hover:bg-blue-ice hover:text-accent"
             >
-              Связаться с нами
+              Подключить с менеджером
             </button>
           </div>
 

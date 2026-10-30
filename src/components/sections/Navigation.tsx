@@ -3,7 +3,8 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { navigation, companyInfo } from "@/lib/content";
-import { lkLoginUrl } from "@/lib/lk";
+import { lkLoginUrl, lkRegisterUrl } from "@/lib/lk";
+import { metrikaGoals, reachMetrikaGoal } from "@/lib/metrika";
 import type { NavEntry, NavMenuItem } from "@/lib/content";
 import { Menu, X, Phone, ChevronDown, ArrowRight } from "lucide-react";
 import Image from "next/image";
@@ -265,13 +266,15 @@ export default function Navigation() {
             >
               Войти
             </a>
-            <button
-              onClick={() => openForm({ source: "nav" })}
-              className="hidden min-h-10 cursor-pointer items-center justify-center whitespace-nowrap rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-accent/20 transition-colors duration-200 hover:bg-accent-hover sm:inline-flex lg:min-h-9"
+            {/* Главное действие сайта — сразу регистрация в кабинете (как на первом экране) */}
+            <a
+              href={lkRegisterUrl({ from: "nav" })}
+              onClick={() => reachMetrikaGoal(metrikaGoals.trialClick, { source: "nav" })}
+              className="hidden min-h-10 items-center justify-center whitespace-nowrap rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-accent/20 transition-colors duration-200 hover:bg-accent-hover sm:inline-flex lg:min-h-9"
             >
               <span className="hidden xl:inline">Подключить бесплатно</span>
               <span className="xl:hidden">Подключить</span>
-            </button>
+            </a>
 
             <button
               onClick={() =>
@@ -403,18 +406,23 @@ export default function Navigation() {
                 </a>
 
                 <div className="mt-5 space-y-3">
-                  <button
-                    onClick={() => {
-                      closeMobileMenu();
-                      openForm({ source: "nav_mobile" });
-                    }}
-                    className="inline-flex w-full cursor-pointer items-center justify-center rounded-lg bg-accent px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-accent-hover"
+                  <a
+                    href={lkRegisterUrl({ from: "nav_mobile" })}
+                    onClick={() => reachMetrikaGoal(metrikaGoals.trialClick, { source: "nav_mobile" })}
+                    className="inline-flex w-full items-center justify-center rounded-lg bg-accent px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-accent-hover"
                   >
                     Подключить бесплатно
+                  </a>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      closeMobileMenu();
+                      openForm({ source: "nav_mobile", path: "request" });
+                    }}
+                    className="inline-flex min-h-10 w-full cursor-pointer items-center justify-center text-sm font-semibold text-body hover:text-accent"
+                  >
+                    Подключить с менеджером
                   </button>
-                  <p className="text-center text-xs text-muted">
-                    Месяц бесплатно · подключение 0 ₽
-                  </p>
                   <a
                     href={`tel:${companyInfo.phoneRaw}`}
                     className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-blue-subtle/60 px-6 py-3 text-base font-semibold text-heading transition-colors hover:border-accent hover:text-accent"

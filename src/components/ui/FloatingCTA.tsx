@@ -2,16 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Zap } from "lucide-react";
-import { useLeadForm } from "@/contexts/LeadFormContext";
+import { lkRegisterUrl } from "@/lib/lk";
+import { metrikaGoals, reachMetrikaGoal } from "@/lib/metrika";
 
 export default function FloatingCTA() {
   const [visible, setVisible] = useState(false);
-  const { openForm } = useLeadForm();
-
-  const handleClick = () => {
-    openForm({ source: "floating_cta" });
-  };
 
   useEffect(() => {
     const onScroll = () => {
@@ -41,24 +36,20 @@ export default function FloatingCTA() {
   }, []);
 
   return (
+    // Та же главная кнопка, что в шапке и на первом экране: сразу регистрация
     <AnimatePresence>
       {visible && (
-        <motion.button
-          onClick={handleClick}
+        <motion.a
+          href={lkRegisterUrl({ from: "floating_cta" })}
+          onClick={() => reachMetrikaGoal(metrikaGoals.trialClick, { source: "floating_cta" })}
           initial={{ opacity: 0, y: 20, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 20, scale: 0.9 }}
           transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          aria-label="Подключить ИИ-ассистента бесплатно"
-          className="fixed bottom-4 right-4 z-30 flex cursor-pointer items-center gap-2 rounded-full px-5 py-3 font-semibold text-white shadow-lg shadow-accent/30 transition-shadow duration-300 hover:shadow-xl hover:shadow-accent/40 sm:bottom-6 sm:right-6"
-          style={{
-            background:
-              "linear-gradient(135deg, #0062EF 0%, #0097F5 60%, #00CCF5 100%)",
-          }}
+          className="fixed bottom-4 right-4 z-30 flex items-center rounded-full bg-accent px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-accent/30 transition-colors duration-200 hover:bg-accent-hover sm:bottom-6 sm:right-6"
         >
-          <Zap className="h-4 w-4" fill="currentColor" />
-          <span className="text-sm">Подключить ИИ</span>
-        </motion.button>
+          Подключить бесплатно
+        </motion.a>
       )}
     </AnimatePresence>
   );

@@ -11,8 +11,8 @@ import {
   type AssistantVersionId,
 } from "@/lib/content";
 import { versionIcons } from "@/lib/version-icons";
-import { useLeadForm } from "@/contexts/LeadFormContext";
 import { metrikaGoals, reachMetrikaGoal } from "@/lib/metrika";
+import { lkRegisterUrl } from "@/lib/lk";
 
 /** Неразрывный пробел обычной ширины: в мелких подписях тонкий почти не виден */
 const fmt = (n: number) => n.toLocaleString("ru-RU").replace(/\s/g, "\u00A0");
@@ -25,7 +25,6 @@ function VersionDetails({
   version: AssistantVersion;
   source: string;
 }) {
-  const { openForm } = useLeadForm();
 
   return (
     <div>
@@ -66,19 +65,18 @@ function VersionDetails({
           Попробовать {version.id === "req" ? "«Заявку»" : `«${version.name}»`} в демо
         </Link>
         )}
-        <button
-          onClick={() =>
-            openForm({ versionId: version.id, source: `${source}_details` })
-          }
+        <a
+          href={lkRegisterUrl({ from: `${source}_details`, versionId: version.id })}
+          onClick={() => reachMetrikaGoal(metrikaGoals.trialClick, { source: `${source}_details`, version_id: version.id })}
           className={
             demoAssistants[version.id]
-              ? "inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg border-2 border-accent/30 px-6 py-[10px] text-sm font-semibold text-accent transition-colors hover:border-accent hover:bg-blue-ice sm:text-base"
-              : "inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-accent/20 transition-colors hover:bg-accent-hover sm:text-base"
+              ? "inline-flex items-center justify-center gap-2 rounded-lg border-2 border-accent/30 px-6 py-[10px] text-sm font-semibold text-accent transition-colors hover:border-accent hover:bg-blue-ice sm:text-base"
+              : "inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-accent/20 transition-colors hover:bg-accent-hover sm:text-base"
           }
         >
           Подключить бесплатно
           <ArrowRight className="h-4 w-4" />
-        </button>
+        </a>
         <span className="text-center text-xs text-muted sm:ml-auto sm:text-right">
           от {fmt(version.priceFrom)} ₽/мес · первый месяц бесплатно
         </span>

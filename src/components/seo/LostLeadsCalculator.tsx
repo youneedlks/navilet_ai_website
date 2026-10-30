@@ -230,7 +230,7 @@ export default function LostLeadsCalculator({ source }: { source: string }) {
           Ассистент отвечает на эти обращения сам, за секунды, и передаёт
           менеджеру заявку к утру. Первый месяц — бесплатно.
         </p>
-        <RegisterCta source={source} compact className="sm:justify-start" />
+        <RegisterCta source={source} compact className="sm:items-start" />
       </div>
     </div>
   );

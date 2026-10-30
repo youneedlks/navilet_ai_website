@@ -44,70 +44,49 @@ export const navigation: NavEntry[] = [
         title: "Ассистент",
         items: [
           {
-            label: reqVersionPublished ? "Версии: «Заявка», «Лид», «Про»" : "Версии «Лид» и «Про»",
-            description: "Чем отличаются и какая нужна агентству",
+            label: reqVersionPublished ? "Версии «Заявка», «Лид», «Про»" : "Версии «Лид» и «Про»",
+            description: "Какая подойдёт вашему агентству",
             href: "/versii",
           },
           {
-            label: "Личный кабинет",
-            description: "Диалоги, база знаний, интеграции и оплата",
-            href: "/dashboard",
-          },
-          {
-            label: "Аналитика и прогнозы",
-            description: "Спрос по направлениям и сезонность",
-            href: "/prognozy",
-          },
-        ],
-      },
-      {
-        title: "Подключение",
-        items: [
-          {
-            label: "Сколько стоит ассистент",
-            description: "Разбор цены, сравнение и окупаемость",
-            href: "/skolko-stoit",
-          },
-          {
-            label: "Интеграция с Tourvisor",
-            description: "Реальные цены и наличие туров в диалоге",
-            href: "/integraciya-tourvisor",
-          },
-          {
-            label: "Ассистент в MAX",
-            description: "Бот в мессенджере: подбор и возврат клиентов",
-            href: "/max",
-          },
-        ],
-      },
-    ],
-    highlight: {
-      label: "Подключить бесплатно",
-      description: "Регистрация в 3 коротких шага, без разработчика",
-      href: "/start",
-    },
-  },
-  {
-    kind: "menu",
-    label: "Возможности",
-    columns: [
-      {
-        title: "Что умеет",
-        items: [
-          {
-            label: "Подбор и консультация",
-            description: "17 функций ассистента в живом диалоге",
-            href: "/#features",
-          },
-          {
             label: "Подборки по ссылке",
-            description: "Клиент открывает страницу с турами",
+            description: "Туры одной страницей для клиента",
             href: "/podborki",
           },
           {
             label: "Возврат клиентов в MAX",
-            description: "Напоминание замолчавшим и подписка на цену",
+            description: "Напоминание и подписка на цену",
             href: "/vozvrat-klientov",
+          },
+          {
+            label: "Ассистент в MAX",
+            description: "Бот в мессенджере",
+            href: "/max",
+          },
+        ],
+      },
+      {
+        title: "Работа и подключение",
+        items: [
+          {
+            label: "Личный кабинет",
+            description: "Заявки, диалоги, аналитика",
+            href: "/dashboard",
+          },
+          {
+            label: "Аналитика и прогнозы",
+            description: "Спрос по направлениям",
+            href: "/prognozy",
+          },
+          {
+            label: "Интеграция с Tourvisor",
+            description: "Реальные цены туров в диалоге",
+            href: "/integraciya-tourvisor",
+          },
+          {
+            label: "Стоимость и окупаемость",
+            description: "Разбор цены и сравнение",
+            href: "/skolko-stoit",
           },
         ],
       },
@@ -117,20 +96,25 @@ export const navigation: NavEntry[] = [
   { kind: "link", label: "Демо", href: "/demo" },
   {
     kind: "menu",
-    label: "Нам доверяют",
+    label: "Компания",
     columns: [
       {
         title: "Компания",
         items: [
           {
-            label: "Наши партнёры",
-            description: "Кейсы внедрений и мероприятия",
-            href: "/#partners",
+            label: "О компании",
+            description: "Команда, партнёры, мероприятия",
+            href: "/o-komande",
           },
           {
-            label: "О компании",
-            description: "Признание индустрии и реквизиты",
-            href: "/o-komande",
+            label: "Кейс МГП",
+            description: "Как с ассистентом работает сеть",
+            href: "/keisy/mgp",
+          },
+          {
+            label: "Блог",
+            description: "Статьи для турагентств",
+            href: "/blog",
           },
         ],
       },
@@ -2007,21 +1991,20 @@ export const footerLinks = {
   product: {
     title: "Продукт",
     links: [
-      { label: "Возможности", href: "/#features" },
       { label: "Версии ассистента", href: "/versii" },
-      { label: "Подборки по ссылке", href: "/podborki" },
-      { label: "Возврат клиентов", href: "/vozvrat-klientov" },
       { label: "Тарифы", href: "/tarify" },
-      { label: "Сколько стоит ИИ-ассистент", href: "/skolko-stoit" },
+      { label: "Стоимость и окупаемость", href: "/skolko-stoit" },
+      { label: "Демо", href: "/demo" },
       { label: "Личный кабинет", href: "/dashboard" },
       { label: "ИИ-аналитика и прогнозы", href: "/prognozy" },
-      { label: "Демо", href: "/demo" },
-      { label: "Виджет на сайт", href: "/vidzhet" },
+      { label: "Подборки по ссылке", href: "/podborki" },
+      { label: "Возврат клиентов", href: "/vozvrat-klientov" },
       { label: "Ассистент в MAX", href: "/max" },
+      { label: "Интеграция с Tourvisor", href: "/integraciya-tourvisor" },
+      { label: "Виджет на сайт", href: "/vidzhet" },
       { label: "Виджет для Tilda", href: "/vidzhet/tilda" },
       { label: "Виджет для WordPress", href: "/vidzhet/wordpress" },
       { label: "Виджет для 1С-Битрикс", href: "/vidzhet/bitrix" },
-      { label: "Интеграция с Tourvisor", href: "/integraciya-tourvisor" },
     ],
   },
   solutions: {
@@ -2047,10 +2030,8 @@ export const footerLinks = {
       { label: "О компании", href: "/o-komande" },
       { label: "Эксперт: Силагадзе Л. И.", href: "/ekspert/lukian-silagadze" },
       { label: "Блог", href: "/blog" },
-      { label: "Вопросы и ответы", href: "/voprosy" },
-      { label: "Партнёры и мероприятия", href: "/#partners" },
-      { label: "Контакты", href: "/#cta" },
-      { label: "Частые вопросы (FAQ)", href: "/faq" },
+      { label: "Вопросы об ассистенте", href: "/faq" },
+      { label: "Вопросы про ИИ в туризме", href: "/voprosy" },
       { label: "Карта сайта", href: "/karta-sayta" },
     ],
   },

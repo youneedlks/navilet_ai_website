@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Inter, Manrope } from "next/font/google";
-import { promoHeadScript } from "@/lib/promoBanner";
 import "./globals.css";
 import { LeadFormProvider } from "@/contexts/LeadFormContext";
 import LeadFormModal from "@/components/ui/LeadFormModal";
 import CookieConsent from "@/components/ui/CookieConsent";
-import PromoBanner from "@/components/ui/PromoBanner";
 import MetrikaClickTracker from "@/components/analytics/MetrikaClickTracker";
 import ScrollReset from "@/components/utils/ScrollReset";
 import { jsonLdScript } from "@/lib/schema";
@@ -367,9 +365,6 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        {promoHeadScript() && (
-          <script dangerouslySetInnerHTML={{ __html: promoHeadScript() }} />
-        )}
         <meta name="theme-color" content="#0062EF" />
         <meta name="color-scheme" content="light" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -410,7 +405,8 @@ ym(${YANDEX_METRIKA_ID}, 'init', {ssr:true, webvisor:true, clickmap:true, ecomme
         <LeadFormProvider>
           <ScrollReset />
           <MetrikaClickTracker />
-          <PromoBanner />
+          {/* Верхняя полоса «Первый месяц бесплатно» убрана 30.10.2026: оффер уже есть на первом
+              экране и в тарифах. Вернуть на время акции — <PromoBanner /> здесь и promoHeadScript() в <head>. */}
           {children}
           <LeadFormModal />
           <CookieConsent />

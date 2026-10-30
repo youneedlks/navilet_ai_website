@@ -5,6 +5,8 @@ import { useRef } from "react";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import Button from "@/components/ui/Button";
 import { useLeadForm } from "@/contexts/LeadFormContext";
+import { lkRegisterUrl } from "@/lib/lk";
+import { metrikaGoals, reachMetrikaGoal } from "@/lib/metrika";
 
 export default function DashboardCTA() {
   const ref = useRef(null);
@@ -63,16 +65,21 @@ export default function DashboardCTA() {
           variants={fadeInUp}
           className="flex flex-wrap items-center justify-center gap-4"
         >
-          <Button variant="white" size="lg" onClick={() => openForm()}>
-            Начать бесплатно
+          <Button
+            variant="white"
+            size="lg"
+            href={lkRegisterUrl({ from: "dashboard_cta" })}
+            onClick={() => reachMetrikaGoal(metrikaGoals.trialClick, { source: "dashboard_cta" })}
+          >
+            Подключить бесплатно
           </Button>
           <Button
             variant="outline"
             size="lg"
             className="!border-white/25 !text-white hover:!bg-white/10"
-            onClick={() => openForm()}
+            onClick={() => openForm({ source: "dashboard_cta", path: "request" })}
           >
-            Связаться с нами
+            Подключить с менеджером
           </Button>
         </motion.div>
 

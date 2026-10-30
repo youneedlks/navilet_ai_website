@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { Sparkles } from "lucide-react";
-import { useLeadForm } from "@/contexts/LeadFormContext";
+import { lkRegisterUrl } from "@/lib/lk";
+import { metrikaGoals, reachMetrikaGoal } from "@/lib/metrika";
 
 interface BlogCtaProps {
   title?: string;
@@ -17,11 +18,12 @@ interface BlogCtaProps {
 export default function BlogCta({
   title = "Попробуйте ИИ-ассистент в деле",
   text = "Подключение без программиста, первый месяц бесплатно. Покажем, как ассистент обрабатывает заявки вашего агентства.",
-  buttonText = "Подключить ИИ бесплатно",
+  buttonText = "Подключить бесплатно",
   variant = "form",
   demoHref = "/demo",
 }: BlogCtaProps) {
-  const { openForm } = useLeadForm();
+  // «Подключить бесплатно» — сразу регистрация, как во всём сайте
+  const register = () => reachMetrikaGoal(metrikaGoals.trialClick, { source: "blog_cta" });
   const demoFirst = variant === "demo";
   const primary =
     "rounded-xl bg-white px-6 py-3 text-center text-sm font-semibold text-primary no-underline shadow-lg shadow-black/10 transition-all hover:bg-blue-ice hover:shadow-xl";
@@ -52,23 +54,17 @@ export default function BlogCta({
               <Link href={demoHref} className={primary}>
                 Посмотреть демо за минуту
               </Link>
-              <button
-                onClick={() => openForm()}
-                className={`cursor-pointer ${secondary}`}
-              >
+              <a href={lkRegisterUrl({ from: "blog_cta" })} onClick={register} className={secondary}>
                 {buttonText}
-              </button>
+              </a>
             </>
           ) : (
             <>
-              <button
-                onClick={() => openForm()}
-                className={`cursor-pointer ${primary}`}
-              >
+              <a href={lkRegisterUrl({ from: "blog_cta" })} onClick={register} className={primary}>
                 {buttonText}
-              </button>
+              </a>
               <Link href={demoHref} className={secondary}>
-                Попробовать демо
+                Посмотреть демо
               </Link>
             </>
           )}
