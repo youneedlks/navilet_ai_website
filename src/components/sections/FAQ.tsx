@@ -38,7 +38,7 @@ export default function FAQ() {
   if (faqItems.length === 0) return null;
 
   return (
-    <section id="faq" ref={ref} className="bg-surface">
+    <section id="faq" ref={ref} className="bg-surface-alt">
       <motion.div
         variants={staggerContainer}
         initial="hidden"

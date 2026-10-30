@@ -6,6 +6,7 @@ import Features from "@/components/sections/Features";
 import NetworkResults from "@/components/sections/NetworkResults";
 import Partners from "@/components/sections/Partners";
 import PricingSummary from "@/components/sections/PricingSummary";
+import DashboardPromo from "@/components/sections/DashboardPromo";
 import Integration from "@/components/sections/Integration";
 import FAQ from "@/components/sections/FAQ";
 import CallToAction from "@/components/sections/CallToAction";
@@ -108,6 +109,7 @@ export default function Home() {
         <HowItWorks />
         <Versions />
         <Features />
+        <DashboardPromo />
         <PricingSummary />
         <Integration />
         <Partners />

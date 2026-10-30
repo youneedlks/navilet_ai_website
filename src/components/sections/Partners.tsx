@@ -22,7 +22,7 @@ const LOGOS = [
 
 export default function Partners() {
   return (
-    <SectionWrapper id="partners" alt paddingClassName="py-16 lg:py-20">
+    <SectionWrapper id="partners" paddingClassName="py-16 lg:py-20">
       <motion.div variants={fadeInUp} className="mb-8 text-center sm:mb-10">
         <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl lg:text-[2.75rem]">
           Нам <span className="text-accent">доверяют</span>

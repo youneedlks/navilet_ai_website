@@ -13,7 +13,7 @@ import SectionWrapper from "@/components/ui/SectionWrapper";
  */
 export default function Integration() {
   return (
-    <SectionWrapper id="integration" paddingClassName="py-16 lg:py-20">
+    <SectionWrapper id="integration" alt paddingClassName="py-16 lg:py-20">
       <motion.div variants={fadeInUp} className="mb-8 text-center sm:mb-10">
         <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl lg:text-[2.75rem]">
           Подключение <span className="text-accent">без программиста</span>

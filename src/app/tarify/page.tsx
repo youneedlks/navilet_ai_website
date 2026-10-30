@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Navigation from "@/components/sections/Navigation";
 import Footer from "@/components/sections/Footer";
-import Pricing from "@/components/sections/Pricing";
+import TariffPicker from "@/components/sections/TariffPicker";
+import ManagerFormButton from "@/components/ui/ManagerFormButton";
+import OpenDetailsOnHash from "@/components/ui/OpenDetailsOnHash";
 import FloatingCTA from "@/components/ui/FloatingCTA";
 import {
   pricingPlans,
@@ -12,7 +14,7 @@ import {
   lidAddons,
   priceFromLabel,
 } from "@/lib/content";
-import { ChevronRight, Check, Sparkles, Phone, Mail } from "lucide-react";
+import { ChevronRight, Check } from "lucide-react";
 import { jsonLdScript } from "@/lib/schema";
 import { publicVersions, aggregateOfferJsonLd } from "@/lib/public-offers";
 
@@ -190,6 +192,7 @@ export default function TarifyPage() {
       />
       <Navigation />
       <main>
+        <OpenDetailsOnHash />
         {/* Breadcrumbs */}
         <nav
           aria-label="Хлебные крошки"
@@ -210,65 +213,25 @@ export default function TarifyPage() {
           </ol>
         </nav>
 
-        {/* Hero */}
-        {/* Отступ снизу маленький: следующий блок тарифов даёт свой py-24 */}
-        <section className="mx-auto max-w-4xl px-5 pb-2 pt-10 text-center sm:px-6 sm:pb-3 sm:pt-14 lg:px-8">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5">
-            <Sparkles className="h-4 w-4 text-accent" />
-            <span className="text-xs font-semibold text-accent sm:text-sm">
-              Первый месяц бесплатно · Подключение 0 ₽ · Отмена в любой момент
-            </span>
-          </div>
+        {/* Первый экран: заголовок для поиска прежний, вместо вступления на 120 слов — одна строка;
+            цены — сразу ниже, на первом экране телефона */}
+        <section className="mx-auto max-w-4xl px-5 pb-5 pt-6 text-center sm:px-6 sm:pt-12 lg:px-8">
           <h1 className="font-display text-4xl font-bold leading-tight text-heading sm:text-5xl">
             Тарифы <span className="whitespace-nowrap text-accent">ИИ-ассистента</span>{" "}
             «Навылет! AI»
           </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-base text-body sm:text-lg">
-            Прозрачная подписка для турагентств и туроператоров.{" "}
-            {reqVersionPublished && (
-              <>
-                <strong className="font-semibold text-heading">«Заявка»</strong> —
-                собирает запрос и контакт, тур подбирает ваш менеджер, <span className="whitespace-nowrap">от 790 ₽/мес</span>;{" "}
-              </>
-            )}
-            <strong className="font-semibold text-heading">«Лид»</strong> —
-            подбирает туры и передаёт заявку, <span className="whitespace-nowrap">от 990 ₽/мес</span>;{" "}
-            <strong className="font-semibold text-heading">«Про»</strong> —
-            полный инструмент с консультациями и возвратом клиентов, <span className="whitespace-nowrap">
-            от 1 990 ₽/мес
-            </span>. «Лид» и «Про» подбирают туры из Турвизора — для агентств,
-            которые с ним работают{reqVersionPublished ? "; без Турвизора — «Заявка»" : ""}.
-            Каждый тариф работает в Web‑виджете или
-            {"\u00A0"}<span className="whitespace-nowrap">MAX‑мессенджере</span>,{" "}
-            <Link
-              href="/versii"
-              className="font-medium text-accent underline decoration-accent/30 underline-offset-2 hover:decoration-accent"
-            >
-              сравнить версии
-            </Link>
-            .
-          </p>
-          <p className="mx-auto mt-3 max-w-2xl text-sm text-muted">
-            Нужны оба канала сразу? Добавьте{" "}
-            <a
-              href="#cross-channel"
-              className="font-medium text-accent underline decoration-accent/30 underline-offset-2 hover:decoration-accent"
-            >
-              «Второй канал»
-            </a>{" "}
-            к любому тарифу. Считаете бюджет и окупаемость?{" "}
-            <Link
-              href="/skolko-stoit"
-              className="font-medium text-accent underline decoration-accent/30 underline-offset-2 hover:decoration-accent"
-            >
-              Разбор стоимости и сравнение с альтернативами
-            </Link>
-            .
+          <p className="mx-auto mt-4 max-w-2xl text-base text-body">
+            <span className="whitespace-nowrap">Первый месяц бесплатно</span> ·{" "}
+            <span className="whitespace-nowrap">подключение 0 ₽</span> ·{" "}
+            <span className="whitespace-nowrap">без НДС</span> ·{" "}
+            <span className="whitespace-nowrap">отмена в любой момент</span>
           </p>
         </section>
 
-        {/* Карточки, «Второй канал» и подключение — заголовок уже есть в hero */}
-        <Pricing showHeader={false} />
+        {/* Тарифы строками: версия → объём → регистрация с этим тарифом */}
+        <section className="px-5 pb-14 sm:px-6 lg:px-8 lg:pb-16">
+          <TariffPicker />
+        </section>
 
         {/* Что входит в подписку */}
         <section className="bg-surface-alt">
@@ -276,17 +239,7 @@ export default function TarifyPage() {
             <h2 className="text-center font-display text-3xl font-bold text-heading sm:text-4xl">
               Что входит в подписку
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-center text-base text-body">
-              Тарифы отличаются лимитом диалогов, а версии — тем, кто подбирает
-              тур: ассистент или ваш менеджер, и глубиной консультаций:{" "}
-              <Link
-                href="/versii"
-                className="font-medium text-accent underline decoration-accent/30 underline-offset-2 hover:decoration-accent"
-              >
-                полное сравнение версий
-              </Link>
-              .
-            </p>
+
             <div className="mx-auto mt-10 grid max-w-4xl gap-8 md:grid-cols-2">
               {includedGroups.map((group) => (
                 <div key={group.title}>
@@ -311,70 +264,155 @@ export default function TarifyPage() {
           </div>
         </section>
 
-        {/* Опции «Лида» (прайс-лист 1.4, раздел 8) */}
-        <section id="opcii" className="scroll-mt-24">
-          <div className="mx-auto max-w-5xl px-5 py-16 sm:px-6 lg:px-8 lg:py-20">
-            <h2 className="text-center font-display text-3xl font-bold text-heading sm:text-4xl">
-              Опции версии «Лид» в MAX
+        {/* Дополнительно: всё, что нужно не каждому, — свёрнуто, но остаётся в HTML для поиска.
+            Якоря #cross-channel и #opcii раскрывают нужный блок (OpenDetailsOnHash). */}
+        <section className="bg-surface-alt">
+          <div className="mx-auto max-w-5xl space-y-3 px-5 py-14 sm:px-6 lg:px-8 lg:py-16">
+            <h2 className="mb-6 text-center font-display text-3xl font-bold text-heading sm:text-4xl">
+              Дополнительно
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-center text-base text-body">
-              Возврат клиентов в «Про» входит в тариф. В «Лиде» его можно
-              подключить опциями — в кабинете, в любой момент.
-            </p>
-            <div className="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-4 sm:grid-cols-3">
-              {[
-                { title: `«${lidAddons.reoutreach.name}»`, price: lidAddons.reoutreach.price, text: lidAddons.reoutreach.about },
-                { title: `«${lidAddons.subscriptions.name}»`, price: lidAddons.subscriptions.price, text: lidAddons.subscriptions.about },
-                { title: "Обе опции", price: lidAddons.bundle, text: `Вместо ${lidAddons.bundleInstead} ₽ — выгоднее, чем по отдельности.` },
-              ].map((o) => (
-                <div
-                  key={o.title}
-                  className="flex flex-col rounded-2xl border border-blue-subtle/50 bg-white p-6 shadow-card"
-                >
-                  <h3 className="font-display text-lg font-bold text-heading">{o.title}</h3>
-                  <p className="mt-2 whitespace-nowrap font-display text-2xl font-bold text-accent">
-                    {o.price} ₽/мес
-                  </p>
-                  <p className="mt-3 text-sm leading-relaxed text-body">{o.text}</p>
-                </div>
-              ))}
-            </div>
-            <ul className="mx-auto mt-8 max-w-3xl space-y-2 text-sm text-body">
-              {[
-                "Работают в канале MAX — подключаются, когда MAX подключён.",
-                "Включаются и выключаются в кабинете в любой момент и начинают работать сразу; в счёт входят со следующего периода.",
-                "На пробном периоде не подключаются. Цена одна для всех тарифов «Лида».",
-                `В «Про» обе функции входят в тариф${reqVersionPublished ? "; в «Заявке» входит «Вернём клиента», «Следим за ценой» нет" : ""}.`,
-              ].map((t) => (
-                <li key={t} className="flex items-start gap-2.5">
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                  <span>{t}</span>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-6 text-center text-sm">
-              <Link
-                href="/vozvrat-klientov"
-                className="font-medium text-accent underline decoration-accent/30 underline-offset-2 hover:decoration-accent"
-              >
-                Как ассистент возвращает клиентов
-              </Link>
-            </p>
-          </div>
-        </section>
-
-        {/* Сравнительные таблицы — свёрнуты, раскрываются по клику */}
-        <section className="mx-auto max-w-5xl px-5 py-14 sm:px-6 lg:px-8 lg:py-16">
-          <details className="group rounded-2xl border border-blue-subtle/50 bg-white">
-            <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 sm:px-6 [&::-webkit-details-marker]:hidden">
-              <span className="font-display text-lg font-bold text-heading sm:text-xl">
-                Сравнить тарифы в таблице
-              </span>
+          <details id="cross-channel" className="group scroll-mt-28 rounded-2xl border border-blue-subtle/50 bg-white">
+            <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 sm:px-6 [&::-webkit-details-marker]:hidden">
+              <h3 className="font-display text-base font-bold text-heading sm:text-lg">Сайт и MAX одновременно — «Второй канал»</h3>
               <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent/10 transition-transform duration-200 group-open:rotate-180">
                 <ChevronRight className="h-4 w-4 rotate-90 text-accent" />
               </span>
             </summary>
-
+            <div className="border-t border-blue-subtle/40 px-5 pb-6 pt-5 sm:px-6">
+              <p className="mb-6 text-sm leading-relaxed text-body sm:text-base">
+                Тариф работает в одном канале — на сайте или в MAX. Нужны оба сразу — добавьте к тарифу «Второй канал»:
+                отдельный лимит диалогов во втором канале по льготной цене.
+              </p>
+              {tableVersions.map((version) => (
+                <div key={`addon-${version.id}`}>
+                  <h3 className="mb-3 mt-8 text-sm font-semibold uppercase tracking-wide text-muted">
+                    «Второй канал» в версии {version.label} — Web и MAX
+                    одновременно
+                  </h3>
+                  <div className="overflow-hidden rounded-xl border border-blue-subtle/50">
+                    <div className="scroll-shadow-x">
+                      <table className="min-w-full text-sm">
+                        <thead className="bg-surface-alt">
+                          <tr>
+                            <th className="whitespace-nowrap px-4 py-3 text-left font-semibold text-heading">
+                              Тариф
+                            </th>
+                            <th className="whitespace-nowrap px-4 py-3 text-right font-semibold text-heading">
+                              Доплата
+                            </th>
+                            <th className="whitespace-nowrap px-4 py-3 text-right font-semibold text-heading">
+                              +Диалоги
+                            </th>
+                            <th className="whitespace-nowrap px-4 py-3 text-right font-semibold text-heading">
+                              Итого/мес
+                            </th>
+                            <th className="whitespace-nowrap px-4 py-3 text-right font-semibold text-heading">
+                              Итого диалогов
+                            </th>
+                            <th className="whitespace-nowrap px-4 py-3 text-right font-semibold text-heading">
+                              Сверхлимит во 2-м канале
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-blue-subtle/30">
+                          {crossChannelAddons.filter((a) => a.planId !== "set").map((a) => {
+                            const plan = pricingPlans.find(
+                              (p) => p.id === a.planId
+                            )!;
+                            const v =
+                              version.id === "lid"
+                                ? a.lid
+                                : version.id === "req"
+                                ? a.req
+                                : a;
+                            if (!v) return null;
+                            return (
+                              <tr
+                                key={a.planId}
+                                className="hover:bg-blue-ice/20"
+                              >
+                                <td className="px-4 py-3 font-display font-semibold text-heading">
+                                  {plan.name}
+                                </td>
+                                <td className="whitespace-nowrap px-4 py-3 text-right text-body">
+                                  +{fmt(v.addonPrice)} ₽
+                                </td>
+                                <td className="px-4 py-3 text-right text-body">
+                                  +{v.extraDialogs}
+                                </td>
+                                <td className="whitespace-nowrap px-4 py-3 text-right font-semibold text-heading">
+                                  {fmt(v.totalPrice)} ₽
+                                </td>
+                                <td className="px-4 py-3 text-right text-body">
+                                  {v.totalDialogs}
+                                </td>
+                                <td className="whitespace-nowrap px-4 py-3 text-right text-body">
+                                  {v.extraDialogPrice} ₽
+                                </td>
+                              </tr>
+                            );
+                          })}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </details>
+          <details id="opcii" className="group scroll-mt-28 rounded-2xl border border-blue-subtle/50 bg-white">
+            <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 sm:px-6 [&::-webkit-details-marker]:hidden">
+              <h3 className="font-display text-base font-bold text-heading sm:text-lg">Опции версии «Лид» в MAX — от {lidAddons.reoutreach.price} ₽/мес</h3>
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent/10 transition-transform duration-200 group-open:rotate-180">
+                <ChevronRight className="h-4 w-4 rotate-90 text-accent" />
+              </span>
+            </summary>
+            <div className="border-t border-blue-subtle/40 px-5 pb-6 pt-5 sm:px-6">
+              <p className="text-sm leading-relaxed text-body sm:text-base">
+                В «Про» возврат клиентов входит в тариф. В «Лиде» его можно подключить опциями — в кабинете, в любой момент.
+              </p>
+              <ul className="mt-4 divide-y divide-blue-subtle/40 rounded-xl border border-blue-subtle/50">
+                {[
+                  { title: `«${lidAddons.reoutreach.name}»`, price: lidAddons.reoutreach.price, text: lidAddons.reoutreach.about },
+                  { title: `«${lidAddons.subscriptions.name}»`, price: lidAddons.subscriptions.price, text: lidAddons.subscriptions.about },
+                  { title: "Обе опции", price: lidAddons.bundle, text: `Вместо ${lidAddons.bundleInstead} ₽ — выгоднее, чем по отдельности.` },
+                ].map((o) => (
+                  <li key={o.title} className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 px-4 py-3">
+                    <span className="min-w-0 flex-1">
+                      <span className="block font-semibold text-heading">{o.title}</span>
+                      <span className="mt-0.5 block text-sm leading-relaxed text-body">{o.text}</span>
+                    </span>
+                    <span className="whitespace-nowrap font-display text-lg font-bold text-heading">{o.price} ₽/мес</span>
+                  </li>
+                ))}
+              </ul>
+              <ul className="mt-4 space-y-1.5 text-sm text-body">
+                {[
+                  "Работают в канале MAX — подключаются, когда MAX подключён.",
+                  "Включаются и выключаются в кабинете в любой момент; в счёт входят со следующего периода.",
+                  "На пробном периоде не подключаются. Цена одна для всех тарифов «Лида».",
+                  `В «Про» обе функции входят в тариф${reqVersionPublished ? "; в «Заявке» входит «Вернём клиента», «Следим за ценой» нет" : ""}.`,
+                ].map((t) => (
+                  <li key={t} className="flex items-start gap-2.5">
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                    <span>{t}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-4 text-sm">
+                <Link href="/vozvrat-klientov" className="font-semibold text-accent hover:underline">
+                  Как ассистент возвращает клиентов
+                </Link>
+              </p>
+            </div>
+          </details>
+          <details className="group scroll-mt-28 rounded-2xl border border-blue-subtle/50 bg-white">
+            <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 sm:px-6 [&::-webkit-details-marker]:hidden">
+              <h3 className="font-display text-base font-bold text-heading sm:text-lg">Сравнить все тарифы в таблице</h3>
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent/10 transition-transform duration-200 group-open:rotate-180">
+                <ChevronRight className="h-4 w-4 rotate-90 text-accent" />
+              </span>
+            </summary>
             <div className="border-t border-blue-subtle/40 px-5 pb-6 pt-5 sm:px-6">
               {tableVersions.map((version, vi) => (
                 <div key={version.id}>
@@ -455,89 +493,36 @@ export default function TarifyPage() {
                   </div>
                 </div>
               ))}
-
-              {tableVersions.map((version) => (
-                <div key={`addon-${version.id}`}>
-                  <h3 className="mb-3 mt-8 text-sm font-semibold uppercase tracking-wide text-muted">
-                    «Второй канал» в версии {version.label} — Web и MAX
-                    одновременно
-                  </h3>
-                  <div className="overflow-hidden rounded-xl border border-blue-subtle/50">
-                    <div className="scroll-shadow-x">
-                      <table className="min-w-full text-sm">
-                        <thead className="bg-surface-alt">
-                          <tr>
-                            <th className="whitespace-nowrap px-4 py-3 text-left font-semibold text-heading">
-                              Тариф
-                            </th>
-                            <th className="whitespace-nowrap px-4 py-3 text-right font-semibold text-heading">
-                              Доплата
-                            </th>
-                            <th className="whitespace-nowrap px-4 py-3 text-right font-semibold text-heading">
-                              +Диалоги
-                            </th>
-                            <th className="whitespace-nowrap px-4 py-3 text-right font-semibold text-heading">
-                              Итого/мес
-                            </th>
-                            <th className="whitespace-nowrap px-4 py-3 text-right font-semibold text-heading">
-                              Итого диалогов
-                            </th>
-                            <th className="whitespace-nowrap px-4 py-3 text-right font-semibold text-heading">
-                              Сверхлимит во 2-м канале
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody className="divide-y divide-blue-subtle/30">
-                          {crossChannelAddons.filter((a) => a.planId !== "set").map((a) => {
-                            const plan = pricingPlans.find(
-                              (p) => p.id === a.planId
-                            )!;
-                            const v =
-                              version.id === "lid"
-                                ? a.lid
-                                : version.id === "req"
-                                ? a.req
-                                : a;
-                            if (!v) return null;
-                            return (
-                              <tr
-                                key={a.planId}
-                                className="hover:bg-blue-ice/20"
-                              >
-                                <td className="px-4 py-3 font-display font-semibold text-heading">
-                                  {plan.name}
-                                </td>
-                                <td className="whitespace-nowrap px-4 py-3 text-right text-body">
-                                  +{fmt(v.addonPrice)} ₽
-                                </td>
-                                <td className="px-4 py-3 text-right text-body">
-                                  +{v.extraDialogs}
-                                </td>
-                                <td className="whitespace-nowrap px-4 py-3 text-right font-semibold text-heading">
-                                  {fmt(v.totalPrice)} ₽
-                                </td>
-                                <td className="px-4 py-3 text-right text-body">
-                                  {v.totalDialogs}
-                                </td>
-                                <td className="whitespace-nowrap px-4 py-3 text-right text-body">
-                                  {v.extraDialogPrice} ₽
-                                </td>
-                              </tr>
-                            );
-                          })}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              ))}
-
               <p className="mt-5 text-center text-sm text-muted">
                 Подключение MAX‑канала бесплатное — разовых платежей нет. Цены
                 окончательные: НДС не облагается (участник проекта «Сколково»).
               </p>
             </div>
           </details>
+          <details className="group scroll-mt-28 rounded-2xl border border-blue-subtle/50 bg-white">
+            <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 sm:px-6 [&::-webkit-details-marker]:hidden">
+              <h3 className="font-display text-base font-bold text-heading sm:text-lg">Подключение, оплата и НДС</h3>
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent/10 transition-transform duration-200 group-open:rotate-180">
+                <ChevronRight className="h-4 w-4 rotate-90 text-accent" />
+              </span>
+            </summary>
+            <div className="border-t border-blue-subtle/40 px-5 pb-6 pt-5 sm:px-6">
+              <ul className="space-y-3 text-sm leading-relaxed text-body sm:text-base">
+                {[
+                  ["Подключение — 0 ₽", "Разовых платежей нет ни на одном тарифе: виджет в вашем стиле, установка одной строкой кода, Tourvisor уже подключён."],
+                  ["MAX — тоже 0 ₽", "Создайте бота на платформе «MAX для партнёров» и передайте токен в кабинете — подключим за 1 рабочий день."],
+                  ["Заявки", "На почту, в U‑ON, Telegram и MAX. U‑ON подключаете сами в кабинете, Битрикс24 и amoCRM — по заявке."],
+                  ["Оплата", "Ежемесячно по счёту, банковским переводом, без автосписаний с карты."],
+                  ["НДС", "Не облагается: разработчик — участник проекта «Сколково». Цена в тарифе итоговая."],
+                ].map(([t, d]) => (
+                  <li key={t}>
+                    <span className="font-semibold text-heading">{t}.</span> {d}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </details>
+          </div>
         </section>
 
         {/* FAQ про механику тарифов: как считается диалог, что при
@@ -576,31 +561,26 @@ export default function TarifyPage() {
           </div>
         </section>
 
-        {/* Contact CTA */}
+        {/* Финал: не уверены — подберём вместе */}
         <section className="bg-surface-alt">
           <div className="mx-auto max-w-3xl px-5 py-16 text-center sm:px-6 lg:px-8 lg:py-20">
             <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl">
               Не уверены, какой тариф подойдёт?
             </h2>
             <p className="mt-4 text-base text-body sm:text-lg">
-              Расскажите о вашем агентстве — поможем подобрать оптимальный
-              вариант. Можно начать с бесплатных 30 дней — отсчёт с первого диалога.
+              Расскажите об агентстве — подберём тариф и подключим сами. Первый месяц бесплатно.
             </p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <a
-                href="tel:+79637997977"
-                className="inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3 font-semibold text-white shadow-lg transition-transform hover:scale-[1.02]"
-              >
-                <Phone className="h-4 w-4" />
-                +7 (963) 799-79-77
-              </a>
-              <a
-                href="mailto:office@aimpact.ru"
-                className="inline-flex items-center gap-2 rounded-xl border border-blue-subtle/50 bg-white px-6 py-3 font-semibold text-heading transition-colors hover:bg-blue-ice/30"
-              >
-                <Mail className="h-4 w-4" />
-                office@aimpact.ru
-              </a>
+            <div className="mt-8 flex flex-col items-center gap-3">
+              <ManagerFormButton source="tarify_final" />
+              <p className="text-sm text-body">
+                <a href="tel:+79637997977" className="whitespace-nowrap font-semibold text-heading hover:text-accent">
+                  +7 (963) 799-79-77
+                </a>
+                {" · "}
+                <a href="mailto:office@aimpact.ru" className="font-semibold text-heading hover:text-accent">
+                  office@aimpact.ru
+                </a>
+              </p>
             </div>
           </div>
         </section>

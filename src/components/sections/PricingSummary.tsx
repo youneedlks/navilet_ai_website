@@ -23,7 +23,7 @@ const DIALOGS: Record<AssistantVersionId, number | undefined> = {
 
 export default function PricingSummary() {
   return (
-    <SectionWrapper id="pricing" alt paddingClassName="py-16 lg:py-20">
+    <SectionWrapper id="pricing" paddingClassName="py-16 lg:py-20">
       <motion.div variants={fadeInUp} className="mb-8 text-center sm:mb-10">
         <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl lg:text-[2.75rem]">
           Сколько стоит <span className="text-accent">ИИ-ассистент</span>
