@@ -120,7 +120,9 @@ export default function ScenePlayer({
       role="img"
       aria-label={label}
       className={`relative w-full overflow-hidden ${className}`}
-      style={{ aspectRatio: `${width} / ${height}` }}
+      // Своя отрисовка: кадры ролика не заставляют телефон перерисовывать фон страницы
+      // (размытые пятна, тени) — без этого на мобильных ролик подтормаживал.
+      style={{ aspectRatio: `${width} / ${height}`, contain: "layout paint", transform: "translateZ(0)" }}
     >
       <div style={{ width, height, transform: `scale(${scale})`, transformOrigin: "top left" }}>
         <Scene t={t} />
@@ -144,7 +146,11 @@ export default function ScenePlayer({
               {paused ? <Play className="h-3.5 w-3.5 translate-x-px fill-current" /> : <Pause className="h-3.5 w-3.5 fill-current" />}
             </button>
             <div aria-hidden className="h-1 min-w-12 flex-1 overflow-hidden rounded-full bg-blue-subtle/40">
-              <div className="h-full rounded-full bg-accent" style={{ width: `${(t / duration) * 100}%` }} />
+              {/* Сдвиг слоя вместо ширины: ширина на каждом кадре перерисовывала всю страницу */}
+              <div
+                className="h-full w-full origin-left rounded-full bg-accent"
+                style={{ transform: `scaleX(${t / duration})`, willChange: "transform" }}
+              />
             </div>
           </>
         )}

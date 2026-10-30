@@ -68,10 +68,9 @@ export const userBubble: CSSProperties = {
 
 const botBubble: CSSProperties = {
   maxWidth: 270,
-  background: "rgba(255,255,255,0.14)",
+  // Без backdrop-filter: размытие фона под каждым пузырём пересчитывалось на каждом кадре
+  background: "rgba(255,255,255,0.16)",
   border: "1px solid rgba(255,255,255,0.22)",
-  backdropFilter: "blur(10px)",
-  WebkitBackdropFilter: "blur(10px)",
   color: "#FFFFFF",
   borderRadius: "18px 18px 18px 6px",
   padding: "9px 13px",
@@ -360,9 +359,9 @@ export default function HowItWorksScene({
         fontFamily: FONT,
       }}
     >
-      {/* Мягкие световые пятна фона */}
-      <div style={{ position: "absolute", width: 300, height: 300, borderRadius: 150, right: -120, top: -80, background: "rgba(0,204,245,0.25)", filter: "blur(60px)" }} />
-      <div style={{ position: "absolute", width: 260, height: 260, borderRadius: 130, left: -110, bottom: 40, background: "rgba(0,98,239,0.35)", filter: "blur(60px)" }} />
+      {/* Мягкие световые пятна фона — радиальным градиентом: filter: blur на каждом кадре сильно грузил телефоны */}
+      <div style={{ position: "absolute", width: 420, height: 420, right: -180, top: -140, background: "radial-gradient(closest-side, rgba(0,204,245,0.25), rgba(0,204,245,0))" }} />
+      <div style={{ position: "absolute", width: 380, height: 380, left: -170, bottom: -20, background: "radial-gradient(closest-side, rgba(0,98,239,0.35), rgba(0,98,239,0))" }} />
 
       {/* Шапка виджета агентства */}
       <div style={{ position: "relative", display: "flex", alignItems: "center", gap: 10, padding: "18px 16px 12px", color: "#fff" }}>

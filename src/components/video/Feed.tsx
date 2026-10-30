@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, type ReactNode } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, type ReactNode } from "react";
 import { p } from "./HowItWorksScene";
 
 /**
@@ -10,23 +10,29 @@ import { p } from "./HowItWorksScene";
 export function Feed({ viewH, children }: { viewH: number; children: ReactNode }) {
   const col = useRef<HTMLDivElement>(null);
 
-  useLayoutEffect(() => {
+  const layout = useCallback(() => {
     const el = col.current;
     if (!el) return;
-    const layout = () => {
-      let total = 0;
-      el.querySelectorAll<HTMLElement>(":scope > [data-feed-k]").forEach((w) => {
-        const inner = w.firstElementChild as HTMLElement | null;
-        const h = (inner?.offsetHeight ?? 0) * Number(w.dataset.feedK);
-        w.style.height = `${h}px`;
-        total += h;
-      });
-      el.style.transform = `translateY(${-Math.max(0, total - viewH)}px)`;
-    };
-    layout();
-    // Статичный кадр (prefers-reduced-motion) не перерисовывается — пересчитать после загрузки шрифтов.
+    const items = [...el.querySelectorAll<HTMLElement>(":scope > [data-feed-k]")];
+    // Сначала все чтения, потом все записи: чередование «прочитал высоту — записал высоту»
+    // заставляло браузер пересчитывать раскладку на каждом сообщении в каждом кадре.
+    const heights = items.map((w) => ((w.firstElementChild as HTMLElement | null)?.offsetHeight ?? 0) * Number(w.dataset.feedK));
+    let total = 0;
+    items.forEach((w, i) => {
+      const h = `${heights[i]}px`;
+      if (w.style.height !== h) w.style.height = h;
+      total += heights[i];
+    });
+    const tr = `translateY(${-Math.max(0, total - viewH)}px)`;
+    if (el.style.transform !== tr) el.style.transform = tr;
+  }, [viewH]);
+
+  useLayoutEffect(layout);
+
+  // Статичный кадр (prefers-reduced-motion) не перерисовывается — пересчитать после загрузки шрифтов.
+  useEffect(() => {
     document.fonts?.ready.then(layout);
-  });
+  }, [layout]);
 
   return (
     <div ref={col} style={{ display: "flex", flexDirection: "column" }}>

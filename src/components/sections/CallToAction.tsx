@@ -56,16 +56,11 @@ export default function CallToAction() {
       <div className="pointer-events-none absolute -right-40 -top-40 h-[500px] w-[500px] rounded-full bg-[#00E7FD]/10 blur-[150px]" />
       <div className="pointer-events-none absolute -left-20 bottom-0 h-[300px] w-[300px] rounded-full bg-[#0062EF]/15 blur-[120px]" />
 
-      <motion.div
+      {/* Было бесконечное «переливание» фона на JS — работало всегда, даже вне экрана, и грузило телефоны;
+          цвета почти не отличались, поэтому оставлен статичный градиент. */}
+      <div
         className="pointer-events-none absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full"
-        animate={{
-          background: [
-            "radial-gradient(circle, rgba(0,151,245,0.1) 0%, transparent 60%)",
-            "radial-gradient(circle, rgba(0,231,253,0.1) 0%, transparent 60%)",
-            "radial-gradient(circle, rgba(0,151,245,0.1) 0%, transparent 60%)",
-          ],
-        }}
-        transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
+        style={{ background: "radial-gradient(circle, rgba(0,151,245,0.1) 0%, transparent 60%)" }}
       />
 
       <motion.div

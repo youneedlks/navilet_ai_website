@@ -141,7 +141,6 @@ export default function Hero() {
           className="mx-auto w-full max-w-[440px] flex-shrink-0 lg:mx-0 lg:w-[440px]"
         >
           <div className="relative">
-            <div className="absolute -inset-3 rounded-3xl bg-gradient-to-br from-[#0097F5]/8 to-[#00E7FD]/8 blur-xl" />
             <div className="relative">
               <ScenePlayer
                 Scene={HeroProScene}

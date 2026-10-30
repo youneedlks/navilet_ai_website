@@ -444,7 +444,7 @@ export function LogoFinale({ t, logo, start, duration }: { t: number; logo: stri
         justifyContent: "center",
       }}
     >
-      <div style={{ position: "absolute", width: 320, height: 320, borderRadius: 160, background: "rgba(0,204,245,0.16)", filter: "blur(50px)", opacity: logoK }} />
+      <div style={{ position: "absolute", width: 440, height: 440, background: "radial-gradient(closest-side, rgba(0,204,245,0.18), rgba(0,204,245,0))", opacity: logoK }} />
       <div style={{ position: "relative", width: LOGO_W, height: LOGO_H, opacity: logoK, transform: `translateY(${(1 - ease(pop)) * 18}px) scale(${s})` }}>
         <img src={logo} alt="" width={LOGO_W} height={LOGO_H} style={{ display: "block", width: LOGO_W, height: LOGO_H }} />
         {/* Блик проходит только по самому логотипу */}

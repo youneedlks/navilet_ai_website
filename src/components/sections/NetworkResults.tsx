@@ -21,8 +21,9 @@ export default function NetworkResults() {
       }}
     >
       <div className="noise-overlay pointer-events-none absolute inset-0 opacity-20" />
-      <div className="pointer-events-none absolute -right-40 -top-40 h-[500px] w-[500px] rounded-full bg-[#00E7FD]/10 blur-[150px]" />
-      <div className="pointer-events-none absolute -left-24 bottom-0 h-[320px] w-[320px] rounded-full bg-[#0062EF]/15 blur-[120px]" />
+      {/* Световые пятна — радиальными градиентами: blur-[150px] перерисовывался вместе с бегущими цифрами и тормозил телефоны */}
+      <div className="pointer-events-none absolute -right-72 -top-72 h-[800px] w-[800px] bg-[radial-gradient(closest-side,rgba(0,231,253,0.10),rgba(0,231,253,0))]" />
+      <div className="pointer-events-none absolute -left-56 -bottom-40 h-[600px] w-[600px] bg-[radial-gradient(closest-side,rgba(0,98,239,0.15),rgba(0,98,239,0))]" />
 
       <motion.div
         variants={staggerContainer}
@@ -33,7 +34,7 @@ export default function NetworkResults() {
         {/* Eyebrow */}
         <motion.span
           variants={fadeInUp}
-          className="inline-flex items-center rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-white/80 backdrop-blur-sm"
+          className="inline-flex items-center rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-white/80"
         >
           {r.eyebrow}
         </motion.span>
@@ -101,7 +102,7 @@ export default function NetworkResults() {
             {r.clients.map((c) => (
               <span
                 key={c}
-                className="rounded-full border border-white/15 bg-white/[0.07] px-4 py-2 text-sm font-medium text-white/85 backdrop-blur-sm"
+                className="rounded-full border border-white/15 bg-white/[0.07] px-4 py-2 text-sm font-medium text-white/85"
               >
                 {c}
               </span>
