@@ -1,75 +1,35 @@
 "use client";
 
-import { motion, useInView, AnimatePresence } from "framer-motion";
-import { useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { faqItems } from "@/lib/content";
-import { HelpCircle, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { jsonLdScript } from "@/lib/schema";
 
-function FaqAccordionItem({
-  question,
-  answer,
-  index,
-}: {
-  question: string;
-  answer: string;
-  index: number;
-}) {
-  const [open, setOpen] = useState(false);
-
+/**
+ * Вопрос — нативный <details>: ответ всегда есть в HTML (его читают поисковики
+ * и нейросети, которые не нажимают кнопки), а на экране он свёрнут до нажатия.
+ */
+function FaqItem({ question, answer }: { question: string; answer: string }) {
   return (
-    <motion.div
-      custom={index}
-      variants={{
-        hidden: { opacity: 0, y: 16 },
-        visible: (i: number) => ({
-          opacity: 1,
-          y: 0,
-          transition: {
-            duration: 0.45,
-            delay: 0.15 + i * 0.07,
-            ease: [0.22, 1, 0.36, 1] as const,
-          },
-        }),
-      }}
-      className="overflow-hidden rounded-xl border border-blue-subtle/50 bg-white transition-shadow duration-300 hover:shadow-[0_2px_12px_rgba(0,82,204,0.06)]"
-    >
-      <button
-        onClick={() => setOpen(!open)}
-        aria-expanded={open}
-        className="flex w-full cursor-pointer items-center gap-4 px-6 py-5 text-left transition-colors duration-200 hover:bg-blue-ice/30"
-      >
-        <span className="flex-1 font-display text-[15px] font-semibold leading-snug text-heading sm:text-base">
-          {question}
-        </span>
-        <motion.span
-          animate={{ rotate: open ? 180 : 0 }}
-          transition={{ duration: 0.25, ease: "easeOut" }}
-          className="shrink-0"
-        >
-          <ChevronDown className="h-5 w-5 text-muted" />
-        </motion.span>
-      </button>
-
-      <AnimatePresence initial={false}>
-        {open && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="overflow-hidden"
-          >
-            <div className="border-t border-blue-subtle/30 px-6 pb-5 pt-4">
-              <p className="text-sm leading-relaxed text-body">{answer}</p>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.div>
+    <details className="group rounded-xl border border-blue-subtle/50 bg-white transition-shadow duration-300 hover:shadow-[0_2px_12px_rgba(0,82,204,0.06)]">
+      <summary className="flex min-h-11 cursor-pointer list-none items-center gap-4 px-6 py-5 text-left [&::-webkit-details-marker]:hidden">
+        <h3 className="flex-1 font-display text-[15px] font-semibold leading-snug text-heading sm:text-base">{question}</h3>
+        <ChevronDown className="h-5 w-5 shrink-0 text-muted transition-transform duration-200 group-open:rotate-180" />
+      </summary>
+      <div className="border-t border-blue-subtle/30 px-6 pb-5 pt-4">
+        <p className="text-sm leading-relaxed text-body">{answer}</p>
+      </div>
+    </details>
   );
 }
+
+/**
+ * На виду — шесть главных вопросов небольшого агентства (номера в faqItems),
+ * остальные — под «Ещё вопросы». Все вопросы и ответы есть в HTML и совпадают с FAQPage.
+ */
+const FEATURED = [0, 1, 6, 7, 13, 10];
 
 export default function FAQ() {
   const ref = useRef(null);
@@ -78,34 +38,37 @@ export default function FAQ() {
   if (faqItems.length === 0) return null;
 
   return (
-    <section id="faq" ref={ref} className="bg-surface-alt">
+    <section id="faq" ref={ref} className="bg-surface">
       <motion.div
         variants={staggerContainer}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
-        className="mx-auto max-w-3xl px-5 py-20 sm:px-6 lg:px-8 lg:py-24"
+        className="mx-auto max-w-3xl px-5 py-16 sm:px-6 lg:px-8 lg:py-20"
       >
         <motion.div variants={fadeInUp} className="mb-10 text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/15 bg-accent/5 px-4 py-1.5">
-            <HelpCircle className="h-4 w-4 text-accent" />
-            <span className="text-sm font-semibold text-accent">FAQ</span>
-          </div>
           <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl">
-            Часто задаваемые{" "}
-            <span className="text-accent">вопросы</span>
+            Частые <span className="text-accent">вопросы</span>
           </h2>
         </motion.div>
 
-        <div className="flex flex-col gap-3">
-          {faqItems.map((item, i) => (
-            <FaqAccordionItem
-              key={i}
-              question={item.question}
-              answer={item.answer}
-              index={i}
-            />
+        <motion.div variants={fadeInUp} className="flex flex-col gap-3">
+          {FEATURED.map((idx) => (
+            <FaqItem key={idx} question={faqItems[idx].question} answer={faqItems[idx].answer} />
           ))}
-        </div>
+        </motion.div>
+        {faqItems.length > FEATURED.length && (
+          <motion.details variants={fadeInUp} className="group/more mt-6">
+            <summary className="mx-auto flex min-h-11 w-fit cursor-pointer list-none items-center gap-1.5 rounded-xl border border-blue-subtle/60 bg-white px-5 text-sm font-semibold text-accent hover:bg-blue-ice/40 [&::-webkit-details-marker]:hidden">
+              Ещё вопросы ({faqItems.length - FEATURED.length})
+              <ChevronDown className="h-4 w-4 transition-transform group-open/more:rotate-180" />
+            </summary>
+            <div className="mt-6 flex flex-col gap-3">
+              {faqItems.map((item, idx) =>
+                FEATURED.includes(idx) ? null : <FaqItem key={idx} question={item.question} answer={item.answer} />
+              )}
+            </div>
+          </motion.details>
+        )}
 
         <script
           type="application/ld+json"

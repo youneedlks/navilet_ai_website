@@ -165,7 +165,7 @@ function EventModal({
 
 /* ── Main Section ─────────────────────────────────────────── */
 
-export default function Events() {
+export default function Events({ titleAs: Title = "h3" }: { titleAs?: "h2" | "h3" } = {}) {
   const sectionRef = useRef(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
@@ -228,10 +228,10 @@ export default function Events() {
             className="mb-8 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end"
           >
             <div>
-              <h3 className="font-display text-2xl font-bold text-heading sm:text-3xl">
+              <Title className="font-display text-2xl font-bold text-heading sm:text-3xl">
                 Участие в{"\u00A0"}
                 <span className="text-accent">отраслевых событиях</span>
-              </h3>
+              </Title>
               <p className="mt-2.5 max-w-xl text-body">
                 Представляем технологии ИИ-автоматизации для туризма на ведущих
                 конференциях и конгрессах индустрии

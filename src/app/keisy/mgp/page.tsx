@@ -369,7 +369,7 @@ export default function MgpCasePage() {
             </p>
             <div className="mt-6">
               <Link
-                href="/#events"
+                href="/o-komande#events"
                 className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent transition-colors hover:text-accent-hover"
               >
                 Все совместные выступления и события

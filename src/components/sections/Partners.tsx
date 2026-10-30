@@ -1,235 +1,64 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import {
-  fadeInUp,
-  staggerContainer,
-  slideInLeft,
-  slideInRight,
-  scaleIn,
-} from "@/lib/animations";
-import { Handshake, MapPin, Users, CalendarDays } from "lucide-react";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { fadeInUp } from "@/lib/animations";
+import SectionWrapper from "@/components/ui/SectionWrapper";
 import SkolkovoBadge from "@/components/ui/SkolkovoBadge";
-import Events from "@/components/sections/Events";
 
-const STATS = [
-  { icon: CalendarDays, value: "27 лет", label: "на рынке" },
-  { icon: MapPin, value: "396", label: "офисов по России" },
-  { icon: Users, value: "5 млн+", label: "туристов" },
+/**
+ * «Нам доверяют» на главной — коротко: логотипы одной строкой, кейс МГП одной
+ * фразой, Сколково. Мероприятия целиком — на /o-komande#events.
+ */
+const LOGOS = [
+  // Логотип МГП квадратный, надпись — узкой полосой посередине: показываем только её
+  { src: "/partners/mgp-logo.svg", alt: "МГП — сеть магазинов горящих путёвок", h: "h-9 w-[180px] object-cover sm:h-10 sm:w-[200px]" },
+  { src: "/partners/rst-logo.png", alt: "Российский союз туриндустрии", h: "h-12 sm:h-14" },
+  { src: "/partners/tpp-logo.svg", alt: "Торгово-промышленная палата РФ", h: "h-12 sm:h-14" },
+  { src: "/partners/plekhanov-logo.png", alt: "РЭУ им. Г.В. Плеханова", h: "h-12 sm:h-14" },
+  { src: "/partners/mgimo-logo.svg", alt: "МГИМО", h: "h-12 sm:h-14" },
 ];
-
-const PARTNER_LOGOS = [
-  {
-    src: "/partners/rst-logo.png",
-    alt: "Российский союз туриндустрии",
-    name: "РСТ",
-  },
-  {
-    src: "/partners/plekhanov-logo.png",
-    alt: "РЭУ им. Г.В. Плеханова",
-    name: "РЭУ Плеханова",
-  },
-  {
-    src: "/partners/tpp-logo.svg",
-    alt: "Торгово-промышленная палата РФ",
-    name: "ТПП РФ",
-  },
-  {
-    src: "/partners/mgimo-logo.svg",
-    alt: "МГИМО",
-    name: "МГИМО",
-  },
-];
-
-const logoCardVariant = {
-  hidden: { opacity: 0, scale: 0.9, y: 16 },
-  visible: (i: number) => ({
-    opacity: 1,
-    scale: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      delay: 0.3 + i * 0.1,
-      ease: [0.22, 1, 0.36, 1] as const,
-    },
-  }),
-};
-
-const statVariant = {
-  hidden: { opacity: 0, y: 12 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.45,
-      delay: 0.5 + i * 0.12,
-      ease: [0.22, 1, 0.36, 1] as const,
-    },
-  }),
-};
 
 export default function Partners() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
-
   return (
-    <section id="partners" ref={ref} className="bg-surface">
-      <motion.div
-        variants={staggerContainer}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        className="mx-auto max-w-7xl px-5 pb-10 pt-20 sm:px-6 lg:px-8 lg:pb-12 lg:pt-24"
-      >
-        {/* Section header */}
-        <motion.div variants={fadeInUp} className="mb-12 text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/15 bg-accent/5 px-4 py-1.5">
-            <Handshake className="h-4 w-4 text-accent" />
-            <span className="text-sm font-semibold text-accent">
-              Партнёры и мероприятия
-            </span>
-          </div>
-          <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl lg:text-[2.75rem]">
-            Нам доверяют — и нас{" "}
-            <span className="text-accent">знают в отрасли</span>
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base text-body sm:text-lg">
-            С кем мы работаем и где нас можно встретить лично.
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-2">
-          {/* LEFT: MGP featured card */}
-          <motion.div
-            variants={slideInLeft}
-            whileHover={{ y: -4 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className="flex flex-col overflow-hidden rounded-2xl border border-blue-subtle/50 bg-white shadow-[0_1px_3px_rgba(0,82,204,0.04),0_4px_16px_rgba(0,82,204,0.05)] transition-shadow duration-300 hover:shadow-[0_8px_40px_rgba(0,82,204,0.1)]"
-          >
-            <div className="relative flex items-center justify-center overflow-hidden border-b border-blue-subtle/30 bg-white p-6">
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-accent/[0.02] via-transparent to-primary/[0.02]" />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/partners/mgp-logo.svg"
-                alt="МГП — Сеть магазинов горящих путёвок"
-                loading="lazy"
-                className="relative w-full max-w-[380px] object-contain"
-                draggable={false}
-              />
-            </div>
-
-            <div className="flex flex-1 flex-col p-7 sm:p-8">
-              <motion.div
-                variants={scaleIn}
-                className="mb-4 inline-flex w-fit items-center gap-1.5 rounded-full border border-accent/20 bg-accent/5 px-3.5 py-1.5"
-              >
-                <Handshake className="h-3.5 w-3.5 text-accent" />
-                <span className="text-xs font-bold text-accent">
-                  Стратегический партнёр
-                </span>
-              </motion.div>
-
-              <h3 className="mb-3 font-display text-xl font-bold text-heading">
-                Сеть магазинов горящих путёвок
-              </h3>
-
-              <p className="mb-6 flex-1 text-sm leading-relaxed text-body">
-                МГП — одна из крупнейших туристических сетей России
-                с 27-летней историей и 396 офисами по всей стране.
-                Компания стала первой, кто внедрил ИИ-ассистент «Навылет! AI»
-                в реальную работу с клиентами и активно участвует
-                в развитии продукта.
-              </p>
-
-              <div className="flex flex-wrap gap-5">
-                {STATS.map((stat, i) => {
-                  const Icon = stat.icon;
-                  return (
-                    <motion.div
-                      key={stat.label}
-                      custom={i}
-                      variants={statVariant}
-                      className="flex items-center gap-2.5"
-                    >
-                      <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-ice transition-colors duration-300 group-hover:bg-accent/10">
-                        <Icon className="h-4 w-4 text-accent" />
-                      </div>
-                      <div>
-                        <div className="font-display text-sm font-bold text-heading">
-                          {stat.value}
-                        </div>
-                        <div className="text-[11px] text-muted">
-                          {stat.label}
-                        </div>
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </div>
-          </motion.div>
-
-          {/* RIGHT: Partner logos grid */}
-          <motion.div
-            variants={slideInRight}
-            className="flex flex-col rounded-2xl border border-blue-subtle/50 bg-white p-7 shadow-[0_1px_3px_rgba(0,82,204,0.04),0_4px_16px_rgba(0,82,204,0.05)] sm:p-8"
-          >
-            <div className="mb-8">
-              <h3 className="font-display text-xl font-bold text-heading">
-                Наши партнёры
-              </h3>
-              <p className="mt-1.5 text-sm text-muted">
-                Сотрудничаем с ведущими организациями отрасли
-              </p>
-            </div>
-
-            <div className="grid flex-1 grid-cols-2 gap-5">
-              {PARTNER_LOGOS.map((partner, i) => (
-                <motion.div
-                  key={partner.name}
-                  custom={i}
-                  variants={logoCardVariant}
-                  whileHover={{
-                    y: -4,
-                    boxShadow:
-                      "0 4px 20px rgba(0,82,204,0.10), 0 1px 4px rgba(0,82,204,0.06)",
-                  }}
-                  transition={{ duration: 0.25, ease: "easeOut" }}
-                  className="group flex flex-col items-center justify-center gap-4 rounded-xl border border-blue-subtle/40 bg-white p-6 transition-colors duration-300 hover:border-accent/25"
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={partner.src}
-                    alt={partner.alt}
-                    loading="lazy"
-                    className="h-20 w-auto max-w-[140px] object-contain opacity-60 grayscale transition-all duration-400 group-hover:scale-105 group-hover:opacity-100 group-hover:grayscale-0 sm:h-24 sm:max-w-[160px]"
-                    draggable={false}
-                  />
-                  <span className="text-center text-[13px] font-medium text-muted transition-colors duration-300 group-hover:text-heading">
-                    {partner.name}
-                  </span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Аккредитация — резидент ИТ-кластера Фонда «Сколково» */}
-        <motion.div
-          variants={fadeInUp}
-          className="mt-6 flex flex-col items-center justify-center gap-5 rounded-2xl border border-blue-subtle/50 bg-white px-6 py-7 text-center shadow-[0_1px_3px_rgba(0,82,204,0.04),0_4px_16px_rgba(0,82,204,0.05)] sm:flex-row sm:gap-8 sm:px-10 sm:text-left">
-          <SkolkovoBadge imgClassName="h-11 w-auto shrink-0 sm:h-14" />
-          <p className="max-w-xl text-sm leading-relaxed text-body">
-            <span className="font-semibold text-heading">«Навылет! AI» — резидент ИТ-кластера Фонда «Сколково»</span>
-            {"\u00A0"}— крупнейшего инновационного центра России. Мы развиваем
-            ИИ-технологии для туристической отрасли в составе его экосистемы.
-          </p>
-        </motion.div>
+    <SectionWrapper id="partners" alt paddingClassName="py-16 lg:py-20">
+      <motion.div variants={fadeInUp} className="mb-8 text-center sm:mb-10">
+        <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl lg:text-[2.75rem]">
+          Нам <span className="text-accent">доверяют</span>
+        </h2>
       </motion.div>
 
-      {/* Мероприятия — вторая половина того же блока: партнёры отвечают
-          на «кому мы нужны», события — «где нас встретить лично». */}
-      <Events />
-    </section>
+      <motion.ul variants={fadeInUp} className="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-x-10 gap-y-6">
+        {LOGOS.map((l) => (
+          <li key={l.src}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={l.src} alt={l.alt} loading="lazy" draggable={false} className={`${l.h.includes("object-cover") ? l.h : `${l.h} w-auto max-w-[160px] object-contain`} opacity-80 mix-blend-multiply grayscale`} />
+          </li>
+        ))}
+        <li>
+          <SkolkovoBadge imgClassName="h-9 w-auto sm:h-11" />
+        </li>
+      </motion.ul>
+
+      {/* Логотипы — картинки; то же текстом, чтобы это читали поисковики и нейросети */}
+      <motion.p variants={fadeInUp} className="mx-auto mt-6 max-w-2xl text-center text-sm text-muted">
+        Резидент ИТ-кластера Фонда «Сколково». Партнёры — сеть МГП, РСТ, ТПП РФ, <span className="whitespace-nowrap">РЭУ им. Г.В. Плеханова</span>, МГИМО.
+      </motion.p>
+
+      <motion.p variants={fadeInUp} className="mx-auto mt-6 max-w-2xl text-center text-base leading-relaxed text-body">
+        Сеть МГП — 396 офисов по России — первой внедрила ассистента в работу с клиентами.{" "}
+        <Link href="/keisy/mgp" className="whitespace-nowrap font-semibold text-accent hover:underline">
+          Как это было
+        </Link>
+      </motion.p>
+
+      <motion.div variants={fadeInUp} className="mt-4 text-center">
+        <Link href="/o-komande#events" className="inline-flex min-h-10 items-center gap-1.5 text-sm font-semibold text-accent hover:underline">
+          Выступаем на отраслевых событиях
+          <ArrowRight className="h-4 w-4" />
+        </Link>
+      </motion.div>
+    </SectionWrapper>
   );
 }

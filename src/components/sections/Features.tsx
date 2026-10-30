@@ -2,106 +2,64 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { fadeInUp, staggerContainer } from "@/lib/animations";
-import { features } from "@/lib/content";
+import { fadeInUp } from "@/lib/animations";
+import { featureHighlights, features } from "@/lib/content";
 import SectionWrapper from "@/components/ui/SectionWrapper";
-import {
-  ArrowRight,
-  Globe,
-  Flame,
-  Building2,
-  Info,
-  Plane,
-  BadgeRussianRuble,
-  Car,
-  Shield,
-  GitBranch,
-  ArrowLeftRight,
-  Users,
-  HelpCircle,
-  Link2,
-  Send,
-  MousePointerClick,
-  Lock,
-  RotateCcw,
-  Hand,
-} from "lucide-react";
+import { ArrowRight, ChevronDown, Globe, Info, Link2, MessageSquareText, Moon, RotateCcw } from "lucide-react";
 
-const iconMap = {
-  Globe,
-  Flame,
-  Building2,
-  Info,
-  Plane,
-  BadgeRussianRuble,
-  Car,
-  Shield,
-  GitBranch,
-  ArrowLeftRight,
-  Users,
-  HelpCircle,
-  Link2,
-  Send,
-  MousePointerClick,
-  Lock,
-  RotateCcw,
-  Hand,
-} as const;
+/** Значки шести главных пунктов — по порядку featureHighlights. */
+const HIGHLIGHT_ICONS = [Globe, Info, MessageSquareText, Link2, Moon, RotateCcw];
 
+/**
+ * «Что умеет» на главной: шесть пунктов строками вместо сетки из 18 карточек.
+ * Полный список — под «Все функции ассистента»: текст остаётся в HTML для поиска.
+ */
 export default function Features() {
   return (
-    <SectionWrapper id="features">
-      <motion.div variants={fadeInUp} className="mb-16 text-center">
+    <SectionWrapper id="features" paddingClassName="py-16 lg:py-20">
+      <motion.div variants={fadeInUp} className="mb-10 text-center sm:mb-12">
         <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl lg:text-[2.75rem]">
-          Возможности <span className="whitespace-nowrap">ИИ-ассистента</span> —{" "}
-          <span className="text-accent">до 80% рутины он берёт на себя</span>
+          Что умеет <span className="text-accent">ИИ-ассистент</span>
         </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-base text-body sm:text-lg">
-          Подбор туров, консультации и типовые вопросы ассистент закрывает сам,
-          а менеджеру передаёт готовую заявку с контактами. Работает на базе
-          Tourvisor: цены и наличие туров реальные.
-        </p>
       </motion.div>
 
-      <motion.div
-        variants={staggerContainer}
-        className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
-      >
-        {features.map((feature, i) => {
-          const Icon = iconMap[feature.icon];
+      <motion.ul variants={fadeInUp} className="mx-auto grid max-w-5xl gap-x-12 gap-y-7 sm:grid-cols-2">
+        {featureHighlights.map((f, i) => {
+          const Icon = HIGHLIGHT_ICONS[i];
           return (
-            <motion.div
-              key={i}
-              variants={fadeInUp}
-              whileHover={{ y: -4 }}
-              transition={{ duration: 0.25, ease: "easeOut" }}
-              className="group relative overflow-hidden rounded-2xl border border-blue-subtle/50 bg-white p-6 shadow-[0_1px_3px_rgba(0,82,204,0.04),0_4px_16px_rgba(0,82,204,0.05)] transition-all duration-300 hover:border-accent/25 hover:shadow-[0_4px_12px_rgba(0,82,204,0.08),0_12px_40px_rgba(0,82,204,0.07)]"
-            >
-              <div className="pointer-events-none absolute -right-8 -top-8 h-28 w-28 rounded-full bg-accent/[0.04] transition-all duration-500 group-hover:scale-[1.8] group-hover:bg-accent/[0.07]" />
-              <div className="relative h-full">
-                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-blue-ice transition-colors duration-300 group-hover:bg-accent/10">
-                  <Icon className="h-5 w-5 text-accent transition-transform duration-300 group-hover:scale-110" />
-                </div>
-                <h3 className="mb-2 font-display text-base font-semibold text-heading">
-                  {feature.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-body">
-                  {feature.description}
-                </p>
-                {"href" in feature && feature.href && (
-                  <Link
-                    href={feature.href}
-                    className="mt-1.5 inline-flex min-h-10 items-center gap-1 text-sm font-semibold text-accent transition-colors hover:text-accent-hover"
-                  >
+            <li key={f.title} className="flex gap-4">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-ice text-accent">
+                <Icon className="h-5 w-5" />
+              </span>
+              <div>
+                <h3 className="font-display text-base font-bold text-heading sm:text-lg">{f.title}</h3>
+                <p className="mt-1 text-sm leading-relaxed text-body sm:text-base">{f.description}</p>
+                {"href" in f && f.href && (
+                  <Link href={f.href} className="mt-1 inline-flex min-h-10 items-center gap-1 text-sm font-semibold text-accent hover:underline">
                     Подробнее
                     <ArrowRight className="h-3.5 w-3.5" />
                   </Link>
                 )}
               </div>
-            </motion.div>
+            </li>
           );
         })}
-      </motion.div>
+      </motion.ul>
+
+      <motion.details variants={fadeInUp} className="group mx-auto mt-10 max-w-5xl">
+        <summary className="mx-auto flex min-h-11 w-fit cursor-pointer list-none items-center gap-1.5 rounded-xl border border-blue-subtle/60 bg-white px-5 text-sm font-semibold text-accent hover:bg-blue-ice/40 [&::-webkit-details-marker]:hidden">
+          Все функции ассистента ({features.length})
+          <ChevronDown className="h-4 w-4 transition-transform group-open:rotate-180" />
+        </summary>
+        <ul className="mt-8 grid gap-x-12 gap-y-5 sm:grid-cols-2">
+          {features.map((f) => (
+            <li key={f.title}>
+              <h3 className="font-display text-base font-semibold text-heading">{f.title}</h3>
+              <p className="mt-0.5 text-sm leading-relaxed text-body">{f.description}</p>
+            </li>
+          ))}
+        </ul>
+      </motion.details>
     </SectionWrapper>
   );
 }

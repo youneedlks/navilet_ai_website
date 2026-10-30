@@ -32,17 +32,14 @@ export default function NetworkResults() {
         className="relative mx-auto max-w-5xl px-5 py-20 text-center sm:px-6 lg:px-8 lg:py-28"
       >
         {/* Eyebrow */}
-        <motion.span
-          variants={fadeInUp}
-          className="inline-flex items-center rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-white/80"
-        >
+        <motion.p variants={fadeInUp} className="text-sm font-semibold text-white/70">
           {r.eyebrow}
-        </motion.span>
+        </motion.p>
 
         {/* Hero sum */}
         <motion.div
           variants={fadeInUp}
-          className="mt-7 font-display text-5xl font-bold leading-none text-white sm:text-6xl lg:text-7xl"
+          className="mt-4 font-display text-5xl font-bold leading-none text-white sm:text-6xl lg:text-7xl"
           style={{ letterSpacing: "-0.03em" }}
         >
           <CountUp
@@ -90,25 +87,10 @@ export default function NetworkResults() {
           ))}
         </motion.div>
 
-        {/* Clients */}
-        <motion.div
-          variants={fadeInUp}
-          className="mt-12 border-t border-white/10 pt-8"
-        >
-          <p className="mb-4 text-xs font-semibold uppercase tracking-wide text-white/40">
-            {r.clientsLabel}
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-2.5">
-            {r.clients.map((c) => (
-              <span
-                key={c}
-                className="rounded-full border border-white/15 bg-white/[0.07] px-4 py-2 text-sm font-medium text-white/85"
-              >
-                {c}
-              </span>
-            ))}
-          </div>
-        </motion.div>
+        {/* Кто уже работает — строкой текста, без плашек */}
+        <motion.p variants={fadeInUp} className="mx-auto mt-10 max-w-2xl text-sm text-white/70">
+          {r.clientsLabel}: {r.clients.join(", ")}
+        </motion.p>
       </motion.div>
     </section>
   );

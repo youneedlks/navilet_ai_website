@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Events from "@/components/sections/Events";
 import Navigation from "@/components/sections/Navigation";
 import Footer from "@/components/sections/Footer";
 import FloatingCTA from "@/components/ui/FloatingCTA";
@@ -12,7 +13,7 @@ import {
   Building2,
   ArrowRight,
 } from "lucide-react";
-import { companyInfo, events, reqVersionPublished } from "@/lib/content";
+import { companyInfo, reqVersionPublished } from "@/lib/content";
 import { jsonLdScript } from "@/lib/schema";
 
 export const metadata: Metadata = {
@@ -46,17 +47,6 @@ export const metadata: Metadata = {
 };
 
 const siteUrl = "https://navilet.ru";
-
-// Берём только реальные мероприятия из content.ts — без дублирования текстов.
-// Порядок тот же, что в блоке на главной: от свежего к старому по dateISO.
-const speakingEvents = [...events]
-  .sort((a, b) => b.dateISO.localeCompare(a.dateISO))
-  .slice(0, 6)
-  .map((e) => ({
-    date: e.date,
-    location: e.location,
-    title: e.title,
-  }));
 
 const teamJsonLd = {
   "@context": "https://schema.org",
@@ -351,41 +341,9 @@ export default function AboutTeamPage() {
           </div>
         </section>
 
-        {/* Speaking events */}
-        <section className="mx-auto max-w-3xl px-5 py-16 sm:px-6 lg:px-8 lg:py-20">
-          <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl">
-            Участие в отраслевых событиях
-          </h2>
-          <p className="mt-4 text-base text-body">
-            Конгрессы туроператоров, заседания ТПП РФ, форумы и научные
-            конференции. Полный список — в{"\u00A0"}
-            <Link
-              href="/#events"
-              className="font-semibold text-accent underline decoration-accent/30 underline-offset-2 hover:decoration-accent"
-            >
-              разделе «Партнёры и мероприятия»
-            </Link>{" "}
-            на главной.
-          </p>
-          <ol className="mt-8 space-y-3">
-            {speakingEvents.map((e) => (
-              <li
-                key={e.title}
-                className="flex gap-4 rounded-2xl border border-blue-subtle/50 bg-white p-5"
-              >
-                <div className="text-xs font-semibold uppercase tracking-wide text-muted">
-                  <div>{e.date}</div>
-                  <div className="mt-1 flex items-center gap-1">
-                    <MapPin className="h-3 w-3" />
-                    <span>{e.location}</span>
-                  </div>
-                </div>
-                <p className="flex-1 text-sm font-medium text-heading">
-                  {e.title}
-                </p>
-              </li>
-            ))}
-          </ol>
+        {/* Все мероприятия — здесь (раньше карусель была на главной, теперь там только ссылка сюда) */}
+        <section className="bg-surface pt-16 lg:pt-20">
+          <Events titleAs="h2" />
         </section>
 
         {/* Рабочая группа */}

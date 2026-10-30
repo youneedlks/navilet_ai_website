@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useEffect, useState } from "react";
+import { Fragment } from "react";
 import { motion } from "framer-motion";
 import {
   staggerContainer,
@@ -9,15 +9,16 @@ import {
   heroScaleIn,
   fadeIn,
 } from "@/lib/animations";
-import { heroContent, promo, priceFromLabel } from "@/lib/content";
-import { isPromoActive } from "@/lib/promo";
+import { heroContent, priceFromLabel } from "@/lib/content";
+import { lkRegisterUrl } from "@/lib/lk";
+import { metrikaGoals, reachMetrikaGoal } from "@/lib/metrika";
 import Button from "@/components/ui/Button";
 import Link from "next/link";
 import ScenePlayer from "@/components/video/ScenePlayer";
 import HeroProScene, { HERO_PRO_DURATION, HERO_PRO_H, HERO_PRO_W } from "@/components/video/HeroProScene";
 import SkolkovoBadge from "@/components/ui/SkolkovoBadge";
 import { useLeadForm } from "@/contexts/LeadFormContext";
-import { ArrowRight, Globe, MessageSquare, Sparkles } from "lucide-react";
+import { Globe, MessageSquare } from "lucide-react";
 
 function PartnerLogos() {
   return (
@@ -46,11 +47,6 @@ function PartnerLogos() {
 export default function Hero() {
   const words = heroContent.title.split(" ");
   const { openForm } = useLeadForm();
-  const [promoOn, setPromoOn] = useState(false);
-
-  useEffect(() => {
-    setPromoOn(isPromoActive());
-  }, []);
 
   return (
     <section className="relative overflow-hidden bg-white">
@@ -96,37 +92,39 @@ export default function Hero() {
             {heroContent.subtitle}
           </motion.p>
 
-          {promoOn && (
-            <motion.div
-              variants={heroRise}
-              className="mb-6 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5 text-sm font-semibold text-accent"
-            >
-              <Sparkles className="h-4 w-4" />
-              {promo.headline}
-            </motion.div>
-          )}
-
+          {/* Одна главная кнопка — сразу в регистрацию кабинета; демо и менеджер — ссылками */}
           <motion.div
             variants={heroRise}
-            className="mb-3 flex flex-wrap justify-center gap-4 lg:justify-start"
+            className="mb-4 flex flex-col items-center gap-3 lg:items-start"
           >
             <Button
               variant="primary"
               size="lg"
-              onClick={() => openForm({ source: "hero" })}
+              href={lkRegisterUrl({ from: "home_hero" })}
+              onClick={() => reachMetrikaGoal(metrikaGoals.trialClick, { source: "home_hero" })}
             >
               {heroContent.ctaPrimary}
             </Button>
-            <Button variant="outline" size="lg" href="/demo">
-              {heroContent.ctaSecondary}
-            </Button>
+            <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-sm font-semibold lg:justify-start">
+              <Link href="/demo" className="inline-flex min-h-10 items-center text-accent hover:underline">
+                {heroContent.ctaSecondary}
+              </Link>
+              <button
+                type="button"
+                onClick={() => openForm({ source: "hero" })}
+                className="inline-flex min-h-10 cursor-pointer items-center text-body hover:text-accent hover:underline"
+              >
+                Подключить с менеджером
+              </button>
+            </div>
           </motion.div>
 
           <motion.p
             variants={heroRise}
             className="mb-10 text-sm text-muted"
           >
-            Месяц бесплатно · подключение 0 ₽ · дальше{" "}
+            <span className="whitespace-nowrap">Месяц бесплатно</span> ·{" "}
+            <span className="whitespace-nowrap">без программиста</span> ·{" "}
             <span className="whitespace-nowrap">от {priceFromLabel}/мес</span>
           </motion.p>
 
@@ -152,15 +150,6 @@ export default function Hero() {
                 controls
                 className="rounded-2xl border border-[#E0E0E0]/50 bg-white shadow-xl"
                 label="Пример диалога в версии «Про»: турист просит тур в Турцию, ассистент уточняет город вылета, даты, состав и категорию отеля, показывает три отеля с ценами, рассказывает об отеле и о том, что входит в стоимость, и передаёт заявку менеджеру."
-                aside={
-                  <Link
-                    href="/demo"
-                    className="-my-2 inline-flex flex-shrink-0 items-center gap-1 py-2.5 text-sm font-semibold text-accent hover:underline"
-                  >
-                    Попробовать самому
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                }
               />
             </div>
           </div>

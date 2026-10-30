@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { assistantVersions, type AssistantVersionId } from "@/lib/content";
@@ -59,11 +59,20 @@ const VIDEOS: Record<
 export default function VersionVideos() {
   const versions = assistantVersions;
   const [id, setId] = useState<AssistantVersionId>(versions[0].id);
+  const root = useRef<HTMLDivElement>(null);
+
+  // Ссылка вида /versii#v-lid (строки версий на главной) открывает нужную вкладку и прокручивает к ролику
+  useEffect(() => {
+    const m = window.location.hash.match(/^#v-(req|lid|pro)$/);
+    if (!m || !versions.some((v) => v.id === m[1])) return;
+    setId(m[1] as AssistantVersionId);
+    root.current?.scrollIntoView({ block: "start" });
+  }, [versions]);
   const version = versions.find((v) => v.id === id) ?? versions[0];
   const v = VIDEOS[version.id];
 
   return (
-    <div>
+    <div ref={root} className="scroll-mt-24">
       <div role="tablist" aria-label="Версия ассистента" className="mx-auto flex w-full max-w-xl gap-1 rounded-2xl border border-blue-subtle/50 bg-white p-1.5 shadow-card">
         {versions.map((x) => {
           const on = x.id === version.id;

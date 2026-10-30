@@ -4,16 +4,13 @@ import HowItWorks from "@/components/sections/HowItWorks";
 import Versions from "@/components/sections/Versions";
 import Features from "@/components/sections/Features";
 import NetworkResults from "@/components/sections/NetworkResults";
-import Metrics from "@/components/sections/Metrics";
 import Partners from "@/components/sections/Partners";
-import Pricing from "@/components/sections/Pricing";
+import PricingSummary from "@/components/sections/PricingSummary";
 import Integration from "@/components/sections/Integration";
-import DashboardPromo from "@/components/sections/DashboardPromo";
 import FAQ from "@/components/sections/FAQ";
 import CallToAction from "@/components/sections/CallToAction";
 import Footer from "@/components/sections/Footer";
 import FloatingCTA from "@/components/ui/FloatingCTA";
-import InlineCTA from "@/components/ui/InlineCTA";
 import { siteUrl, siteName, siteDescription } from "./layout";
 import { jsonLdScript } from "@/lib/schema";
 import { lastModified } from "@/lib/seo/page-dates";
@@ -108,18 +105,12 @@ export default function Home() {
       <main>
         <Hero />
         <NetworkResults />
-        <InlineCTA
-          text="Ассистент берёт до 80% рутины — менеджеру остаётся готовая заявка"
-          buttonText="Подключить бесплатно"
-        />
         <HowItWorks />
         <Versions />
         <Features />
-        <DashboardPromo />
-        <Metrics />
-        <Partners />
-        <Pricing />
+        <PricingSummary />
         <Integration />
+        <Partners />
         <FAQ />
         <CallToAction />
       </main>

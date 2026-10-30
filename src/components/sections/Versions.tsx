@@ -2,46 +2,59 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Layers, ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronRight } from "lucide-react";
 import { fadeInUp } from "@/lib/animations";
 import SectionWrapper from "@/components/ui/SectionWrapper";
-import VersionPicker from "@/components/sections/VersionPicker";
-import { reqVersionPublished } from "@/lib/content";
+import { assistantVersions, type AssistantVersionId } from "@/lib/content";
 
-/** Секция «Версии ассистента» на главной: выбор формата под модель агентства. */
+/**
+ * Версии на главной — строками, как список поездок в Uber: строку называем
+ * ситуацией агентства (её человек узнаёт), версию и цену — второй строкой,
+ * действие одно — нажать на строку. Подробности и ролик версии — на /versii.
+ */
+const SITUATION: Record<AssistantVersionId, string> = {
+  req: "Нет Турвизора или туры подбирают менеджеры",
+  lid: "Нужен подбор туров и заявки с телефоном",
+  pro: "Нужны консультации и возврат клиентов",
+};
+
 export default function Versions() {
   return (
-    <SectionWrapper id="versions" alt>
-      <motion.div variants={fadeInUp} className="mb-10 text-center sm:mb-12">
-        <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5">
-          <Layers className="h-4 w-4 text-accent" />
-          <span className="text-xs font-semibold text-accent sm:text-sm">
-            {reqVersionPublished ? "Три формата" : "Два формата"} под модель вашего агентства
-          </span>
-        </div>
+    <SectionWrapper id="versions" alt paddingClassName="py-16 lg:py-20">
+      <motion.div variants={fadeInUp} className="mb-8 text-center sm:mb-10">
         <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl lg:text-[2.75rem]">
-          Один ассистент —{" "}
-          <span className="text-accent">{reqVersionPublished ? "три версии" : "две версии"}</span>
+          Какая версия подойдёт <span className="text-accent">вашему агентству</span>
         </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-base text-body">
-          {reqVersionPublished &&
-            "«Заявка» собирает запрос и контакт — тур подбирает ваш менеджер, Турвизор не нужен. "}
-          «Лид» подбирает туры и передаёт готовую заявку менеджеру.
-          «Про» — полноценный инструмент: консультирует, сопровождает
-          и возвращает клиентов. Выберите свой формат.
-        </p>
       </motion.div>
 
-      <motion.div variants={fadeInUp}>
-        <VersionPicker source="home" />
-      </motion.div>
+      <motion.ul
+        variants={fadeInUp}
+        className="mx-auto max-w-3xl divide-y divide-blue-subtle/50 overflow-hidden rounded-2xl border border-blue-subtle/50 bg-white"
+      >
+        {assistantVersions.map((v) => (
+          <li key={v.id}>
+            <Link
+              href={`/versii#v-${v.id}`}
+              className="flex items-center gap-4 px-5 py-4 transition-colors hover:bg-blue-ice/40 sm:px-6 sm:py-5"
+            >
+              <span className="min-w-0 flex-1">
+                <span className="block font-display text-base font-bold text-heading sm:text-lg">{SITUATION[v.id]}</span>
+                <span className="mt-0.5 block text-sm text-body">
+                  «{v.name}» · <span className="whitespace-nowrap">от {v.priceFrom.toLocaleString("ru-RU")} ₽/мес</span>
+                </span>
+              </span>
+              <ChevronRight className="h-5 w-5 shrink-0 text-muted" aria-hidden />
+            </Link>
+          </li>
+        ))}
+      </motion.ul>
 
-      <motion.div variants={fadeInUp} className="mt-8 text-center">
+      <motion.div variants={fadeInUp} className="mt-6 text-center">
         <Link
           href="/versii"
           className="inline-flex min-h-10 items-center gap-1.5 text-sm font-semibold text-accent transition-colors hover:text-accent-hover"
         >
-          Полное сравнение версий в таблице
+          Сравнить версии подробно
           <ArrowRight className="h-4 w-4" />
         </Link>
       </motion.div>
