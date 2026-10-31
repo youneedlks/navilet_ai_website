@@ -15,7 +15,6 @@ import {
   Bot,
   Check,
   Server,
-  Sparkles,
 } from "lucide-react";
 import { jsonLdScript } from "@/lib/schema";
 
@@ -174,12 +173,6 @@ export default function TourvisorIntegrationPage() {
 
         {/* Hero */}
         <section className="mx-auto max-w-4xl px-5 py-10 text-center sm:px-6 sm:py-14 lg:px-8">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5">
-            <Sparkles className="h-4 w-4 text-accent" />
-            <span className="text-xs font-semibold text-accent sm:text-sm">
-              Готовая интеграция · Не нужно подключать самостоятельно
-            </span>
-          </div>
           <h1 className="font-display text-4xl font-bold leading-tight text-heading sm:text-5xl">
             <span className="whitespace-nowrap">ИИ-ассистент</span> с интеграцией{" "}
             <span className="text-accent">Tourvisor</span>

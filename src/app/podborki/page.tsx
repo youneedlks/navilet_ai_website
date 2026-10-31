@@ -350,7 +350,7 @@ export default function PodborkiPage() {
 
         {/* Мостик на возврат клиентов */}
         <section className="mx-auto max-w-4xl px-5 py-14 sm:px-6 lg:px-8 lg:py-16">
-          <div className={`${cardClass} flex flex-col gap-5 bg-gradient-to-br from-blue-ice/50 to-white p-6 sm:flex-row sm:items-start sm:p-8`}>
+          <div className={`${cardClass} card-hover flex flex-col gap-5 bg-gradient-to-br from-blue-ice/50 to-white p-6 sm:flex-row sm:items-start sm:p-8`}>
             <IconTile icon={MessageCircleReply} />
             <div>
               <h2 className="font-display text-xl font-bold text-heading sm:text-2xl">
@@ -379,7 +379,7 @@ export default function PodborkiPage() {
         {/* Доступность в версиях */}
         <section className="bg-surface-alt">
           <div className="mx-auto max-w-4xl px-5 py-14 sm:px-6 lg:px-8 lg:py-16">
-            <div className={`${cardClass} p-6 text-center sm:p-10`}>
+            <div className={`${cardClass} card-hover p-6 text-center sm:p-10`}>
               <h2 className="font-display text-2xl font-bold text-heading sm:text-3xl">
                 Входит в «Лид» и «Про»
               </h2>
@@ -417,7 +417,7 @@ export default function PodborkiPage() {
             {podborkiFaqItems.map((item) => (
               <details
                 key={item.question}
-                className="group rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card sm:p-6"
+                className="group rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card sm:p-6 card-hover-flat"
               >
                 <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 font-display text-base font-bold text-heading [&::-webkit-details-marker]:hidden">
                   {item.question}

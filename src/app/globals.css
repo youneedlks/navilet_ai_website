@@ -281,3 +281,47 @@ html {
     margin-top: 0.75rem;
   }
 }
+
+/*
+ * Реакция карточек на наведение (решение владельца 31.10.2026: «мягко, на всех карточках»).
+ * Только на устройствах с мышью; при «уменьшить движение» — без сдвига.
+ * card-hover — карточка чуть поднимается, тень глубже, рамка голубеет, плитка с иконкой ([data-tile]) чуть растёт.
+ * card-hover-flat — то же без подъёма: для раскрывающихся вопросов и больших блоков.
+ */
+@utility card-hover {
+  transition-property: transform, box-shadow, border-color;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  & [data-tile] {
+    transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  @media (hover: hover) {
+    &:hover {
+      transform: translateY(-2px);
+      border-color: color-mix(in srgb, var(--color-accent) 32%, transparent);
+      box-shadow: 0 2px 6px rgba(10, 22, 40, 0.05), 0 18px 40px -16px rgba(0, 82, 204, 0.28);
+    }
+    &:hover [data-tile] {
+      transform: scale(1.06);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+    &:hover,
+    &:hover [data-tile] {
+      transform: none;
+    }
+  }
+}
+
+@utility card-hover-flat {
+  transition-property: box-shadow, border-color;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  @media (hover: hover) {
+    &:hover {
+      border-color: color-mix(in srgb, var(--color-accent) 32%, transparent);
+      box-shadow: 0 2px 6px rgba(10, 22, 40, 0.05), 0 14px 32px -16px rgba(0, 82, 204, 0.24);
+    }
+  }
+}

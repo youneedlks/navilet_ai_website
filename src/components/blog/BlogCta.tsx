@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { Sparkles } from "lucide-react";
 import { lkRegisterUrl } from "@/lib/lk";
 import { metrikaGoals, reachMetrikaGoal } from "@/lib/metrika";
 
@@ -41,10 +40,6 @@ export default function BlogCta({
       <div className="noise-overlay pointer-events-none absolute inset-0 opacity-20" />
       <div className="relative z-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <div className="mb-2 inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
-            <Sparkles className="h-3.5 w-3.5" />
-            30 дней бесплатно
-          </div>
           <h3 className="font-display text-xl font-bold text-white">{title}</h3>
           <p className="mt-1.5 max-w-md text-sm text-white/70">{text}</p>
         </div>

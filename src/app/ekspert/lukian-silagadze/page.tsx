@@ -218,7 +218,7 @@ const jsonLd = {
 };
 
 const h2 = "font-display text-2xl font-bold text-heading sm:text-3xl";
-const card = "rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card sm:p-6";
+const card = "rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card card-hover sm:p-6";
 
 export default function ExpertPage() {
   return (

@@ -679,7 +679,7 @@ export default function MaxPage() {
               {faqItems.map((item) => (
                 <details
                   key={item.question}
-                  className="group rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card sm:p-6"
+                  className="group rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card sm:p-6 card-hover-flat"
                 >
                   <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 font-display text-base font-bold text-heading [&::-webkit-details-marker]:hidden">
                     {item.question}
@@ -716,7 +716,7 @@ export default function MaxPage() {
             </div>
 
             {/* Источники */}
-            <details id="istochniki" className="group mt-12 scroll-mt-24 rounded-2xl border border-blue-subtle/40 bg-surface-alt p-5">
+            <details id="istochniki" className="group mt-12 scroll-mt-24 rounded-2xl border border-blue-subtle/40 bg-surface-alt p-5 card-hover-flat">
               <summary className="flex min-h-10 cursor-pointer list-none items-center justify-between gap-3 [&::-webkit-details-marker]:hidden">
                 <h3 className="font-display text-sm font-bold text-heading">Источники данных о MAX</h3>
                 <ChevronDown className="h-4 w-4 shrink-0 text-muted transition-transform group-open:rotate-180" aria-hidden />

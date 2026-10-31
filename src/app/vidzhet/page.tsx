@@ -418,7 +418,7 @@ export default function VidzhetHubPage() {
                   остаётся тем же.
                 </p>
               </div>
-              <div className={`${cardClass} p-6`}>
+              <div className={`${cardClass} card-hover p-6`}>
                 <h3 className="font-display text-lg font-bold text-heading">
                   Что настраивается без правок кода
                 </h3>
@@ -461,7 +461,7 @@ export default function VidzhetHubPage() {
               {faqItems.map((item) => (
                 <details
                   key={item.question}
-                  className="group rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card sm:p-6"
+                  className="group rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card sm:p-6 card-hover-flat"
                 >
                   <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 font-display text-base font-bold text-heading [&::-webkit-details-marker]:hidden">
                     {item.question}

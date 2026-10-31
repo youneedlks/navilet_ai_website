@@ -583,7 +583,7 @@ export default function ForAgenciesPage() {
             </h2>
             <div className="mt-10 space-y-3">
               {faq.map((f) => (
-                <details key={f.q} className="group rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card sm:p-6">
+                <details key={f.q} className="group rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card sm:p-6 card-hover-flat">
                   <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 [&::-webkit-details-marker]:hidden">
                     <h3 className="font-display text-base font-bold text-heading">{f.q}</h3>
                     <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent transition-transform group-open:rotate-45">

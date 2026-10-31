@@ -79,11 +79,6 @@ export default function ForecastLanding() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="flex flex-1 flex-col items-center text-center lg:items-start lg:pt-8 lg:text-left"
           >
-            <span className="mb-6 inline-flex items-center gap-1.5 rounded-full bg-blue-ice px-4 py-1.5 text-sm font-medium text-accent">
-              <TrendingUp className="h-4 w-4" />
-              Личный кабинет · Отчёты и прогнозы
-            </span>
-
             <h1
               className="mb-6 font-display text-3xl font-bold leading-[1.1] text-heading sm:text-5xl lg:text-[3.25rem]"
               style={{ letterSpacing: "-0.02em" }}
@@ -221,7 +216,7 @@ export default function ForecastLanding() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="rounded-2xl border border-blue-subtle/40 bg-white p-7 shadow-card"
+                className="rounded-2xl border border-blue-subtle/40 bg-white p-7 shadow-card card-hover"
               >
                 <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10">
                   <m.icon className="h-5 w-5 text-accent" />
@@ -284,7 +279,7 @@ export default function ForecastLanding() {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-blue-subtle/40 bg-gradient-to-br from-blue-ice/40 to-white px-6 py-8 shadow-card sm:px-8">
+            <div className="rounded-2xl border border-blue-subtle/40 bg-gradient-to-br from-blue-ice/40 to-white px-6 py-8 shadow-card sm:px-8 card-hover-flat">
               <p className="text-center text-xs font-semibold uppercase tracking-wide text-muted">
                 {networkResults.eyebrow}
               </p>
@@ -328,7 +323,7 @@ export default function ForecastLanding() {
             {forecastFaqItems.map((item) => (
               <details
                 key={item.question}
-                className="group rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card sm:p-6"
+                className="group rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card sm:p-6 card-hover-flat"
               >
                 <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 font-display text-base font-bold text-heading [&::-webkit-details-marker]:hidden">
                   {item.question}

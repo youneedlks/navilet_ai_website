@@ -14,14 +14,12 @@ import {
 import {
   ChevronRight,
   Check,
-  ShieldCheck,
   MessageCircleReply,
   BellRing,
   TrendingDown,
   Brain,
   Sparkles,
   RefreshCcw,
-  MessageSquare,
   Info,
   ArrowRight,
   Quote,
@@ -192,12 +190,6 @@ export default function VozvratKlientovPage() {
 
         {/* Hero */}
         <section className="mx-auto max-w-4xl px-5 py-10 text-center sm:px-6 sm:py-14 lg:px-8">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5">
-            <MessageSquare className="h-4 w-4 text-accent" />
-            <span className="text-xs font-semibold text-accent sm:text-sm">
-              «Про» — входит · «Лид» — опцией · MAX
-            </span>
-          </div>
           <h1 className="font-display text-4xl font-bold leading-tight text-heading sm:text-5xl">
             Возврат клиентов: ассистент сам{" "}
             <span className="text-accent">возвращает туристов в диалог</span>
@@ -207,7 +199,8 @@ export default function VozvratKlientovPage() {
             ИИ-ассистент «Навылет! AI» возвращает его сам: через сутки один раз
             напоминает о подборке — откликаются около 28% клиентов, а подписка
             на снижение цены пишет клиенту, когда его тур подешевел. Всё —
-            автоматически и без спама.
+            автоматически и без спама. Работает в MAX: в «Про» обе функции входят, в «Лиде» подключаются
+            опциями, в «Заявке» входит напоминание.
           </p>
 
           {/* Ключевые цифры */}
@@ -334,12 +327,6 @@ export default function VozvratKlientovPage() {
         <section className="bg-surface-alt">
           <div className="mx-auto max-w-4xl px-5 py-14 sm:px-6 lg:px-8 lg:py-16">
             <div className="text-center">
-              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-white px-4 py-1.5">
-                <ShieldCheck className="h-4 w-4 text-accent" />
-                <span className="text-xs font-semibold text-accent sm:text-sm">
-                  Защита от спама встроена
-                </span>
-              </div>
               <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl">
                 Никакого спама — жёсткие правила в коде
               </h2>
@@ -442,7 +429,7 @@ export default function VozvratKlientovPage() {
             {vozvratFaqItems.map((item) => (
               <details
                 key={item.question}
-                className="group rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card sm:p-6"
+                className="group rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card sm:p-6 card-hover-flat"
               >
                 <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 font-display text-base font-bold text-heading [&::-webkit-details-marker]:hidden">
                   {item.question}

@@ -9,7 +9,6 @@ import {
   Globe,
   Users,
   Network,
-  Sparkles,
   ArrowRight,
   Check,
   Cpu,
@@ -221,12 +220,6 @@ export default function ForOperatorsPage() {
 
         {/* Hero */}
         <section className="mx-auto max-w-4xl px-5 py-10 text-center sm:px-6 sm:py-14 lg:px-8">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5">
-            <Sparkles className="h-4 w-4 text-accent" />
-            <span className="text-xs font-semibold text-accent sm:text-sm">
-              Решение для туроператоров
-            </span>
-          </div>
           <h1 className="font-display text-4xl font-bold leading-tight text-heading sm:text-5xl">
             <span className="text-accent">ИИ для туроператора:</span>{" "}
             вооружите агентов и заработайте на B2C-сайте больше
@@ -282,7 +275,7 @@ export default function ForOperatorsPage() {
               {scenarios.map((s) => (
                 <div
                   key={s.title}
-                  className="rounded-2xl border border-blue-subtle/50 bg-white p-7 sm:p-8"
+                  className="rounded-2xl border border-blue-subtle/50 bg-white p-7 sm:p-8 card-hover"
                 >
                   <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-accent/5 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-accent">
                     {s.badge}
@@ -338,7 +331,7 @@ export default function ForOperatorsPage() {
             ].map((t) => (
               <div
                 key={t.title}
-                className="rounded-2xl border border-blue-subtle/50 bg-white p-6"
+                className="rounded-2xl border border-blue-subtle/50 bg-white p-6 card-hover"
               >
                 <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10">
                   <t.icon className="h-5 w-5 text-accent" />
@@ -399,7 +392,7 @@ export default function ForOperatorsPage() {
             {tariffsForOperators.map((t) => (
               <div
                 key={t.title}
-                className={`relative flex flex-col rounded-2xl border bg-white p-6 ${
+                className={`relative flex flex-col rounded-2xl border bg-white p-6 card-hover ${
                   t.isPopular
                     ? "border-accent/40 shadow-[0_8px_40px_rgba(0,82,204,0.1)]"
                     : "border-blue-subtle/50"

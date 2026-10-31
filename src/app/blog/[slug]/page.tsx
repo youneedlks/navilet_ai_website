@@ -39,6 +39,8 @@ export async function generateMetadata({
   if (!post) return {};
 
   const url = `${siteUrl}/blog/${post.slug}`;
+  // Превью ссылки — своя картинка статьи с заголовком (scripts/blog-covers.mjs), иначе общая
+  const ogImage = post.ogImage ?? "/og-image.png";
   return {
     title: { absolute: `${post.title} | Навылет! AI` },
     description: post.description,
@@ -53,14 +55,14 @@ export async function generateMetadata({
       modifiedTime: post.updated ?? post.date,
       authors: [post.author],
       tags: post.tags,
-      images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+      images: [{ url: ogImage, width: 1200, height: 630, alt: post.title }],
       locale: "ru_RU",
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.description,
-      images: ["/og-image.png"],
+      images: [ogImage],
     },
     robots: { index: true, follow: true },
   };
@@ -109,6 +111,7 @@ export default async function BlogPostPage({
   if (!post) notFound();
 
   const related = getRelatedPosts(slug, 3);
+  const light = Boolean(post.coverImage);
   const toc = extractToc(post.content);
   const url = `${siteUrl}/blog/${post.slug}`;
 
@@ -133,7 +136,7 @@ export default async function BlogPostPage({
         },
         publisher: { "@id": `${siteUrl}/#organization` },
         mainEntityOfPage: url,
-        image: `${siteUrl}/og-image.png`,
+        image: `${siteUrl}${post.ogImage ?? "/og-image.png"}`,
         keywords: post.tags.join(", "),
         articleSection: post.category,
       },
@@ -167,52 +170,71 @@ export default async function BlogPostPage({
       />
       <Navigation />
       <main>
-        {/* Header */}
+        {/* Header: со своей обложкой — светлая шапка, обложка справа (на телефоне — под текстом); без неё — градиент */}
         <header
-          className="relative overflow-hidden"
-          style={{ background: coverGradient(post.cover) }}
+          className={`relative overflow-hidden ${light ? "bg-gradient-to-b from-blue-ice/80 to-white" : ""}`}
+          style={light ? undefined : { background: coverGradient(post.cover) }}
         >
-          <div className="noise-overlay pointer-events-none absolute inset-0 opacity-20" />
-          <div className="relative z-10 mx-auto max-w-3xl px-5 pt-28 pb-12 sm:px-6 sm:pt-32 lg:px-8">
-            <nav
-              aria-label="Хлебные крошки"
-              className="mb-5 text-sm text-white/70"
-            >
-              <Link href="/" className="hover:text-white">
-                Главная
-              </Link>
-              <span className="mx-2">/</span>
-              <Link href="/blog" className="hover:text-white">
-                Блог
-              </Link>
-            </nav>
-            <span className="inline-flex items-center rounded-full bg-white/15 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
-              {post.category}
-            </span>
-            <h1 className="mt-4 font-display text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-[2.75rem]">
-              {post.title}
-            </h1>
-            <p className="mt-4 max-w-2xl text-lg text-white/75">
-              {post.description}
-            </p>
-            <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-white/70">
-              <span className="inline-flex items-center gap-2">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-xs font-bold text-white">
-                  {authorInitials(post.author)}
+          {!light && <div className="noise-overlay pointer-events-none absolute inset-0 opacity-20" />}
+          <div
+            className={`relative z-10 mx-auto px-5 pt-28 pb-12 sm:px-6 sm:pt-32 lg:px-8 ${
+              light ? "grid max-w-6xl items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)] lg:gap-12" : "max-w-3xl"
+            }`}
+          >
+            <div>
+              <nav aria-label="Хлебные крошки" className={`mb-5 text-sm ${light ? "text-muted" : "text-white/70"}`}>
+                <Link href="/" className={light ? "hover:text-accent" : "hover:text-white"}>
+                  Главная
+                </Link>
+                <span className="mx-2">/</span>
+                <Link href="/blog" className={light ? "hover:text-accent" : "hover:text-white"}>
+                  Блог
+                </Link>
+              </nav>
+              <span
+                className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold ${
+                  light ? "bg-accent/10 text-accent" : "bg-white/15 text-white backdrop-blur-sm"
+                }`}
+              >
+                {post.category}
+              </span>
+              <h1
+                className={`mt-4 font-display text-3xl font-bold leading-tight sm:text-4xl lg:text-[2.75rem] ${
+                  light ? "text-heading" : "text-white"
+                }`}
+              >
+                {post.title}
+              </h1>
+              <p className={`mt-4 max-w-2xl text-lg ${light ? "text-body" : "text-white/75"}`}>{post.description}</p>
+              <div className={`mt-6 flex flex-wrap items-center gap-4 text-sm ${light ? "text-muted" : "text-white/70"}`}>
+                <span className="inline-flex items-center gap-2">
+                  <span className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold ${light ? "bg-accent/10 text-accent" : "bg-white/20 text-white"}`}>
+                    {authorInitials(post.author)}
+                  </span>
+                  {post.author}
                 </span>
-                {post.author}
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <Calendar className="h-4 w-4" />
-                {post.updated
-                  ? `Обновлено ${formatPostDate(post.updated)}`
-                  : formatPostDate(post.date)}
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <Clock className="h-4 w-4" />
-                {post.readingMinutes} мин чтения
-              </span>
+                <span className="inline-flex items-center gap-1.5">
+                  <Calendar className="h-4 w-4" />
+                  {post.updated
+                    ? `Обновлено ${formatPostDate(post.updated)}`
+                    : formatPostDate(post.date)}
+                </span>
+                <span className="inline-flex items-center gap-1.5">
+                  <Clock className="h-4 w-4" />
+                  {post.readingMinutes} мин чтения
+                </span>
+              </div>
             </div>
+            {post.coverImage && (
+              <img
+                src={post.coverImage}
+                alt=""
+                width={1200}
+                height={630}
+                fetchPriority="high"
+                className="w-full rounded-2xl border border-blue-subtle/60 shadow-[0_1px_2px_rgba(10,22,40,0.04),0_18px_40px_-20px_rgba(0,82,204,0.3)]"
+              />
+            )}
           </div>
         </header>
 

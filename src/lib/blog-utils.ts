@@ -16,6 +16,10 @@ export interface PostMeta {
   author: string;
   keywords: string[];
   cover: string;
+  /** Обложка-иллюстрация (public/blog/covers, рисует scripts/blog-covers.mjs); нет файла — градиент `cover` */
+  coverImage?: string;
+  /** Картинка для превью ссылки с заголовком (public/blog/og); нет файла — общая /og-image.png */
+  ogImage?: string;
   readingMinutes: number;
   links: PostLink[];
 }

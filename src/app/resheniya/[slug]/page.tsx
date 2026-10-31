@@ -153,7 +153,7 @@ export default async function ScenarioPage({
               {page.solution.map((step, i) => (
                 <div
                   key={step.title}
-                  className="flex gap-4 rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card sm:p-6"
+                  className="flex gap-4 rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card sm:p-6 card-hover"
                 >
                   <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent text-sm font-bold text-white">
                     {i + 1}
@@ -204,7 +204,7 @@ export default async function ScenarioPage({
               {page.faq.map((item) => (
                 <details
                   key={item.question}
-                  className="group rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card"
+                  className="group rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card card-hover-flat"
                 >
                   <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 font-display text-base font-bold text-heading [&::-webkit-details-marker]:hidden">
                     {item.question}

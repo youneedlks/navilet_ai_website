@@ -298,7 +298,7 @@ export default function SkolkoStoitPage() {
           </h1>
           <p className="mt-3 text-sm text-muted">Цены проверены {priceCheckedLabel}</p>
 
-          <div className={`${cardClass} mt-6 p-5 sm:p-7`}>
+          <div className={`${cardClass} card-hover-flat mt-6 p-5 sm:p-7`}>
             <p className="text-lg font-semibold leading-relaxed text-heading sm:text-xl">
               От {rub(priceFrom)} в месяц.
             </p>
@@ -495,7 +495,7 @@ export default function SkolkoStoitPage() {
             </p>
             <ul className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
               {included.map((item) => (
-                <li key={item} className={`${cardClass} flex items-start gap-3 p-4 text-sm leading-relaxed text-body`}>
+                <li key={item} className={`${cardClass} card-hover flex items-start gap-3 p-4 text-sm leading-relaxed text-body`}>
                   <IconTile icon={Check} size="sm" />
                   <span className="pt-1">{item}</span>
                 </li>
@@ -574,7 +574,7 @@ export default function SkolkoStoitPage() {
             {skolkoStoitFaqItems.map((item) => (
               <details
                 key={item.question}
-                className="group rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card sm:p-6"
+                className="group rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card sm:p-6 card-hover-flat"
               >
                 <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 font-display text-base font-bold text-heading [&::-webkit-details-marker]:hidden">
                   {item.question}

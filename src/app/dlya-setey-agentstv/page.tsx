@@ -204,7 +204,7 @@ export default function NetworksPage() {
         {/* Кейс МГП */}
         <section className="bg-surface-alt">
           <div className="mx-auto max-w-4xl px-5 py-14 sm:px-6 lg:px-8">
-            <div className="rounded-2xl border border-blue-subtle/40 bg-white p-6 shadow-card sm:p-8">
+            <div className="rounded-2xl border border-blue-subtle/40 bg-white p-6 shadow-card sm:p-8 card-hover-flat">
               <span className="inline-flex items-center gap-2 rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold text-accent">
                 Кейс сети
               </span>
@@ -238,7 +238,7 @@ export default function NetworksPage() {
               {networkNeeds.map((n) => (
                 <div
                   key={n.title}
-                  className="rounded-2xl border border-blue-subtle/40 bg-white p-6 shadow-card"
+                  className="rounded-2xl border border-blue-subtle/40 bg-white p-6 shadow-card card-hover"
                 >
                   <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10">
                     <n.icon className="h-5 w-5 text-accent" />
@@ -268,7 +268,7 @@ export default function NetworksPage() {
               <span className="whitespace-nowrap">от {priceFromLabel}/мес</span>{" "}
               — линейка гибкая.
             </p>
-            <div className="mt-8 rounded-2xl border border-blue-subtle/50 bg-white p-6 shadow-card sm:p-8">
+            <div className="mt-8 rounded-2xl border border-blue-subtle/50 bg-white p-6 shadow-card sm:p-8 card-hover-flat">
               <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
                 <NetworkIcon className="h-5 w-5 text-accent" />
                 <span className="font-display text-lg font-bold text-heading">
@@ -325,7 +325,7 @@ export default function NetworksPage() {
               {faqItems.map((item) => (
                 <details
                   key={item.question}
-                  className="group rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card sm:p-6"
+                  className="group rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card sm:p-6 card-hover-flat"
                 >
                   <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 font-display text-base font-bold text-heading [&::-webkit-details-marker]:hidden">
                     {item.question}

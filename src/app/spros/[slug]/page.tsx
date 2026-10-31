@@ -191,7 +191,7 @@ export default async function DemandPage({
 
             {/* Data snapshot */}
             <div className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-3">
-              <div className="rounded-2xl border border-blue-subtle/40 bg-blue-ice/40 p-5">
+              <div className="rounded-2xl border border-blue-subtle/40 bg-blue-ice/40 p-5 card-hover">
                 <div className="text-xs font-semibold uppercase tracking-wide text-muted">
                   Доля в поисках туров
                 </div>
@@ -208,7 +208,7 @@ export default async function DemandPage({
                   </span>
                 </div>
               </div>
-              <div className="rounded-2xl border border-blue-subtle/40 bg-blue-ice/40 p-5">
+              <div className="rounded-2xl border border-blue-subtle/40 bg-blue-ice/40 p-5 card-hover">
                 <div className="text-xs font-semibold uppercase tracking-wide text-muted">
                   Медианный бюджет туриста
                 </div>
@@ -219,7 +219,7 @@ export default async function DemandPage({
                   </span>
                 </div>
               </div>
-              <div className="rounded-2xl border border-blue-subtle/40 bg-blue-ice/40 p-5">
+              <div className="rounded-2xl border border-blue-subtle/40 bg-blue-ice/40 p-5 card-hover">
                 <div className="text-xs font-semibold uppercase tracking-wide text-muted">
                   Сезон
                 </div>
@@ -260,7 +260,7 @@ export default async function DemandPage({
               {page.topQuestions.map((q) => (
                 <div
                   key={q.question}
-                  className="rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card sm:p-6"
+                  className="rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card sm:p-6 card-hover"
                 >
                   <div className="flex items-start gap-3">
                     <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent/10">
@@ -313,7 +313,7 @@ export default async function DemandPage({
               {page.forAgencies.map((t, i) => (
                 <p
                   key={i}
-                  className="rounded-2xl border-l-4 border-accent bg-white p-5 text-sm leading-relaxed text-body shadow-card sm:text-base"
+                  className="rounded-2xl border-l-4 border-accent bg-white p-5 text-sm leading-relaxed text-body shadow-card sm:text-base card-hover-flat"
                 >
                   {t}
                 </p>
@@ -335,7 +335,7 @@ export default async function DemandPage({
               {page.faq.map((item) => (
                 <details
                   key={item.question}
-                  className="group rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card sm:p-6"
+                  className="group rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card sm:p-6 card-hover-flat"
                 >
                   <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 font-display text-base font-bold text-heading [&::-webkit-details-marker]:hidden">
                     {item.question}

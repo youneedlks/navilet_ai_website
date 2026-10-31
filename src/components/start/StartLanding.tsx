@@ -6,7 +6,6 @@ import {
   MailCheck,
   Rocket,
   ArrowRight,
-  Sparkles,
   MessageSquare,
   Check,
   ClipboardList,
@@ -72,12 +71,7 @@ export default function StartLanding() {
         <div className="pointer-events-none absolute -left-20 top-1/3 h-[400px] w-[400px] rounded-full bg-[#0097F5]/[0.05] blur-[100px]" />
 
         <div className="relative mx-auto max-w-3xl px-5 pt-28 pb-12 text-center sm:px-6 sm:pt-32 lg:px-8">
-          <span className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-accent">
-            <Sparkles className="h-3.5 w-3.5" />
-            30 дней бесплатно · подключение 0 ₽
-          </span>
-
-          <h1 className="mt-6 font-display text-4xl font-bold leading-[1.08] text-heading sm:text-5xl">
+          <h1 className="font-display text-4xl font-bold leading-[1.08] text-heading sm:text-5xl">
             <span className="whitespace-nowrap">ИИ-ассистент</span> на вашем сайте —{" "}
             <span className="text-accent">три коротких шага до запуска</span>
           </h1>
@@ -113,7 +107,7 @@ export default function StartLanding() {
               Подключить с менеджером
             </button>
             <span className="text-sm text-muted">
-              Сами в кабинете или с нашей помощью — цена одна
+              30 дней бесплатно, подключение 0 ₽. Сами в кабинете или с нашей помощью — цена одна
             </span>
           </div>
 
@@ -274,7 +268,7 @@ export default function StartLanding() {
           {startFaqItems.map((item) => (
             <details
               key={item.question}
-              className="group rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card sm:p-6"
+              className="group rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card sm:p-6 card-hover-flat"
             >
               <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 font-display text-base font-bold text-heading [&::-webkit-details-marker]:hidden">
                 {item.question}

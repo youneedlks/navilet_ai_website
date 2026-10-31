@@ -217,7 +217,7 @@ export default function ResheniyaHubPage() {
               {pillars.map((p) => (
                 <div
                   key={p.title}
-                  className="flex flex-col rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card"
+                  className="flex flex-col rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card card-hover"
                 >
                   <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-accent/10">
                     <p.icon className="h-4.5 w-4.5 text-accent" />
@@ -283,7 +283,7 @@ export default function ResheniyaHubPage() {
               {startSteps.map((s, i) => (
                 <div
                   key={s.title}
-                  className="rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card"
+                  className="rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card card-hover"
                 >
                   <span className="font-display text-sm font-bold text-muted">
                     Шаг {i + 1}
@@ -297,7 +297,7 @@ export default function ResheniyaHubPage() {
                 </div>
               ))}
             </div>
-            <div className="mt-8 rounded-2xl border border-blue-subtle/40 bg-white p-6 shadow-card">
+            <div className="mt-8 rounded-2xl border border-blue-subtle/40 bg-white p-6 shadow-card card-hover-flat">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
                 <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-accent/10">
                   <BarChart3 className="h-5 w-5 text-accent" />
@@ -349,7 +349,7 @@ export default function ResheniyaHubPage() {
               {faqItems.map((item) => (
                 <details
                   key={item.question}
-                  className="group rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card sm:p-6"
+                  className="group rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card sm:p-6 card-hover-flat"
                 >
                   <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 font-display text-base font-bold text-heading [&::-webkit-details-marker]:hidden">
                     {item.question}

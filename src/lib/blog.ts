@@ -8,6 +8,12 @@ export type { Post, PostLink, PostMeta } from "@/lib/blog-utils";
 export { formatPostDate, coverGradient, BLOG_CATEGORIES } from "@/lib/blog-utils";
 
 const BLOG_DIR = path.join(process.cwd(), "content", "blog");
+const PUBLIC_DIR = path.join(process.cwd(), "public");
+
+/** Адрес картинки из public/, если файл есть. */
+function publicFile(url: string): string | undefined {
+  return fs.existsSync(path.join(PUBLIC_DIR, url)) ? url : undefined;
+}
 
 function readLinks(value: unknown): PostLink[] {
   if (!Array.isArray(value)) return [];
@@ -38,6 +44,8 @@ function readPostFile(slug: string): Post {
     author: String(data.author ?? "Команда Навылет! AI"),
     keywords: Array.isArray(data.keywords) ? data.keywords.map(String) : [],
     cover: String(data.cover ?? "blue"),
+    coverImage: publicFile(`/blog/covers/${slug}.webp`),
+    ogImage: publicFile(`/blog/og/${slug}.jpg`),
     readingMinutes: minutes,
     links: readLinks(data.links),
     content,

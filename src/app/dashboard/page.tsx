@@ -107,7 +107,7 @@ export default function DashboardPage() {
                 <li key={l.href}>
                   <Link
                     href={l.href}
-                    className={`${cardClass} group flex h-full items-center gap-3 p-4 transition-colors hover:border-accent/40 sm:p-5`}
+                    className={`${cardClass} card-hover group flex h-full items-center gap-3 p-4 sm:p-5`}
                   >
                     <span className="min-w-0 flex-1">
                       <span className="block font-display text-base font-bold text-heading transition-colors group-hover:text-accent">
@@ -115,7 +115,7 @@ export default function DashboardPage() {
                       </span>
                       <span className="mt-1 block text-sm text-body">{l.text}</span>
                     </span>
-                    <ArrowRight className="h-4 w-4 shrink-0 text-accent" aria-hidden />
+                    <ArrowRight className="h-4 w-4 shrink-0 text-accent transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
                   </Link>
                 </li>
               ))}

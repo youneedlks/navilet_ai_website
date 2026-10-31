@@ -8,16 +8,34 @@ export default function BlogCard({ post }: { post: PostMeta }) {
       href={`/blog/${post.slug}`}
       className="group flex flex-col overflow-hidden rounded-2xl border border-blue-subtle/40 bg-white shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover"
     >
-      <div
-        className="relative flex h-40 items-end overflow-hidden p-5"
-        style={{ background: coverGradient(post.cover) }}
-      >
-        <div className="noise-overlay pointer-events-none absolute inset-0 opacity-20" />
-        <span className="relative z-10 inline-flex items-center rounded-full bg-white/15 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
-          {post.category}
-        </span>
-        <ArrowUpRight className="absolute right-4 top-4 h-5 w-5 text-white/70 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-      </div>
+      {post.coverImage ? (
+        // Обложка-иллюстрация (решение владельца 31.10.2026); заголовок статьи — текстом ниже, поэтому alt пустой
+        <div className="relative aspect-[1200/630] overflow-hidden border-b border-blue-subtle/40">
+          <img
+            src={post.coverImage}
+            alt=""
+            width={1200}
+            height={630}
+            loading="lazy"
+            decoding="async"
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+          />
+          <span className="absolute bottom-3 left-3 inline-flex items-center rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-accent shadow-sm">
+            {post.category}
+          </span>
+        </div>
+      ) : (
+        <div
+          className="relative flex h-40 items-end overflow-hidden p-5"
+          style={{ background: coverGradient(post.cover) }}
+        >
+          <div className="noise-overlay pointer-events-none absolute inset-0 opacity-20" />
+          <span className="relative z-10 inline-flex items-center rounded-full bg-white/15 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
+            {post.category}
+          </span>
+          <ArrowUpRight className="absolute right-4 top-4 h-5 w-5 text-white/70 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        </div>
+      )}
 
       <div className="flex flex-1 flex-col p-5">
         <h3 className="font-display text-lg font-bold leading-snug text-heading transition-colors group-hover:text-accent">

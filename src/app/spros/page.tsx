@@ -121,7 +121,7 @@ export default function SprosHubPage() {
         {/* Barometer table */}
         <section className="bg-surface-alt">
           <div className="mx-auto max-w-3xl px-5 py-14 sm:px-6 lg:px-8">
-            <div className="rounded-2xl border border-blue-subtle/40 bg-white p-6 shadow-card sm:p-8">
+            <div className="rounded-2xl border border-blue-subtle/40 bg-white p-6 shadow-card sm:p-8 card-hover-flat">
               <h2 className="font-display text-xl font-bold text-heading">
                 Барометр спроса
               </h2>

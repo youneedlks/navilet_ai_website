@@ -411,7 +411,7 @@ export default function SravneniePage() {
               {columns.map((c) => (
                 <div
                   key={c.id}
-                  className={`rounded-2xl border p-4 ${
+                  className={`rounded-2xl border p-4 card-hover ${
                     c.id === "navilet"
                       ? "border-accent/30 bg-blue-ice/60"
                       : "border-blue-subtle/40 bg-white"
@@ -476,7 +476,7 @@ export default function SravneniePage() {
               {chooseIf.map((c) => (
                 <div
                   key={c.title}
-                  className="flex flex-col rounded-2xl border border-blue-subtle/40 bg-white p-6 shadow-card"
+                  className="flex flex-col rounded-2xl border border-blue-subtle/40 bg-white p-6 shadow-card card-hover"
                 >
                   <h3 className="font-display text-base font-bold text-heading">
                     {c.title}
@@ -509,7 +509,7 @@ export default function SravneniePage() {
               {faqItems.map((item) => (
                 <details
                   key={item.question}
-                  className="group rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card sm:p-6"
+                  className="group rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card sm:p-6 card-hover-flat"
                 >
                   <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 font-display text-base font-bold text-heading [&::-webkit-details-marker]:hidden">
                     {item.question}
@@ -528,7 +528,7 @@ export default function SravneniePage() {
                 href="/blog/ii-assistenty-dlya-turagentstv-2026"
                 className="inline-flex items-center gap-1 font-semibold text-accent hover:underline"
               >
-                9 решений для турагентств: подборка 2026 <ArrowRight className="h-3.5 w-3.5" />
+                8 решений для турагентств: подборка 2026 <ArrowRight className="h-3.5 w-3.5" />
               </Link>
               <Link
                 href="/versii"

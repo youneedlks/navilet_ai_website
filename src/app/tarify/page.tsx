@@ -243,7 +243,7 @@ export default function TarifyPage() {
 
             <div className="mx-auto mt-10 grid max-w-4xl gap-4 md:grid-cols-2">
               {includedGroups.map((group, gi) => (
-                <div key={group.title} className={`${cardClass} p-5 sm:p-7`}>
+                <div key={group.title} className={`${cardClass} card-hover p-5 sm:p-7`}>
                   <div className="mb-5 flex items-center gap-3">
                     <IconTile icon={gi === 0 ? Package : Search} />
                     <h3 className="font-display text-lg font-bold text-heading">
@@ -275,7 +275,7 @@ export default function TarifyPage() {
             <h2 className="mb-6 text-center font-display text-3xl font-bold text-heading sm:text-4xl">
               Дополнительно
             </h2>
-          <details id="cross-channel" className="group scroll-mt-28 rounded-2xl border border-blue-subtle/50 bg-white">
+          <details id="cross-channel" className="group scroll-mt-28 rounded-2xl border border-blue-subtle/50 bg-white card-hover-flat">
             <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 sm:px-6 [&::-webkit-details-marker]:hidden">
               <h3 className="font-display text-base font-bold text-heading sm:text-lg">Сайт и MAX одновременно — «Второй канал»</h3>
               <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent/10 transition-transform duration-200 group-open:rotate-180">
@@ -364,7 +364,7 @@ export default function TarifyPage() {
               ))}
             </div>
           </details>
-          <details id="opcii" className="group scroll-mt-28 rounded-2xl border border-blue-subtle/50 bg-white">
+          <details id="opcii" className="group scroll-mt-28 rounded-2xl border border-blue-subtle/50 bg-white card-hover-flat">
             <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 sm:px-6 [&::-webkit-details-marker]:hidden">
               <h3 className="font-display text-base font-bold text-heading sm:text-lg">Опции версии «Лид» в MAX — от {lidAddons.reoutreach.price} ₽/мес</h3>
               <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent/10 transition-transform duration-200 group-open:rotate-180">
@@ -410,7 +410,7 @@ export default function TarifyPage() {
               </p>
             </div>
           </details>
-          <details className="group scroll-mt-28 rounded-2xl border border-blue-subtle/50 bg-white">
+          <details className="group scroll-mt-28 rounded-2xl border border-blue-subtle/50 bg-white card-hover-flat">
             <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 sm:px-6 [&::-webkit-details-marker]:hidden">
               <h3 className="font-display text-base font-bold text-heading sm:text-lg">Сравнить все тарифы в таблице</h3>
               <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent/10 transition-transform duration-200 group-open:rotate-180">
@@ -503,7 +503,7 @@ export default function TarifyPage() {
               </p>
             </div>
           </details>
-          <details className="group scroll-mt-28 rounded-2xl border border-blue-subtle/50 bg-white">
+          <details className="group scroll-mt-28 rounded-2xl border border-blue-subtle/50 bg-white card-hover-flat">
             <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 sm:px-6 [&::-webkit-details-marker]:hidden">
               <h3 className="font-display text-base font-bold text-heading sm:text-lg">Подключение, оплата и НДС</h3>
               <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent/10 transition-transform duration-200 group-open:rotate-180">
@@ -540,7 +540,7 @@ export default function TarifyPage() {
             {tarifyFaqItems.map((item) => (
               <details
                 key={item.question}
-                className="group rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card sm:p-6"
+                className="group rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card sm:p-6 card-hover-flat"
               >
                 <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 font-display text-base font-bold text-heading [&::-webkit-details-marker]:hidden">
                   {item.question}

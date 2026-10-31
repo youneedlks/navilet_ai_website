@@ -2,7 +2,8 @@ import type { ComponentType, ElementType, ReactNode } from "react";
 
 /**
  * Карточки сайта (решение владельца 31.10.2026, стиль «Б»): белая карточка с мягкой тенью
- * и иконка на плитке в цветах логотипа (как квадрат «AI»). Без плашек и «прыгающих» карточек.
+ * и иконка на плитке в цветах логотипа (как квадрат «AI»). Без плашек.
+ * При наведении мыши карточка мягко реагирует — класс `card-hover` в globals.css (решение 31.10.2026).
  * На телефоне карточки компактные — иконка слева, текст справа, чтобы страница не растягивалась.
  */
 export const cardClass =
@@ -21,7 +22,7 @@ const TILE_SIZE = {
 
 export function IconTile({ icon: I, size = "md", className = "" }: { icon: Icon; size?: keyof typeof TILE_SIZE; className?: string }) {
   return (
-    <span className={`flex shrink-0 items-center justify-center ${TILE_SIZE[size]} ${tileClass} ${className}`} aria-hidden>
+    <span data-tile className={`flex shrink-0 items-center justify-center ${TILE_SIZE[size]} ${tileClass} ${className}`} aria-hidden>
       <I />
     </span>
   );
@@ -51,7 +52,7 @@ export function FeatureCard({
 }) {
   const s = STACK[stackFrom];
   return (
-    <div className={`${cardClass} flex gap-4 p-4 ${s.card} ${className}`}>
+    <div className={`${cardClass} card-hover flex gap-4 p-4 ${s.card} ${className}`}>
       <IconTile icon={icon} />
       <div className={`min-w-0 ${s.body}`}>
         <Title className="font-display text-base font-bold text-heading sm:text-lg">{title}</Title>
@@ -79,8 +80,9 @@ export function StepCard({
 }) {
   const s = STACK[stackFrom];
   return (
-    <div className={`${cardClass} flex gap-4 p-4 ${s.card} ${className}`}>
+    <div className={`${cardClass} card-hover flex gap-4 p-4 ${s.card} ${className}`}>
       <span
+        data-tile
         className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full font-display text-lg font-extrabold ${tileClass}`}
         aria-hidden
       >
@@ -115,7 +117,7 @@ export function StatCard({
 }) {
   return (
     <div
-      className={`${cardClass} bg-gradient-to-br from-blue-ice/70 to-white ${compact ? "px-2.5 py-3 sm:p-5" : "p-5 sm:p-6"} ${
+      className={`${cardClass} card-hover bg-gradient-to-br from-blue-ice/70 to-white ${compact ? "px-2.5 py-3 sm:p-5" : "p-5 sm:p-6"} ${
         center ? "text-center" : ""
       } ${className}`}
     >

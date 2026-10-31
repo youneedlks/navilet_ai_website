@@ -160,12 +160,6 @@ export default function AboutTeamPage() {
 
         {/* Hero */}
         <section className="mx-auto max-w-4xl px-5 py-10 text-center sm:px-6 sm:py-14 lg:px-8">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5">
-            <Award className="h-4 w-4 text-accent" />
-            <span className="text-xs font-semibold text-accent sm:text-sm">
-              Эксперты ИИ в туризме при ТПП РФ
-            </span>
-          </div>
           <h1 className="font-display text-4xl font-bold leading-tight text-heading sm:text-5xl">
             О компании <span className="text-accent">«Навылет! AI»</span>
           </h1>
@@ -193,7 +187,7 @@ export default function AboutTeamPage() {
             {whatWeDo.map((w) => (
               <div
                 key={w.title}
-                className="rounded-2xl border border-blue-subtle/50 bg-white p-5"
+                className="rounded-2xl border border-blue-subtle/50 bg-white p-5 card-hover"
               >
                 <h3 className="font-display text-base font-bold text-heading">
                   {w.title}
@@ -259,7 +253,7 @@ export default function AboutTeamPage() {
             <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl">
               Основатель
             </h2>
-            <div className="mt-8 rounded-2xl border border-blue-subtle/50 bg-white p-6">
+            <div className="mt-8 rounded-2xl border border-blue-subtle/50 bg-white p-6 card-hover-flat">
               <h3 className="font-display text-xl font-bold text-heading">
                 Лукиан Ираклиевич Силагадзе
               </h3>
@@ -324,7 +318,7 @@ export default function AboutTeamPage() {
               ].map((item) => (
                 <div
                   key={item.title}
-                  className="flex items-start gap-4 rounded-2xl border border-blue-subtle/50 bg-white p-5"
+                  className="flex items-start gap-4 rounded-2xl border border-blue-subtle/50 bg-white p-5 card-hover"
                 >
                   <Award className="mt-1 h-5 w-5 shrink-0 text-accent" />
                   <div>
@@ -362,7 +356,7 @@ export default function AboutTeamPage() {
               {workingGroupTracks.map((t) => (
                 <div
                   key={t.title}
-                  className="rounded-2xl border border-blue-subtle/50 bg-white p-5"
+                  className="rounded-2xl border border-blue-subtle/50 bg-white p-5 card-hover"
                 >
                   <h3 className="font-display text-base font-bold text-heading">
                     {t.title}
@@ -411,7 +405,7 @@ export default function AboutTeamPage() {
               Российская компания, соответствие 152-ФЗ.
             </p>
             <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <div className="rounded-2xl border border-blue-subtle/50 bg-white p-5">
+              <div className="rounded-2xl border border-blue-subtle/50 bg-white p-5 card-hover">
                 <Building2 className="mb-2 h-5 w-5 text-accent" />
                 <p className="text-xs font-semibold uppercase tracking-wide text-muted">
                   Юридическое название
@@ -423,7 +417,7 @@ export default function AboutTeamPage() {
                   ИНН {companyInfo.inn} · ОГРН {companyInfo.ogrn}
                 </p>
               </div>
-              <div className="rounded-2xl border border-blue-subtle/50 bg-white p-5">
+              <div className="rounded-2xl border border-blue-subtle/50 bg-white p-5 card-hover">
                 <MapPin className="mb-2 h-5 w-5 text-accent" />
                 <p className="text-xs font-semibold uppercase tracking-wide text-muted">
                   Офис

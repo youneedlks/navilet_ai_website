@@ -266,7 +266,7 @@ export default function VersiiPage() {
             ))}
           </dl>
 
-          <details id="sravnenie" className="group mt-10 scroll-mt-24 overflow-hidden rounded-2xl border border-blue-subtle/50 bg-white">
+          <details id="sravnenie" className="group mt-10 scroll-mt-24 overflow-hidden rounded-2xl border border-blue-subtle/50 bg-white card-hover-flat">
             <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 font-display text-base font-bold text-heading transition-colors hover:bg-blue-ice/40 sm:px-6 sm:text-lg [&::-webkit-details-marker]:hidden">
               Полное сравнение версий — таблица
               <ChevronDown className="h-5 w-5 shrink-0 text-muted transition-transform group-open:rotate-180" aria-hidden />
@@ -385,7 +385,7 @@ export default function VersiiPage() {
             {versiiFaqItems.map((item) => (
               <details
                 key={item.question}
-                className="group rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card sm:p-6"
+                className="group rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card sm:p-6 card-hover-flat"
               >
                 <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 font-display text-base font-bold text-heading [&::-webkit-details-marker]:hidden">
                   {item.question}
