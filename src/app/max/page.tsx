@@ -4,30 +4,19 @@ import Navigation from "@/components/sections/Navigation";
 import Footer from "@/components/sections/Footer";
 import FloatingCTA from "@/components/ui/FloatingCTA";
 import RegisterCta from "@/components/seo/RegisterCta";
+import OpenDetailsOnHash from "@/components/ui/OpenDetailsOnHash";
 import {
   crossChannelAddons,
   pricingPlans,
   assistantVersions,
   networkResults,
+  priceFrom,
   priceFromLabel,
   priceSelectionNote,
   reqVersionPublished,
 } from "@/lib/content";
-import {
-  ChevronRight,
-  Check,
-  MessageSquare,
-  Search,
-  Link2,
-  RotateCcw,
-  TrendingDown,
-  Send,
-  Smartphone,
-  Globe,
-  ArrowRight,
-  QrCode,
-  ExternalLink,
-} from "lucide-react";
+import { ChevronDown, ChevronRight, Check, Smartphone, Globe, ArrowRight, QrCode, ExternalLink, MessageSquare, Search, Link2, Send, RotateCcw, TrendingDown, Users, Briefcase, MessageCircleReply } from "lucide-react";
+import { FeatureCard, StatCard, StepCard } from "@/components/ui/Cards";
 import { jsonLdScript } from "@/lib/schema";
 
 const siteUrl = "https://navilet.ru";
@@ -42,8 +31,6 @@ const rub = (value: number) => `${value.toLocaleString("ru-RU")}\u00A0₽`;
  */
 const maxFormPreset = { channelId: "max", path: "request" } as const;
 
-const lid = assistantVersions.find((v) => v.id === "lid")!;
-const pro = assistantVersions.find((v) => v.id === "pro")!;
 const liteAddon = crossChannelAddons.find((a) => a.planId === "lite")!;
 const litePlan = pricingPlans.find((p) => p.id === "lite")!;
 
@@ -143,7 +130,7 @@ const faqItems = [
   {
     question: "Что умеет ИИ-ассистент в MAX?",
     answer:
-      "То же, что на сайте: понимает запрос свободным текстом, подбирает туры по базе Tourvisor, показывает карточки с ценами, отвечает про отели и перелёты, собирает контакт и передаёт заявку менеджеру на почту, в U‑ON, Telegram и MAX. Плюс возможности мессенджера: кнопка «Подборка одной страницей» под ответом, а также напоминание замолчавшим и подписка на снижение цены (в «Про» входят, в «Лиде» — опциями).",
+      "То же, что на сайте: понимает запрос свободным текстом, подбирает туры по базе Tourvisor, показывает карточки с ценами, отвечает про отели и перелёты, собирает контакт и передаёт заявку менеджеру на почту, в U‑ON, Telegram и MAX. Плюс возможности мессенджера: кнопка «Подборка одной страницей» под ответом, а также напоминание замолчавшим и подписка на снижение цены (в «Про» входят обе, в «Лиде» — опциями; в «Заявке» входит напоминание).",
   },
   {
     question: "Как подключить ассистента к MAX и сколько это стоит?",
@@ -158,7 +145,7 @@ const faqItems = [
   {
     question: "Почему возврат клиентов работает только в MAX, а не на сайте?",
     answer:
-      "Потому что в мессенджере у ассистента остаётся диалог, куда можно написать: клиент ушёл — чат никуда не делся. В веб-виджете после закрытия вкладки написать некуда. Поэтому напоминание замолчавшим и подписка на снижение цены живут в MAX: в «Про» они входят, в «Лиде» — опциями. Это не рассылка по базе: ассистент пишет только в диалог, который клиент сам начал, а подписка на цену включается по его кнопке. Защита от спама встроена: максимум 3 предложения без ответа, стоп перед вылетом, отписка одним словом.",
+      "Потому что в мессенджере у ассистента остаётся диалог, куда можно написать: клиент ушёл — чат никуда не делся. В веб-виджете после закрытия вкладки написать некуда. Поэтому напоминание замолчавшим и подписка на снижение цены живут в MAX: в «Про» они входят, в «Лиде» — опциями, в «Заявке» входит напоминание. Это не рассылка по базе: ассистент пишет только в диалог, который клиент сам начал, а подписка на цену включается по его кнопке. Защита от спама встроена: максимум 3 предложения без ответа, стоп перед вылетом, отписка одним словом.",
   },
   {
     question: "А как же Telegram и WhatsApp?",
@@ -208,7 +195,7 @@ const jsonLd = {
       name: "ИИ-ассистент турагентства в мессенджере MAX",
       serviceType: "Чат-бот для подбора туров и возврата клиентов в MAX",
       description:
-        "Канал MAX ИИ-ассистента «Навылет! AI»: подбор туров по API Tourvisor в диалоге, карточки и подборка одной страницей, заявка менеджеру, а также напоминание замолчавшим и подписка на снижение цены (в «Про» входят, в «Лиде» — опциями).",
+        "Канал MAX ИИ-ассистента «Навылет! AI»: подбор туров по API Tourvisor в диалоге, карточки и подборка одной страницей, заявка менеджеру, а также напоминание замолчавшим и подписка на снижение цены (в «Про» входят обе, в «Лиде» — опциями; в «Заявке» входит напоминание).",
       provider: { "@id": `${siteUrl}/#organization` },
       areaServed: "RU",
       audience: {
@@ -218,7 +205,7 @@ const jsonLd = {
       isRelatedTo: { "@id": `${siteUrl}/#product` },
       offers: {
         "@type": "Offer",
-        price: String(lid.priceFrom),
+        price: String(priceFrom),
         priceCurrency: "RUB",
         description:
           `Любой тариф от ${priceFromLabel}/мес работает в MAX как в основном канале. Подключение бота 0 ₽, первый месяц бесплатно.`,
@@ -273,7 +260,7 @@ const maxFeatures = [
     icon: TrendingDown,
     title: "Подписка на снижение цены",
     text: "Клиент нажимает кнопку — ассистент следит за туром и пишет, когда цена упала на 5% и больше или появился подходящий отель. Помнит весь запрос из разговора.",
-    versions: "версия «Про»",
+    versions: "«Про» — входит, «Лид» — 490 ₽/мес",
   },
 ];
 
@@ -358,9 +345,8 @@ export default function MaxPage() {
       <Navigation />
       <main>
         {/* Hero */}
-        <section className="relative overflow-hidden bg-white">
-          <div className="pointer-events-none absolute -right-40 -top-40 h-[500px] w-[500px] rounded-full bg-[#00E7FD]/[0.07] blur-[120px]" />
-          <div className="relative mx-auto max-w-4xl px-5 pt-28 pb-12 text-center sm:px-6 sm:pt-32 lg:px-8">
+        <section className="bg-white">
+          <div className="mx-auto max-w-4xl px-5 pt-28 pb-12 text-center sm:px-6 sm:pt-32 lg:px-8">
             <nav
               className="mb-5 flex justify-center text-xs text-muted"
               aria-label="Хлебные крошки"
@@ -371,12 +357,6 @@ export default function MaxPage() {
               <ChevronRight className="mx-1 h-4 w-4" />
               <span className="text-body">Ассистент в MAX</span>
             </nav>
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5">
-              <Smartphone className="h-4 w-4 text-accent" />
-              <span className="text-xs font-semibold text-accent sm:text-sm">
-                Канал MAX · {reqVersionPublished ? "все версии" : "обе версии"} ассистента
-              </span>
-            </div>
             <h1 className="font-display text-4xl font-bold leading-tight text-heading sm:text-5xl">
               ИИ-ассистент турагентства в MAX:{" "}
               <span className="text-accent">
@@ -389,10 +369,11 @@ export default function MaxPage() {
               подбирает туры по базе Tourvisor, отдаёт подборку одной страницей
               и передаёт заявку менеджеру. А главное — может написать клиенту
               первым: напомнить о подборке или сообщить, что цена упала.
-              Подключение 0 ₽, любой тариф от {rub(lid.priceFrom)}/мес.
+              Работает во всех версиях ассистента. Подключение 0 ₽, любой тариф
+              от {priceFromLabel}/мес{priceSelectionNote}.
             </p>
 
-            <div className="mx-auto mt-9 grid max-w-2xl grid-cols-1 gap-3 sm:grid-cols-3">
+            <dl className="mx-auto mt-9 grid max-w-2xl grid-cols-3 gap-2 sm:gap-3">
               {[
                 {
                   stat: "86,2 млн",
@@ -403,25 +384,19 @@ export default function MaxPage() {
                   label: "замолчавших возвращаются в диалог",
                 },
                 {
-                  stat: `${networkResults.stats[2].value}%`,
+                  stat: `${networkResults.stats[2].value?.toLocaleString("ru-RU")}%`,
                   label: "обращений — вне рабочего времени",
                 },
               ].map((s) => (
-                <div
-                  key={s.label}
-                  className="rounded-2xl border border-blue-subtle/50 bg-white px-3 py-4 shadow-card sm:px-4 sm:py-5"
-                >
-                  <p className="font-display text-2xl font-bold text-accent sm:text-3xl">
-                    {s.stat}
-                  </p>
-                  <p className="mt-1 text-xs leading-snug text-muted sm:text-sm">
-                    {s.label}
-                  </p>
-                </div>
+                <StatCard key={s.label} value={s.stat} label={s.label} compact />
               ))}
-            </div>
+            </dl>
             <p className="mt-3 text-xs text-muted">
-              ¹ Mediascope, июнь 2026 — источники внизу страницы. Отклик и доля
+              ¹ Mediascope, июнь 2026 —{" "}
+              <a href="#istochniki" className="underline decoration-muted/40 underline-offset-2 hover:text-accent">
+                источники внизу страницы
+              </a>
+              . Отклик и доля
               ночных обращений — данные сети «Навылет! AI», летний сезон 2026.
             </p>
             <div className="mt-8 flex justify-center">
@@ -440,12 +415,8 @@ export default function MaxPage() {
             <h2 className="text-center font-display text-2xl font-bold text-heading sm:text-3xl">
               Почему турагентству нужен бот в MAX
             </h2>
-            <div className="mt-8 grid grid-cols-1 gap-5 lg:grid-cols-3">
-              <div className="rounded-2xl border border-blue-subtle/40 bg-white p-6 shadow-card">
-                <h3 className="font-display text-base font-bold text-heading">
-                  Клиенты уже там
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-body">
+            <div className="mt-8 grid grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-3">
+              <FeatureCard icon={Users} title="Клиенты уже там" stackFrom="lg">
                   В июне 2026 года MAX впервые обошёл все мессенджеры в России
                   по месячной аудитории: 86,2 млн человек, 70% населения старше
                   12 лет, среднесуточно — 69 млн¹. По данным VK, месячная
@@ -453,31 +424,20 @@ export default function MaxPage() {
                   С 1 сентября 2025 года мессенджер предустанавливается на все
                   смартфоны, продаваемые в стране⁴. Турист, которому вы хотите
                   написать, с высокой вероятностью уже здесь.
-                </p>
-              </div>
-              <div className="rounded-2xl border border-blue-subtle/40 bg-white p-6 shadow-card">
-                <h3 className="font-display text-base font-bold text-heading">
-                  Турбизнес уже переезжает
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-body">
+              </FeatureCard>
+              <FeatureCard icon={Briefcase} title="Турбизнес уже переезжает" stackFrom="lg">
                   К весне 2026 года в MAX создано более 150 000 чат-ботов, а спрос компаний на сложные боты вырос на 35% с начала года⁵.
                   В туризме первыми пришли крупные: бот Coral Travel
                   «Коралина», каналы и боты подбора у франчайзи Слетать.ру, бот
                   Tourvisor для агентств⁷. Платформа для бизнеса открыта
                   юрлицам, ИП и самозанятым⁶ — то есть любому агентству.
-                </p>
-              </div>
-              <div className="rounded-2xl border border-blue-subtle/40 bg-white p-6 shadow-card">
-                <h3 className="font-display text-base font-bold text-heading">
-                  Мессенджер даёт то, чего нет у сайта
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-body">
+              </FeatureCard>
+              <FeatureCard icon={MessageCircleReply} title="Мессенджер даёт то, чего нет у сайта" stackFrom="lg">
                   На сайте диалог заканчивается вместе с вкладкой. В MAX чат
                   остаётся, и ассистент может вернуться к клиенту сам:
                   до 40% замолчавших возвращаются в диалог, на напоминание через
                   сутки отвечают около 28%. Это данные наших ассистентов, а не теория.
-                </p>
-              </div>
+              </FeatureCard>
             </div>
           </div>
         </section>
@@ -493,30 +453,15 @@ export default function MaxPage() {
               Tourvisor и заявки менеджеру одни и те же. Мессенджер добавляет
               кнопки и возможность написать клиенту первым.
             </p>
-            <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
               {maxFeatures.map((f) => (
-                <div
-                  key={f.title}
-                  className="flex flex-col rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card"
-                >
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-accent/10">
-                      <f.icon className="h-4.5 w-4.5 text-accent" />
-                    </span>
-                    <span className="rounded-full bg-surface-alt px-2.5 py-0.5 text-[11px] font-semibold text-muted">
-                      {f.versions}
-                    </span>
-                  </div>
-                  <h3 className="mt-3 font-display text-base font-bold text-heading">
-                    {f.title}
-                  </h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-body">
-                    {f.text}
-                  </p>
-                </div>
+                <FeatureCard key={f.title} icon={f.icon} title={f.title} stackFrom="lg">
+                  <p className="text-xs font-semibold text-accent">{f.versions}</p>
+                  <p className="mt-1.5">{f.text}</p>
+                </FeatureCard>
               ))}
             </div>
-            <p className="mt-6 text-center text-sm text-muted">
+            <p className="mt-8 text-center text-sm text-muted">
               Все механики возврата с правилами защиты от спама —{" "}
               <Link
                 href="/vozvrat-klientov"
@@ -548,21 +493,10 @@ export default function MaxPage() {
             </p>
             <ol className="mt-8 space-y-3">
               {scenario.map((s, i) => (
-                <li
-                  key={s.step}
-                  className="flex gap-4 rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card"
-                >
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent/10 font-display text-sm font-bold text-accent">
-                    {i + 1}
-                  </span>
-                  <div>
-                    <p className="font-display text-xs font-bold uppercase tracking-wide text-muted">
-                      {s.step}
-                    </p>
-                    <p className="mt-1 text-sm leading-relaxed text-body">
-                      {s.text}
-                    </p>
-                  </div>
+                <li key={s.step}>
+                  <StepCard n={i + 1} title={s.step} titleAs="p">
+                    {s.text}
+                  </StepCard>
                 </li>
               ))}
             </ol>
@@ -622,26 +556,15 @@ export default function MaxPage() {
                 <h2 className="font-display text-2xl font-bold text-heading sm:text-3xl">
                   Как подключить бота в MAX
                 </h2>
-                <div className="mt-6 space-y-4">
+                <ol className="mt-6 space-y-3">
                   {connectSteps.map((s, i) => (
-                    <div
-                      key={s.title}
-                      className="flex gap-4 rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card"
-                    >
-                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent/10 font-display text-sm font-bold text-accent">
-                        {i + 1}
-                      </span>
-                      <div>
-                        <h3 className="font-display text-base font-bold text-heading">
-                          {s.title}
-                        </h3>
-                        <p className="mt-1.5 text-sm leading-relaxed text-body">
-                          {s.text}
-                        </p>
-                      </div>
-                    </div>
+                    <li key={s.title}>
+                      <StepCard n={i + 1} title={s.title}>
+                        {s.text}
+                      </StepCard>
+                    </li>
                   ))}
-                </div>
+                </ol>
                 <p className="mt-4 flex items-start gap-2 text-sm text-muted">
                   <QrCode className="mt-0.5 h-4 w-4 shrink-0" />
                   <span>
@@ -678,7 +601,7 @@ export default function MaxPage() {
                   Подключение бота — 0 ₽. Любой тариф работает в MAX как в основном канале:
                 </p>
                 <div className="mt-4 space-y-2">
-                  {[lid, pro].map((v) => (
+                  {assistantVersions.map((v) => (
                     <div
                       key={v.id}
                       className="flex items-baseline justify-between rounded-xl bg-surface-alt px-4 py-2.5 text-sm"
@@ -693,17 +616,25 @@ export default function MaxPage() {
                   ))}
                 </div>
                 <p className="mt-4 text-sm text-body">
-                  Нужны и сайт, и MAX — добавьте «Второй канал». На тарифе Лайт
-                  версии «Лид»: {rub(litePlan.lid.price)} +{" "}
-                  {rub(liteAddon.lid.addonPrice)} ={" "}
+                  Нужны и сайт, и MAX — добавьте «Второй канал». На тарифе Лайт:{" "}
+                  {reqVersionPublished && litePlan.req && liteAddon.req && (
+                    <>
+                      «Заявка» — {rub(litePlan.req.price)} + {rub(liteAddon.req.addonPrice)} ={" "}
+                      <span className="font-semibold text-heading">
+                        {rub(liteAddon.req.totalPrice)}/мес за{"\u00A0"}
+                        {liteAddon.req.totalDialogs} диалогов
+                      </span>
+                      ;{" "}
+                    </>
+                  )}
+                  «Лид» — {rub(litePlan.lid.price)} + {rub(liteAddon.lid.addonPrice)} ={" "}
                   <span className="font-semibold text-heading">
                     {rub(liteAddon.lid.totalPrice)}/мес за{"\u00A0"}
                     {liteAddon.lid.totalDialogs} диалогов
                   </span>{" "}
-                  ({litePlan.lid.dialogs} на сайте + {liteAddon.lid.extraDialogs}{" "}
-                  в MAX). В версии «Про»: {rub(litePlan.price)} +{" "}
-                  {rub(liteAddon.addonPrice)} = {rub(liteAddon.totalPrice)}/мес
-                  за {liteAddon.totalDialogs} диалогов.
+                  ({litePlan.lid.dialogs} на сайте + {liteAddon.lid.extraDialogs} в MAX); «Про» —{" "}
+                  {rub(litePlan.price)} + {rub(liteAddon.addonPrice)} = {rub(liteAddon.totalPrice)}/мес за{"\u00A0"}
+                  {liteAddon.totalDialogs} диалогов.
                 </p>
                 <ul className="mt-4 space-y-2 text-sm text-body">
                   {[
@@ -773,7 +704,8 @@ export default function MaxPage() {
                 href="/versii"
                 className="inline-flex items-center gap-1 font-semibold text-accent hover:underline"
               >
-                Версии «Лид» и «Про» <ArrowRight className="h-3.5 w-3.5" />
+                {reqVersionPublished ? "Версии «Заявка», «Лид» и «Про»" : "Версии «Лид» и «Про»"}{" "}
+                <ArrowRight className="h-3.5 w-3.5" />
               </Link>
               <Link
                 href="/chat-bot-dlya-turagentstva"
@@ -784,10 +716,11 @@ export default function MaxPage() {
             </div>
 
             {/* Источники */}
-            <div className="mt-12 rounded-2xl border border-blue-subtle/40 bg-surface-alt p-5">
-              <h3 className="font-display text-sm font-bold text-heading">
-                Источники данных о MAX
-              </h3>
+            <details id="istochniki" className="group mt-12 scroll-mt-24 rounded-2xl border border-blue-subtle/40 bg-surface-alt p-5">
+              <summary className="flex min-h-10 cursor-pointer list-none items-center justify-between gap-3 [&::-webkit-details-marker]:hidden">
+                <h3 className="font-display text-sm font-bold text-heading">Источники данных о MAX</h3>
+                <ChevronDown className="h-4 w-4 shrink-0 text-muted transition-transform group-open:rotate-180" aria-hidden />
+              </summary>
               <ol className="mt-3 space-y-2">
                 {sources.map((s) => (
                   <li key={s.id} className="flex gap-2 text-xs text-muted">
@@ -798,7 +731,7 @@ export default function MaxPage() {
                         href={s.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-0.5 font-medium text-accent hover:underline"
+                        className="inline-flex items-center gap-0.5 py-1 font-medium text-accent hover:underline"
                       >
                         {s.name}
                         <ExternalLink className="h-3 w-3" />
@@ -811,26 +744,25 @@ export default function MaxPage() {
                 Показатели отклика и доли ночных обращений — данные сети
                 «Навылет! AI» за летний сезон 2026, обезличенно.
               </p>
-            </div>
+            </details>
           </div>
         </section>
 
         {/* Final CTA */}
         <section
-          className="relative overflow-hidden"
           style={{
             background:
               "linear-gradient(135deg, #001229 0%, #002152 30%, #0062EF 70%, #0097F5 100%)",
           }}
         >
-          <div className="noise-overlay pointer-events-none absolute inset-0 opacity-20" />
-          <div className="relative mx-auto max-w-3xl px-5 py-14 text-center sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl px-5 py-14 text-center sm:px-6 lg:px-8">
             <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">
               Заведите ассистента там, где ваши клиенты
             </h2>
             <p className="mx-auto mt-3 max-w-lg text-white/70">
               Подключение бота в MAX — 0 ₽. Первый месяц бесплатно, без карты.
-              Возврат клиентов: в «Про» — входит, в «Лиде» — опцией от 290 ₽/мес.
+              Возврат клиентов: в «Про» — входит, в «Лиде» — опцией от 290 ₽/мес, в «Заявке» входит
+              напоминание замолчавшим.
             </p>
             <div className="mt-6 flex justify-center">
               <RegisterCta
@@ -843,6 +775,7 @@ export default function MaxPage() {
             </div>
           </div>
         </section>
+        <OpenDetailsOnHash />
       </main>
       <Footer />
       <FloatingCTA />

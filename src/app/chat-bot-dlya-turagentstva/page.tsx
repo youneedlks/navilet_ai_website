@@ -200,7 +200,7 @@ const requirements = [
   },
   {
     title: "Работает ночью и в выходные",
-    text: `${networkResults.stats[2].value}% обращений приходят вне рабочего времени — бот и нужен ровно для них.`,
+    text: `${networkResults.stats[2].value?.toLocaleString("ru-RU")}% обращений приходят вне рабочего времени — бот и нужен ровно для них.`,
     scripted: true,
   },
 ];
@@ -286,7 +286,7 @@ export default function ChatBotPage() {
               {[
                 { stat: "3–30 сек", label: "ответ с подбором туров" },
                 {
-                  stat: `${networkResults.stats[2].value}%`,
+                  stat: `${networkResults.stats[2].value?.toLocaleString("ru-RU")}%`,
                   label: "обращений — вне рабочего времени",
                 },
                 {

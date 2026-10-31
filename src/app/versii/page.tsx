@@ -17,6 +17,7 @@ import {
 } from "@/lib/content";
 import { ArrowRight, Check, ChevronDown, ChevronRight, Minus } from "lucide-react";
 import { jsonLdScript } from "@/lib/schema";
+import { StatCard } from "@/components/ui/Cards";
 import { versionIcons } from "@/lib/version-icons";
 
 const siteUrl = "https://navilet.ru";
@@ -253,16 +254,15 @@ export default function VersiiPage() {
             Это разные инструменты на одном движке: «Лид» ловит заявку и передаёт её живому менеджеру, «Про» сам сопровождает клиента до брони и возвращает ушедших.
           </p>
 
-          <dl className="mx-auto mt-8 grid max-w-4xl grid-cols-1 gap-x-8 gap-y-5 text-center sm:grid-cols-3">
+          <dl className="mx-auto mt-8 grid max-w-4xl grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
             {[
-              { stat: "100%", text: "диалогов в «Лиде» — с контактом клиента: телефон известен с первого сообщения" },
-              { stat: "107", text: "живых диалогов клиентов — проверка «Лида», ноль сбоев после доработок" },
-              { stat: "до 40%", text: "замолчавших клиентов возвращаются в диалог в MAX. В «Про» входит, в «Лиде» — опцией" },
+              { stat: "100%", label: "диалогов в «Лиде» — с контактом клиента:", text: "телефон известен с первого сообщения" },
+              { stat: "107", label: "живых диалогов клиентов — проверка «Лида»,", text: "ноль сбоев после доработок" },
+              { stat: "до 40%", label: "замолчавших клиентов возвращаются в диалог в MAX.", text: "В «Про» входит, в «Лиде» — опцией" },
             ].map((item) => (
-              <div key={item.stat}>
-                <dt className="font-display text-3xl font-bold text-accent">{item.stat}</dt>
-                <dd className="mt-1 text-sm leading-relaxed text-body">{item.text}</dd>
-              </div>
+              <StatCard key={item.stat} value={item.stat} label={item.label} center>
+                {item.text}
+              </StatCard>
             ))}
           </dl>
 

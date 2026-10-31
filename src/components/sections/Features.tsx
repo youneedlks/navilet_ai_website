@@ -5,6 +5,7 @@ import Link from "next/link";
 import { fadeInUp } from "@/lib/animations";
 import { featureHighlights, features } from "@/lib/content";
 import SectionWrapper from "@/components/ui/SectionWrapper";
+import { FeatureCard } from "@/components/ui/Cards";
 import { ArrowRight, ChevronDown, Globe, Info, Link2, MessageSquareText, Moon, RotateCcw } from "lucide-react";
 
 /** Значки шести главных пунктов — по порядку featureHighlights. */
@@ -23,27 +24,20 @@ export default function Features() {
         </h2>
       </motion.div>
 
-      <motion.ul variants={fadeInUp} className="mx-auto grid max-w-5xl gap-x-12 gap-y-7 sm:grid-cols-2">
-        {featureHighlights.map((f, i) => {
-          const Icon = HIGHLIGHT_ICONS[i];
-          return (
-            <li key={f.title} className="flex gap-4">
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-ice text-accent">
-                <Icon className="h-5 w-5" />
-              </span>
-              <div>
-                <h3 className="font-display text-base font-bold text-heading sm:text-lg">{f.title}</h3>
-                <p className="mt-1 text-sm leading-relaxed text-body sm:text-base">{f.description}</p>
-                {"href" in f && f.href && (
-                  <Link href={f.href} className="mt-1 inline-flex min-h-10 items-center gap-1 text-sm font-semibold text-accent hover:underline">
-                    Подробнее
-                    <ArrowRight className="h-3.5 w-3.5" />
-                  </Link>
-                )}
-              </div>
-            </li>
-          );
-        })}
+      <motion.ul variants={fadeInUp} className="mx-auto grid max-w-5xl grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
+        {featureHighlights.map((f, i) => (
+          <li key={f.title}>
+            <FeatureCard icon={HIGHLIGHT_ICONS[i]} title={f.title} stackFrom="lg" className="h-full">
+              <p>{f.description}</p>
+              {"href" in f && f.href && (
+                <Link href={f.href} className="inline-flex min-h-10 items-center gap-1 text-sm font-semibold text-accent hover:underline">
+                  Подробнее
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              )}
+            </FeatureCard>
+          </li>
+        ))}
       </motion.ul>
 
       <motion.details variants={fadeInUp} className="group mx-auto mt-10 max-w-5xl">

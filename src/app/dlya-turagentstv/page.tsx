@@ -4,17 +4,8 @@ import Navigation from "@/components/sections/Navigation";
 import Footer from "@/components/sections/Footer";
 import FloatingCTA from "@/components/ui/FloatingCTA";
 import RegisterCta from "@/components/seo/RegisterCta";
-import {
-  ChevronRight,
-  Sparkles,
-  ArrowRight,
-  Check,
-  User,
-  Users,
-  ClipboardList,
-  Smartphone,
-  MessageSquare,
-} from "lucide-react";
+import { ChevronDown, ChevronRight, ArrowRight, MessageSquare, Code2, BellRing, Hand, BookOpen } from "lucide-react";
+import { FeatureCard, StatCard } from "@/components/ui/Cards";
 import { jsonLdScript } from "@/lib/schema";
 import { pricingPlans, priceFromLabel, reqVersionPublished } from "@/lib/content";
 
@@ -62,7 +53,6 @@ const start = plan("start");
 /** Сценарии: какая версия и какой тариф — цены из единого прайса (content.ts). */
 const scenarios = [
   {
-    icon: User,
     title: "Частный турагент или один менеджер",
     pain: "Днём — встречи и бронирования, вечером нет сил отвечать в чатах. Запросы приходят ночью и в выходные, а к утру турист уже нашёл другого агента.",
     does: "Ассистент отвечает сразу, уточняет направление, даты, состав и бюджет, берёт контакт. Утром у вас готовая заявка — остаётся подобрать и забронировать.",
@@ -72,7 +62,6 @@ const scenarios = [
     }«Лид» — ${rub(lite.lid!.price)}/мес.`,
   },
   {
-    icon: Users,
     title: "Агентство на 2–5 менеджеров",
     pain: "В сезон очередь в чатах: пока менеджер считает тур одному клиенту, другие ждут ответа. Многие вопросы повторяются изо дня в день.",
     does: "Ассистент берёт на себя первичный подбор и типовые вопросы, отдаёт менеджерам готовые заявки. «Про» ещё и консультирует по отелям без ограничений и возвращает замолчавших клиентов в MAX.",
@@ -82,7 +71,6 @@ const scenarios = [
     )}/мес, «Про» — ${rub(start.price)}/мес.`,
   },
   {
-    icon: ClipboardList,
     title: "Без Турвизора или со своим подбором",
     pain: "Вы бронируете напрямую у туроператоров, продаёте авторские и экскурсионные туры или подбираете вручную — готовой выдачи с ценами нет.",
     does: "Версия «Заявка» не подбирает туры, а собирает запрос в сводку — куда, когда, на сколько ночей, кто едет, бюджет, пожелания — и контакт. Менеджер садится сразу за подбор.",
@@ -94,7 +82,6 @@ const scenarios = [
     hrefLabel: "Ассистент без Турвизора — подробно",
   },
   {
-    icon: Smartphone,
     title: "Без сайта — клиенты пишут в мессенджер",
     pain: "Сайта нет или он почти без трафика: клиенты приходят из соцсетей, по рекомендациям и пишут в мессенджер.",
     does: "Ассистент работает ботом агентства в MAX: ссылку на него можно дать в соцсетях, на визитке, в подписи письма. Сайт не нужен.",
@@ -115,7 +102,8 @@ const volumeGuide = ["lite", "start", "standart", "biznes"].map((id, i) => {
     perDay,
     req: reqVersionPublished && p.req ? rub(p.req.price) : null,
     lid: rub(p.lid!.price),
-    pro: `${rub(p.price)} (${p.dialogs} диал.)`,
+    pro: rub(p.price),
+    proDialogs: p.dialogs,
     popular: p.popular,
   };
 });
@@ -150,24 +138,28 @@ const comparison = [
 
 const essentials = [
   {
+    icon: Code2,
     title: "Подключение без программиста",
     text: "Одна строка кода на сайт — Tilda, WordPress, 1С-Битрикс и другие — или токен бота MAX в кабинете. Доступ приходит в течение рабочего дня.",
     href: "/vidzhet",
     label: "Установка виджета",
   },
   {
+    icon: BellRing,
     title: "Заявки — туда, где вы их увидите",
     text: "На почту, в U‑ON, в Telegram и MAX: в общий чат менеджеров или вам лично. С кнопкой «Открыть диалог».",
     href: "/blog/uvedomleniya-o-zayavkah-telegram-max",
     label: "Как работают уведомления",
   },
   {
+    icon: Hand,
     title: "Можно ответить самому",
     text: "Турист просит живого человека — менеджер перехватывает диалог в кабинете и пишет в том же чате, ассистент в это время молчит.",
     href: "/dashboard",
     label: "Личный кабинет",
   },
   {
+    icon: BookOpen,
     title: "Отвечает по вашим условиям",
     text: "Часы работы, офис, оплата, рассрочка, документы — в базе знаний кабинета. Ассистент отвечает по ним, а не придумывает.",
     href: "/faq",
@@ -281,12 +273,7 @@ export default function ForAgenciesPage() {
 
         {/* Hero: ответ первым экраном */}
         <section className="mx-auto max-w-4xl px-5 py-10 text-center sm:px-6 sm:py-14 lg:px-8">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5">
-            <Sparkles className="h-4 w-4 text-accent" />
-            <span className="text-xs font-semibold text-accent sm:text-sm">
-              Для агентств от 1 до 5 человек
-            </span>
-          </div>
+          <p className="mb-3 text-sm font-semibold text-accent">Для агентств от 1 до 5 человек</p>
           <h1 className="font-display text-4xl font-bold leading-tight text-heading sm:text-5xl">
             <span className="whitespace-nowrap text-accent">ИИ-ассистент</span> для небольшого
             турагентства: заявки 24/7 без расширения штата
@@ -309,41 +296,39 @@ export default function ForAgenciesPage() {
                 Узнайте своё агентство
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-base text-body">
-                Четыре типичные ситуации небольшого агентства — что делает ассистент, какая версия подходит и сколько это стоит.
+                Четыре типичные ситуации небольшого агентства. Нажмите на свою — что делает ассистент, какая версия подходит и сколько это стоит.
               </p>
             </div>
-            <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2">
+            <ul className="mx-auto mt-10 max-w-3xl divide-y divide-blue-subtle/50 overflow-hidden rounded-2xl border border-blue-subtle/50 bg-white">
               {scenarios.map((s) => (
-                <div
-                  key={s.title}
-                  className="flex flex-col rounded-2xl border border-blue-subtle/50 bg-white p-6 sm:p-7"
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent/10">
-                      <s.icon className="h-5 w-5 text-accent" />
-                    </span>
-                    <h3 className="font-display text-lg font-bold text-heading">{s.title}</h3>
-                  </div>
-                  <p className="mt-4 text-sm leading-relaxed text-body">{s.pain}</p>
-                  <p className="mt-3 text-sm leading-relaxed text-heading">{s.does}</p>
-                  <div className="mt-auto border-t border-blue-subtle/30 pt-4">
-                    <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-accent">
-                      Версия: {s.version}
-                    </p>
-                    <p className="mt-1 text-sm text-body">{s.tariff}</p>
-                    {s.href && (
-                      <Link
-                        href={s.href}
-                        className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-hover"
-                      >
-                        {s.hrefLabel}
-                        <ArrowRight className="h-4 w-4" />
-                      </Link>
-                    )}
-                  </div>
-                </div>
+                <li key={s.title}>
+                  <details className="group">
+                    <summary className="grid cursor-pointer list-none grid-cols-[1fr_auto] items-center gap-x-4 px-5 py-4 transition-colors hover:bg-blue-ice/40 sm:px-6 sm:py-5 [&::-webkit-details-marker]:hidden">
+                      <h3 className="font-display text-base font-bold text-heading sm:text-lg">{s.title}</h3>
+                      <ChevronDown
+                        className="row-span-2 h-5 w-5 text-muted transition-transform group-open:rotate-180"
+                        aria-hidden
+                      />
+                      <span className="mt-0.5 text-sm text-body">Версия: {s.version}</span>
+                    </summary>
+                    <div className="border-t border-blue-subtle/40 bg-surface-alt/60 px-5 pb-5 pt-4 sm:px-6">
+                      <p className="text-sm leading-relaxed text-body">{s.pain}</p>
+                      <p className="mt-3 text-sm leading-relaxed text-heading">{s.does}</p>
+                      <p className="mt-3 text-sm font-semibold text-heading">{s.tariff}</p>
+                      {s.href && (
+                        <Link
+                          href={s.href}
+                          className="mt-2 inline-flex min-h-10 items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-hover"
+                        >
+                          {s.hrefLabel}
+                          <ArrowRight className="h-4 w-4" />
+                        </Link>
+                      )}
+                    </div>
+                  </details>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </section>
 
@@ -426,9 +411,9 @@ export default function ForAgenciesPage() {
                 вместе с вечерними и выходными.
               </p>
             </div>
-            <div className="mt-10 overflow-x-auto rounded-2xl border border-blue-subtle/50 bg-white">
-              <table className="w-full min-w-[640px] text-left text-sm">
-                <thead className="bg-surface-alt text-heading">
+            <div className="mt-10 overflow-hidden rounded-2xl border border-blue-subtle/50 bg-white">
+              <table className="block w-full text-left text-sm sm:table">
+                <thead className="hidden bg-surface-alt text-heading sm:table-header-group">
                   <tr>
                     <th className="px-5 py-3 font-semibold">Тариф</th>
                     <th className="px-5 py-3 font-semibold">Обращений в день</th>
@@ -437,23 +422,35 @@ export default function ForAgenciesPage() {
                     <th className="px-5 py-3 font-semibold">«Про»</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="block sm:table-row-group">
                   {volumeGuide.map((r) => (
-                    <tr key={r.name} className="border-t border-blue-subtle/30">
-                      <td className="px-5 py-3 font-medium text-heading">
+                    <tr
+                      key={r.name}
+                      className="grid grid-cols-3 gap-x-3 gap-y-1 border-t border-blue-subtle/30 px-4 py-3 first:border-t-0 sm:table-row sm:px-0 sm:py-0 sm:first:border-t"
+                    >
+                      <td className="col-span-3 block font-medium text-heading sm:table-cell sm:px-5 sm:py-3">
                         {r.name}
-                        {r.popular && (
-                          <span className="ml-2 rounded-full bg-accent/10 px-2 py-0.5 text-[11px] font-semibold text-accent">
-                            популярный
-                          </span>
-                        )}
+                        {r.popular && <span className="font-normal text-accent"> · выбирают чаще</span>}
                       </td>
-                      <td className="px-5 py-3 text-body">
-                        {r.perDay} · {r.dialogs} в мес.
+                      <td className="col-span-3 -mt-1 mb-1 block text-xs text-muted sm:m-0 sm:table-cell sm:px-5 sm:py-3 sm:text-sm sm:text-body">
+                        {r.perDay}
+                        <span className="sm:hidden"> в день</span> · {r.dialogs} в мес.
                       </td>
-                      {reqVersionPublished && <td className="px-5 py-3 text-body">{r.req}</td>}
-                      <td className="px-5 py-3 text-body">{r.lid}</td>
-                      <td className="px-5 py-3 text-body">{r.pro}</td>
+                      {reqVersionPublished && (
+                        <td className="block text-body sm:table-cell sm:px-5 sm:py-3">
+                          <span className="block text-[11px] text-muted sm:hidden">«Заявка»</span>
+                          {r.req}
+                        </td>
+                      )}
+                      <td className="block text-body sm:table-cell sm:px-5 sm:py-3">
+                        <span className="block text-[11px] text-muted sm:hidden">«Лид»</span>
+                        {r.lid}
+                      </td>
+                      <td className="block text-body sm:table-cell sm:px-5 sm:py-3">
+                        <span className="block text-[11px] text-muted sm:hidden">«Про» · {r.proDialogs} диал.</span>
+                        {r.pro}
+                        <span className="hidden sm:inline"> ({r.proDialogs} диал.)</span>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -487,9 +484,9 @@ export default function ForAgenciesPage() {
               .
             </p>
           </div>
-          <div className="mt-10 overflow-x-auto rounded-2xl border border-blue-subtle/50">
-            <table className="w-full min-w-[640px] text-left text-sm">
-              <thead className="bg-surface-alt text-heading">
+          <div className="mt-10 overflow-hidden rounded-2xl border border-blue-subtle/50">
+            <table className="block w-full text-left text-sm sm:table">
+              <thead className="hidden bg-surface-alt text-heading sm:table-header-group">
                 <tr>
                   <th className="px-5 py-3 font-semibold">Вариант</th>
                   <th className="px-5 py-3 font-semibold">Ночью и в выходные</th>
@@ -497,18 +494,27 @@ export default function ForAgenciesPage() {
                   <th className="px-5 py-3 font-semibold">Сколько стоит</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="block sm:table-row-group">
                 {comparison.map((c) => (
                   <tr
                     key={c.option}
-                    className={`border-t border-blue-subtle/30 ${c.highlight ? "bg-blue-ice/40" : "bg-white"}`}
+                    className={`block border-t border-blue-subtle/30 px-4 py-3 first:border-t-0 sm:table-row sm:px-0 sm:py-0 sm:first:border-t ${c.highlight ? "bg-blue-ice/40" : "bg-white"}`}
                   >
-                    <td className={`px-5 py-3 ${c.highlight ? "font-semibold text-heading" : "font-medium text-heading"}`}>
+                    <td className={`block sm:table-cell sm:px-5 sm:py-3 ${c.highlight ? "font-semibold text-heading" : "font-medium text-heading"}`}>
                       {c.option}
                     </td>
-                    <td className="px-5 py-3 text-body">{c.night}</td>
-                    <td className="px-5 py-3 text-body">{c.request}</td>
-                    <td className="px-5 py-3 text-body">{c.price}</td>
+                    <td className="mt-1 block text-body sm:mt-0 sm:table-cell sm:px-5 sm:py-3">
+                      <span className="text-muted sm:hidden">Ночью и в выходные: </span>
+                      {c.night}
+                    </td>
+                    <td className="block text-body sm:table-cell sm:px-5 sm:py-3">
+                      <span className="text-muted sm:hidden">Менеджер получает: </span>
+                      {c.request}
+                    </td>
+                    <td className="block text-body sm:table-cell sm:px-5 sm:py-3">
+                      <span className="text-muted sm:hidden">Стоимость: </span>
+                      {c.price}
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -522,22 +528,18 @@ export default function ForAgenciesPage() {
             <h2 className="text-center font-display text-3xl font-bold text-heading sm:text-4xl">
               Что важно, когда в агентстве мало людей
             </h2>
-            <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2">
+            <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
               {essentials.map((e) => (
-                <div key={e.title} className="rounded-2xl border border-blue-subtle/50 bg-white p-6">
-                  <p className="flex items-start gap-2 font-display text-base font-bold text-heading">
-                    <Check className="mt-1 h-4 w-4 shrink-0 text-accent" />
-                    {e.title}
-                  </p>
-                  <p className="mt-2 text-sm leading-relaxed text-body">{e.text}</p>
+                <FeatureCard key={e.title} icon={e.icon} title={e.title} titleAs="p" stackFrom="never">
+                  <p>{e.text}</p>
                   <Link
                     href={e.href}
-                    className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-hover"
+                    className="inline-flex min-h-10 items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-hover"
                   >
                     {e.label}
                     <ArrowRight className="h-4 w-4" />
                   </Link>
-                </div>
+                </FeatureCard>
               ))}
             </div>
           </div>
@@ -548,19 +550,17 @@ export default function ForAgenciesPage() {
           <h2 className="text-center font-display text-3xl font-bold text-heading sm:text-4xl">
             Работает в крупнейшей сети — доступно одиночному офису
           </h2>
-          <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3">
+          <dl className="mt-10 grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-3">
             {[
               { value: "41,4%", label: "обращений приходят вне рабочего времени", note: "данные сети «Навылет! AI», лето 2026" },
               { value: "11–14%", label: "диалогов становятся квалифицированной заявкой", note: "данные сети «Навылет! AI», лето 2026" },
               { value: "396", label: "офисов «Сети магазинов горящих путёвок»", note: "стратегический партнёр с 2025 года" },
             ].map((s) => (
-              <div key={s.label} className="rounded-2xl border border-blue-subtle/50 bg-white p-6 text-center">
-                <p className="font-display text-4xl font-bold text-accent">{s.value}</p>
-                <p className="mt-2 text-sm font-medium text-heading">{s.label}</p>
-                <p className="mt-1 text-xs text-muted">{s.note}</p>
-              </div>
+              <StatCard key={s.label} value={s.value} label={s.label} center>
+                <span className="text-xs text-muted">{s.note}</span>
+              </StatCard>
             ))}
-          </div>
+          </dl>
           <p className="mx-auto mt-8 max-w-3xl text-center text-base text-body">
             Каждый офис сети МГП — отдельная точка продаж со своими менеджерами. Ассистент закрывает вечерние и выходные
             обращения и первичный подбор, менеджер подключается, когда клиент готов бронировать.{" "}
@@ -581,12 +581,17 @@ export default function ForAgenciesPage() {
             <h2 className="text-center font-display text-3xl font-bold text-heading sm:text-4xl">
               Частые вопросы небольших агентств
             </h2>
-            <div className="mt-10 space-y-4">
+            <div className="mt-10 space-y-3">
               {faq.map((f) => (
-                <div key={f.q} className="rounded-2xl border border-blue-subtle/50 bg-white p-5 sm:p-6">
-                  <h3 className="font-display text-base font-bold text-heading">{f.q}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-body">{f.a}</p>
-                </div>
+                <details key={f.q} className="group rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card sm:p-6">
+                  <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 [&::-webkit-details-marker]:hidden">
+                    <h3 className="font-display text-base font-bold text-heading">{f.q}</h3>
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent transition-transform group-open:rotate-45">
+                      +
+                    </span>
+                  </summary>
+                  <p className="mt-3 text-sm leading-relaxed text-body">{f.a}</p>
+                </details>
               ))}
             </div>
             <p className="mt-6 text-center text-sm text-muted">

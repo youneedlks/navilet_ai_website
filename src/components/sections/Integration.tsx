@@ -6,6 +6,7 @@ import { ArrowRight } from "lucide-react";
 import { fadeInUp } from "@/lib/animations";
 import { integrationSteps } from "@/lib/content";
 import SectionWrapper from "@/components/ui/SectionWrapper";
+import { StepCard } from "@/components/ui/Cards";
 
 /**
  * «Подключение без программиста» — три шага строками. Код виджета и инструкции
@@ -20,16 +21,12 @@ export default function Integration() {
         </h2>
       </motion.div>
 
-      <motion.ol variants={fadeInUp} className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-3 sm:gap-8">
+      <motion.ol variants={fadeInUp} className="mx-auto grid max-w-5xl grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
         {integrationSteps.map((step) => (
-          <li key={step.step} className="flex gap-4 sm:flex-col sm:gap-3">
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent font-display text-base font-bold text-white">
-              {step.step}
-            </span>
-            <div>
-              <h3 className="font-display text-base font-bold text-heading sm:text-lg">{step.title}</h3>
-              <p className="mt-1 text-sm leading-relaxed text-body sm:text-base">{step.description}</p>
-            </div>
+          <li key={step.step}>
+            <StepCard n={step.step} title={step.title} stackFrom="sm" className="h-full">
+              {step.description}
+            </StepCard>
           </li>
         ))}
       </motion.ol>

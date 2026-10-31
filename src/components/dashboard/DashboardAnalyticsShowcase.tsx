@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Check, ArrowRight } from "lucide-react";
+import { ArrowRight, MessagesSquare, TrendingUp, Globe, Clock, Star, Download } from "lucide-react";
+import { TileItem } from "@/components/ui/Cards";
 import { slideInLeft, slideInRight } from "@/lib/animations";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import RealDashboardFrame from "./RealDashboardFrame";
@@ -14,12 +15,12 @@ import RealAnalyticsContent from "./RealAnalyticsContent";
  * поэтому здесь — экран «Аналитика»; прогнозы — строкой со ссылкой на /prognozy.
  */
 const POINTS = [
-  "Сколько диалогов, подборок и заявок — за 7, 30 или 90 дней",
-  "Воронка: от первого сообщения до заявки, с долей на каждом шаге",
-  "Куда хотят клиенты: страны, курорты и города вылета",
-  "Когда пишут: часы и дни недели, доля обращений в нерабочее время",
-  "Какие туры ищут: звёзды и питание, бюджет клиента и найденная цена",
-  "Выгрузка всех данных в CSV — для своих отчётов",
+  { icon: MessagesSquare, text: "Сколько диалогов, подборок и заявок — за 7, 30 или 90 дней" },
+  { icon: TrendingUp, text: "Воронка: от первого сообщения до заявки, с долей на каждом шаге" },
+  { icon: Globe, text: "Куда хотят клиенты: страны, курорты и города вылета" },
+  { icon: Clock, text: "Когда пишут: часы и дни недели, доля обращений в нерабочее время" },
+  { icon: Star, text: "Какие туры ищут: звёзды и питание, бюджет клиента и найденная цена" },
+  { icon: Download, text: "Выгрузка всех данных в CSV — для своих отчётов" },
 ];
 
 export default function DashboardAnalyticsShowcase() {
@@ -40,10 +41,9 @@ export default function DashboardAnalyticsShowcase() {
           </h2>
           <ul className="space-y-3">
             {POINTS.map((p) => (
-              <li key={p} className="flex items-start gap-3 text-sm leading-relaxed text-body sm:text-base">
-                <Check className="mt-1 h-4 w-4 shrink-0 text-accent" aria-hidden />
-                <span>{p}</span>
-              </li>
+              <TileItem key={p.text} icon={p.icon}>
+                {p.text}
+              </TileItem>
             ))}
           </ul>
           <p className="text-sm leading-relaxed text-body sm:text-base">

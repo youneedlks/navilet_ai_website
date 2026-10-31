@@ -14,7 +14,8 @@ import {
   lidAddons,
   priceFromLabel,
 } from "@/lib/content";
-import { ChevronRight, Check } from "lucide-react";
+import { ChevronRight, Check, Package, Search } from "lucide-react";
+import { IconTile, cardClass } from "@/components/ui/Cards";
 import { jsonLdScript } from "@/lib/schema";
 import { publicVersions, aggregateOfferJsonLd } from "@/lib/public-offers";
 
@@ -240,12 +241,15 @@ export default function TarifyPage() {
               Что входит в подписку
             </h2>
 
-            <div className="mx-auto mt-10 grid max-w-4xl gap-8 md:grid-cols-2">
-              {includedGroups.map((group) => (
-                <div key={group.title}>
-                  <h3 className="mb-4 font-display text-lg font-bold text-heading">
-                    {group.title}
-                  </h3>
+            <div className="mx-auto mt-10 grid max-w-4xl gap-4 md:grid-cols-2">
+              {includedGroups.map((group, gi) => (
+                <div key={group.title} className={`${cardClass} p-5 sm:p-7`}>
+                  <div className="mb-5 flex items-center gap-3">
+                    <IconTile icon={gi === 0 ? Package : Search} />
+                    <h3 className="font-display text-lg font-bold text-heading">
+                      {group.title}
+                    </h3>
+                  </div>
                   <ul className="space-y-3">
                     {group.items.map((feature) => (
                       <li key={feature} className="flex items-start gap-3">

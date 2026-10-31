@@ -1,18 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import {
-  ArrowRight,
-  Code2,
-  Clock,
-  Palette,
-  Globe,
-  LayoutGrid,
-  Info,
-  Plane,
-  Link2,
-  Send,
-  Check,
-} from "lucide-react";
+import { ArrowRight, Check, ChevronRight, Code2, Clock, Palette, Globe, LayoutGrid, Info, Plane, Link2, Send } from "lucide-react";
+import { FeatureCard, cardClass } from "@/components/ui/Cards";
 import Navigation from "@/components/sections/Navigation";
 import Footer from "@/components/sections/Footer";
 import RegisterCta from "@/components/seo/RegisterCta";
@@ -250,9 +239,8 @@ export default function VidzhetHubPage() {
       />
       <Navigation />
       <main>
-        <section className="relative overflow-hidden bg-white">
-          <div className="pointer-events-none absolute -right-40 -top-40 h-[500px] w-[500px] rounded-full bg-[#00E7FD]/[0.07] blur-[120px]" />
-          <div className="relative mx-auto max-w-3xl px-5 pt-28 pb-10 text-center sm:px-6 sm:pt-32 lg:px-8">
+        <section className="bg-white">
+          <div className="mx-auto max-w-3xl px-5 pt-28 pb-10 text-center sm:px-6 sm:pt-32 lg:px-8">
             <h1 className="font-display text-3xl font-bold leading-[1.12] text-heading sm:text-4xl lg:text-5xl">
               Виджет подбора туров на сайт —{" "}
               <span className="text-accent">любая платформа</span>
@@ -269,29 +257,56 @@ export default function VidzhetHubPage() {
         </section>
 
         {/* Highlights */}
-        <section className="mx-auto max-w-4xl px-5 py-10 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
+        <section className="mx-auto max-w-4xl px-5 pb-12 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
             {highlights.map((h) => (
-              <div
-                key={h.title}
-                className="rounded-2xl border border-blue-subtle/40 bg-white p-6 shadow-card"
-              >
-                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10">
-                  <h.icon className="h-5 w-5 text-accent" />
-                </div>
-                <h2 className="font-display text-base font-bold text-heading">
-                  {h.title}
-                </h2>
-                <p className="mt-1.5 text-sm leading-relaxed text-body">
-                  {h.text}
-                </p>
-              </div>
+              <FeatureCard key={h.title} icon={h.icon} title={h.title} titleAs="h2">
+                {h.text}
+              </FeatureCard>
             ))}
           </div>
         </section>
 
-        {/* Что умеет */}
+        {/* Platform grid */}
         <section className="bg-surface-alt">
+          <div className="mx-auto max-w-4xl px-5 py-14 sm:px-6 lg:px-8">
+            <h2 className="text-center font-display text-2xl font-bold text-heading sm:text-3xl">
+              Инструкции по платформам
+            </h2>
+            <div className="mt-8 overflow-hidden rounded-2xl border border-blue-subtle/50 bg-white">
+              {/* -mb-px прячет нижнюю линию последнего ряда под рамкой */}
+              <ul className="-mb-px grid grid-cols-1 sm:grid-cols-2">
+                {platformPages.map((p) => (
+                  <li key={p.slug} className="border-b border-blue-subtle/40 sm:odd:border-r">
+                    <Link
+                      href={`/vidzhet/${p.slug}`}
+                      className="group flex items-center gap-3 px-5 py-3.5 transition-colors hover:bg-blue-ice/40"
+                    >
+                      <div className="min-w-0 flex-1">
+                        <h3 className="font-display text-base font-bold text-heading transition-colors group-hover:text-accent">
+                          {p.name}
+                        </h3>
+                        <p className="mt-0.5 text-sm leading-snug text-body">{p.description.split(":")[0]}</p>
+                      </div>
+                      <ChevronRight className="h-5 w-5 shrink-0 text-muted" aria-hidden />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <p className="mt-8 text-center text-sm text-muted">
+              Вашей платформы нет в списке? Виджет работает на любом сайте, где
+              можно вставить строку кода —{" "}
+              <Link href="/vidzhet/svoy-sait" className="font-semibold text-accent hover:underline">
+                общая инструкция здесь
+              </Link>
+              .
+            </p>
+          </div>
+        </section>
+
+        {/* Что умеет */}
+        <section className="bg-surface">
           <div className="mx-auto max-w-5xl px-5 py-14 sm:px-6 lg:px-8">
             <h2 className="text-center font-display text-2xl font-bold text-heading sm:text-3xl">
               Что делает ИИ-виджет подбора туров
@@ -300,29 +315,18 @@ export default function VidzhetHubPage() {
               Один виджет закрывает весь путь туриста на сайте: от «куда бы
               поехать» до заявки менеджеру. Ничего дополнительно подключать не нужно — Tourvisor и каналы заявок уже настроены.
             </p>
-            <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
               {widgetFeatures.map((f) => (
-                <div
-                  key={f.title}
-                  className="rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card"
-                >
-                  <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-accent/10">
-                    <f.icon className="h-4.5 w-4.5 text-accent" />
-                  </span>
-                  <h3 className="mt-3 font-display text-base font-bold text-heading">
-                    {f.title}
-                  </h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-body">
-                    {f.text}
-                  </p>
-                </div>
+                <FeatureCard key={f.title} icon={f.icon} title={f.title} stackFrom="lg">
+                  {f.text}
+                </FeatureCard>
               ))}
             </div>
           </div>
         </section>
 
         {/* Форма поиска vs диалог */}
-        <section className="bg-surface">
+        <section className="bg-surface-alt">
           <div className="mx-auto max-w-5xl px-5 py-14 sm:px-6 lg:px-8">
             <h2 className="text-center font-display text-2xl font-bold text-heading sm:text-3xl">
               Модуль поиска туров или ИИ-виджет: в чём разница
@@ -391,43 +395,6 @@ export default function VidzhetHubPage() {
           </div>
         </section>
 
-        {/* Platform grid */}
-        <section className="bg-surface-alt">
-          <div className="mx-auto max-w-4xl px-5 py-14 sm:px-6 lg:px-8">
-            <h2 className="text-center font-display text-2xl font-bold text-heading sm:text-3xl">
-              Инструкции по платформам
-            </h2>
-            <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {platformPages.map((p) => (
-                <Link
-                  key={p.slug}
-                  href={`/vidzhet/${p.slug}`}
-                  className="group flex flex-col rounded-2xl border border-blue-subtle/40 bg-white p-5 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover"
-                >
-                  <h3 className="font-display text-base font-bold text-heading transition-colors group-hover:text-accent">
-                    {p.name}
-                  </h3>
-                  <p className="mt-1.5 flex-1 text-sm leading-relaxed text-body">
-                    {p.description.split(":")[0]}
-                  </p>
-                  <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-accent">
-                    Инструкция
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                  </span>
-                </Link>
-              ))}
-            </div>
-            <p className="mt-8 text-center text-sm text-muted">
-              Вашей платформы нет в списке? Виджет работает на любом сайте, где
-              можно вставить строку кода —{" "}
-              <Link href="/vidzhet/svoy-sait" className="font-semibold text-accent hover:underline">
-                общая инструкция здесь
-              </Link>
-              .
-            </p>
-          </div>
-        </section>
-
         {/* Код и настройки */}
         <section className="bg-surface">
           <div className="mx-auto max-w-5xl px-5 py-14 sm:px-6 lg:px-8">
@@ -451,7 +418,7 @@ export default function VidzhetHubPage() {
                   остаётся тем же.
                 </p>
               </div>
-              <div className="rounded-2xl border border-blue-subtle/40 bg-white p-6 shadow-card">
+              <div className={`${cardClass} p-6`}>
                 <h3 className="font-display text-lg font-bold text-heading">
                   Что настраивается без правок кода
                 </h3>
@@ -533,14 +500,12 @@ export default function VidzhetHubPage() {
 
         {/* Final CTA */}
         <section
-          className="relative overflow-hidden"
           style={{
             background:
               "linear-gradient(135deg, #001229 0%, #002152 30%, #0062EF 70%, #0097F5 100%)",
           }}
         >
-          <div className="noise-overlay pointer-events-none absolute inset-0 opacity-20" />
-          <div className="relative mx-auto max-w-3xl px-5 py-14 text-center sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl px-5 py-14 text-center sm:px-6 lg:px-8">
             <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">
               Попробуйте на своём сайте — бесплатно
             </h2>

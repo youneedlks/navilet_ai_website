@@ -203,7 +203,7 @@ export default function DigitalPillarPage() {
               {[
                 { stat: "1–2%", label: "посетителей сайта заполняют форму заявки" },
                 {
-                  stat: `${networkResults.stats[2].value}%`,
+                  stat: `${networkResults.stats[2].value?.toLocaleString("ru-RU")}%`,
                   label: "обращений приходят вне рабочего времени",
                 },
                 { stat: "10 мин", label: "ждёт ответа турист — дальше уходит" },

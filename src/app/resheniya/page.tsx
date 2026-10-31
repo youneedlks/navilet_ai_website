@@ -85,14 +85,14 @@ const pillars = [
     icon: MessageSquare,
     title: "Первая линия 24/7",
     text: "Ассистент отвечает за секунды в любое время: ночью, в выходные, в сезонный пик. Турист получает диалог, а не «оставьте телефон».",
-    stat: `${networkResults.stats[2].value}%`,
+    stat: `${networkResults.stats[2].value?.toLocaleString("ru-RU")}%`,
     statLabel: "обращений вне рабочего времени",
   },
   {
     icon: Search,
     title: "Подбор по живой базе",
     text: "Поиск по всем туроператорам через Tourvisor: карточки с ценами и наличием на момент запроса, ответы про отели и перелёт.",
-    stat: `${networkResults.stats[1].value}%`,
+    stat: `${networkResults.stats[1].value?.toLocaleString("ru-RU")}%`,
     statLabel: "обращений доходят до подбора",
   },
   {

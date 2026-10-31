@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { MessageSquare, ArrowRight, Info } from "lucide-react";
+import { MessageSquare, ArrowRight, Info, Palette, Building2, Settings2 } from "lucide-react";
+import { FeatureCard } from "@/components/ui/Cards";
 import Button from "@/components/ui/Button";
 import DemoWidgetLoader from "@/components/demo/DemoWidgetLoader";
 import { useLeadForm } from "@/contexts/LeadFormContext";
@@ -61,14 +62,17 @@ const demoVersions: {
 
 const customization = [
   {
+    icon: Palette,
     title: "Брендирование",
     text: "Логотип, цвета, тон голоса и приветствие — под ваш бренд, без наших упоминаний.",
   },
   {
+    icon: Building2,
     title: "Ваши данные и контакты",
     text: "Телефоны, адреса офисов, ссылки на бронирование и базу туров — ваши, не демонстрационные.",
   },
   {
+    icon: Settings2,
     title: "Настройки в кабинете",
     text: "Приветствие, кнопки-подсказки, каналы заявок и версия ассистента — переключаются в личном кабинете.",
   },
@@ -256,11 +260,12 @@ export default function DemoExperience() {
             от имени вашего агентства.
           </p>
         </div>
-        <ul className="mx-auto max-w-3xl divide-y divide-blue-subtle/50 overflow-hidden rounded-2xl border border-blue-subtle/50 bg-white">
+        <ul className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
           {customization.map((c) => (
-            <li key={c.title} className="px-5 py-4 sm:px-6">
-              <h3 className="font-display text-base font-bold text-heading">{c.title}</h3>
-              <p className="mt-1 text-sm leading-relaxed text-body">{c.text}</p>
+            <li key={c.title}>
+              <FeatureCard icon={c.icon} title={c.title} className="h-full">
+                {c.text}
+              </FeatureCard>
             </li>
           ))}
         </ul>

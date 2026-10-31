@@ -15,17 +15,16 @@ import {
 } from "@/lib/content";
 import {
   ChevronRight,
-  Share2,
+  ArrowRight,
   Hotel,
   Plane,
   RefreshCcw,
   ClipboardCheck,
   Palette,
   Timer,
-  ArrowRight,
   MessageCircleReply,
-  BarChart3,
 } from "lucide-react";
+import { FeatureCard, IconTile, cardClass } from "@/components/ui/Cards";
 import { jsonLdScript } from "@/lib/schema";
 
 const siteUrl = "https://navilet.ru";
@@ -119,14 +118,8 @@ const podborkiJsonLd = {
   ],
 };
 
-const featureIcons = {
-  Hotel,
-  Plane,
-  RefreshCcw,
-  ClipboardCheck,
-  Palette,
-  Timer,
-} as const;
+/** Иконки пунктов «Что клиент видит на странице» (в content.ts — по имени). */
+const featureIcons = { Hotel, Plane, RefreshCcw, ClipboardCheck, Palette, Timer } as const;
 
 export default function PodborkiPage() {
   return (
@@ -159,12 +152,6 @@ export default function PodborkiPage() {
 
         {/* Hero */}
         <section className="mx-auto max-w-4xl px-5 py-10 text-center sm:px-6 sm:py-14 lg:px-8">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5">
-            <Share2 className="h-4 w-4 text-accent" />
-            <span className="text-xs font-semibold text-accent sm:text-sm">
-              Версии «Лид» и «Про» · Web‑виджет и MAX
-            </span>
-          </div>
           <h1 className="font-display text-4xl font-bold leading-tight text-heading sm:text-5xl">
             Подборка туров —{" "}
             <span className="text-accent">одной ссылкой клиенту</span>
@@ -176,23 +163,20 @@ export default function PodborkiPage() {
             появилась заявка. Работает в версиях «Лид» и «Про», в Web и MAX, без доплат.
           </p>
 
-          <div className="mx-auto mt-9 grid max-w-lg grid-cols-2 gap-3">
+          <dl className="mx-auto mt-8 grid max-w-md grid-cols-2 gap-6">
             {[
               { stat: "7 дней", label: "живёт ссылка у клиента" },
               { stat: "1 клик", label: "от варианта до заявки вам" },
             ].map((s) => (
-              <div
-                key={s.label}
-                className="rounded-2xl border border-blue-subtle/50 bg-white px-3 py-4 shadow-card sm:px-4 sm:py-5"
-              >
-                <p className="font-display text-2xl font-bold text-accent sm:text-3xl">
-                  {s.stat}
-                </p>
-                <p className="mt-1 text-[11px] leading-snug text-muted sm:text-xs">
-                  {s.label}
-                </p>
+              <div key={s.label}>
+                <dt className="font-display text-2xl font-bold text-accent sm:text-3xl">{s.stat}</dt>
+                <dd className="mt-1 text-xs leading-snug text-muted sm:text-sm">{s.label}</dd>
               </div>
             ))}
+          </dl>
+
+          <div className="mt-8 flex justify-center">
+            <RegisterCta source="podborki_hero" />
           </div>
         </section>
 
@@ -229,29 +213,15 @@ export default function PodborkiPage() {
               создавала ощущение, что правый список живёт своей прокруткой. */}
           <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-center lg:gap-10">
             <CollectionPreview />
-            <div className="grid auto-rows-fr grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-1">
-              {podborkiClientFeatures.map((f) => {
-                const Icon = featureIcons[f.icon];
-                return (
-                  <div
-                    key={f.title}
-                    className="flex h-full gap-3.5 rounded-2xl border border-blue-subtle/50 bg-white p-5 shadow-card"
-                  >
-                    <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-accent/10">
-                      <Icon className="h-5 w-5 text-accent" />
-                    </span>
-                    <div className="min-w-0">
-                      <h3 className="font-display text-base font-bold text-heading">
-                        {f.title}
-                      </h3>
-                      <p className="mt-1.5 text-sm leading-relaxed text-body">
-                        {f.description}
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+            <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-1">
+              {podborkiClientFeatures.map((f) => (
+                <li key={f.title}>
+                  <FeatureCard icon={featureIcons[f.icon]} title={f.title} stackFrom="never" className="h-full">
+                    {f.description}
+                  </FeatureCard>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 
@@ -259,12 +229,6 @@ export default function PodborkiPage() {
         <section className="bg-surface-alt">
           <div className="mx-auto max-w-5xl px-5 py-14 sm:px-6 lg:px-8 lg:py-16">
             <div className="text-center">
-              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-white px-4 py-1.5">
-                <BarChart3 className="h-4 w-4 text-accent" />
-                <span className="text-xs font-semibold text-accent sm:text-sm">
-                  Вкладка «Подборки» в «Диалогах» кабинета
-                </span>
-              </div>
               <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl">
                 Вы видите, что происходит со ссылкой
               </h2>
@@ -280,6 +244,9 @@ export default function PodborkiPage() {
               <div className="border-b border-blue-subtle/40 bg-gradient-to-r from-blue-ice/60 to-white px-5 py-3">
                 <p className="font-display text-sm font-bold text-heading">
                   Подборки · 30 дней
+                </p>
+                <p className="text-[11px] text-muted">
+                  Вкладка «Подборки» в «Диалогах» кабинета
                 </p>
                 <p className="text-[11px] text-muted">
                   пример данных личного кабинета
@@ -383,32 +350,28 @@ export default function PodborkiPage() {
 
         {/* Мостик на возврат клиентов */}
         <section className="mx-auto max-w-4xl px-5 py-14 sm:px-6 lg:px-8 lg:py-16">
-          <div className="rounded-2xl border border-accent/15 bg-gradient-to-br from-blue-ice/40 to-white p-6 sm:p-8">
-            <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
-              <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-accent/10">
-                <MessageCircleReply className="h-5 w-5 text-accent" />
-              </span>
-              <div>
-                <h2 className="font-display text-xl font-bold text-heading sm:text-2xl">
-                  Подборка работает и на возврат клиента
-                </h2>
-                <p className="mt-3 text-sm leading-relaxed text-body sm:text-base">
-                  Ссылка живёт в семейном чате неделю и всё это время напоминает
-                  о вас. Когда срок выходит, страница не ломается: клиент видит
-                  брендированный экран с выходами — вернуться в диалог, написать
-                  боту в MAX, зайти на сайт или позвонить менеджеру. А в MAX
-                  ассистент ещё и возвращает замолчавших клиентов сам —
-                  напоминанием через сутки и подпиской на снижение цены (в «Про»
-                  входят, в «Лиде» — опциями).
-                </p>
-                <Link
-                  href="/vozvrat-klientov"
-                  className="mt-2 inline-flex min-h-10 items-center gap-1.5 text-sm font-semibold text-accent transition-colors hover:text-accent-hover"
-                >
-                  Как работает возврат клиентов
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
+          <div className={`${cardClass} flex flex-col gap-5 bg-gradient-to-br from-blue-ice/50 to-white p-6 sm:flex-row sm:items-start sm:p-8`}>
+            <IconTile icon={MessageCircleReply} />
+            <div>
+              <h2 className="font-display text-xl font-bold text-heading sm:text-2xl">
+                Подборка работает и на возврат клиента
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-body sm:text-base">
+                Ссылка живёт в семейном чате неделю и всё это время напоминает
+                о вас. Когда срок выходит, страница не ломается: клиент видит
+                брендированный экран с выходами — вернуться в диалог, написать
+                боту в MAX, зайти на сайт или позвонить менеджеру. А в MAX
+                ассистент ещё и возвращает замолчавших клиентов сам —
+                напоминанием через сутки и подпиской на снижение цены (в «Про»
+                входят, в «Лиде» — опциями).
+              </p>
+              <Link
+                href="/vozvrat-klientov"
+                className="mt-2 inline-flex min-h-10 items-center gap-1.5 text-sm font-semibold text-accent transition-colors hover:text-accent-hover"
+              >
+                Как работает возврат клиентов
+                <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
           </div>
         </section>
@@ -416,7 +379,7 @@ export default function PodborkiPage() {
         {/* Доступность в версиях */}
         <section className="bg-surface-alt">
           <div className="mx-auto max-w-4xl px-5 py-14 sm:px-6 lg:px-8 lg:py-16">
-            <div className="rounded-2xl border border-blue-subtle/50 bg-white p-6 text-center shadow-card sm:p-10">
+            <div className={`${cardClass} p-6 text-center sm:p-10`}>
               <h2 className="font-display text-2xl font-bold text-heading sm:text-3xl">
                 Входит в «Лид» и «Про»
               </h2>
@@ -425,17 +388,17 @@ export default function PodborkiPage() {
                 от 1 990 ₽/⁠мес, в веб-виджете и в MAX‑мессенджере. Отдельной платы
                 за них нет — первый месяц бесплатно в любом случае.
               </p>
-              <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <div className="mt-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-1">
                 <Link
                   href="/versii"
-                  className="inline-flex items-center gap-1.5 rounded-xl border-2 border-accent/30 px-6 py-3 text-sm font-semibold text-accent transition-colors hover:border-accent hover:bg-blue-ice sm:text-base"
+                  className="inline-flex min-h-10 items-center gap-1.5 text-sm font-semibold text-accent hover:underline sm:text-base"
                 >
                   Сравнить версии «Лид» и «Про»
                   <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
                   href="/tarify"
-                  className="inline-flex items-center gap-1.5 rounded-xl border-2 border-accent/30 px-6 py-3 text-sm font-semibold text-accent transition-colors hover:border-accent hover:bg-blue-ice sm:text-base"
+                  className="inline-flex min-h-10 items-center gap-1.5 text-sm font-semibold text-accent hover:underline sm:text-base"
                 >
                   Посмотреть тарифы
                   <ArrowRight className="h-4 w-4" />
@@ -480,7 +443,7 @@ export default function PodborkiPage() {
               Подключите ассистента — первый месяц бесплатно, настройка 0 ₽.
             </p>
             <div className="mt-8 flex justify-center">
-              <RegisterCta source="podborki_cta" />
+              <RegisterCta source="podborki_cta" compact />
             </div>
           </div>
         </section>

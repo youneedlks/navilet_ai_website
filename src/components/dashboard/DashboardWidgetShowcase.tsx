@@ -4,16 +4,17 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { slideInLeft, slideInRight } from "@/lib/animations";
 import SectionWrapper from "@/components/ui/SectionWrapper";
-import { Check } from "lucide-react";
+import { Image as ImageIcon, MessageCircle, Eye, Code2, Send, BadgeCheck } from "lucide-react";
+import { TileItem } from "@/components/ui/Cards";
 
-/** Раздел «Виджет» кабинета: что настраивается — простыми словами, без иконок у каждого пункта. */
+/** Раздел «Виджет» кабинета: что настраивается — простыми словами, у каждого пункта иконка на плитке. */
 const POINTS = [
-  "Свой логотип или готовый аватар, цвет и заголовок — под ваш бренд",
-  "Приветствие, приглашение над кнопкой чата и кнопки-подсказки",
-  "Предпросмотр: так виджет будет выглядеть на вашем сайте",
-  "Одна строка кода — кабинет сам проверит, что код появился на сайте",
-  "Бот в MAX настраивается в том же разделе",
-  "Ассистент говорит от имени вашего агентства — без наших логотипов",
+  { icon: ImageIcon, text: "Свой логотип или готовый аватар, цвет и заголовок — под ваш бренд" },
+  { icon: MessageCircle, text: "Приветствие, приглашение над кнопкой чата и кнопки-подсказки" },
+  { icon: Eye, text: "Предпросмотр: так виджет будет выглядеть на вашем сайте" },
+  { icon: Code2, text: "Одна строка кода — кабинет сам проверит, что код появился на сайте" },
+  { icon: Send, text: "Бот в MAX настраивается в том же разделе" },
+  { icon: BadgeCheck, text: "Ассистент говорит от имени вашего агентства — без наших логотипов" },
 ];
 
 export default function DashboardWidgetShowcase() {
@@ -67,10 +68,9 @@ export default function DashboardWidgetShowcase() {
           </p>
           <ul className="space-y-3">
             {POINTS.map((p) => (
-              <li key={p} className="flex items-start gap-3 text-sm leading-relaxed text-body sm:text-base">
-                <Check className="mt-1 h-4 w-4 shrink-0 text-accent" aria-hidden />
-                <span>{p}</span>
-              </li>
+              <TileItem key={p.text} icon={p.icon}>
+                {p.text}
+              </TileItem>
             ))}
           </ul>
         </motion.div>

@@ -53,14 +53,16 @@ export default function VersionRows({ source }: { source: string }) {
               if (e.currentTarget.open) reachMetrikaGoal(metrikaGoals.versionSelect, { version_id: v.id, source });
             }}
           >
-            <summary className="flex cursor-pointer list-none items-center gap-4 px-5 py-4 transition-colors hover:bg-blue-ice/40 sm:px-6 sm:py-5 [&::-webkit-details-marker]:hidden">
-              <span className="min-w-0 flex-1">
-                <h2 className="font-display text-base font-bold text-heading sm:text-lg">{versionSituation[v.id]}</h2>
-                <span className="mt-0.5 block text-sm text-body">
-                  «{v.name}» · <span className="whitespace-nowrap">от {v.priceFrom.toLocaleString("ru-RU")} ₽/мес</span>
-                </span>
+            {/* Заголовок — прямой потомок <summary> (в <span> его класть нельзя), поэтому раскладка сеткой */}
+            <summary className="grid cursor-pointer list-none grid-cols-[1fr_auto] items-center gap-x-4 px-5 py-4 transition-colors hover:bg-blue-ice/40 sm:px-6 sm:py-5 [&::-webkit-details-marker]:hidden">
+              <h2 className="font-display text-base font-bold text-heading sm:text-lg">{versionSituation[v.id]}</h2>
+              <ChevronDown
+                className="row-span-2 h-5 w-5 text-muted transition-transform group-open:rotate-180"
+                aria-hidden
+              />
+              <span className="mt-0.5 text-sm text-body">
+                «{v.name}» · <span className="whitespace-nowrap">от {v.priceFrom.toLocaleString("ru-RU")} ₽/мес</span>
               </span>
-              <ChevronDown className="h-5 w-5 shrink-0 text-muted transition-transform group-open:rotate-180" aria-hidden />
             </summary>
 
             <div className="border-t border-blue-subtle/40 bg-surface-alt/60 px-5 pb-6 pt-5 sm:px-6">

@@ -9,6 +9,7 @@ import DashboardKabinetTour from "@/components/dashboard/DashboardKabinetTour";
 import DashboardCTA from "@/components/dashboard/DashboardCTA";
 import CabinetVideo from "@/components/video/CabinetVideo";
 import { jsonLdScript } from "@/lib/schema";
+import { cardClass } from "@/components/ui/Cards";
 import { priceFromLabel } from "@/lib/content";
 
 export const metadata = {
@@ -92,21 +93,29 @@ export default function DashboardPage() {
         <DashboardKabinetTour />
         <DashboardAnalyticsShowcase />
         <DashboardWidgetShowcase />
-        {/* Куда дальше — строкой ссылок: страница не тупик ни для посетителя, ни для поиска */}
+        {/* Куда дальше — карточками-ссылками: страница не тупик ни для посетителя, ни для поиска */}
         <section className="bg-surface-alt">
-          <div className="mx-auto max-w-3xl px-5 py-12 text-center sm:px-6 lg:px-8">
-            <h2 className="font-display text-xl font-bold text-heading sm:text-2xl">Что посмотреть дальше</h2>
-            <ul className="mt-4 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-semibold sm:text-base">
+          <div className="mx-auto max-w-6xl px-5 py-12 sm:px-6 lg:px-8 lg:py-14">
+            <h2 className="text-center font-display text-xl font-bold text-heading sm:text-2xl">Что посмотреть дальше</h2>
+            <ul className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
               {[
-                { href: "/dlya-turagentstv", label: "ИИ для турагентства" },
-                { href: "/tarify", label: `Тарифы от ${priceFromLabel}/мес` },
-                { href: "/integraciya-tourvisor", label: "Интеграция с Tourvisor" },
-                { href: "/blog", label: "Блог: гайды и кейсы" },
+                { href: "/dlya-turagentstv", label: "ИИ для турагентства", text: "Как ассистент обрабатывает заявки 24/7" },
+                { href: "/tarify", label: `Тарифы от ${priceFromLabel}/мес`, text: "Цены всех версий и что входит в подписку" },
+                { href: "/integraciya-tourvisor", label: "Интеграция с Tourvisor", text: "Подбор туров по реальной базе" },
+                { href: "/blog", label: "Блог: гайды и кейсы", text: "Как агентства работают с ИИ" },
               ].map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="inline-flex min-h-10 items-center gap-1.5 text-accent hover:underline">
-                    {l.label}
-                    <ArrowRight className="h-4 w-4" />
+                  <Link
+                    href={l.href}
+                    className={`${cardClass} group flex h-full items-center gap-3 p-4 transition-colors hover:border-accent/40 sm:p-5`}
+                  >
+                    <span className="min-w-0 flex-1">
+                      <span className="block font-display text-base font-bold text-heading transition-colors group-hover:text-accent">
+                        {l.label}
+                      </span>
+                      <span className="mt-1 block text-sm text-body">{l.text}</span>
+                    </span>
+                    <ArrowRight className="h-4 w-4 shrink-0 text-accent" aria-hidden />
                   </Link>
                 </li>
               ))}

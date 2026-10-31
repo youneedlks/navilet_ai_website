@@ -18,14 +18,8 @@ import {
   priceFromLabel,
   priceSelectionNote,
 } from "@/lib/content";
-import {
-  ChevronRight,
-  Check,
-  Wallet,
-  ArrowRight,
-  Sparkles,
-  Calculator,
-} from "lucide-react";
+import { ChevronDown, ChevronRight, Check, ArrowRight } from "lucide-react";
+import { IconTile, StatCard, cardClass } from "@/components/ui/Cards";
 import { jsonLdScript } from "@/lib/schema";
 import { lastModified } from "@/lib/seo/page-dates";
 import { aggregateOfferJsonLd, publicPlans } from "@/lib/public-offers";
@@ -229,38 +223,30 @@ function PlanTable({
           </thead>
           <tbody className="block sm:table-row-group">
             {plans.map((p) => (
+              // На телефоне — две строки: «тариф … цена», ниже мелко диалоги, цена диалога и сверхлимит.
+              // Ширины первой строки в сумме 100%, поэтому остальные ячейки уходят на вторую.
               <tr
                 key={p.name}
-                className="grid grid-cols-2 gap-x-4 gap-y-2 border-t border-blue-subtle/30 bg-white px-4 py-3.5 sm:table-row sm:px-0 sm:py-0"
+                className="flex flex-wrap items-baseline border-t border-blue-subtle/30 bg-white px-4 py-3 sm:table-row sm:px-0 sm:py-0"
               >
-                <td className="col-span-2 block font-semibold text-heading sm:table-cell sm:px-5 sm:py-3 sm:font-medium">
+                <td className="w-[calc(100%-7.5rem)] font-semibold text-heading sm:table-cell sm:w-auto sm:px-5 sm:py-3 sm:font-medium">
                   {p.name}
                 </td>
-                <td className="block sm:table-cell sm:px-5 sm:py-3">
-                  <span className="mb-0.5 block text-[11px] font-bold uppercase tracking-wide text-muted sm:hidden">
-                    Цена в месяц
-                  </span>
-                  <span className="font-semibold text-accent">
-                    {rub(p.price)}
-                  </span>
+                <td className="w-[7.5rem] text-right sm:table-cell sm:w-auto sm:px-5 sm:py-3 sm:text-left">
+                  <span className="font-semibold text-accent">{rub(p.price)}</span>
+                  <span className="text-xs text-muted sm:hidden">/мес</span>
                 </td>
-                <td className="block sm:table-cell sm:px-5 sm:py-3">
-                  <span className="mb-0.5 block text-[11px] font-bold uppercase tracking-wide text-muted sm:hidden">
-                    Диалогов
-                  </span>
-                  <span className="text-body">{p.dialogs}</span>
+                <td className="mr-3 mt-0.5 text-xs text-muted sm:table-cell sm:mr-0 sm:mt-0 sm:px-5 sm:py-3 sm:text-sm sm:text-body">
+                  {p.dialogs}
+                  <span className="sm:hidden"> диалогов</span>
                 </td>
-                <td className="block sm:table-cell sm:px-5 sm:py-3">
-                  <span className="mb-0.5 block text-[11px] font-bold uppercase tracking-wide text-muted sm:hidden">
-                    Цена диалога
-                  </span>
-                  <span className="text-body">≈ {rub(p.perDialog)}</span>
+                <td className="mr-3 mt-0.5 text-xs text-muted sm:table-cell sm:mr-0 sm:mt-0 sm:px-5 sm:py-3 sm:text-sm sm:text-body">
+                  ≈ {rub(p.perDialog)}
+                  <span className="sm:hidden"> за диалог</span>
                 </td>
-                <td className="block sm:table-cell sm:px-5 sm:py-3">
-                  <span className="mb-0.5 block text-[11px] font-bold uppercase tracking-wide text-muted sm:hidden">
-                    Сверх лимита
-                  </span>
-                  <span className="text-body">{rub(p.extraDialog)}</span>
+                <td className="mt-0.5 text-xs text-muted sm:table-cell sm:mt-0 sm:px-5 sm:py-3 sm:text-sm sm:text-body">
+                  <span className="sm:hidden">сверх лимита </span>
+                  {rub(p.extraDialog)}
                 </td>
               </tr>
             ))}
@@ -306,18 +292,13 @@ export default function SkolkoStoitPage() {
 
         {/* Ответ первым экраном: короткий факт, который можно процитировать */}
         <section className="mx-auto max-w-4xl px-5 py-10 sm:px-6 sm:py-14 lg:px-8">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5">
-            <Wallet className="h-4 w-4 text-accent" />
-            <span className="text-xs font-semibold text-accent sm:text-sm">
-              Цены проверены {priceCheckedLabel}
-            </span>
-          </div>
           <h1 className="font-display text-4xl font-bold leading-tight text-heading sm:text-5xl">
             Сколько стоит <span className="whitespace-nowrap">ИИ-ассистент</span> для
             турагентства
           </h1>
+          <p className="mt-3 text-sm text-muted">Цены проверены {priceCheckedLabel}</p>
 
-          <div className="mt-6 rounded-2xl border border-blue-subtle/50 bg-white p-6 shadow-card sm:p-7">
+          <div className={`${cardClass} mt-6 p-5 sm:p-7`}>
             <p className="text-lg font-semibold leading-relaxed text-heading sm:text-xl">
               От {rub(priceFrom)} в месяц.
             </p>
@@ -343,7 +324,7 @@ export default function SkolkoStoitPage() {
             </p>
           </div>
 
-          <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <dl className="mt-4 grid grid-cols-3 gap-2 sm:gap-4">
             {[
               {
                 value: rub(priceFrom),
@@ -363,20 +344,13 @@ export default function SkolkoStoitPage() {
                 note: `${trial.fromLabel}, ${trial.capLabel}`,
               },
             ].map((item) => (
-              <div
-                key={item.label}
-                className="rounded-2xl border border-blue-subtle/40 bg-surface-alt p-5"
-              >
-                <p className="font-display text-2xl font-bold text-accent">
-                  {item.value}
-                </p>
-                <p className="mt-1 text-sm font-semibold text-heading">
-                  {item.label}
-                </p>
-                <p className="mt-1 text-xs text-muted">{item.note}</p>
-              </div>
+              <StatCard key={item.label} value={item.value} label={item.label} compact>
+                {item.note}
+              </StatCard>
             ))}
-          </div>
+          </dl>
+
+          <RegisterCta source="skolko_stoit_hero" compact className="mt-8 sm:items-start" />
         </section>
 
         {/* Тарифы обеих версий */}
@@ -430,7 +404,7 @@ export default function SkolkoStoitPage() {
               />
             </div>
 
-            <div className="mt-6 rounded-2xl border border-blue-subtle/50 bg-white p-5 sm:p-6">
+            <div className="mt-8 border-t border-blue-subtle/50 pt-6">
               <h3 className="font-display text-lg font-bold text-heading">
                 Сколько стоит работать сразу на сайте и в MAX
               </h3>
@@ -463,39 +437,35 @@ export default function SkolkoStoitPage() {
         {/* Сравнение с альтернативами */}
         <section className="mx-auto max-w-5xl px-5 py-14 sm:px-6 lg:px-8 lg:py-16">
           <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl">
-            Почему 990 ₽ — это мало для такой задачи
+            Почему 990 ₽ с подбором туров — это мало для такой задачи
           </h2>
           <p className="mt-4 max-w-3xl text-base leading-relaxed text-body">
             Сравнивать подписку честно нужно не с ценой, а с задачей: клиент
             пишет ночью «хочу в Турцию на неделю, бюджет 200 тысяч» — и должен
-            получить конкретные варианты с ценами, а агентство — заявку с контактом. Вот сколько стоят другие способы закрыть эту задачу.
+            получить конкретные варианты с ценами, а агентство — заявку с контактом. Такую задачу решает «Лид» — версия с подбором туров{reqVersionPublished ? <>; «Заявка» за {rub(minReq)} туры не подбирает, их подбирает ваш менеджер</> : null}. Вот сколько стоят другие способы закрыть эту задачу — нажмите на строку, чтобы увидеть, чего каждому не хватает.
           </p>
 
-          <div className="mt-9 space-y-4">
+          <ul className="mt-9 divide-y divide-blue-subtle/50 overflow-hidden rounded-2xl border border-blue-subtle/50 bg-white">
             {costAlternatives.map((alt) => (
-              <div
-                key={alt.title}
-                className={`rounded-2xl border p-5 sm:p-6 ${
-                  alt.highlight
-                    ? "border-accent/40 bg-accent/5 shadow-card"
-                    : "border-blue-subtle/50 bg-white"
-                }`}
-              >
-                <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
-                  <h3 className="font-display text-lg font-bold text-heading">
-                    {alt.title}
-                  </h3>
-                  <p className="shrink-0 font-display text-lg font-bold text-accent">
-                    {alt.price}
-                  </p>
-                </div>
-                <p className="mt-1 text-xs text-muted">{alt.priceNote}</p>
-                <p className="mt-3 text-sm leading-relaxed text-body sm:text-base">
-                  {alt.limits}
-                </p>
-              </div>
+              <li key={alt.title} className={alt.highlight ? "bg-accent/5" : ""}>
+                <details className="group">
+                  {/* Заголовок — прямой потомок <summary>, раскладка сеткой: на телефоне цена под названием, на ПК справа */}
+                  <summary className="grid cursor-pointer list-none grid-cols-[1fr_auto] items-center gap-x-3 px-5 py-4 transition-colors hover:bg-blue-ice/40 sm:grid-cols-[1fr_auto_auto] sm:gap-x-4 sm:px-6 [&::-webkit-details-marker]:hidden">
+                    <h3 className="col-start-1 row-start-1 font-display text-base font-bold text-heading sm:text-lg">{alt.title}</h3>
+                    <span className="col-start-1 row-start-2 mt-0.5 font-display text-base font-bold text-accent sm:col-start-2 sm:row-start-1 sm:mt-0 sm:text-lg">
+                      {alt.price}
+                    </span>
+                    <span className="col-start-1 row-start-3 mt-0.5 text-xs text-muted sm:row-start-2">{alt.priceNote}</span>
+                    <ChevronDown
+                      className="col-start-2 row-span-3 row-start-1 h-5 w-5 text-muted transition-transform group-open:rotate-180 sm:col-start-3 sm:row-span-2"
+                      aria-hidden
+                    />
+                  </summary>
+                  <p className="px-5 pb-4 text-sm leading-relaxed text-body sm:px-6">{alt.limits}</p>
+                </details>
+              </li>
             ))}
-          </div>
+          </ul>
 
           <p className="mt-6 text-sm leading-relaxed text-muted">
             Цены альтернатив — рыночные оценки по открытым прайсам и публичным
@@ -525,14 +495,9 @@ export default function SkolkoStoitPage() {
             </p>
             <ul className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
               {included.map((item) => (
-                <li
-                  key={item}
-                  className="flex items-start gap-3 rounded-xl border border-blue-subtle/40 bg-white p-4 text-sm leading-relaxed text-body"
-                >
-                  <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-accent/10">
-                    <Check className="h-3 w-3 text-accent" />
-                  </span>
-                  <span>{item}</span>
+                <li key={item} className={`${cardClass} flex items-start gap-3 p-4 text-sm leading-relaxed text-body`}>
+                  <IconTile icon={Check} size="sm" />
+                  <span className="pt-1">{item}</span>
                 </li>
               ))}
             </ul>
@@ -541,39 +506,22 @@ export default function SkolkoStoitPage() {
 
         {/* Окупаемость */}
         <section className="mx-auto max-w-5xl px-5 py-14 sm:px-6 lg:px-8 lg:py-16">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5">
-            <Calculator className="h-4 w-4 text-accent" />
-            <span className="text-xs font-semibold text-accent sm:text-sm">
-              Считаем на данных сети партнёров
-            </span>
-          </div>
           <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl">
             Когда подписка окупается
           </h2>
           <p className="mt-4 max-w-3xl text-base leading-relaxed text-body">
             Подписка на ассистента — это не расход на инструмент, а цена лида.
             Поэтому считать окупаемость проще всего так: сколько стоил один
-            квалифицированный лид и что приносит одна бронь.
+            квалифицированный лид и что приносит одна бронь. Считаем на данных сети партнёров.
           </p>
 
-          <div className="mt-9 grid grid-cols-1 gap-5 md:grid-cols-3">
+          <dl className="mt-8 grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-3">
             {costPaybackPoints.map((item) => (
-              <div
-                key={item.label}
-                className="rounded-2xl border border-blue-subtle/50 bg-white p-6 shadow-card"
-              >
-                <p className="font-display text-2xl font-bold text-accent sm:text-3xl">
-                  {item.stat}
-                </p>
-                <p className="mt-1 text-sm font-semibold text-heading">
-                  {item.label}
-                </p>
-                <p className="mt-2.5 text-sm leading-relaxed text-body">
-                  {item.text}
-                </p>
-              </div>
+              <StatCard key={item.label} value={item.stat} label={item.label}>
+                {item.text}
+              </StatCard>
             ))}
-          </div>
+          </dl>
 
           <p className="mt-6 max-w-3xl text-xs leading-relaxed text-muted">
             {costPaybackFootnote}
@@ -586,7 +534,7 @@ export default function SkolkoStoitPage() {
             <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl">
               От чего зависит итоговая цена
             </h2>
-            <div className="mt-8 space-y-5">
+            <div className={`${cardClass} mt-8 divide-y divide-blue-subtle/50 px-5 sm:px-6`}>
               {[
                 {
                   title: "Число диалогов в месяц",
@@ -605,17 +553,13 @@ export default function SkolkoStoitPage() {
                   text: `Если поток вырос, ассистент не отключается: сверхлимитные диалоги считаются по фиксированной цене — от\u00A0${rub(pricingPlans[0].lid.extraDialog)} на тарифе Лайт до ${rub(publicPlans[publicPlans.length - 1].lid.extraDialog)} на тарифе «${publicPlans[publicPlans.length - 1].name}» в версии «Лид».`,
                 },
               ].map((item) => (
-                <div
-                  key={item.title}
-                  className="rounded-2xl border border-blue-subtle/40 bg-white p-5 sm:p-6"
-                >
-                  <h3 className="font-display text-lg font-bold text-heading">
-                    {item.title}
-                  </h3>
-                  <p className="mt-2.5 text-sm leading-relaxed text-body sm:text-base">
-                    {item.text}
-                  </p>
-                </div>
+                <details key={item.title} className="group">
+                  <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-3 py-3 [&::-webkit-details-marker]:hidden">
+                    <h3 className="font-display text-lg font-bold text-heading">{item.title}</h3>
+                    <ChevronDown className="h-5 w-5 shrink-0 text-muted transition-transform group-open:rotate-180" aria-hidden />
+                  </summary>
+                  <p className="pb-5 text-sm leading-relaxed text-body sm:text-base">{item.text}</p>
+                </details>
               ))}
             </div>
           </div>
@@ -657,7 +601,7 @@ export default function SkolkoStoitPage() {
               href="/versii"
               className="inline-flex min-h-10 items-center gap-1.5 text-sm font-semibold text-accent transition-colors hover:text-accent-hover"
             >
-              Сравнение версий «Лид» и «Про»
+              {reqVersionPublished ? "Сравнение версий «Заявка», «Лид» и «Про»" : "Сравнение версий «Лид» и «Про»"}
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
@@ -673,22 +617,16 @@ export default function SkolkoStoitPage() {
         {/* CTA */}
         <section className="bg-surface-alt">
           <div className="mx-auto max-w-3xl px-5 py-16 text-center sm:px-6 lg:px-8 lg:py-20">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-white px-4 py-1.5">
-              <Sparkles className="h-4 w-4 text-accent" />
-              <span className="text-xs font-semibold text-accent sm:text-sm">
-                Первый месяц бесплатно · {trial.capLabel}
-              </span>
-            </div>
             <h2 className="font-display text-3xl font-bold text-heading sm:text-4xl">
               Проверьте цену на своих клиентах
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-base text-body sm:text-lg">
-              Месяц работы ассистента ничего не стоит, а после теста в личном
+              Первый месяц ничего не стоит — {trial.capLabel}. А после теста в личном
               кабинете уже видно, сколько диалогов у вас реально бывает — и какой
               тариф нужен. Дальше от {rub(priceFrom)} в месяц.
             </p>
             <div className="mt-8 flex justify-center">
-              <RegisterCta source="skolko_stoit_cta" />
+              <RegisterCta source="skolko_stoit_cta" compact />
             </div>
           </div>
         </section>
