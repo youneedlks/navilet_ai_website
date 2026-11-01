@@ -68,12 +68,29 @@ export default function ScenePlayer({
     let prev = 0;
     let time = 0;
     let drawn = 0;
+    // 60 кадров в секунду (решение владельца 31.10.2026: ролики должны идти плавно; на 120-герцовых
+    // экранах — тоже 60). Если устройство не успевает — кадры приходят с опозданием — сцена до конца
+    // показа переходит на 30 кадров в секунду, чтобы на слабых телефонах не вернулись тормоза.
+    const FAST = 1000 / 60 - 2;
+    const SLOW = 1000 / 30 - 2;
+    let interval = FAST;
+    let frames = 0;
+    let late = 0;
     const tick = (now: number) => {
-      if (prev && !pausedRef.current) time = (time + (now - prev) / 1000) % duration;
+      const dt = prev ? now - prev : 0;
+      if (prev && !pausedRef.current) time = (time + dt / 1000) % duration;
       prev = now;
-      // 30 кадров в секунду хватает для этих сцен и вдвое меньше нагружает процессор;
-      // на паузе сцену не перерисовываем вовсе.
-      if (!pausedRef.current && now - drawn >= 31) {
+      if (interval === FAST && dt && !pausedRef.current) {
+        frames++;
+        if (dt > 24) late++;
+        if (frames >= 60) {
+          if (late > 12) interval = SLOW;
+          frames = 0;
+          late = 0;
+        }
+      }
+      // На паузе сцену не перерисовываем вовсе.
+      if (!pausedRef.current && now - drawn >= interval) {
         drawn = now;
         setT(time);
       }
